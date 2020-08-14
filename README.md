@@ -1,2 +1,2 @@
 # site
-http://azeevrt.github.io/site
+http://azeevrt.github.io/site/
