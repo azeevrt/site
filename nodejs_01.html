@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>NodeJS_01</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="stylesheet" href="./theme/products.css" />
+</head>
+
+<body id="page-top" class=" js">
+  <div class="grid">
+    <header id="header" class="l-12 l-fix center vline header">
+      <strong><i style="display: none;"></i><a href="./">Azeevrt</a> <i style="font-size: 0.5em">For everyone and for me</i></strong>
+
+      <!-- 
+
+      <strong><a href="#">Azeervt</a>
+          <a href="/mail/">Email</a></strong>
+        -->
+      <div class="module left l-0 m-1 s-1 fix">
+        <span class="l s-0 white service-light-hover burger icon service-light" data-toggle-nodes="body{toggle-nav},
+        .header .service-light-hover.burger.icon{service-light}" tabindex="0">Show/hide navigation</span>
+        <span class="l m-0 white service-light-hover burger icon service-light" data-toggle-nodes="body{toggle-nav},
+      .header .service-light-hover.burger.icon{service-light}" tabindex="0">Show/hide navigation</span>
+      </div>
+      <div class="container right l-1 fix">
+        <div class="module l-1 fix left align-center">
+        <!--
+        <a data-tracking-contentposition="header.icon.login" class="l s-0 white service-light-hover show-text person icon" href="#" aria-label="Login"></a>
+
+        <a data-tracking-contentposition="header.icon.login" class="l l-0 m-0  white person icon" href="#" aria-label="Login"></a>
+        -->
+        </div>
+      </div>
+    </header>
+    <nav class="fullwidth center navigation">
+        <ul class="l-12 fix">
+          <li><a href="./" data-title="Azeevrt">
+              <span class="l l-0 service home icon"></span>
+              <span class="m s-0 m-0 inactive service-hover home icon"></span></a>
+              <span class="l-0 m inactive service-hover close icon" data-unset-nodes="body{toggle-nav}, .header .burger.icon{service}"></span>
+          </li>
+          <li>
+            <span data-hide-nodes="span[data-hide-parent]{current}" data-hide-parent=".navigation > ul > li" data-toggle-nodes=".navigation span.current{open}, .navigation span:not(.current).open{open}, .navigation .current{current}">
+              Навигация
+                <span class="m-0 s-0 s inactive down icon"></span>
+                <span class="l-0 m inactive down icon"></span>
+                <span class="m-0 s-0 s service down icon"></span>
+                <span class="l-0 m service down icon"></span>
+                <span class="m-0 s-0 s white up icon"></span>
+            </span>
+             <ul class=" text list">
+              <li class="active">
+                  <a href="./category/chapters.html">chapters</a>
+              </li>
+              <li>
+                  <a href="./category/kozarada.html">Kozarada</a>
+              </li>
+              <li>
+                  <a href="./category/translations.html">translations</a>
+              </li>
+            </ul>
+          </li>
+      </ul>
+    </nav>
+    
+<div class="container l-12 center ">
+      <div class="container l-12 fix">
+          <div class="container l-12 fix group-headline">
+              <h2 class="size-7 module l-12 fix align-center">NodeJS_01</h2>
+<footer class="post-info">
+        <abbr class="published" title="2020-08-16T18:13:18.149946+02:00">
+                Published: Вс 16 Август 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/vrt.html">VRT</a>
+        </address>
+<p>In <a href="./category/chapters.html">chapters</a>.</p>
+
+</footer><!-- /.post-info -->          </div>
+          <div class="module l-12 fix vspace-s">                                
+              <div class="akkordeon ">
+                  <div class="summary">
+                      <h3 class="size-3">читать полностью</h3>
+                  </div>
+                  <div class="akkordeon-content vspace-xs">
+                      <h3>1. Введение</h3>
+
+<p>Node.js - это открытая кроссплатформенная среда выполнения серверного JavaScript, которая отлично подходит для решения почти любой задачи.
+
+<p>Node.js запускает движок JavaScript V8, ядро Google Chrome, вне браузера. Это обуславливает высокую производительность Node.js. 
+
+<p>Node.js-приложения выполняются в виде единого процесса, без создания нового потока для каждого запроса. Node.js предоставляет набор асинхронных примитивов ввода/вывода в стандартной библиотеке, что предотвращает блокировку JavaScript-кода. Как правило, библиотеки в Node.js написаны с помощью асинхронных инструментов, что делает блокирующее поведение скорее исключением, чем правилом. 
+
+<p>Когда Node.js выполняет операцию ввода/вывода, например, чтение данных из сети, доступ к базе данных или файловой системе, вместо того, чтобы блокировать поток и ожидать завершения очередного цикла центрального процессора, Node.js продолжает выполнять операцию после получения ответа. 
+
+<p>Это позволяет Node.js обрабатывать одновременно тысячи запросов с помощью одного сервера без необходимости создания системы обеспечения согласованности потоков, которая может стать источником серьезных ошибок. 
+
+<p>Существенное преимущество Node.js состоит в том, что миллионы разработчиков, пишущих код на JavaScript для браузера, теперь имеют возможность писать серверный код без необходимости изучения другого языка программирования. 
+
+<p>В Node.js новые ECMAScript-стандарты могут использоваться без проблем, вам не нужно ждать, пока все пользователи обновят свои браузеры - вы сами решаете, какую версию ECMAScript использовать через изменение версии Node.js. Вы также можете добавить экспериментальные возможности, запустив Node.js с соответствующими флагами. 
+
+<h5>Огромное количество библиотек</h5>
+
+<p>Npm с его простой структурой способствует быстрому росту экосистемы Node.js, на сегодняшний день в npm зарегистрировано свыше 1 000 000 открытых пакетов, которые вы можете использовать совершенно бесплатно. 
+
+<h5>Пример Node.js-приложения</h5>
+
+Наиболее распространенным примером использования Node.js является создание веб-сервера:
+
+<code>
+const http = require('http')
+
+const hostname = '127.0.0.1'
+const port = process.env.PORT 
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/plain')
+    res.end('Hello World!\n')
+})
+
+server.listen(port, hostname, () => {
+    console.log(\`Server running at http://&#36;{hostname}:&#36;{port}/\`)
+})
+</code>
+
+<p>Первым делом, мы подключаем модуль <a href="https://nodejs.org/api/http.html">http</a>. 
+
+<p>Node.js имеет превосходную стандартную библиотеку, обеспечивающую первоклассную поддержку работы с сетью. 
+
+<p>Метод <span>createServer()</span> создает новый HTTP-сервер и возвращает его. 
+
+<p>Сервер устанавливается на прослушивание определенного порта и хоста. Когда сервер готов, запускается функция обратного вызова, в данном случае, сообщающая о том, что сервер запущен. 
+
+<p>При получениее нового запроса вызывается событие <a href="https://nodejs.org/api/http.html#http_event_request">request</a>, содержащее два объекта: запрос (объект <a href="https://nodejs.org/api/http.html#http_class_http_incomingmessage">http.IncomingMessage</a> (входящее сообщение)) и ответ (объект <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">http.ServerResponse</a> (ответ сервера)). 
+
+<p>Эти объекты необходимы для обработки HTTP-запроса. 
+
+<p>Первый объект содержит детали запроса. В нашем примере он не используется, но, при желании, вы можете получить доступ к заголовкам запроса и его данным. 
+
+<p>Второй объект используется для предоставления данных отправителю запроса. 
+
+<p>В данном случае, посредством <span>res.statusCode = 200</span> мы присваиваем свойству statusCode значение 200 в качестве индикатора успешного выполнения запроса. 
+
+<p>Мы устанавливает заголовок Content-Type (тип содержимого или контента) <span>res.setHeader('Content-Type', 'text/plain')</span> и закрываем ответ, добавляя контент в качестве аргумента в <span>end()</span>: <span>res.end('Hello World\n')</span>
+
+<h5>Node.js-фреймворки и инструменты</h5>
+
+<p>Node.js - это обширная платформа. С целью удовлетворения потребностей разработчиков были созданы тысячи различных библиотек. 
+
+<p>Со временем многие из них стали очень популярными. Вот список некоторых из них:
+
+<ul>
+    <li><a href="https://adonisjs.com/">AdonisJs</a>: фуллстек-фреймворк с акцентом на эргономику, стабильность и надежность. Adonis - один из самых быстрых веб-фреймворков для Node.js.</li>
+    <li><a href="https://expressjs.com/">Express</a>: предоставляет один из самых простых и одновременно самых мощных способов создания веб-сервера. Ключем его успеха является минималистичный подход, простой функционал, акцент на основных возможностях сервера.</li>
+    <li><a href="https://www.fastify.io/">Fastify</a>: веб-фреймворк, сфокусированный на обеспечении лучшего опыта разработки с минимальными накладными расходами и мощной архитектурой плагина. Fastify является одним из самых проивзодительных веб-фреймворков.</li>
+    <li><a href="https://hapi.dev/">hapi</a>: фреймворк с богатым функционалом для создания приложений и сервисов, позволяющий разработчикам сосредоточиться на написании переиспользуемой логики приложений вместо траты времени на построение инфраструктуры.</li>
+    <li><a href="https://koajs.com/">koa</a>: создан командой Express в целях упрощения и уменьшения размера библиотеки с учетом многолетнего опыта. Новый проект возник из-за необходимости внесения несовместимых изменений без разрушения сообщества, сформировавшего вокруг Express.</li>
+    <li><a href="https://loopback.io/">Loopback.io</a>: облегчает создание современных приложений со сложной системой зависимостей.</li>
+    <li><a href="https://www.meteor.com/">Meteor</a>: невероятно мощный фуллстек-фреймворк, предоставляющий изоморфный подход для создания приложений на JavaScript, когда код разделяется между клиентом и сервером. Когда-то meteor представлял собой готовое решение, содержащее все необходимое, сейчас он прекрасно сочетается с <a href="https://reactjs.org/">React</a>, <a href="https://vuejs.org/">Vue</a> и <a href="https://angular.io/">Angular</a>. ОН также может использоваться для создания мобильных приложений.</li>
+    <li><a href="https://github.com/vercel/micro">Micro</a>: предоставляет легковесный сервер для создания асинхронных HTTP-микросервисов.</li>
+    <li><a href="https://nestjs.com/">NestJS</a>: основанный на TypeScript прогрессивный Node.js-фреймворк для создания корпоративных, надежных и масштабируемых серверных приложений.</li>
+    <li><a href="https://nextjs.org/">Next.js</a>: фреймворк для рендеринга React-приложений на стороне сервера.</li>
+    <li><a href="https://nx.dev/">Nx</a>: инструмент для фуллстек монолитной разработки посредством NestJS, Express, React, Angular и т.д. Nx помогает масштабировать разработку от одной до нескольких команд, работающих одновременно над множеством приложений.</li>
+    <li><a href="https://socket.io/">Socket.io</a>: движок для коммуникации в режиме реального времени для создания сетевых приложений.</li>
+</ul>                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+    <footer id="footer">
+      <div class="container l-12 backdrop-c2-light50 inverted vspace-s">
+        <div class="container l-12 fix center">
+        	<h2>links</h2>
+	          <ul class="inline-block text align-center list">
+	                <li><a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+	          </ul><!-- /.blogroll -->
+          	<h2>social</h2>
+	          <ul class="inline-block text align-center list">
+                    <li><a href="https://azeevrt.github.io/site">site</a></li>
+	          </ul><!-- /.social -->
+        </div>
+      </div>
+    </footer>
+    <a class="scroll-to-top rounded js-scroll-trigger button" href="#">
+      <i class="fas fa-angle-up"></i>
+    </a>
+  </div>
+
+<!--    -->
+
+
+<script src="./theme/products.js"></script>
+<script src="./theme/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+      }
+    });
+
+    $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+
+    $('span.link-base:not([data-hide-nodes=""])').on('click', function () {
+        var expandable = $(this);
+        var count = expandable.closest('[data-tracking-count]').data('tracking-count');
+        var eventposition = expandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+        var contentposition = expandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+        trackExpandable('page.module.part.expand', count, eventposition, contentposition);
+    });
+
+    $('span.close:not([data-hide-nodes=""])').on('click', function () {
+        var expandable = $(this);
+        if(expandable.closest('[data-tracking-count]').data('tracking-count') !== 2) {
+            var count = expandable.closest('[data-tracking-count]').data('tracking-count');
+            var eventposition = expandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+            var contentposition = expandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+            trackExpandable('page.module.part.reduce', count, eventposition, contentposition);
+        }
+    });
+
+    $('.navigation > ul > li[data-unset-nodes="#empty"] span').on('click', function () {
+        var navExpandable = $(this);
+        var navAction;
+        (!navExpandable.hasClass('open')) ? navAction = 'expand' : navAction = 'reduce';
+        var section = 'page.navigation.' + navAction;
+        var count = navExpandable.closest('[data-tracking-count]').data('tracking-count');
+        var eventposition = navExpandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+        var contentposition = navExpandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+        trackExpandable(section, count, eventposition, contentposition);
+    });
+
+    // home-button, screenSize < 980px
+    $('.header > div > span').on('click', function () {
+        var navExpandable = $(this);
+        var navAction;
+        (!navExpandable.hasClass('service')) ? navAction = 'expand': navAction = 'reduce';
+        var section = 'page.navigation.home.' + navAction;
+
+        trackExpandable(section, 2, 2, 'header.menu');
+    });
+
+    $('.navigation > ul > li span.close.icon').on('click', function () {
+        trackExpandable('page.navigation.home.reduce', 2, 2, 'header.menu');
+    });
+
+</script>
+</body>
+</html>
