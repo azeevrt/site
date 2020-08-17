@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">034.  Event Emitter (обработчик событий)</h2>
+              <h2 class="size-7 module l-12 fix align-center">034. Event Emitter (обработчик событий)</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,63 +77,47 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>34. Event Emitter (обработчик событий)</h3>
-
-<p>Если вы работали с JavaScript в браузере, то знаете, что большая часть взаимодействия с пользователем осуществляется через обработку событий: клики мышкой, нажатие клавиш клавиатуры, движение мышки и т.д.
-
-<p>На стороне сервера Node.js предоставляет нам возможность создания похожей системы с помощью <a href="https://nodejs.org/api/events.html">модуля events</a>. 
-
-<p>Этот модуль, в частности, предоставляет класс <span>EventEmitter</span>, который используется для обработки событий. 
-
+<p>Если вы работали с JavaScript в браузере, то знаете, что большая часть взаимодействия с пользователем осуществляется через обработку событий: клики мышкой, нажатие клавиш клавиатуры, движение мышки и т.д. </p>
+<p>На стороне сервера Node.js предоставляет нам возможность создания похожей системы с помощью <a href="https://nodejs.org/api/events.html">модуля events</a>. </p>
+<p>Этот модуль, в частности, предоставляет класс EventEmitter, который используется для обработки событий. </p>
 <p>Он инициализируется следующим образом: 
-
-
-    const EventEmitter = require('events')
-    const eventEmitter = new EventEmitter()
-
-<p>Этот объект, среди прочего, содержит методы <span>on</span> и <span>emit</span>. 
-
+<code>const EventEmitter = require('events')
+    const eventEmitter = new EventEmitter()</code></p>
+<p>Этот объект, среди прочего, содержит методы on и emit. </p>
 <ul>
-    <li><span>emit</span> используется для регистрации события</li>
-    <li><span>on</span> используется для добавления колбека, вызываемого при возникновении события</li>
+<li>emit используется для регистрации события</li>
+<li>on используется для добавления колбека, вызываемого при возникновении события</li>
 </ul>
-
-<p>Давайте, например, создадим событие <span>start</span>, при возникновении которого будет выводиться сообщение в консоль: 
-
-
-    eventEmitter.on('start', () => {
-        console.log('started')
-    })
-
+<p>Давайте, например, создадим событие start, при возникновении которого будет выводиться сообщение в консоль: 
+<code>eventEmitter.on('start', () =&gt; {
+    console.log('started')
+})</code></p>
 <p>При запуске
+<code>eventEmitter.emit('start')</code></p>
+<p>запускается обработчик события и сообщение выводится в консоль. </p>
+<p>Вы можете передавать обработчику событий аргументы во втором параметре emit(): </p>
+<div class="highlight"><pre><span></span>eventEmitter.on(&#39;start&#39;, number =&gt; {
+    console.log(\\`started <span class="cp">${</span><span class="n">number</span><span class="cp">}</span>\\`)
+})
 
-    eventEmitter.emit('start')
-
-<p>запускается обработчик события и сообщение выводится в консоль. 
-
-<p>Вы можете передавать обработчику событий аргументы во втором параметре <span>emit()</span>: 
-
-
-    eventEmitter.on('start', number => {
-        console.log(\`started &#36;{number}\`)
-    })
-
-    eventEmitter.emit('start', 23)
-
-<p>Несколько аргументов: 
+eventEmitter.emit(&#39;start&#39;, 23)
+</pre></div>
 
 
-    eventEmitter.on('start', (start, end) => {
-        console.log(\`started from &#36;{start} to &#36;{end}\`)
-    })
+<p>Несколько аргументов: </p>
+<div class="highlight"><pre><span></span>eventEmitter.on(&#39;start&#39;, (start, end) =&gt; {
+    console.log(\\`started from <span class="cp">${</span><span class="n">start</span><span class="cp">}</span> to <span class="cp">${</span><span class="n">end</span><span class="cp">}</span>\\`)
+})
 
-    eventEmitter.emit('start', 1, 100)
+eventEmitter.emit(&#39;start&#39;, 1, 100)
+</pre></div>
 
-<p>Объект EventEmitter также содержит другие методы, такие как: 
 
+<p>Объект EventEmitter также содержит другие методы, такие как: </p>
 <ul>
-    <li><span>once()</span>: добавляет разовый обработчик</li>
-    <li><span>removeListener() / off()</span>: удаляет определенный обработчик</li>
-    <li><span>removeAllListeners()</span>: удаляет все обработчики</li>
+<li>once(): добавляет разовый обработчик</li>
+<li>removeListener() / off(): удаляет определенный обработчик</li>
+<li>removeAllListeners(): удаляет все обработчики</li>
 </ul>          </div>
       </div>
   </div>

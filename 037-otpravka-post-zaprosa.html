@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">037.  Отправка POST-запроса</h2>
+              <h2 class="size-7 module l-12 fix align-center">037. Отправка POST-запроса</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,59 +77,55 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>37. Отправка POST-запроса</h3>
+<p>Существует множество способов отправки POST-запроса в зависимости от уровня абстракции. </p>
+<p>Одним из простейших способов это сделать является использование <a href="https://github.com/axios/axios">библиотеки Axios</a>. </p>
+<div class="highlight"><pre><span></span>const axios = require(&#39;axios&#39;)
 
-<p>Существует множество способов отправки POST-запроса в зависимости от уровня абстракции.
-
-<p>Одним из простейших способов это сделать является использование <a href="https://github.com/axios/axios">библиотеки Axios</a>. 
-
-
-    const axios = require('axios')
-
-    axios 
-        .post('https://whatever.com/todos', {
-            todo: 'Buy the milk'
-        })
-        .then(res => {
-            console.log(\`statusCode: &#36;{res.statusCode}\`)
-        })
-        .catch(err => console.error(err))
-
-<p>Axios нуждается в сторонней библиотеке. 
-
-<p>POST-запрос можно отправить с помощью стандартного модуля Node.js, однако код при этом будет более многословным:
-
-
-    const https = require('https')
-
-    const data = JSON.stringify({
-        todo: 'Buy the milk'
+axios 
+    .post(&#39;https://whatever.com/todos&#39;, {
+        todo: &#39;Buy the milk&#39;
     })
+    .then(res =&gt; {
+        console.log(\\`statusCode: <span class="cp">${</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="cp">}</span>\\`)
+    })
+    .catch(err =&gt; console.error(err))
+</pre></div>
 
-    const options = {
-        hostname: 'whatever.com',
-        port: 443,
-        path: '/todos',
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': data.length
-        }
+
+<p>Axios нуждается в сторонней библиотеке. </p>
+<p>POST-запрос можно отправить с помощью стандартного модуля Node.js, однако код при этом будет более многословным:</p>
+<div class="highlight"><pre><span></span>const https = require(&#39;https&#39;)
+
+const data = JSON.stringify({
+    todo: &#39;Buy the milk&#39;
+})
+
+const options = {
+    hostname: &#39;whatever.com&#39;,
+    port: 443,
+    path: &#39;/todos&#39;,
+    method: &#39;POST&#39;,
+    headers: {
+    &#39;Content-Type&#39;: &#39;application/json&#39;,
+    &#39;Content-Length&#39;: data.length
     }
+}
 
-    const req = https.request(options, res => {
-        console.log(\`statusCode: &#36;{res.statusCode}\`)
+const req = https.request(options, res =&gt; {
+    console.log(\\`statusCode: <span class="cp">${</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="cp">}</span>\\`)
 
-        res.on('data', d => {
-        process.stdout.write(d)
-        })
+    res.on(&#39;data&#39;, d =&gt; {
+    process.stdout.write(d)
     })
+})
 
-    req.on('error', error => {
-        console.error(error)
-    })
+req.on(&#39;error&#39;, error =&gt; {
+    console.error(error)
+})
 
-    req.write(data)
-    req.end()          </div>
+req.write(data)
+req.end()
+</pre></div>          </div>
       </div>
   </div>
 

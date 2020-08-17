@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">041.  Путь к файлу</h2>
+              <h2 class="size-7 module l-12 fix align-center">041. Путь к файлу</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,73 +77,46 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>41. Путь к файлу</h3>
-
-<p>Любой файл имеет адрес или путь.
-
+<p>Любой файл имеет адрес или путь. </p>
 <p>На Linux и macOS путь может выглядеть так:
-
-    /Users/joe/file.txt
-
+<code>/Users/joe/file.txt</code></p>
 <p>А на Windows так:
-
-    C:\\Users\\joe\\file.txt
-
-<p>Следует быть очень внимательным при работе с путями в приложении, поскольку это может иметь решающее значение. 
-
+<code>C:\\Users\\joe\\file.txt</code></p>
+<p>Следует быть очень внимательным при работе с путями в приложении, поскольку это может иметь решающее значение. </p>
 <p>Соответствующий модуль подключается следующим образом:
-
-    const path = require('path')
-
-<p>После этого его можно использовать. 
-
-<h5>Получение информации из <span>path</span></h5>
-
-<p>Для извлечения информации из пути используются следующие методы:
-
+<code>const path = require('path')</code></p>
+<p>После этого его можно использовать. </p>
+<h5>Получение информации из path</h5>
+<p>Для извлечения информации из пути используются следующие методы:</p>
 <ul>
-    <li><span>dirname</span> - директория, в которой находится файл</li>
-    <li><span>basename</span> - название файла</li>
-    <li><span>extname</span> - расширение файла</li>
+<li>dirname - директория, в которой находится файл</li>
+<li>basename - название файла</li>
+<li>extname - расширение файла</li>
 </ul>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">notes</span> <span class="o">=</span> <span class="s1">&#39;/Users/joe/notes.txt&#39;</span>
 
-<p>Например:
+<span class="n">path</span><span class="p">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">//</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">joe</span> 
+<span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">//</span> <span class="n">notes</span><span class="p">.</span><span class="n">txt</span> 
+<span class="n">path</span><span class="p">.</span><span class="n">extname</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">//</span> <span class="p">.</span><span class="n">txt</span>
+</pre></div>
 
-
-    const notes = '/Users/joe/notes.txt'
-
-    path.dirname(notes) // /Users/joe 
-    path.basename(notes) // notes.txt 
-    path.extname(notes) // .txt 
 
 <p>Вы можете получить название файла без расширения:
-
-    path.basename(notes, path.extname(notes)) // notes 
-
+<code>path.basename(notes, path.extname(notes)) // notes</code></p>
 <h5>Работа с путями</h5>
-
-<p>Вы можете соединить две или более части пути посредством <span>path.join()</span>:
-
-    const name = 'joe'
-    path.join('/', 'Users', name, 'notes.txt')
-
-<p>Абсолютный путь файла на основе относительного можно получить с помощью <span>path.resolve()</span>:
-
-    path.resolve('joe.txt') // '/Users/joe/joe.txt'
-
-<p>В данном случае, Node.js просто добавляет <span>/joe.txt</span> к адресу текущей (рабочей) директории. Если вы определите первый параметр - директорию, <span>resolve</span> использует ее как основу для второго параметра - файла:
-
-    path.resolve('tmp', 'joe.txt') // '/Users/joe/tmp/joe.txt'
-
+<p>Вы можете соединить две или более части пути посредством path.join():
+<code>const name = 'joe'
+path.join('/', 'Users', name, 'notes.txt')</code></p>
+<p>Абсолютный путь файла на основе относительного можно получить с помощью path.resolve():
+<code>path.resolve('joe.txt') // '/Users/joe/joe.txt'</code></p>
+<p>В данном случае, Node.js просто добавляет /joe.txt к адресу текущей (рабочей) директории. Если вы определите первый параметр - директорию, resolve использует ее как основу для второго параметра - файла:
+<code>path.resolve('tmp', 'joe.txt') // '/Users/joe/tmp/joe.txt'</code></p>
 <p>Если первый параметр начинается со слеша - это абсолютный путь: 
-
-    path.resolve('/etc', 'joe.txt') // '/etc/joe.txt'
-
-<p>Еще одной полезной функцией является <span>path.normalize()</span>, которая пытается вычислить актуальный путь на основе относительных спецификаторов типа <span>.</span>, <span>..</span> или двойного слеша:
-
-
-    path.normalize('/Users/joe/..//test.txt') // /Users/test.txt
-
-<p><span>resolve</span> и <span>normalize</span> не проверяют, существует ли путь на самом деле. Они лишь вычисляют путь на основе полученной информации.          </div>
+<code>path.resolve('/etc', 'joe.txt') // '/etc/joe.txt'</code></p>
+<p>Еще одной полезной функцией является path.normalize(), которая пытается вычислить актуальный путь на основе относительных спецификаторов типа ., .. или двойного слеша:
+<code>path.normalize('/Users/joe/..//test.txt') // /Users/test.txt</code></p>
+<p>resolve и normalize не проверяют, существует ли путь на самом деле. Они лишь вычисляют путь на основе полученной информации.</p>          </div>
       </div>
   </div>
 

@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">043.  Запись файла</h2>
+              <h2 class="size-7 module l-12 fix align-center">043. Запись файла</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,73 +77,64 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>43. Запись файла</h3>
+<p>Простейшим способом записи данных в файл является использование метода fs.writeFile(). </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-<p>Простейшим способом записи данных в файл является использование метода <span>fs.writeFile()</span>.
+<span class="n">const</span> <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;Some content!&#39;</span>
 
-<p>Например:
+<span class="n">fs</span><span class="p">.</span><span class="n">writeFile</span><span class="p">(</span><span class="s1">&#39;/Users/joe/test.txt&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="err">}</span>
+    <span class="o">//</span> <span class="err">файл</span> <span class="err">записан</span> <span class="err">успешно</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-    const fs = require('fs')
 
-    const content = 'Some content!'
+<p>В качестве альтерантивы можно использовать метод fs.writeFileSync():</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-    fs.writeFile('/Users/joe/test.txt', content, err => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        // файл записан успешно
-    })
+<span class="n">const</span> <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;Some content!&#39;</span>
 
-<p>В качестве альтерантивы можно использовать метод <span>fs.writeFileSync()</span>:
+<span class="n">try</span> <span class="err">{</span>
+    <span class="n">const</span> <span class="k">data</span> <span class="o">=</span> <span class="n">fs</span><span class="p">.</span><span class="n">writeFileSync</span><span class="p">(</span><span class="s1">&#39;/Users/joe/test.txt&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+    <span class="o">//</span> <span class="err">файл</span> <span class="err">успешно</span> <span class="err">записан</span> 
+<span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
 
-    const fs = require('fs')
 
-    const content = 'Some content!'
-
-    try {
-        const data = fs.writeFileSync('/Users/joe/test.txt', content)
-        // файл успешно записан 
-    } catch (err) {
-        console.error(err)
-    }
-
-<p>По умолчанию данные методы перезаписывают существующий файл. 
-
+<p>По умолчанию данные методы перезаписывают существующий файл. </p>
 <p>Стандартное поведение можно изменить с помощью соответствующего флага: 
-
-
-    fs.writeFile('/Users/joe/test.txt', content, { flag: 'a+' }, err => { })
-
-<p>Другие флаги:
-
+<code>fs.writeFile('/Users/joe/test.txt', content, { flag: 'a+' }, err =&gt; { })</code></p>
+<p>Другие флаги:</p>
 <ul>
-    <li><span>r+</span> - открыть файл для чтения и записи</li>
-    <li><span>w+</span> - открыть файл для чтения и записи, поместив курсор в начало файла. Файл создается при отсутствии</li>
-    <li><span>a</span> - открыть файл для записи, поместив курсор в конец файла. Файл создается при отсутствии</li>
-    <li><span>a+</span> - открыть файл для чтения и записи, поместив курсор в конец файла. Файл создается при отсутствии</li>
+<li>r+ - открыть файл для чтения и записи</li>
+<li>w+ - открыть файл для чтения и записи, поместив курсор в начало файла. Файл создается при отсутствии</li>
+<li>a - открыть файл для записи, поместив курсор в конец файла. Файл создается при отсутствии</li>
+<li>a+ - открыть файл для чтения и записи, поместив курсор в конец файла. Файл создается при отсутствии</li>
 </ul>
-
-<p>Подробнее о флагах можно почитать <a href="https://nodejs.org/api/fs.html#fs_file_system_flags">здесь</a>. 
-
+<p>Подробнее о флагах можно почитать <a href="https://nodejs.org/api/fs.html#fs_file_system_flags">здесь</a>. </p>
 <h5>Дополнение файла</h5>
+<p>Удобным методом для добавлени контента в конец файла является fs.appendFile() (и его синхронная версия fs.appendFileSync()):</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">content</span> <span class="o">=</span> <span class="s1">&#39;Some content!&#39;</span>
 
-<p>Удобным методом для добавлени контента в конец файла является <span>fs.appendFile()</span> (и его синхронная версия <span>fs.appendFileSync()</span>):
+<span class="n">fs</span><span class="p">.</span><span class="n">appendFile</span><span class="p">(</span><span class="s1">&#39;file.log&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="err">}</span>
+    <span class="o">//</span> <span class="err">выполнено</span><span class="o">!</span> 
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-    const content = 'Some content!'
-
-    fs.appendFile('file.log', content, err => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        // выполнено! 
-    })
 
 <h5>Использование потоков</h5>
-
-<p>Все эти методы записывают весь файл перед тем, как вернуть управление программе (в асинхронных версиях это означает выполнение колбека). 
-
-<p>Поэтому для записи больших файлов используются потоки.          </div>
+<p>Все эти методы записывают весь файл перед тем, как вернуть управление программе (в асинхронных версиях это означает выполнение колбека). </p>
+<p>Поэтому для записи больших файлов используются потоки. </p>          </div>
       </div>
   </div>
 

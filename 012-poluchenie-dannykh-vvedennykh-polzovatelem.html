@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">012.  Получение данных, введенных пользователем</h2>
+              <h2 class="size-7 module l-12 fix align-center">012. Получение данных, введенных пользователем</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,55 +77,46 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>12. Получение данных, введенных пользователем</h3>
+<p>Как сделать Node.js-программу интерактивной?</p>
+<p>Для этого в 7 версии Node.js представлен модуль <a href="https://nodejs.org/api/readline.html">readline</a>: он служит для получения данных из потока для чтения, такого как process.stdin - командная строка во время выполнения Node.js-программы. </p>
+<div class="highlight"><pre><span></span>const readline = require(&#39;readline&#39;).createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
 
-<p>Как сделать Node.js-программу интерактивной?
+readline.question(&#39;What is your name?&#39;, name =&gt; {
+    console.log(\\`Hi <span class="cp">${</span><span class="n">name</span><span class="cp">}</span>!\\`)
+    readline.close()
+})
+</pre></div>
 
-<p>Для этого в 7 версии Node.js представлен модуль <a href="https://nodejs.org/api/readline.html">readline</a>: он служит для получения данных из потока для чтения, такого как <span>process.stdin</span> - командная строка во время выполнения Node.js-программы. 
+
+<p>В этом коде запрашивается имя пользователя. После того, как пользователь набрал текст и нажал enter, выводится приветствие. </p>
+<p>Метод question() выводит в консоль первый параметр (вопрос) и ожидает ответа пользователя. При нажатии enter выполняется функция обратного вызова. </p>
+<p>В данном колбеке мы закрываем интерфейс readline. 
+readline содержит и другие методы, о которых вы можете почитать в документации. </p>
+<p>Если вам необходимо запросить пароль, лучше не возвращать его в явном виде, а использовать символ *. </p>
+<p>Одним из способом это сделать является использование пакета <a href="https://www.npmjs.com/package/readline-sync">readline-sync</a>, который прост для понимания и легок в настройке. </p>
+<p>Более полное и абстрактное решение предоставляет пакет <a href="https://github.com/SBoudrias/Inquirer.js">Inquirer.js</a>. </p>
+<p>Устанавливаем его с помощью npm install inquirer и используем следующим образом:</p>
+<div class="highlight"><pre><span></span>const inquirer = require(&#39;inquirer&#39;)
+
+const questions = [
+    {
+        type: &#39;input&#39;,
+        name: &#39;name&#39;,
+        message: &#39;What&#39;s your name?&#39;
+    }
+]
+
+inquirer.prompt(questions).then(answers =&gt; {
+    console.log(\\`Hi <span class="cp">${</span><span class="n">answers</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="cp">}</span>!\\`)
+})
+</pre></div>
 
 
-    const readline = require('readline').createInterface({
-        input: process.stdin,
-        output: process.stdout
-    })
-
-    readline.question('What is your name?', name => {
-        console.log(\`Hi &#36;{name}!\`)
-        readline.close()
-    })
-
-<p>В этом коде запрашивается имя пользователя. После того, как пользователь набрал текст и нажал <span>enter</span>, выводится приветствие. 
-
-<p>Метод <span>question()</span> выводит в консоль первый параметр (вопрос) и ожидает ответа пользователя. При нажатии <span>enter</span> выполняется функция обратного вызова. 
-
-<p>В данном колбеке мы закрываем интерфейс <span>readline</span>. 
-
-<span>readline</span> содержит и другие методы, о которых вы можете почитать в документации. 
-
-<p>Если вам необходимо запросить пароль, лучше не возвращать его в явном виде, а использовать символ <span>*</span>. 
-
-<p>Одним из способом это сделать является использование пакета <a href="https://www.npmjs.com/package/readline-sync">readline-sync</a>, который прост для понимания и легок в настройке. 
-
-<p>Более полное и абстрактное решение предоставляет пакет <a href="https://github.com/SBoudrias/Inquirer.js">Inquirer.js</a>. 
-
-<p>Устанавливаем его с помощью <span>npm install inquirer</span> и используем следующим образом:
-
-    const inquirer = require('inquirer')
-
-    const questions = [
-        {
-            type: 'input',
-            name: 'name',
-            message: 'What's your name?'
-        }
-    ]
-
-    inquirer.prompt(questions).then(answers => {
-        console.log(\`Hi &#36;{answers['name']}!\`)
-    })
-
-<p>Inquirer.js позволяет делать много интересных вещей, например, предлагать множественный выбор, предоставлять радио-кнопки, запрашивать подтверждение действия и т.д. 
-
-<p>Он больше известен как альтернатива встроенным решениям, но если вы планируете поднять взаимодействие с пользователем на новый уровень, Inquirer.js - оптимальное решение.          </div>
+<p>Inquirer.js позволяет делать много интересных вещей, например, предлагать множественный выбор, предоставлять радио-кнопки, запрашивать подтверждение действия и т.д. </p>
+<p>Он больше известен как альтернатива встроенным решениям, но если вы планируете поднять взаимодействие с пользователем на новый уровень, Inquirer.js - оптимальное решение. </p>          </div>
       </div>
   </div>
 

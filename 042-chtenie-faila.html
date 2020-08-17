@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">042.  Чтение файла</h2>
+              <h2 class="size-7 module l-12 fix align-center">042. Чтение файла</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,36 +77,34 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>42. Чтение файла</h3>
+<p>Простейшим способом прочитать содержимое файла является использование метода fs.readFile(), которому передается путь, кодировка и колбек, вызываемый с содержимым файла (и ошибкой):</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-<p>Простейшим способом прочитать содержимое файла является использование метода <span>fs.readFile()</span>, которому передается путь, кодировка и колбек, вызываемый с содержимым файла (и ошибкой):
-
-    const fs = require('fs')
-
-    fs.readFile('/Users/joe/test.txt', 'utf8', (err, data) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        console.log(data)
-    })
-
-<p>В качестве альтурнативы можно использовать <span>fs.readFileSync()</span>:
+<span class="n">fs</span><span class="p">.</span><span class="n">readFile</span><span class="p">(</span><span class="s1">&#39;/Users/joe/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="err">}</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
 
-    const fs = require('fs')
+<p>В качестве альтурнативы можно использовать fs.readFileSync():</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-    try {
-        const data = fs.readFileSync('/Users/joe/test.txt', 'utf8')
-        console.log(data)
-    } catch (err) {
-        console.error(err)
-    }
+<span class="n">try</span> <span class="err">{</span>
+    <span class="n">const</span> <span class="k">data</span> <span class="o">=</span> <span class="n">fs</span><span class="p">.</span><span class="n">readFileSync</span><span class="p">(</span><span class="s1">&#39;/Users/joe/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+<span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
 
-<p>Оба метода считывают содержимое файла в память перед тем, как вернуть данные. 
 
-<p>Это означает, что большие файлы будут существенно влиять на расход памяти и скорость выполнения программы. 
-
-<p>В этом случае файлы лучше читать с помощью потоков.          </div>
+<p>Оба метода считывают содержимое файла в память перед тем, как вернуть данные. </p>
+<p>Это означает, что большие файлы будут существенно влиять на расход памяти и скорость выполнения программы. </p>
+<p>В этом случае файлы лучше читать с помощью потоков.</p>          </div>
       </div>
   </div>
 

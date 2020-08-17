@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">040.  Статистика файла</h2>
+              <h2 class="size-7 module l-12 fix align-center">040. Статистика файла</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,56 +77,45 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>40. Статистика файла</h3>
-
-<p>Каждый файл содержит перечень информации, которую мы можем изучить с помощью Node.js.
-
-<p>В частности, посредством метода <span>stat()</span> модуля <span>fs</span>. 
-
+<p>Каждый файл содержит перечень информации, которую мы можем изучить с помощью Node.js. </p>
+<p>В частности, посредством метода stat() модуля fs. </p>
 <p>Данный метод вызывается с двумя аргументами: путем к файлу и колбеком. Колбек, в свою очередь, содержит два параметра: сообщение об ошибке и статистику файла:
-
-    const fs = require('fs')
-    fs.stat('/Users/joe/test.txt', (err, stats) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        // мы имеем доступ к статистике файла через 'stats'
-    })
-
-<p>Node.js также предоставляет синхронный метод, который блокирует поток до получения статистики файла: 
-
-    const fs = require('fs')
-    try {
-        const stats = fs.statSync('/Users/joe/test.txt')
-    } catch (err) {
+<code>const fs = require('fs')
+fs.stat('/Users/joe/test.txt', (err, stats) =&gt; {
+    if (err) {
         console.error(err)
+        return
     }
-
-<p>Информация о файле содержится в переменной <span>stats</span>. Какую информацию мы можем получить, используя <span>stats</span>? 
-
-<p>Среди прочего:
-
+    // мы имеем доступ к статистике файла через 'stats'
+})</code></p>
+<p>Node.js также предоставляет синхронный метод, который блокирует поток до получения статистики файла: 
+<code>const fs = require('fs')
+try {
+    const stats = fs.statSync('/Users/joe/test.txt')
+} catch (err) {
+    console.error(err)
+}</code></p>
+<p>Информация о файле содержится в переменной stats. Какую информацию мы можем получить, используя stats? </p>
+<p>Среди прочего:</p>
 <ul>
-    <li>файл - это директория или файл? <span>stats.isFile()</span> и <span>stats.isDirectory()</span></li>
-    <li>файл - это символическая ссылка? <span>stats.isSymbolicLink()</span></li>
-    <li>размер файла в байтах, <span>stats.size</span></li>
+<li>файл - это директория или файл? stats.isFile() и stats.isDirectory()</li>
+<li>файл - это символическая ссылка? stats.isSymbolicLink()</li>
+<li>размер файла в байтах, stats.size</li>
 </ul>
+<p>Существует множество других методов, но чаще всего используются указанные выше. </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+<span class="n">fs</span><span class="p">.</span><span class="n">stat</span><span class="p">(</span><span class="s1">&#39;/Users/joe/test.txt&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="err">}</span>
 
-<p>Существует множество других методов, но чаще всего используются указанные выше. 
-
-
-    const fs = require('fs')
-    fs.stat('/Users/joe/test.txt', (err, stats) => {
-        if (err) {
-            console.error(err)
-            return
-        }
-
-        stats.isFile() // true
-        stats.isDirectory() // false
-        stats.isSymbolicLink() // false
-        stats.size // 1024000 //= 1MB
-    })          </div>
+    <span class="n">stats</span><span class="p">.</span><span class="n">isFile</span><span class="p">()</span> <span class="o">//</span> <span class="k">true</span>
+    <span class="n">stats</span><span class="p">.</span><span class="n">isDirectory</span><span class="p">()</span> <span class="o">//</span> <span class="k">false</span>
+    <span class="n">stats</span><span class="p">.</span><span class="n">isSymbolicLink</span><span class="p">()</span> <span class="o">//</span> <span class="k">false</span>
+    <span class="n">stats</span><span class="p">.</span><span class="k">size</span> <span class="o">//</span> <span class="mi">1024000</span> <span class="o">//=</span> <span class="mi">1</span><span class="n">MB</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>          </div>
       </div>
   </div>
 

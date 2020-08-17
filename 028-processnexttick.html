@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">028.  Process.nextTick()</h2>
+              <h2 class="size-7 module l-12 fix align-center">028. Process.nextTick()</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,27 +77,17 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>28. Process.nextTick()</h3>
-
-<p>Одной из важных частей цикла событий Node.js является <span>process.nextTick()</span>.
-
-<p>Каждый раз, когда цикл событий делает полный круг, ставится особая отметка. 
-
-<p>При передаче <span>process.nextTick()</span> определенной функции мы указываем движку вызвать эту функцию перед началом следующего цикла. 
-
-
-    process.nextTick(() => {
+<p>Одной из важных частей цикла событий Node.js является process.nextTick(). </p>
+<p>Каждый раз, когда цикл событий делает полный круг, ставится особая отметка. </p>
+<p>При передаче process.nextTick() определенной функции мы указываем движку вызвать эту функцию перед началом следующего цикла. 
+<code>process.nextTick(() =&gt; {
         // код 
-    })
-
-<p>Цикл событий выполняет какой-то код. 
-
-<p>После завершения выполнения кода, движок запускает функции, переданные <span>nextTick()</span>. 
-
-<p>Таким способом мы можем указать двику выполнить функцию асинхронно (после текущей функции), максимально быстро, без помещения в очередь. 
-
-<p>Вызов <span>setTimeout(() => {}, 0)</span> выполнит функцию в начале следующей итерации, после функции, переданной <span>nextTick()</span>. 
-
-<p>Используйте <span>nextTick()</span>, когда хотите быть уверенным, что на следующей итерации цикла событий код будет выполнен.          </div>
+    })</code></p>
+<p>Цикл событий выполняет какой-то код. </p>
+<p>После завершения выполнения кода, движок запускает функции, переданные nextTick(). </p>
+<p>Таким способом мы можем указать двику выполнить функцию асинхронно (после текущей функции), максимально быстро, без помещения в очередь. </p>
+<p>Вызов setTimeout(() => {}, 0) выполнит функцию в начале следующей итерации, после функции, переданной nextTick(). </p>
+<p>Используйте nextTick(), когда хотите быть уверенным, что на следующей итерации цикла событий код будет выполнен.</p>          </div>
       </div>
   </div>
 

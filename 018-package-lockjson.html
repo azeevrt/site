@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">018.  Package-lock.json</h2>
+              <h2 class="size-7 module l-12 fix align-center">018. Package-lock.json</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,140 +77,123 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>18. Package-lock.json</h3>
-
-<p>В пятой версии Node.js был представлен файл package-lock.json.
-
-<p>Что это такое? Для чего он нужен, если есть файл <span>package.json</span>?
-
-<p>Задачей package-lock.json является фиксация конкретных версий установленных пакетов для обеспечения 100% работы продукта при обновлении пакетов их разработчиками. 
-
-<p>Это решает проблему <span>package.json</span>. В этом файле вы можете указать, какие пакеты нуждаются в обновлении (патчевом или минорном), используя спецификаторы версий, например:
-
+<p>В пятой версии Node.js был представлен файл package-lock.json. </p>
+<p>Что это такое? Для чего он нужен, если есть файл package.json?</p>
+<p>Задачей package-lock.json является фиксация конкретных версий установленных пакетов для обеспечения 100% работы продукта при обновлении пакетов их разработчиками. </p>
+<p>Это решает проблему package.json. В этом файле вы можете указать, какие пакеты нуждаются в обновлении (патчевом или минорном), используя спецификаторы версий, например:</p>
 <ul>
-    <li>Если указано ~0.13.0, значит, допустимы только патчевые релизы: 0.13.1 подойдет, а 0.14.0 нет.</li>
-    <li>Если указано ^0.13.0, значит, допустимы патчевые и минорные релизы: 0.13.1, 0.14.0 и т.д.</li>
-    <li>Если указано 0.13.0, значит, будет использоваться только указанная версия.</li>
+<li>Если указано <code>~0.13.0</code>, значит, допустимы только патчевые релизы: 0.13.1 подойдет, а 0.14.0 нет.</li>
+<li>Если указано <code>^0.13.0</code>, значит, допустимы патчевые и минорные релизы: 0.13.1, 0.14.0 и т.д.</li>
+<li>Если указано <code>0.13.0</code>, значит, будет использоваться только указанная версия.</li>
 </ul>
-
-<p>Обычно, вы не отправляете в Git папку <span>node_moludes</span>, и при установке проекта на другом компьютере с помощью <span>npm install</span>, если присутствует спецификатор ~, допускающий патчевые релизы, и пакет обновился, будет установлена новая версия. Тоже самое справедливо для спецификатора ^, допускающего патчевые и минорные релизы. 
-
-<p>Это можете быть вы или другой человек на другом конце света, устанавливающий проект посредством <span>npm install</span>. 
-
-<p>Таким образом, исходный проект и заново проиницализированный проект - это два разных проекта. Даже если патчевый или минорный релизы не содержат критических изменений, это может привести (и часто приводит) к ошибкам. 
-
-<p><span>package-lock.json</span> хранит записи о конкретных версиях установленных пакетов, и <span>npm</span> установит именно эти версии при выполнении <span>npm install</span>. 
-
-<p>Эта концепция не является новой и другие пакетные менеджеры (такие как Composer в PHP) используют ее на протяжении многих лет. 
-
-<p><span>package-lock.json</span> следует отправлять в Git, чтобы другие люди могли его получить, если проект является открытым или у вас есть соавторы, или когда вы используете Git как источник для разработки. 
-
-<p>Версии зависимостей в <span>package-lock.json</span> обновляются вручную с помощью <span>npm update</span>. 
-
+<p>Обычно, вы не отправляете в Git папку node_moludes, и при установке проекта на другом компьютере с помощью <code>npm install</code>, если присутствует спецификатор <code>~</code>, допускающий патчевые релизы, и пакет обновился, будет установлена новая версия. Тоже самое справедливо для спецификатора <code>^</code>, допускающего патчевые и минорные релизы. </p>
+<p>Это можете быть вы или другой человек на другом конце света, устанавливающий проект посредством npm install. </p>
+<p>Таким образом, исходный проект и заново проиницализированный проект - это два разных проекта. Даже если патчевый или минорный релизы не содержат критических изменений, это может привести (и часто приводит) к ошибкам. </p>
+<p>package-lock.json хранит записи о конкретных версиях установленных пакетов, и npm установит именно эти версии при выполнении npm install. </p>
+<p>Эта концепция не является новой и другие пакетные менеджеры (такие как Composer в PHP) используют ее на протяжении многих лет. </p>
+<p>package-lock.json следует отправлять в Git, чтобы другие люди могли его получить, если проект является открытым или у вас есть соавторы, или когда вы используете Git как источник для разработки. </p>
+<p>Версии зависимостей в package-lock.json обновляются вручную с помощью npm update. </p>
 <h5>Пример</h5>
+<p>Вот пример структуры package-lock.json, который мы получаем при выполнении npm install cowsay в пустой директории:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+  <span class="err">&quot;</span><span class="nf">requires</span><span class="err">&quot;</span><span class="p">:</span> <span class="no">true</span><span class="p">,</span>
+  <span class="err">&quot;</span><span class="na">lock</span><span class="nf">fileVersion</span><span class="err">&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="err">&quot;</span><span class="nf">dependencies</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+    <span class="err">&quot;</span><span class="nf">ansi-regex</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="err">&quot;</span><span class="nf">version</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="mi">3</span><span class="no">.0.0</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">resolved</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/ansi-regex/-/ansi-regex-3.</span>
+<span class="err">0</span><span class="nf">.0.tgz</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">integrity</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">sha1-7QMXwyIGT3lGbAKWa922Bas32Zg</span><span class="err">=&quot;</span>
+    <span class="err">},</span>
+    <span class="err">&quot;</span><span class="nf">cowsay</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="err">&quot;</span><span class="nf">version</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="mi">1</span><span class="no">.3.1</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">resolved</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/cowsay/-/cowsay-1.3.1.tgz&quot;</span>
+<span class="err">,</span>
+      <span class="err">&quot;</span><span class="nf">integrity</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">sha512-3PVFe6FePVtPj1HTeLin9v8WyLl</span><span class="err">+</span><span class="no">VmM1l1H</span><span class="err">/</span><span class="mi">5</span><span class="no">P</span><span class="err">+</span><span class="no">BTTDkM</span>
+<span class="nf">Ajufp</span><span class="err">+</span><span class="mi">0</span><span class="no">F9eLjzRnOHzVAYeIYFF5po5NjRrgefnRMQ</span><span class="err">==&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">requires</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+        <span class="err">&quot;</span><span class="nf">get-stdin</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;^</span><span class="mi">5</span><span class="no">.0.1</span><span class="err">&quot;</span><span class="p">,</span>
+        <span class="err">&quot;</span><span class="nf">optimist</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;~</span><span class="mi">0</span><span class="no">.6.1</span><span class="err">&quot;</span><span class="p">,</span>
+        <span class="err">&quot;</span><span class="nf">string-width</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;~</span><span class="mi">2</span><span class="no">.1.1</span><span class="err">&quot;</span><span class="p">,</span>
+        <span class="err">&quot;</span><span class="nf">strip-eof</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;^</span><span class="mi">1</span><span class="no">.0.0</span><span class="err">&quot;</span>
+      <span class="err">}</span>
+    <span class="err">},</span>
+    <span class="err">&quot;</span><span class="nf">get-stdin</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="err">&quot;</span><span class="nf">version</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="mi">5</span><span class="no">.0.1</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">resolved</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/get-stdin/-/get-stdin-5.0.</span>
+<span class="err">1</span><span class="na">.tgz</span><span class="s">&quot;,</span>
+<span class="s">      &quot;</span><span class="no">integrity</span><span class="s">&quot;: &quot;</span><span class="no">sha1-Ei4WFZHiH</span><span class="err">/</span><span class="no">TFJTAwVpPyDmOTo5g</span><span class="err">=</span><span class="s">&quot;</span>
+<span class="s">    },</span>
+<span class="s">    &quot;</span><span class="no">is-fullwidth-code-point</span><span class="s">&quot;: {</span>
+<span class="s">      &quot;</span><span class="no">version</span><span class="s">&quot;: &quot;</span><span class="mi">2</span><span class="no">.0.0</span><span class="s">&quot;,</span>
+<span class="s">      &quot;</span><span class="no">resolved</span><span class="s">&quot;: &quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/is-fullwidth-code-point/-/</span>
+<span class="nf">is-fullwidth-code-point-2.0.0.tgz</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">integrity</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">sha1-o7MKXE8ZkYMWeqq5O</span><span class="err">+</span><span class="mi">764937</span><span class="no">ZU8</span><span class="err">=&quot;</span>
+    <span class="err">},</span>
+    <span class="err">&quot;</span><span class="nf">minimist</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="err">&quot;</span><span class="nf">version</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="mi">0</span><span class="no">.0.10</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">resolved</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/minimist/-/minimist-0.0.10</span>
+<span class="na">.tgz</span><span class="s">&quot;,</span>
+<span class="s">      &quot;</span><span class="no">integrity</span><span class="s">&quot;: &quot;</span><span class="no">sha1-3j</span><span class="err">+</span><span class="no">YVD2</span><span class="err">/</span><span class="no">lggr5IrRoMfNqDYwHc8</span><span class="err">=</span><span class="s">&quot;</span>
+<span class="s">    },</span>
+<span class="s">    &quot;</span><span class="no">optimist</span><span class="s">&quot;: {</span>
+<span class="s">      &quot;</span><span class="no">version</span><span class="s">&quot;: &quot;</span><span class="mi">0</span><span class="no">.6.1</span><span class="s">&quot;,</span>
+<span class="s">      &quot;</span><span class="no">resolved</span><span class="s">&quot;: &quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/optimist/-/optimist-0.6.1.tgz&quot;,</span>
+      <span class="err">&quot;</span><span class="nf">integrity</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">sha1-2j6nRob6IaGaERwybpDrFaAZZoY</span><span class="err">=&quot;</span><span class="p">,</span>
 
-<p>Вот пример структуры <span>package-lock.json</span>, который мы получаем при выполнении <span>npm install cowsay</span> в пустой директории:
+      <span class="err">&quot;</span><span class="nf">requires</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+        <span class="err">&quot;</span><span class="nf">minimist</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;~</span><span class="mi">0</span><span class="no">.0.1</span><span class="err">&quot;</span><span class="p">,</span>
+        <span class="err">&quot;</span><span class="nf">wordwrap</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;~</span><span class="mi">0</span><span class="no">.0.2</span><span class="err">&quot;</span>
+      <span class="err">}</span>
+    <span class="err">},</span>
+    <span class="err">&quot;</span><span class="nf">string-width</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="err">&quot;</span><span class="nf">version</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="mi">2</span><span class="no">.1.1</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">resolved</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/string-width/-/string-width-2.1.1.tgz&quot;,</span>
+      <span class="err">&quot;</span><span class="nf">integrity</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">sha512-nOqH59deCq9SRHlxq1Aw85Jnt4w6KvLKqWVik6oA9ZklXLNIOlqg4F2yrT1MVaTjAqvVwdfeZ7w7aCvJD7ugkw</span><span class="err">==&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">requires</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+        <span class="err">&quot;</span><span class="nf">is-fullwidth-code-point</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;^</span><span class="mi">2</span><span class="no">.0.0</span><span class="err">&quot;</span><span class="p">,</span>
+        <span class="err">&quot;</span><span class="nf">strip-ansi</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;^</span><span class="mi">4</span><span class="no">.0.0</span><span class="err">&quot;</span>
+      <span class="err">}</span>
+    <span class="err">},</span>
+    <span class="err">&quot;</span><span class="nf">strip-ansi</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="err">&quot;</span><span class="nf">version</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="mi">4</span><span class="no">.0.0</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">resolved</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/strip-ansi/-/strip-ansi-4.0.0.tgz&quot;,</span>
+      <span class="err">&quot;</span><span class="nf">integrity</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">sha1-qEeQIusaw2iocTibY1JixQXuNo8</span><span class="err">=&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">requires</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+        <span class="err">&quot;</span><span class="nf">ansi-regex</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;^</span><span class="mi">3</span><span class="no">.0.0</span><span class="err">&quot;</span>
+      <span class="err">}</span>
+    <span class="err">},</span>
+    <span class="err">&quot;</span><span class="nf">strip-eof</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="err">&quot;</span><span class="nf">version</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="mi">1</span><span class="no">.0.0</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">resolved</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/strip-eof/-/strip-eof-1.0.0.tgz&quot;,</span>
+      <span class="err">&quot;</span><span class="nf">integrity</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">sha1-u0P</span><span class="err">/</span><span class="no">VZim6wXYm1n80SnJgzE2Br8</span><span class="err">=&quot;</span>
+    <span class="err">},</span>
+    <span class="err">&quot;</span><span class="nf">wordwrap</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">{</span>
+      <span class="err">&quot;</span><span class="nf">version</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="mi">0</span><span class="no">.0.3</span><span class="err">&quot;</span><span class="p">,</span>
+      <span class="err">&quot;</span><span class="nf">resolved</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">https</span><span class="p">:</span><span class="c1">//registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz&quot;,</span>
+      <span class="err">&quot;</span><span class="nf">integrity</span><span class="err">&quot;</span><span class="p">:</span> <span class="err">&quot;</span><span class="no">sha1-o9XabNXAvAAI03I0u68b7WMFkQc</span><span class="err">=&quot;</span>
+    <span class="err">}</span>
+  <span class="err">}</span>
+<span class="err">}</span>
+</pre></div>
 
-    {
-      "requires": true,
-      "lockfileVersion": 1,
-      "dependencies": {
-        "ansi-regex": {
-          "version": "3.0.0",
-          "resolved": "https://registry.npmjs.org/ansi-regex/-/ansi-regex-3.
-    0.0.tgz",
-          "integrity": "sha1-7QMXwyIGT3lGbAKWa922Bas32Zg="
-        },
-        "cowsay": {
-          "version": "1.3.1",
-          "resolved": "https://registry.npmjs.org/cowsay/-/cowsay-1.3.1.tgz"
-    ,
-          "integrity": "sha512-3PVFe6FePVtPj1HTeLin9v8WyLl+VmM1l1H/5P+BTTDkM
-    Ajufp+0F9eLjzRnOHzVAYeIYFF5po5NjRrgefnRMQ==",
-          "requires": {
-            "get-stdin": "^5.0.1",
-            "optimist": "~0.6.1",
-            "string-width": "~2.1.1",
-            "strip-eof": "^1.0.0"
-          }
-        },
-        "get-stdin": {
-          "version": "5.0.1",
-          "resolved": "https://registry.npmjs.org/get-stdin/-/get-stdin-5.0.
-    1.tgz",
-          "integrity": "sha1-Ei4WFZHiH/TFJTAwVpPyDmOTo5g="
-        },
-        "is-fullwidth-code-point": {
-          "version": "2.0.0",
-          "resolved": "https://registry.npmjs.org/is-fullwidth-code-point/-/
-    is-fullwidth-code-point-2.0.0.tgz",
-          "integrity": "sha1-o7MKXE8ZkYMWeqq5O+764937ZU8="
-        },
-        "minimist": {
-          "version": "0.0.10",
-          "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.10
-    .tgz",
-          "integrity": "sha1-3j+YVD2/lggr5IrRoMfNqDYwHc8="
-        },
-        "optimist": {
-          "version": "0.6.1",
-          "resolved": "https://registry.npmjs.org/optimist/-/optimist-0.6.1.tgz",
-          "integrity": "sha1-2j6nRob6IaGaERwybpDrFaAZZoY=",
 
-          "requires": {
-            "minimist": "~0.0.1",
-            "wordwrap": "~0.0.2"
-          }
-        },
-        "string-width": {
-          "version": "2.1.1",
-          "resolved": "https://registry.npmjs.org/string-width/-/string-width-2.1.1.tgz",
-          "integrity": "sha512-nOqH59deCq9SRHlxq1Aw85Jnt4w6KvLKqWVik6oA9ZklXLNIOlqg4F2yrT1MVaTjAqvVwdfeZ7w7aCvJD7ugkw==",
-          "requires": {
-            "is-fullwidth-code-point": "^2.0.0",
-            "strip-ansi": "^4.0.0"
-          }
-        },
-        "strip-ansi": {
-          "version": "4.0.0",
-          "resolved": "https://registry.npmjs.org/strip-ansi/-/strip-ansi-4.0.0.tgz",
-          "integrity": "sha1-qEeQIusaw2iocTibY1JixQXuNo8=",
-          "requires": {
-            "ansi-regex": "^3.0.0"
-          }
-        },
-        "strip-eof": {
-          "version": "1.0.0",
-          "resolved": "https://registry.npmjs.org/strip-eof/-/strip-eof-1.0.0.tgz",
-          "integrity": "sha1-u0P/VZim6wXYm1n80SnJgzE2Br8="
-        },
-        "wordwrap": {
-          "version": "0.0.3",
-          "resolved": "https://registry.npmjs.org/wordwrap/-/wordwrap-0.0.3.tgz",
-          "integrity": "sha1-o9XabNXAvAAI03I0u68b7WMFkQc="
-        }
-      }
-    }
-
-<p>Мы устанавливаем <span>cowsay</span>, который зависит от: 
-
+<p>Мы устанавливаем cowsay, который зависит от: </p>
 <ul>
-    <li>get-stdin</li>
-    <li>optimist</li>
-    <li>string-width</li>
-    <li>strip-eof</li>
+<li>get-stdin</li>
+<li>optimist</li>
+<li>string-width</li>
+<li>strip-eof</li>
 </ul>
-
-<p>В свою очередь, эти пакеты нуждаются в других пакетах, указанных в свойстве requires:
-
+<p>В свою очередь, эти пакеты нуждаются в других пакетах, указанных в свойстве requires:</p>
 <ul>
-    <li>ansi-regex</li>
-    <li>is-fullwidth-code-point</li>
-    <li>minimist</li>
-    <li>wordwrap</li>
-    <li>strip-eof</li>
+<li>ansi-regex</li>
+<li>is-fullwidth-code-point</li>
+<li>minimist</li>
+<li>wordwrap</li>
+<li>strip-eof</li>
 </ul>
-
-<p>Они добавляются в файл в алфавитном порядке, каждый имеет поле <span>version</span>, поле <span>resolved</span>, указывающее на местонахождение пакета, и строку <span>integrity</span>, используемую для идентификации пакета.          </div>
+<p>Они добавляются в файл в алфавитном порядке, каждый имеет поле version, поле resolved, указывающее на местонахождение пакета, и строку integrity, используемую для идентификации пакета.</p>          </div>
       </div>
   </div>
 

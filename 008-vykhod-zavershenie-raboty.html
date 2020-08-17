@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -73,8 +65,8 @@
           <div class="container l-12 fix group-headline">
               <h2 class="size-7 module l-12 fix align-center">008. Выход (завершение работы)</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,89 +77,64 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>8. Выход (завершение работы)</h3>
+<p>Существуют различные способы остановки Node.js-приложения. </p>
+<p>При запуске программы посредством терминала, вы можете закрыть его с помощью ctrl-C, однако давайте обсудим программные способы. </p>
+<p>Начнем с самого радикального, и скажем, почему его не следует использовать. </p>
+<p>Основной (глобальный, модуль ядра) модуль process содержит удобный метод, позволяющий программно выйти из Node.js-приложения: process.exit(). </p>
+<p>Когда Node.js достигает этой строки кода, процесс выполнения программы немедленно завершается. </p>
+<p>Это означает, что все выполняющиеся функции обратного вызова, отправленные (незавершенные) запросы, открытый доступ к файловой системе, процессы записи в stdout или stderr - все они будут жестко прерваны. </p>
+<p>Если это для вас является приемлемым, вы можете передать методу exit() целое число - сигнал к завершению выполнения кода:
+<code>process.exit(1)</code></p>
+<p>По умолчанию код выхода - 0, указывающий на успешное завершение. Разные коды выхода имеют разное значение, вы можете использовать их для взаимодействия одних программ с другими. </p>
+<p>Подробнее о кодах выхода можно почитать <a href="https://nodejs.org/api/process.html#process_exit_codes">здесь</a>.</p>
+<p>Также вы можете присвоить соответствующее значение свойству exitCode:
+<code>process.exitCode = 1</code></p>
+<p>и после завершения программы, Node.js вернет этот код. </p>
+<p>Выполнение программы завершится мягко, когда все процессы будут выполнены. </p>
+<p>В Node.js мы часто запускаем сервер:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">express</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">app</span> <span class="o">=</span> <span class="n">express</span><span class="p">()</span>
 
-<p>Существуют различные способы остановки Node.js-приложения.
+<span class="n">app</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
 
-<p>При запуске программы посредством терминала, вы можете закрыть его с помощью <span>ctrl-C</span>, однако давайте обсудим программные способы. 
+<span class="n">app</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Server ready&#39;</span><span class="p">))</span>
+</pre></div>
 
-<p>Начнем с самого радикального, и скажем, почему его не следует использовать. 
 
-<p>Основной (глобальный, модуль ядра) модуль <span>process</span> содержит удобный метод, позволяющий программно выйти из Node.js-приложения: <span>process.exit()</span>. 
+<p>Эта программа никогда не завершится. Если вы вызовете process.exit(), все ожидающие или выполняющиеся запросы будут прерваны. Это не круто. </p>
+<p>В данном случае необходимо отправить команду-сигнал SIGTERM и обработать ее с помощью обработчика процессорных сигналов (process подключать не нужно, он доступен по умолчанию):</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">express</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
 
-<p>Когда Node.js достигает этой строки кода, процесс выполнения программы немедленно завершается. 
+<span class="n">const</span> <span class="n">app</span> <span class="o">=</span> <span class="n">express</span><span class="p">()</span>
 
-<p>Это означает, что все выполняющиеся функции обратного вызова, отправленные (незавершенные) запросы, открытый доступ к файловой системе, процессы записи в <span>stdout</span> или <span>stderr</span> - все они будут жестко прерваны. 
+<span class="n">app</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
 
-<p>Если это для вас является приемлемым, вы можете передать методу <span>exit()</span> целое число - сигнал к завершению выполнения кода:
+<span class="n">const</span> <span class="n">server</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Server ready&#39;</span><span class="p">))</span>
 
-    process.exit(1)
+<span class="n">process</span><span class="p">.</span><span class="k">on</span><span class="p">(</span><span class="s1">&#39;SIGTERM&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">server</span><span class="p">.</span><span class="k">close</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Process terminated&#39;</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-<p>По умолчанию код выхода - 0, указывающий на успешное завершение. Разные коды выхода имеют разное значение, вы можете использовать их для взаимодействия одних программ с другими. 
 
-<p>Подробнее о кодах выхода можно почитать <a href="https://nodejs.org/api/process.html#process_exit_codes">здесь</a>.
-
-<p>Также вы можете присвоить соответствующее значение свойству <span>exitCode</span>:
-
-    process.exitCode = 1
-
-<p>и после завершения программы, Node.js вернет этот код. 
-
-<p>Выполнение программы завершится мягко, когда все процессы будут выполнены. 
-
-<p>В Node.js мы часто запускаем сервер:
-
-    const express = require('express')
-    const app = express()
-
-    app.get('/', (req, res) => {
-        res.send('Hi!')
-    })
-
-    app.listen(3000, () => console.log('Server ready'))
-
-<p>Эта программа никогда не завершится. Если вы вызовете <span>process.exit()</span>, все ожидающие или выполняющиеся запросы будут прерваны. Это не круто. 
-
-<p>В данном случае необходимо отправить команду-сигнал <span>SIGTERM</span> и обработать ее с помощью обработчика процессорных сигналов (<span>process</span> подключать не нужно, он доступен по умолчанию):
-
-    const express = require('express')
-
-    const app = express()
-
-    app.get('/', (req, res) => {
-        res.send('Hi!')
-    })
-
-    const server = app.listen(3000, () => console.log('Server ready'))
-
-    process.on('SIGTERM', () => {
-        server.close(() => {
-            console.log('Process terminated')
-        })
-    })
-
-<p>Что такое сигналы? Сигналы - это система коммуникации POSIX: отправка процессу уведомления о произошедшем событии. 
-
-<p><span>SIGKILL</span> - сигнал о немедленном завершении процесса, аналогичный <span>process.exit()</span>. 
-
-<p><span>SIGTERM</span> - сигнал о мягком завершении процесса. Этот сигнал может быть отправлен системой управления процессами, такой как <span>upstart</span>, <span>supervisord</span> и др. 
-
+<p>Что такое сигналы? Сигналы - это система коммуникации POSIX: отправка процессу уведомления о произошедшем событии. </p>
+<p>SIGKILL - сигнал о немедленном завершении процесса, аналогичный process.exit(). </p>
+<p>SIGTERM - сигнал о мягком завершении процесса. Этот сигнал может быть отправлен системой управления процессами, такой как upstart, supervisord и др. </p>
 <p>Вы можете отправить данный сигнал внутри программы через другую функцию:
-
-    process.kill(process.id, 'SIGTERM')
-
-<p>Или из другой Node.js-программы или любого другого приложения, запущенного в системе, при условии, что им известен PID процесса, который вы хотите завершить. 
-
+<code>process.kill(process.id, 'SIGTERM')</code></p>
+<p>Или из другой Node.js-программы или любого другого приложения, запущенного в системе, при условии, что им известен PID процесса, который вы хотите завершить. </p>
 <h3>Как читать переменные среды в Node.js?</h3>
-
-<p>Основной модуль Node.js <span>process</span> имеет свойство <span>env</span>, содержащее все переменные среды, установленные при запуске процесса. 
-
-<p>Вот пример получения доступа к переменной среды NODE_ENV, установленной в значение <span>development</span> по умолчанию:
-
-    process.env.NODE_ENV // development
-
-<p>Установка значения в production перед выполнением скрипта сообщит Node.js о том, что перед ним среда для продакшна. 
-
-<p>Аналогичным способом вы можете получить доступ к любой переменной среды.          </div>
+<p>Основной модуль Node.js process имеет свойство env, содержащее все переменные среды, установленные при запуске процесса. </p>
+<p>Вот пример получения доступа к переменной среды NODE_ENV, установленной в значение development по умолчанию:
+<code>process.env.NODE_ENV // development</code></p>
+<p>Установка значения в production перед выполнением скрипта сообщит Node.js о том, что перед ним среда для продакшна. </p>
+<p>Аналогичным способом вы можете получить доступ к любой переменной среды. </p>          </div>
       </div>
   </div>
 

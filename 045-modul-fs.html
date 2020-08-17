@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">045.  Модуль fs</h2>
+              <h2 class="size-7 module l-12 fix align-center">045. Модуль fs</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,85 +77,73 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>45. Модуль fs</h3>
-
-<p>Модуль <span>fs</span> предоставляет множество полезных методов для доступа и взаимодействия с файловой системой.
-
+<p>Модуль fs предоставляет множество полезных методов для доступа и взаимодействия с файловой системой. </p>
 <p>Его не нужно устанавливать. Будучи частью ядра Node.js, он может использоваться по требованию:
-
-
-    const fs = require('fs')
-
-<p>Среди методов модуля <span>fs</span> можно назвать следующее:
-
+<code>const fs = require('fs')</code></p>
+<p>Среди методов модуля fs можно назвать следующее:</p>
 <ul>
-    <li><span>fs.access()</span> - определяет наличие файла и его доступность для Node.js</li>
-    <li><span>fs.appendFile()</span> - добавляет данные в файл. Файл создается при отсутствии</li>
-    <li><span>fs.chmod()</span> - изменяет разрешения переданного файла. Похожие методы: <span>fs.lchmod()</span>, <span>fs.fchmod()</span></li>
-    <li><span>fs.chown()</span> - изменяет владельца и группу переданного файла. Похожие методы: <span>fs.fchown()</span>, <span>fs.lchown()</span></li>
-    <li><span>fs.close()</span> - закрывает файловый дескриптор</li>
-    <li><span>fs.copyFile()</span> - копирует файл</li>
-    <li><span>fs.createReadStream()</span> - создает поток для чтения файла</li>
-    <li><span>fs.createWriteStream()</span> - создает поток для записи файла</li>
-    <li><span>fs.link()</span> - создает новую жесткую ссылку на файл</li>
-    <li><span>fs.mkdir()</span> - создает новую директорию</li>
-    <li><span>fs.mkdtemp()</span> - создает временную директорию</li>
-    <li><span>fs.open()</span> - устанавливает режим файла</li>
-    <li><span>fs.readdir()</span> - читает содержимое директории</li>
-    <li><span>fs.readFile()</span> - читает содержимое файла. Похохий метод: <span>fs.read()</span></li>
-    <li><span>fs.readlink()</span> - читает значение символической ссылки</li>
-    <li><span>fs.realpath()</span> - преобразует точки относительного пути (. , ..) в полный путь</li>
-    <li><span>fs.rename()</span> - переименовывает файл или папку</li>
-    <li><span>fs.rmdir()</span> - удаляет директорию</li>
-    <li><span>fs.stat()</span> - возвращает статистику переданного файла. Похожие методы: <span>fs.fstat()</span>, <span>fs.lstat()</span></li>
-    <li><span>fs.symlink()</span> - создает новую символическую ссылку на файл</li>
-    <li><span>fs.truncate()</span> - уменьшает переданный файл до заданного размера (длины). Похожий метод: <span>fs.ftruncate()</span></li>
-    <li><span>fs.unlink()</span> - удаляет файл или символическую ссылку</li>
-    <li><span>fs.unwatchFile()</span> - прекращает слежение за изменениями файла</li>
-    <li><span>fs.utimes()</span> - изменяет время создания переданного файла. Похожий метод: <span>fs.futimes()</span></li>
-    <li><span>fs.watchFile()</span> - следит за изменениями файла. Похожий метод: <span>fs.watch()</span></li>
-    <li><span>fs.writeFile()</span> - записывает данные в файл. Похожий метод: <span>fs.write()</span></li>
+<li>fs.access() - определяет наличие файла и его доступность для Node.js</li>
+<li>fs.appendFile() - добавляет данные в файл. Файл создается при отсутствии</li>
+<li>fs.chmod() - изменяет разрешения переданного файла. Похожие методы: fs.lchmod(), fs.fchmod()</li>
+<li>fs.chown() - изменяет владельца и группу переданного файла. Похожие методы: fs.fchown(), fs.lchown()</li>
+<li>fs.close() - закрывает файловый дескриптор</li>
+<li>fs.copyFile() - копирует файл</li>
+<li>fs.createReadStream() - создает поток для чтения файла</li>
+<li>fs.createWriteStream() - создает поток для записи файла</li>
+<li>fs.link() - создает новую жесткую ссылку на файл</li>
+<li>fs.mkdir() - создает новую директорию</li>
+<li>fs.mkdtemp() - создает временную директорию</li>
+<li>fs.open() - устанавливает режим файла</li>
+<li>fs.readdir() - читает содержимое директории</li>
+<li>fs.readFile() - читает содержимое файла. Похохий метод: fs.read()</li>
+<li>fs.readlink() - читает значение символической ссылки</li>
+<li>fs.realpath() - преобразует точки относительного пути (. , ..) в полный путь</li>
+<li>fs.rename() - переименовывает файл или папку</li>
+<li>fs.rmdir() - удаляет директорию</li>
+<li>fs.stat() - возвращает статистику переданного файла. Похожие методы: fs.fstat(), fs.lstat()</li>
+<li>fs.symlink() - создает новую символическую ссылку на файл</li>
+<li>fs.truncate() - уменьшает переданный файл до заданного размера (длины). Похожий метод: fs.ftruncate()</li>
+<li>fs.unlink() - удаляет файл или символическую ссылку</li>
+<li>fs.unwatchFile() - прекращает слежение за изменениями файла</li>
+<li>fs.utimes() - изменяет время создания переданного файла. Похожий метод: fs.futimes()</li>
+<li>fs.watchFile() - следит за изменениями файла. Похожий метод: fs.watch()</li>
+<li>fs.writeFile() - записывает данные в файл. Похожий метод: fs.write()</li>
 </ul>
-
-<p>Названные методы являются асинхронными по умолчанию и имеют синхронные аналоги (<span>Sync</span>). 
-
-<p>Например: 
-
+<p>Названные методы являются асинхронными по умолчанию и имеют синхронные аналоги (Sync). </p>
+<p>Например: </p>
 <ul>
-    <li><span>fs.rename()</span></li>
-    <li><span>fs.renameSync()</span></li>
-    <li><span>fs.write()</span></li>
-    <li><span>fs.writeSync()</span></li>
+<li>fs.rename()</li>
+<li>fs.renameSync()</li>
+<li>fs.write()</li>
+<li>fs.writeSync()</li>
 </ul>
+<p>Это имеет решающее значение для работы приложения. </p>
+<p>В Node.js 10 появилась экспериментальная поддержка промисов. </p>
+<p>Рассмотрим метод fs.rename(). Асинхронная версия используется с колбеком:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-<p>Это имеет решающее значение для работы приложения. 
-
-<p>В Node.js 10 появилась экспериментальная поддержка промисов. 
-
-<p>Рассмотрим метод <span>fs.rename()</span>. Асинхронная версия используется с колбеком:
-
-
-    const fs = require('fs')
-
-    fs.rename('before.json', 'after.json', err => {
-        if (err) {
-            return console.error(err)
-        }
-        // готово
-    })
-
-<p>Синхронная версия, как правило, используется с блоком try/catch для обработки ошибок:
+<span class="n">fs</span><span class="p">.</span><span class="k">rename</span><span class="p">(</span><span class="s1">&#39;before.json&#39;</span><span class="p">,</span> <span class="s1">&#39;after.json&#39;</span><span class="p">,</span> <span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+        <span class="k">return</span> <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="err">}</span>
+    <span class="o">//</span> <span class="err">готово</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
 
-    const fs = require('fs')
+<p>Синхронная версия, как правило, используется с блоком try/catch для обработки ошибок:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-    try {
-        fs.renameSync('before.json', 'after.json')
-        // готово 
-    } catch (err) {
-        console.error(err)
-    }
+<span class="n">try</span> <span class="err">{</span>
+    <span class="n">fs</span><span class="p">.</span><span class="n">renameSync</span><span class="p">(</span><span class="s1">&#39;before.json&#39;</span><span class="p">,</span> <span class="s1">&#39;after.json&#39;</span><span class="p">)</span>
+    <span class="o">//</span> <span class="err">готово</span> 
+<span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
 
-<p>Принципиальным отличием является то, что второй код блокирует поток на время выполнения операции.          </div>
+
+<p>Принципиальным отличием является то, что второй код блокирует поток на время выполнения операции.</p>          </div>
       </div>
   </div>
 

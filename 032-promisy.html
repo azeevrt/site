@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">032.  Промисы</h2>
+              <h2 class="size-7 module l-12 fix align-center">032. Промисы</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,9 +77,7 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>32. Промисы</h3>
-
 <h5>Введение</h5>
-
 <div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">done</span> <span class="o">=</span> <span class="k">true</span>
 
 <span class="n">const</span> <span class="n">isDoneYet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
@@ -112,247 +102,198 @@
 </pre></div>
 
 
-<p>Обычно, промис определяется как прокси для значения, которое будет доступно в будущем (promise - обещание).
-
-<p>Промисы являются средством для работы с асинхронным кодом без использования колбеков. 
-
-<p>Промисы являются частью языка на протяжении многих лет (они были стандартизированы и представлены в ES2015 и оптимизированы в async/await в 2017 году). 
-
-<p>В основе асинхронных функций лежат промисы, поэтому понимание того, как они работают является основой для понимания того, как работает async/await. 
-
+<p>Обычно, промис определяется как прокси для значения, которое будет доступно в будущем (promise - обещание). </p>
+<p>Промисы являются средством для работы с асинхронным кодом без использования колбеков. </p>
+<p>Промисы являются частью языка на протяжении многих лет (они были стандартизированы и представлены в ES2015 и оптимизированы в async/await в 2017 году). </p>
+<p>В основе асинхронных функций лежат промисы, поэтому понимание того, как они работают является основой для понимания того, как работает async/await. </p>
 <h5>Как работают промисы?</h5>
-
-<p>Когда промис вызывается, начинается стадия ожидания. Это означает, что вызванная функция продолжает выполняться до разрешения промиса, возвращая запрошенные данные. 
-
-<p>Созданный промис завершается стадией выполнения или отклонения, что влечет за собой вызов колбека (переданного в <span>then</span> или <span>catch</span>). 
-
+<p>Когда промис вызывается, начинается стадия ожидания. Это означает, что вызванная функция продолжает выполняться до разрешения промиса, возвращая запрошенные данные. </p>
+<p>Созданный промис завершается стадией выполнения или отклонения, что влечет за собой вызов колбека (переданного в then или catch). </p>
 <h5>Какие прикладные интерфейсы используют промисы?</h5>
-
-<p>Промисы используются такими современными API, как:
-
+<p>Промисы используются такими современными API, как:</p>
 <ul>
-    <li>Battery</li>
-    <li>Fetch</li>
-    <li>Сервис-воркеры</li>
+<li>Battery</li>
+<li>Fetch</li>
+<li>Сервис-воркеры</li>
 </ul>
-
-<p>Едва ли в современном JavaScript вам удастся обойтись без промисов, так что давайте рассмотрим их подробнее. 
-
+<p>Едва ли в современном JavaScript вам удастся обойтись без промисов, так что давайте рассмотрим их подробнее. </p>
 <h5>Создание промиса</h5>
+<p>Promise API предоставляет конструктор промиса, который вызывается с помощью new Promise():</p>
+<div class="highlight"><pre><span></span><span class="n">let</span> <span class="n">done</span> <span class="o">=</span> <span class="k">true</span>
 
-<p>Promise API предоставляет конструктор промиса, который вызывается с помощью <span>new Promise()</span>:
-
-
-    let done = true
-
-    const isItDoneYet = new Promise((resolve, reject) => {
-        if (done) {
-            const workDone = 'Here is the thing I built'
-            resolve(workDone)
-        } else {
-            const why = 'Still working on something else'
-            reject(why)
-        }
-    })
-
-<p>Как видите, промис проверяет глобальную константу <span>done</span>, и, если ее значением является <span>true</span>, промис выполняется (вызывается колбек <span>resolve</span>); иначе, вызывается колбек <span>reject</span>, промис отклоняется (если ни один из названных колбеков не будет вызван, промис останется в стадии ожидания). 
-
-<p>С помощью <span>resolve</span> и <span>reject</span> мы можем сообщать колбеку, каким было состояние промиса, и что с ним следует делать. В приведенном примере мы возвращали строку, но это может быть объект или <span>null</span>. В примере мы создаем промис таким способом, что он сразу начинает выполняться. Это важно для понимания раздела "Использование промиса" ниже. 
-
-<p>Более распространенным случаем использования промисов является так называемая промисификация. Эта техника заключается в использовании обычной функции, принимающей колбек, являющийся промисом:
+<span class="n">const</span> <span class="n">isItDoneYet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">done</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">const</span> <span class="n">workDone</span> <span class="o">=</span> <span class="s1">&#39;Here is the thing I built&#39;</span>
+        <span class="n">resolve</span><span class="p">(</span><span class="n">workDone</span><span class="p">)</span>
+    <span class="err">}</span> <span class="k">else</span> <span class="err">{</span>
+        <span class="n">const</span> <span class="n">why</span> <span class="o">=</span> <span class="s1">&#39;Still working on something else&#39;</span>
+        <span class="n">reject</span><span class="p">(</span><span class="n">why</span><span class="p">)</span>
+    <span class="err">}</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
 
-    const fs = require('fs') 
+<p>Как видите, промис проверяет глобальную константу done, и, если ее значением является true, промис выполняется (вызывается колбек resolve); иначе, вызывается колбек reject, промис отклоняется (если ни один из названных колбеков не будет вызван, промис останется в стадии ожидания). </p>
+<p>С помощью resolve и reject мы можем сообщать колбеку, каким было состояние промиса, и что с ним следует делать. В приведенном примере мы возвращали строку, но это может быть объект или null. В примере мы создаем промис таким способом, что он сразу начинает выполняться. Это важно для понимания раздела "Использование промиса" ниже. </p>
+<p>Более распространенным случаем использования промисов является так называемая промисификация. Эта техника заключается в использовании обычной функции, принимающей колбек, являющийся промисом:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-    const getFile = filename => {
-        return new Promise((resolve, reject) => {
-            fs.readFile(filename, (err, data) => {
-                if (err) {
-                    reject(err) // 'reject' вызывается при отклонении промиса с или без ошибки, переданной в качестве аргумента,
-                                // и мы не хотим двигаться дальше
-                    return 
-                }
-                resolve(data) 
-            })
-        })
-    }
+<span class="n">const</span> <span class="n">getFile</span> <span class="o">=</span> <span class="n">filename</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">fs</span><span class="p">.</span><span class="n">readFile</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+                <span class="n">reject</span><span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">//</span> <span class="s1">&#39;reject&#39;</span> <span class="err">вызывается</span> <span class="err">при</span> <span class="err">отклонении</span> <span class="err">промиса</span> <span class="err">с</span> <span class="err">или</span> <span class="err">без</span> <span class="err">ошибки</span><span class="p">,</span> <span class="err">переданной</span> <span class="err">в</span> <span class="err">качестве</span> <span class="err">аргумента</span><span class="p">,</span>
+                            <span class="o">//</span> <span class="err">и</span> <span class="err">мы</span> <span class="err">не</span> <span class="err">хотим</span> <span class="err">двигаться</span> <span class="err">дальше</span>
+                <span class="k">return</span> 
+            <span class="err">}</span>
+            <span class="n">resolve</span><span class="p">(</span><span class="k">data</span><span class="p">)</span> 
+        <span class="err">}</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+<span class="err">}</span>
 
-    getFile('/etc/password')
-        .then(data => console.log(data))
-        .catch(err => console.error(err))
+<span class="n">getFile</span><span class="p">(</span><span class="s1">&#39;/etc/password&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="k">then</span><span class="p">(</span><span class="k">data</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="k">data</span><span class="p">))</span>
+    <span class="p">.</span><span class="n">catch</span><span class="p">(</span><span class="n">err</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+</pre></div>
 
-<p>В последних версиях Node.js, вам не нужно делать промисификацию вручную для многих прикладных интерфейсов. Существует <a href="https://nodejs.org/docs/latest-v11.x/api/util.html#util_util_promisify_original">модуль util</a>, который делает это за вас, обеспечивая возврат правильного значения промисифицируемой функции. 
 
+<p>В последних версиях Node.js, вам не нужно делать промисификацию вручную для многих прикладных интерфейсов. Существует <a href="https://nodejs.org/docs/latest-v11.x/api/util.html#util_util_promisify_original">модуль util</a>, который делает это за вас, обеспечивая возврат правильного значения промисифицируемой функции. </p>
 <h5>Использование промиса</h5>
+<p>В предыдущем разделе мы рассмотрели, как создать промис. </p>
+<p>Теперь давайте посмотрим, как можно его использовать. </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">isItDoneYet</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Promise</span><span class="p">(...)</span>
+<span class="o">//</span> <span class="p">...</span>
 
-<p>В предыдущем разделе мы рассмотрели, как создать промис. 
+<span class="n">const</span> <span class="n">checkIfItsDone</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">isItDoneYet</span>
+        <span class="p">.</span><span class="k">then</span><span class="p">(</span><span class="n">ok</span> <span class="o">=&gt;</span> <span class="err">{</span>
+            <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">ok</span><span class="p">)</span>
+        <span class="err">}</span><span class="p">)</span>
+        <span class="p">.</span><span class="n">catch</span><span class="p">(</span><span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+            <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="err">}</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
 
-<p>Теперь давайте посмотрим, как можно его использовать. 
 
-
-    const isItDoneYet = new Promise(...)
-    // ... 
-
-    const checkIfItsDone = () => {
-        isItDoneYet
-            .then(ok => {
-                console.log(ok)
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    }
-
-<p>В функции <span>checkIfItsDone()</span> определяются функции, запускаемые при выполнении промиса <span>isItDoneYet</span> (в колбеке <span>then</span>) или при его отклонении (в колбеке <span>catch</span>). 
-
+<p>В функции checkIfItsDone() определяются функции, запускаемые при выполнении промиса isItDoneYet (в колбеке then) или при его отклонении (в колбеке catch). </p>
 <h5>Цепочка из промисов</h5>
-
-<p>Промисы могут возвращаться в качестве значений других промисов, формируя цепочки из промисов. 
-
-<p>Отличным примером цепочки промисов является Fetch API, который может использоваться для получения ресурса и работы с ним посредством очереди - цепочки из промисов. 
-
-<p>Fetch API - это механизм, основанный на промисах, и вызов <span>fetch()</span> эквивалентен созданию собственного промиса с помощью <span>new Promise()</span>: 
-
+<p>Промисы могут возвращаться в качестве значений других промисов, формируя цепочки из промисов. </p>
+<p>Отличным примером цепочки промисов является Fetch API, который может использоваться для получения ресурса и работы с ним посредством очереди - цепочки из промисов. </p>
+<p>Fetch API - это механизм, основанный на промисах, и вызов fetch() эквивалентен созданию собственного промиса с помощью new Promise(): </p>
 <h5>Пример цепочки промисов</h5>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">status</span> <span class="o">=</span> <span class="n">response</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">status</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="o">&amp;&amp;</span> <span class="n">response</span><span class="p">.</span><span class="n">status</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">)</span> <span class="err">{</span>
+        <span class="k">return</span> <span class="n">Promise</span><span class="p">.</span><span class="n">resolve</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+    <span class="err">}</span>
+    <span class="k">return</span> <span class="n">Promise</span><span class="p">.</span><span class="n">reject</span><span class="p">(</span><span class="k">new</span> <span class="n">Error</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">statusText</span><span class="p">))</span>
+<span class="err">}</span>
+
+<span class="n">const</span> <span class="n">json</span> <span class="o">=</span> <span class="n">response</span> <span class="o">=&gt;</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">fetch</span><span class="p">(</span><span class="s1">&#39;/todos.json&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="k">then</span><span class="p">(</span><span class="n">status</span><span class="p">)</span>   <span class="o">//</span> <span class="err">обратите</span> <span class="err">внимание</span><span class="p">,</span> <span class="err">что</span> <span class="err">функция</span> <span class="s1">&#39;status&#39;</span> <span class="err">вызывается</span> <span class="err">именно</span> <span class="err">здесь</span> <span class="err">и</span> <span class="err">возвращает</span> <span class="err">промис</span>
+    <span class="p">.</span><span class="k">then</span><span class="p">(</span><span class="n">json</span><span class="p">)</span>     <span class="o">//</span> <span class="err">единственным</span> <span class="err">отличием</span> <span class="err">является</span> <span class="err">то</span><span class="p">,</span> <span class="err">что</span> <span class="err">функция</span> <span class="s1">&#39;json&#39;</span> <span class="err">возвращает</span> <span class="err">промис</span><span class="p">,</span> <span class="err">который</span> <span class="err">разрешается</span> <span class="s1">&#39;data&#39;</span>
+    <span class="p">.</span><span class="k">then</span><span class="p">(</span><span class="k">data</span> <span class="o">=&gt;</span> <span class="err">{</span> <span class="o">//</span> <span class="err">поэтому</span> <span class="s1">&#39;data&#39;</span> <span class="err">является</span> <span class="err">первым</span> <span class="err">параметром</span> <span class="err">анонимной</span> <span class="err">функции</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Request succeeded with JSON response &#39;</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">catch</span><span class="p">(</span><span class="n">error</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Request failed &#39;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+</pre></div>
 
 
-    const status = response => {
-        if (response.status >= 200 && response.status &lt; 300) {
-            return Promise.resolve(response)
-        }
-        return Promise.reject(new Error(response.statusText))
-    }
-
-    const json = response => response.json()
-
-    fetch('/todos.json')
-        .then(status)   // обратите внимание, что функция 'status' вызывается именно здесь и возвращает промис
-        .then(json)     // единственным отличием является то, что функция 'json' возвращает промис, который разрешается 'data'
-        .then(data => { // поэтому 'data' является первым параметром анонимной функции
-            console.log('Request succeeded with JSON response ', data)
-        })
-        .catch(error => {
-            console.log('Request failed ', error)
-        })
-
-<p>В приведенном примере мы вызываем <span>fetch()</span> для получения списка задач из файла <span>todos.json</span>, находящегося в корневой директории, затем мы создаем цепочку промисов. 
-
-<p>Запуск <span>fetch()</span> возвращает <a href="https://fetch.spec.whatwg.org/#concept-response">ответ</a>, имеющий много свойств, среди которых мы обращаемся к следующим: 
-
+<p>В приведенном примере мы вызываем fetch() для получения списка задач из файла todos.json, находящегося в корневой директории, затем мы создаем цепочку промисов. </p>
+<p>Запуск fetch() возвращает <a href="https://fetch.spec.whatwg.org/#concept-response">ответ</a>, имеющий много свойств, среди которых мы обращаемся к следующим: </p>
 <ul>
-    <li><span>status</span> - числовое значение кода статуса HTTP-ответа</li>
-    <li><span>statusText</span> - статусное сообщение, например, <span>OK</span> в случае успешного запроса</li>
+<li>status - числовое значение кода статуса HTTP-ответа</li>
+<li>statusText - статусное сообщение, например, OK в случае успешного запроса</li>
 </ul>
-
-<p><span>response</span> также имеет метод <span>json()</span>, который возвращает промис, выполняющийся с разобранным (распарсенным) содержимым тела ответа. 
-
-<p>С учетом изложенного, вот что происходит: первый промис в цепочке - это определенная нами функция <span>status()</span>, которая проверяет статус ответа, и, в случае, когда такой статус выходит за пределы диапазона 200-299, промис отклоняется. 
-
-<p>При отклонении промиса операция сразу переходит к блоку <span>catch()</span>, в консоль выводится текст <span>Request failed</span> и сообщение об ошибке. 
-
-<p>При успешном запросе вызывается функция <span>json()</span>. Поскольку предыдущий промис вернул объект <span>response</span>, мы получаем его в качестве параметра во втором промисе. 
-
+<p>response также имеет метод json(), который возвращает промис, выполняющийся с разобранным (распарсенным) содержимым тела ответа. </p>
+<p>С учетом изложенного, вот что происходит: первый промис в цепочке - это определенная нами функция status(), которая проверяет статус ответа, и, в случае, когда такой статус выходит за пределы диапазона 200-299, промис отклоняется. </p>
+<p>При отклонении промиса операция сразу переходит к блоку catch(), в консоль выводится текст Request failed и сообщение об ошибке. </p>
+<p>При успешном запросе вызывается функция json(). Поскольку предыдущий промис вернул объект response, мы получаем его в качестве параметра во втором промисе. </p>
 <p>Далее мы разбираем (парсим) ответ, так что третий промис получает данные в нужном формате:
-
-<code>
-.then(data => console.log('Request succeeded with JSON response ', data))
-</code>
-
-<p>И мы просто выводим эти данные в консоль. 
-
+<code>.then(data =&gt; console.log('Request succeeded with JSON response ', data))</code></p>
+<p>И мы просто выводим эти данные в консоль. </p>
 <h5>Обработка ошибок</h5>
+<p>В примере у нас имелся блок catch в конце цепочки промисов. </p>
+<p>Когда что-либо в цепочке завершается с ошибкой или когда промис отклоняется, управление переходит к блюжайшему блоку catch. </p>
+<div class="highlight"><pre><span></span><span class="k">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">throw</span> <span class="k">new</span> <span class="n">Error</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">).</span><span class="n">catch</span><span class="p">(</span><span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
 
-<p>В примере у нас имелся блок <span>catch</span> в конце цепочки промисов. 
+    <span class="o">//</span> <span class="err">или</span>
 
-<p>Когда что-либо в цепочке завершается с ошибкой или когда промис отклоняется, управление переходит к блюжайшему блоку <span>catch</span>. 
+    <span class="k">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">reject</span><span class="p">(</span><span class="s1">&#39;Error&#39;</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">).</span><span class="n">catch</span><span class="p">(</span><span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-
-    new Promise((resolve, reject) => {
-            throw new Error('Error')
-        }).catch(err => {
-            console.error(err)
-        })
-
-        // или
-
-        new Promise((resolve, reject) => {
-            reject('Error')
-        }).catch(err => {
-            console.error(err)
-        })
 
 <h5>Цепочка ошибок</h5>
+<p>Если в catch() вы получили ошибку, вы можете добавить второй catch() для ее обработки и т.д. </p>
+<div class="highlight"><pre><span></span><span class="err">new Promise((resolve, reject) =&gt; {</span>
+<span class="err">        throw new Error(&#39;Error&#39;)</span>
+<span class="err">    })</span>
+<span class="err">    .catch(err =&gt; {</span>
+<span class="err">        throw new Error(&#39;Error&#39;)</span>
+<span class="err">    })</span>
+<span class="err">    .catch(err =&gt; {</span>
+<span class="err">        console.error(err)</span>
+<span class="err">    })</span>
+</pre></div>
 
-<p>Если в <span>catch()</span> вы получили ошибку, вы можете добавить второй <span>catch()</span> для ее обработки и т.д. 
-
-
-    new Promise((resolve, reject) => {
-            throw new Error('Error')
-        })
-        .catch(err => {
-            throw new Error('Error')
-        })
-        .catch(err => {
-            console.error(err)
-        })
 
 <h5>Оркестровка промисов</h5>
+<h6>Promise.all()</h6>
+<p>Если вам необходимо синхронизировать разные промисы, Promise.all позволяет определить список промисов, и сделать что-либо после их выполнения.</p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">f1</span> <span class="o">=</span> <span class="n">fecth</span><span class="p">(</span><span class="s1">&#39;/something.json&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">f2</span> <span class="o">=</span> <span class="k">fetch</span><span class="p">(</span><span class="s1">&#39;/something2.json&#39;</span><span class="p">)</span>
 
-<h6><span>Promise.all()</span></h6>
+<span class="n">Promise</span><span class="p">.</span><span class="k">all</span><span class="p">([</span><span class="n">f1</span><span class="p">,</span> <span class="n">f2</span><span class="p">])</span>
+    <span class="p">.</span><span class="k">then</span><span class="p">(</span><span class="n">res</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Array of results &#39;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">catch</span><span class="p">(</span><span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-<p>Если вам необходимо синхронизировать разные промисы, <span>Promise.all</span> позволяет определить список промисов, и сделать что-либо после их выполнения.
-
-<p>Например:
-
-
-    const f1 = fecth('/something.json')
-    const f2 = fetch('/something2.json')
-
-    Promise.all([f1, f2])
-        .then(res => {
-            console.log('Array of results ', res)
-        })
-        .catch(err => {
-            console.error(err)
-        })
 
 <p>С помощью деструктурирующего присваивания это можно сделать так: 
+<code>Promise.all([f1, f2]).then(([f1, f2]) =&gt; {
+    console.log('Results ', res1, re2)
+})</code></p>
+<p>Разумеется, вы не ограничены fetch, в данном шаблоне проектирования могут использоваться любые промисы. </p>
+<h6>Promise.race()</h6>
+<p>Promice.race() запускается при выполнении первого промиса, т.е. колбек промиса выполняется один раз с результатом первого выполненного промиса. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="k">first</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">setTimeout</span><span class="p">(</span><span class="n">resolve</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s1">&#39;first&#39;</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
 
+<span class="n">const</span> <span class="k">second</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">setTimeout</span><span class="p">(</span><span class="n">resolve</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;second&#39;</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
 
-    Promise.all([f1, f2]).then(([f1, f2]) => {
-        console.log('Results ', res1, re2)
-    })
+<span class="n">Promise</span><span class="p">.</span><span class="n">race</span><span class="p">([</span><span class="k">first</span><span class="p">,</span> <span class="k">second</span><span class="p">]).</span><span class="k">then</span><span class="p">(</span><span class="k">result</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="k">result</span><span class="p">)</span> <span class="o">//</span> <span class="k">second</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-<p>Разумеется, вы не ограничены <span>fetch</span>, в данном шаблоне проектирования могут использоваться любые промисы. 
-
-<h6><span>Promise.race()</span></h6>
-
-<p><span>Promice.race()</span> запускается при выполнении первого промиса, т.е. колбек промиса выполняется один раз с результатом первого выполненного промиса. 
-
-<p>Например: 
-
-
-    const first = new Promise((resolve, reject) => {
-        setTimeout(resolve, 500, 'first')
-    })
-
-    const second = new Promise((resolve, reject) => {
-        setTimeout(resolve, 100, 'second')
-    })
-
-    Promise.race([first, second]).then(result => {
-        console.log(result) // second
-    })
 
 <h5>Распространенные ошибки</h5>
-
 <h6>Uncaught TypeError: undefined is not a promise</h6>
-
-<p>Если в консоли вы получили ошибку <span>Uncaught TypeError: undefined is not a promise</span>, убедитесь в том, что используете <span>new Promise()</span>, а не просто <span>Promise()</span>. 
-
+<p>Если в консоли вы получили ошибку Uncaught TypeError: undefined is not a promise, убедитесь в том, что используете new Promise(), а не просто Promise(). </p>
 <h6>UnhandledPromiseRejectionWarning</h6>
-
-<p>Это означает, что вызванный вами промис был отклонен, однако отсутствует блок <span>catch</span> для обработки возникшей ошибки. Добавьте <span>catch</span> в конец цепочки для решения этой проблемы.          </div>
+<p>Это означает, что вызванный вами промис был отклонен, однако отсутствует блок catch для обработки возникшей ошибки. Добавьте catch в конец цепочки для решения этой проблемы.
+`</p>          </div>
       </div>
   </div>
 

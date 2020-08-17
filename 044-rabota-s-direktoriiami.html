@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">044.  Работа с директориями</h2>
+              <h2 class="size-7 module l-12 fix align-center">044. Работа с директориями</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,139 +77,117 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>44. Работа с директориями</h3>
-
-<p>Модуль <span>fs</span> предоставляет множество методов для работы с каталогами.
-
+<p>Модуль fs предоставляет множество методов для работы с каталогами. </p>
 <h5>Проверка наличия директории</h5>
-
-<p>Используйте <span>fs.check()</span> для определения существования директории и возможности получить к ней доступ. 
-
+<p>Используйте fs.check() для определения существования директории и возможности получить к ней доступ. </p>
 <h5>Создание новой директории</h5>
+<p>Используйте fs.mkdir() или fs.mkdirSync() для создания новой директории: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-<p>Используйте <span>fs.mkdir()</span> или <span>fs.mkdirSync()</span> для создания новой директории: 
+<span class="n">const</span> <span class="n">folderName</span> <span class="o">=</span> <span class="s1">&#39;/Users/joe/test&#39;</span>
 
-    const fs = require('fs')
+<span class="n">try</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">fs</span><span class="p">.</span><span class="n">existsSync</span><span class="p">(</span><span class="n">folderName</span><span class="p">))</span> <span class="err">{</span>
+        <span class="n">fs</span><span class="p">.</span><span class="n">mkdirSync</span><span class="p">(</span><span class="n">folderName</span><span class="p">)</span>
+    <span class="err">}</span>
+<span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
 
-    const folderName = '/Users/joe/test'
-
-    try {
-        if (!fs.existsSync(folderName)) {
-            fs.mkdirSync(folderName)
-        }
-    } catch (err) {
-        console.error(err)
-    }
 
 <h5>Чтение содержимого директории</h5>
+<p>Используйте fs.readdir() и fs.readdirSync() для чтения содержимого каталога. </p>
+<p>Следущий код читает контент папки, как файлы, так и поддиректории, и возвращает их относительные пути: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">path</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;path&#39;</span><span class="p">)</span>
 
-<p>Используйте <span>fs.readdir()</span> и <span>fs.readdirSync()</span> для чтения содержимого каталога. 
+<span class="n">const</span> <span class="n">folderPath</span> <span class="o">=</span> <span class="s1">&#39;/Users/joe&#39;</span>
 
-<p>Следущий код читает контент папки, как файлы, так и поддиректории, и возвращает их относительные пути: 
-
-    const fs = require('fs')
-    const path = require('path')
-
-    const folderPath = '/Users/joe'
-
-    fs.readdieSync(folderPath)
+<span class="n">fs</span><span class="p">.</span><span class="n">readdieSync</span><span class="p">(</span><span class="n">folderPath</span><span class="p">)</span>
+</pre></div>
 
 
 <p>Полный путь можно получить так: 
+<code>fs.readdirSync(folderPath).map(fileName =&gt; {
+    return path.join(folderPath, fileName)
+})</code></p>
+<p>Кроме того, можно отфильтровать результаты, чтобы получить только файлы:</p>
+<div class="highlight"><pre><span></span><span class="nf">const</span> <span class="no">isFile</span> <span class="err">=</span> <span class="no">fileName</span> <span class="err">=&gt;</span> <span class="err">{</span>
+    <span class="nf">return</span> <span class="no">fs.lstatSync</span><span class="p">(</span><span class="no">fileName</span><span class="p">).</span><span class="no">isFile</span><span class="p">()</span>
+<span class="err">}</span>
 
+<span class="nf">fs.readdirSync</span><span class="p">(</span><span class="no">folderPath</span><span class="p">).</span><span class="no">map</span><span class="p">(</span><span class="no">fileName</span> <span class="err">=&gt;</span> <span class="err">{</span>
+    <span class="nf">return</span> <span class="no">path.join</span><span class="p">(</span><span class="no">folderPath</span><span class="p">,</span> <span class="no">fileName</span><span class="p">)</span>
+<span class="err">})</span>
+<span class="na">.filter</span><span class="p">(</span><span class="no">isFile</span><span class="p">)</span>
+</pre></div>
 
-    fs.readdirSync(folderPath).map(fileName => {
-        return path.join(folderPath, fileName)
-    })
-
-<p>Кроме того, можно отфильтровать результаты, чтобы получить только файлы:
-
-
-    const isFile = fileName => {
-        return fs.lstatSync(fileName).isFile()
-    }
-
-    fs.readdirSync(folderPath).map(fileName => {
-        return path.join(folderPath, fileName)
-    })
-    .filter(isFile)
 
 <h5>Переименование директории</h5>
+<p>Для переименования директории используйте fs.rename() и fs.renameSync(). Первый параметр - это текущий путь, второй - новый путь: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-<p>Для переименования директории используйте <span>fs.rename()</span> и <span>fs.renameSync()</span>. Первый параметр - это текущий путь, второй - новый путь: 
-
-
-    const fs = require('fs')
-
-    fs.rename('/Users/joe', '/Users/roger', err => {
-        if (err) {
-            console.error(err)
-            return
-        }
-        // готово
-    })
-
-<p><span>fs.renameSync()</span> - это синхронная версия: 
+<span class="n">fs</span><span class="p">.</span><span class="k">rename</span><span class="p">(</span><span class="s1">&#39;/Users/joe&#39;</span><span class="p">,</span> <span class="s1">&#39;/Users/roger&#39;</span><span class="p">,</span> <span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="err">}</span>
+    <span class="o">//</span> <span class="err">готово</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
 
-    const fs = require('fs')
+<p>fs.renameSync() - это синхронная версия: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-    try {
-        fs.renameSync('/Users/joe', 'Users/roger')
-    } catch (err) {
-        console.error(err)
-    }
+<span class="n">try</span> <span class="err">{</span>
+    <span class="n">fs</span><span class="p">.</span><span class="n">renameSync</span><span class="p">(</span><span class="s1">&#39;/Users/joe&#39;</span><span class="p">,</span> <span class="s1">&#39;Users/roger&#39;</span><span class="p">)</span>
+<span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
+
 
 <h5>Удаление директории</h5>
-
-<p>Для удаления директории используйте <span>fs.rmdir()</span> и <span>fs.rmdirSync()</span>. 
-
-<p>Удаление непустой папки может оказаться сложнее, чем кажется. 
-
-<p>В данном случае, проще установить модуль <span><a href="https://www.npmjs.com/package/fs-extra">fs-extra</a></span>, который очень популярен и хорошо поддерживается. Он является своего рода заменой модуля <span>fs</span>, предоставляя более продвинутые возможности. 
-
-<p>Нас интересует его метод <span>remove()</span>. 
-
+<p>Для удаления директории используйте fs.rmdir() и fs.rmdirSync(). </p>
+<p>Удаление непустой папки может оказаться сложнее, чем кажется. </p>
+<p>В данном случае, проще установить модуль <a href="https://www.npmjs.com/package/fs-extra">fs-extra</a>, который очень популярен и хорошо поддерживается. Он является своего рода заменой модуля fs, предоставляя более продвинутые возможности. </p>
+<p>Нас интересует его метод remove(). </p>
 <p>Устанавливаем модуль: 
+<code>npm install fs-extra</code></p>
+<p>И используем следующим образом:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs-extra&#39;</span><span class="p">)</span>
 
+<span class="n">const</span> <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;/Users/joe&#39;</span>
 
-    npm install fs-extra
+<span class="n">fs</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-<p>И используем следующим образом:
-
-
-    const fs = require('fs-extra')
-
-    const folder = '/Users/joe'
-
-    fs.remove(folder, err => {
-        console.error(err)
-    })
 
 <p>Он также может быть использован совместно с промисами:
+<code>fs.remove(folder)
+    .then(() =&gt; {
+        // готово 
+    })
+    .catch(err =&gt; {
+        console.error(err)
+    })</code></p>
+<p>Или с async/await: </p>
+<div class="highlight"><pre><span></span><span class="n">async</span> <span class="k">function</span> <span class="n">removeFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">try</span> <span class="err">{</span>
+        <span class="n">await</span> <span class="n">fs</span><span class="p">.</span><span class="n">remove</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+        <span class="o">//</span> <span class="err">готово</span> 
+    <span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="err">}</span>
+<span class="err">}</span>
 
-
-    fs.remove(folder)
-        .then(() => {
-            // готово 
-        })
-        .catch(err => {
-            console.error(err)
-        })
-
-<p>Или с async/await: 
-
-
-    async function removeFolder(folder) {
-        try {
-            await fs.remove(folder)
-            // готово 
-        } catch (err) {
-            console.error(err)
-        }
-    }
-
-    const folder = 'Users/joe'
-    removeFolder(folder)          </div>
+<span class="n">const</span> <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;Users/joe&#39;</span>
+<span class="n">removeFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+</pre></div>          </div>
       </div>
   </div>
 

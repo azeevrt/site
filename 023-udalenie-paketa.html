@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">023.  Удаление пакета</h2>
+              <h2 class="size-7 module l-12 fix align-center">023. Удаление пакета</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,20 +77,17 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>23. Удаление пакета</h3>
-
-<p>Для удаления пакета, установленного локально (с помощью <span>npm i &lt;package-name&gt;</span> в папку <span>node_modules</span>), запустите <span>npm unistall &lt;package-name&gt;</span> из корневой директории проекта (директории, в которой находится папка <span>node_modules</span>).
-
-<p>Если добавить флаг <span>-S</span> или <span>--save</span>, то из <span>package.json</span> будет удалена запись об удаленном пакете. 
-
-<p>Для удаление записи о пакете для разработки, запись о котором содержится в разделе <span>devDependencies</span> файла <span>package.json</span>, следует использовать флаг <span>-D / --save-dev</span>:
-
-    npm uninstall -S <package-name>
-    npm uninstall -D <package-name>
+<p>Для удаления пакета, установленного локально (с помощью <code>npm i &lt;package-name\&gt;</code> в папку node_modules), запустите <code>npm unistall &lt;package-name\&gt;</code> из корневой директории проекта (директории, в которой находится папка node_modules). </p>
+<p>Если добавить флаг -S или --save, то из package.json будет удалена запись об удаленном пакете. </p>
+<p>Для удаление записи о пакете для разработки, запись о котором содержится в разделе devDependencies файла package.json, следует использовать флаг -D / --save-dev:</p>
+<div class="highlight"><pre><span></span><span class="err">npm uninstall -S npm uninstall -D</span>
+</pre></div>
 
 
-<p>Если пакет установлен глобально, следует использовать флаг <span>-g / --global</span>: <span>npm uninstall &lt;package-name&gt; -g</span>. 
-
-<p>Например: <span>npm uninstall -g webpack</span>.          </div>
+<p>Если пакет установлен глобально, следует использовать флаг <code>-g</code> / <code>--global</code>: <code>npm uninstall &lt;package-name\&gt; -g</code>. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">npm uninstall -g webpack</span>
+</pre></div>          </div>
       </div>
   </div>
 

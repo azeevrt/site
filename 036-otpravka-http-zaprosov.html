@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">036.  Отправка HTTP-запросов</h2>
+              <h2 class="size-7 module l-12 fix align-center">036. Отправка HTTP-запросов</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,68 +77,64 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>36. Отправка HTTP-запросов</h3>
-
 <h5>Отправка GET-запроса</h5>
+<div class="highlight"><pre><span></span>const https = require(&#39;https&#39;)
+const options = {
+    hostname: &#39;whatever.com&#39;,
+    port: 443,
+    path: &#39;/todos&#39;,
+    method: &#39;GET&#39;
+}
 
-<div class="highlight"><pre><span></span><span class="nt">const</span> <span class="nt">https</span> <span class="o">=</span> <span class="nt">require</span><span class="o">(</span><span class="s1">&#39;https&#39;</span><span class="o">)</span>
-<span class="nt">const</span> <span class="nt">options</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">hostname</span><span class="p">:</span> <span class="s1">&#39;whatever.com&#39;</span><span class="p">,</span>
-    <span class="n">port</span><span class="o">:</span> <span class="mi">443</span><span class="p">,</span>
-    <span class="n">path</span><span class="o">:</span> <span class="s1">&#39;/todos&#39;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">:</span> <span class="s1">&#39;GET&#39;</span>
-<span class="p">}</span>
+const req = https.request(options, res =&gt; {
+    console.log(\\`statusCode: <span class="cp">${</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="cp">}</span>\\`)
 
-<span class="nt">const</span> <span class="nt">req</span> <span class="o">=</span> <span class="nt">https</span><span class="p">.</span><span class="nc">request</span><span class="o">(</span><span class="nt">options</span><span class="o">,</span> <span class="nt">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="err">console.log(\`</span><span class="n">statusCode</span><span class="p">:</span> <span class="o">&amp;</span><span class="mh">#36</span><span class="p">;</span><span class="err">{res.statusCode</span><span class="p">}</span><span class="err">\`</span><span class="o">)</span>
+    res.on(&#39;data&#39;, d =&gt; {
+        process.stdout.write(d)
+    })
+})
 
-    <span class="nt">res</span><span class="p">.</span><span class="nc">on</span><span class="o">(</span><span class="s1">&#39;data&#39;</span><span class="o">,</span> <span class="nt">d</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="err">process.stdout.write(d)</span>
-    <span class="p">}</span><span class="o">)</span>
-<span class="err">}</span><span class="o">)</span>
+req.on(&#39;error&#39;, err =&gt; console.error(err))
 
-<span class="nt">req</span><span class="p">.</span><span class="nc">on</span><span class="o">(</span><span class="s1">&#39;error&#39;</span><span class="o">,</span> <span class="nt">err</span> <span class="o">=&gt;</span> <span class="nt">console</span><span class="p">.</span><span class="nc">error</span><span class="o">(</span><span class="nt">err</span><span class="o">))</span>
-
-<span class="nt">req</span><span class="p">.</span><span class="nc">end</span><span class="o">()</span>
+req.end()
 </pre></div>
 
 
 <h5>Отправка POST-запроса</h5>
+<div class="highlight"><pre><span></span>const https = require(&#39;https&#39;)
 
-<div class="highlight"><pre><span></span><span class="nt">const</span> <span class="nt">https</span> <span class="o">=</span> <span class="nt">require</span><span class="o">(</span><span class="s1">&#39;https&#39;</span><span class="o">)</span>
+const data = JSON.stringify({
+    todo: &#39;Buy the milk&#39;
+})
 
-<span class="nt">const</span> <span class="nt">data</span> <span class="o">=</span> <span class="nt">JSON</span><span class="p">.</span><span class="nc">stringify</span><span class="o">(</span><span class="p">{</span>
-    <span class="n">todo</span><span class="p">:</span> <span class="s1">&#39;Buy the milk&#39;</span>
-<span class="p">}</span><span class="o">)</span>
+const options = {
+    hostname: &#39;whatever.com&#39;,
+    port: 443,
+    path: &#39;/todos&#39;,
+    method: &#39;POST&#39;,
+    headers: {
+        &#39;Content-Type&#39;: &#39;application/json&#39;,
+        &#39;Content-Length&#39;: data.length 
+    }
+}
 
-<span class="nt">const</span> <span class="nt">options</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">hostname</span><span class="p">:</span> <span class="s1">&#39;whatever.com&#39;</span><span class="p">,</span>
-    <span class="n">port</span><span class="o">:</span> <span class="mi">443</span><span class="p">,</span>
-    <span class="n">path</span><span class="o">:</span> <span class="s1">&#39;/todos&#39;</span><span class="p">,</span>
-    <span class="n">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
-    <span class="n">headers</span><span class="o">:</span> <span class="err">{</span>
-        <span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;Content-Length&#39;</span><span class="o">:</span> <span class="n">data</span><span class="o">.</span><span class="n">length</span> 
-    <span class="p">}</span>
-<span class="err">}</span>
+const req = https.request(options =&gt; {
+    console.log(\\`statusCode: <span class="cp">${</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="cp">}</span>\\`)
 
-<span class="nt">const</span> <span class="nt">req</span> <span class="o">=</span> <span class="nt">https</span><span class="p">.</span><span class="nc">request</span><span class="o">(</span><span class="nt">options</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="err">console.log(\`</span><span class="n">statusCode</span><span class="p">:</span> <span class="o">&amp;</span><span class="mh">#36</span><span class="p">;</span><span class="err">{res.statusCode</span><span class="p">}</span><span class="err">\`</span><span class="o">)</span>
+    res.on(&#39;data&#39;, d =&gt; {
+        process.stdout.write(d)
+    })
+})
 
-    <span class="nt">res</span><span class="p">.</span><span class="nc">on</span><span class="o">(</span><span class="s1">&#39;data&#39;</span><span class="o">,</span> <span class="nt">d</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="err">process.stdout.write(d)</span>
-    <span class="p">}</span><span class="o">)</span>
-<span class="err">}</span><span class="o">)</span>
+req.on(&#39;error&#39;, err =&gt; console.error(err))
 
-<span class="nt">req</span><span class="p">.</span><span class="nc">on</span><span class="o">(</span><span class="s1">&#39;error&#39;</span><span class="o">,</span> <span class="nt">err</span> <span class="o">=&gt;</span> <span class="nt">console</span><span class="p">.</span><span class="nc">error</span><span class="o">(</span><span class="nt">err</span><span class="o">))</span>
-
-<span class="nt">req</span><span class="p">.</span><span class="nc">write</span><span class="o">(</span><span class="nt">data</span><span class="o">)</span>
-<span class="nt">req</span><span class="p">.</span><span class="nc">end</span><span class="o">()</span>
+req.write(data)
+req.end()
 </pre></div>
 
 
 <h5>PUT и DELETE</h5>
-
-<p>Запросы PUT и DELETE имеют тот же формат, что и POST-запрос, за исключением значения свойства <span>method</span> объекта <span>options</span>.          </div>
+<p>Запросы PUT и DELETE имеют тот же формат, что и POST-запрос, за исключением значения свойства method объекта options.</p>          </div>
       </div>
   </div>
 

@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">016.  Использование пакетов</h2>
+              <h2 class="size-7 module l-12 fix align-center">016. Использование пакетов</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,38 +77,23 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>16. Использование пакетов</h3>
-
-<p>Как использовать установленный в папку <span>node_modules</span> или глобально пакет?
-
-<p>Скажем, вы установили <span>lodash</span>, популярную вспомогательную JavaScript-библиотеку, с помощью <span>npm install lodash</span>. 
-
-<p>Эта команда установит <span>lodash</span> в локальную директорию <span>node_modules</span>. 
-
-<p>Для использования в программе пакет сначала нужно импортировать с помощью <span>require</span>: 
-
-
-    const _ = require('lodash')
-
-<p>Что если пакет является исполняемым файлом? 
-
-<p>В этом случае исполняемый файл будет помещен в каталог <span>node_modules/.bin/</span>. 
-
-<p>Это можно продемонстрировать с помощью библиотеки <a href="https://www.npmjs.com/package/cowsay">cowsay</a>. 
-
-<p>Данный пакет предоставляет программу для командной строки, при выполнении которой корова (и другие животные) что-либо "произносит". 
-
-<p>При установке пакета посредством <span>npm install cowsay</span> будет установлен сам пакет и несколько его зависимостей:</p>
-
-<p><img src="./img/16-1.png" /></p>
-<p>Папка <span>.bin</span> является скрытой и содержит символические ссылки на бинарные данные "cowsay":</p>
-
-<p><img src="./img/16-2.png" /></p>
-<p>Как их запустить?
-
-<p>Вы, конечно, можете набрать <span>./node_modules/.bin/cowsay</span> и все будет работать, но npx, включенный в npm (начиная с версии 5.2), является более подходящим вариантом. Вы просто выполняете <span>npx cowsay</span> и npx определит местонахождения файла автоматически:</p>
-
-<p><img src="./img/16-3.png" /></p>
-<p>Корова говорит: "Забери меня отсюда".          </div>
+<p>Как использовать установленный в папку node_modules или глобально пакет?</p>
+<p>Скажем, вы установили lodash, популярную вспомогательную JavaScript-библиотеку, с помощью npm install lodash. </p>
+<p>Эта команда установит lodash в локальную директорию node_modules. </p>
+<p>Для использования в программе пакет сначала нужно импортировать с помощью require: 
+<code>const _ = require('lodash')</code></p>
+<p>Что если пакет является исполняемым файлом? </p>
+<p>В этом случае исполняемый файл будет помещен в каталог node_modules/.bin/. </p>
+<p>Это можно продемонстрировать с помощью библиотеки <a href="https://www.npmjs.com/package/cowsay">cowsay</a>. </p>
+<p>Данный пакет предоставляет программу для командной строки, при выполнении которой корова (и другие животные) что-либо "произносит". </p>
+<p>При установке пакета посредством npm install cowsay будет установлен сам пакет и несколько его зависимостей:
+<img alt="image0" src="./img/16-1.png"></p>
+<p>Папка .bin является скрытой и содержит символические ссылки на бинарные данные "cowsay":
+<img alt="image1" src="./img/16-2.png"></p>
+<p>Как их запустить? </p>
+<p>Вы, конечно, можете набрать ./node_modules/.bin/cowsay и все будет работать, но npx, включенный в npm (начиная с версии 5.2), является более подходящим вариантом. Вы просто выполняете npx cowsay и npx определит местонахождения файла автоматически:
+<img alt="image2" src="./img/16-3.png"></p>
+<p>Корова говорит: "Забери меня отсюда". </p>          </div>
       </div>
   </div>
 

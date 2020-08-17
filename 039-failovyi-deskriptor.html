@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">039.  Файловый дескриптор</h2>
+              <h2 class="size-7 module l-12 fix align-center">039. Файловый дескриптор</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,43 +77,37 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>39. Файловый дескриптор</h3>
+<p>Перед тем, как вы сможете взаимодействовать с файлом, находящимся в файловой системе, вы должны получить дескриптор этого файла. </p>
+<p>Файловый дексриптор - это то, что возвращается методом open() модуля fs: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-<p>Перед тем, как вы сможете взаимодействовать с файлом, находящимся в файловой системе, вы должны получить дескриптор этого файла.
+<span class="n">fs</span><span class="p">.</span><span class="k">open</span><span class="p">(</span><span class="s1">&#39;/Users/joe/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">fd</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="o">//</span> <span class="n">fd</span> <span class="o">-</span> <span class="err">это</span> <span class="err">наш</span> <span class="err">файловый</span> <span class="err">дескриптор</span> 
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-<p>Файловый дексриптор - это то, что возвращается методом <span>open()</span> модуля <span>fs</span>: 
 
-
-    const fs = require('fs')
-
-    fs.open('/Users/joe/test.txt', 'r', (err, fd) => {
-        // fd - это наш файловый дескриптор 
-    })
-
-<p>Обратите внимание на <span>r</span>, который мы передали методу <span>open()</span> в качестве второго параметра. 
-
-<p>Этот флаг означает, что мы открыли файл для чтения. 
-
-<p>Другие флаги: 
-
+<p>Обратите внимание на r, который мы передали методу open() в качестве второго параметра. </p>
+<p>Этот флаг означает, что мы открыли файл для чтения. </p>
+<p>Другие флаги: </p>
 <ul>
-    <li><span>r+</span> - открыть файл для чтения и записи</li>
-    <li><span>w+</span> - открыть файл для чтения и записи, поместив курсор в начало файла. Файл создается при отсутствии</li>
-    <li><span>a</span> - открыть файл для записи, поместив курсор в конец файла. Файл создается при отсутствии</li>
-    <li><span>a+</span> - открыть файл для чтения и записи, поместив курсор в конец файла. Файл создается при отсутствии</li>
+<li>r+ - открыть файл для чтения и записи</li>
+<li>w+ - открыть файл для чтения и записи, поместив курсор в начало файла. Файл создается при отсутствии</li>
+<li>a - открыть файл для записи, поместив курсор в конец файла. Файл создается при отсутствии</li>
+<li>a+ - открыть файл для чтения и записи, поместив курсор в конец файла. Файл создается при отсутствии</li>
 </ul>
+<p>Файл также можно открыть с помощью метода openSync(), возвращающего файловый дескриптор, вместо помещения его в колбек:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-<p>Файл также можно открыть с помощью метода <span>openSync()</span>, возвращающего файловый дескриптор, вместо помещения его в колбек:
+<span class="n">try</span> <span class="err">{</span>
+    <span class="n">const</span> <span class="n">fd</span> <span class="o">=</span> <span class="n">fs</span><span class="p">.</span><span class="n">openSync</span><span class="p">(</span><span class="s1">&#39;/Users/joe/test.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="err">}</span> <span class="n">catch</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+<span class="err">}</span>
+</pre></div>
 
 
-    const fs = require('fs')
-
-    try {
-        const fd = fs.openSync('/Users/joe/test.txt', 'r')
-    } catch (err) {
-        console.error(err)
-    }
-
-<p>После получения файлового дескриптора вы можете совершать с файлом любые операции.          </div>
+<p>После получения файлового дескриптора вы можете совершать с файлом любые операции.</p>          </div>
       </div>
   </div>
 

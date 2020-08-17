@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">051.  Поток</h2>
+              <h2 class="size-7 module l-12 fix align-center">051. Поток</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,210 +77,155 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>51. Поток</h3>
-
 <h5>Что такое поток?</h5>
-
-<p>Поток - одна из главных причин высокой производительности Node.js-приложений.
-
-<p>Это способ чтения/записи файлов, работы с сетью или любого другого обмена информацией между конечными устройствами. 
-
-<p>Потоки не являются уникальными для Node.js. Они появились в операционных системах семейства Unix, программы могут взаимодействовать друг с другом с помощью потоков через оператор "pipe" (<span>|</span>). 
-
-<p>Например, когда вы указываете программе прочитать файл, файл считывается в память от начала до конца, затем вы его обрабатываете. 
-
+<p>Поток - одна из главных причин высокой производительности Node.js-приложений. </p>
+<p>Это способ чтения/записи файлов, работы с сетью или любого другого обмена информацией между конечными устройствами. </p>
+<p>Потоки не являются уникальными для Node.js. Они появились в операционных системах семейства Unix, программы могут взаимодействовать друг с другом с помощью потоков через оператор "pipe" (|). </p>
+<p>Например, когда вы указываете программе прочитать файл, файл считывается в память от начала до конца, затем вы его обрабатываете. </p>
 <p>Потоки позволяют читать и обрабатывать файл по частям без его помещения в память. 
-
-Node.js предоставляет <a href="https://nodejs.org/api/stream.html">модуль поток</a>. Все потоки являются экземплярами <span>EventEmitter</span>. 
-
+Node.js предоставляет <a href="https://nodejs.org/api/stream.html">модуль поток</a>. Все потоки являются экземплярами EventEmitter. </p>
 <h5>Почему потоки?</h5>
-
-<p>Потоки по сравнению с другими способами получения данных обладают двумя главными преимуществами:
-
+<p>Потоки по сравнению с другими способами получения данных обладают двумя главными преимуществами:</p>
 <ul>
-    <li>эффективное использование памяти: вам не нужно загружать все данные в память перед их использованием</li>
-    <li>повышение производительности: данные можно использовать сразу, не дожидаясь окончания их получения</li>
+<li>эффективное использование памяти: вам не нужно загружать все данные в память перед их использованием</li>
+<li>повышение производительности: данные можно использовать сразу, не дожидаясь окончания их получения</li>
 </ul>
-
 <h5>Пример потока</h5>
+<p>Типичным примером использования потока является чтение файла с диска. </p>
+<p>Данные можно прочитать с помощью модуля fs и отправить в ответе при установлении соединения с сервером: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">http</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-<p>Типичным примером использования потока является чтение файла с диска. 
+<span class="n">cnst</span> <span class="n">server</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">createServer</span><span class="p">((</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">fs</span><span class="p">.</span><span class="n">readFile</span><span class="p">(</span><span class="n">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/data.txt&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">res</span><span class="p">.</span><span class="k">end</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+<span class="n">server</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+</pre></div>
 
-<p>Данные можно прочитать с помощью модуля <span>fs</span> и отправить в ответе при установлении соединения с сервером: 
 
-    const http = require('http')
-    const fs = require('fs')
+<p>readFile() читает содержимое файла и вызывает колбек. </p>
+<p>res.end(data) - это колбек, возвращающий содержимое файла клиенту. </p>
+<p>Если файл является большим, данная операция займет много времени. Вот тот же пример с использованием потоков: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">http</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
-    cnst server = http.createServer((req, res) => {
-        fs.readFile(__dirname + '/data.txt', (err, data) => {
-            res.end(data)
-        })
-    })
-    server.listen(3000)
+<span class="n">const</span> <span class="n">server</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">createServer</span><span class="p">((</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">const</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">fs</span><span class="p">.</span><span class="n">createReadStream</span><span class="p">(</span><span class="n">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/data.txt&#39;</span><span class="p">)</span>
+    <span class="n">stream</span><span class="p">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+<span class="n">server</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+</pre></div>
 
-<p><span>readFile()</span> читает содержимое файла и вызывает колбек. 
 
-<p><span>res.end(data)</span> - это колбек, возвращающий содержимое файла клиенту. 
-
-<p>Если файл является большим, данная операция займет много времени. Вот тот же пример с использованием потоков: 
-
-    const http = require('http')
-    const fs = require('fs')
-
-    const server = http.createServer((req, res) => {
-        const stream = fs.createReadStream(__dirname + '/data.txt')
-        stream.pipe(res)
-    })
-    server.listen(3000)
-
-<p>Теперь, вместо того, чтобы ждать завершения чтения файла, мы начинаем отправлять его клиенту по частям сразу после получения очередной порции. 
-
+<p>Теперь, вместо того, чтобы ждать завершения чтения файла, мы начинаем отправлять его клиенту по частям сразу после получения очередной порции. </p>
 <h5>pipe()</h5>
-
-<p>В приведенном примере имеется строка <span>stream.pipe(res)</span>: в потоке вызывается метод <span>pipe()</span>. 
-
-<p>Что делает этот код? Он получает ресурсы и создает тоннель к пункту назначения. 
-
-<p>Мы вызываем его в потоке, поэтому в данном случае происходит туннелирование в HTTP-ответ. 
-
-<p>Метод <span>pipe()</span> возвращает поток к пункту назначения, что позволяет создавать цепочки из вызовов <span>pipe()</span>: 
-
-    src.pipe(dest1).pipe(dest2)
-
+<p>В приведенном примере имеется строка stream.pipe(res): в потоке вызывается метод pipe(). </p>
+<p>Что делает этот код? Он получает ресурсы и создает тоннель к пункту назначения. </p>
+<p>Мы вызываем его в потоке, поэтому в данном случае происходит туннелирование в HTTP-ответ. </p>
+<p>Метод pipe() возвращает поток к пункту назначения, что позволяет создавать цепочки из вызовов pipe(): 
+<code>src.pipe(dest1).pipe(dest2)</code></p>
 <p>Данная консрукция аналогична следующей:
-
-
-    src.pipe(dest1)
-    dest1.pipe(dest2)
-
+<code>src.pipe(dest1)
+dest1.pipe(dest2)</code></p>
 <h5>Прикладные интерфейсы Node.js, поддерживающие потоки</h5>
-
-<p>Из-за преимуществ, предоставляемых потоками, многие модули ядра Node.js поддерживают работу с ними: 
-
+<p>Из-за преимуществ, предоставляемых потоками, многие модули ядра Node.js поддерживают работу с ними: </p>
 <ul>
-    <li><span>process.stdin</span> - возвращает поток к устройству ввода</li>
-    <li><span>process.stdout</span> - возвращает поток к устройству вывода</li>
-    <li><span>process.stderr</span> - возвращает поток к устройству обработки ошибок</li>
-    <li><span>fs.createReadStream()</span> - создает поток для чтения файла</li>
-    <li><span>fs.createWritableStream()</span> - создает поток для записи файла</li>
-    <li><span>net.connect()</span> - инициализирует основанное на потоках соединение</li>
-    <li><span>http.request()</span> - возвращает экземпляр класса <span>http.ClientRequest</span>, который является потоком для записи</li>
-    <li><span>zlib.createGzip()</span> - сжимает данные с помощью gzip (алгоритм сжатия) внутри потока</li>
-    <li><span>zlib.createGunzip()</span> - разворачивает сжатый (gzip) поток</li>
-    <li><span>zlib.createDeflate()</span> - сжимает данные с помощью deflate (алгоритм сжатия) внутри потока</li>
-    <li><span>zlib.createInflate()</span> - разворачивает сжатый (deflate) поток</li>
+<li>process.stdin - возвращает поток к устройству ввода</li>
+<li>process.stdout - возвращает поток к устройству вывода</li>
+<li>process.stderr - возвращает поток к устройству обработки ошибок</li>
+<li>fs.createReadStream() - создает поток для чтения файла</li>
+<li>fs.createWritableStream() - создает поток для записи файла</li>
+<li>net.connect() - инициализирует основанное на потоках соединение</li>
+<li>http.request() - возвращает экземпляр класса http.ClientRequest, который является потоком для записи</li>
+<li>zlib.createGzip() - сжимает данные с помощью gzip (алгоритм сжатия) внутри потока</li>
+<li>zlib.createGunzip() - разворачивает сжатый (gzip) поток</li>
+<li>zlib.createDeflate() - сжимает данные с помощью deflate (алгоритм сжатия) внутри потока</li>
+<li>zlib.createInflate() - разворачивает сжатый (deflate) поток</li>
 </ul>
-
 <h5>Типы потоков</h5>
-
-<p>Существует 4 класса потоков: 
-
+<p>Существует 4 класса потоков: </p>
 <ul>
-    <li><span>для чтения (readable)</span>: поток, который может служить началом тоннеля, но не его концом (т.е. мы можем получать данные из потока, но не записывать их в него). При записи данных в такой поток, они помещаются в буфер и находятся там до тех пор, пока не будут прочитаны</li>
-    <li><span>для записи (writable)</span>: поток, который может служить концом тоннеля, но не его началом (т.е. мы можем записывать данные в такой поток, но не получать их из него)</li>
-    <li><span>дуплексные (duplex)</span>: двунаправленный поток, обычно, является комбинацией потоков для чтения и записи</li>
-    <li><span>трансформирующиеся (transform)</span>: такие потоки похожи на дуплексные, однако точкой их выхода является преобразованная точка входа</li>
+<li>для чтения (readable): поток, который может служить началом тоннеля, но не его концом (т.е. мы можем получать данные из потока, но не записывать их в него). При записи данных в такой поток, они помещаются в буфер и находятся там до тех пор, пока не будут прочитаны</li>
+<li>для записи (writable): поток, который может служить концом тоннеля, но не его началом (т.е. мы можем записывать данные в такой поток, но не получать их из него)</li>
+<li>дуплексные (duplex): двунаправленный поток, обычно, является комбинацией потоков для чтения и записи</li>
+<li>трансформирующиеся (transform): такие потоки похожи на дуплексные, однако точкой их выхода является преобразованная точка входа</li>
 </ul>
-
 <h5>Как создать поток для чтения?</h5>
-
-<p>Поток для чтения предоставляется модулем поток, мы инициализируем и реализуем его с помощью метода <span>readable._read()</span>: 
-
-
-    const Stream = require('stream')
-    const readableStream = new Stream.Readable()
-
-<p>Затем реализуем <span>_read</span>: 
-
-    readableStream._read = () => {}
-
-<p>Реализовать <span>_read</span> также можно посредством опции <span>read</span>: 
-
-    const readableStream = new Stream.Readable({
-        read() {}
-    })
-
+<p>Поток для чтения предоставляется модулем поток, мы инициализируем и реализуем его с помощью метода readable._read(): 
+<code>const Stream = require('stream')
+const readableStream = new Stream.Readable()</code></p>
+<p>Затем реализуем _read: 
+<code>readableStream._read = () =&gt; {}</code></p>
+<p>Реализовать _read также можно посредством опции read: 
+<code>const readableStream = new Stream.Readable({
+    read() {}
+})</code></p>
 <p>После этого мы можем помещать данные в поток: 
-
-    readableStream.push('hi!')
-    readableStream.push('ho!')
-
+<code>readableStream.push('hi!')
+readableStream.push('ho!')</code></p>
 <h5>Как создать поток для записи?</h5>
-
-<p>Для создания потока для записи мы расширяем стандартный объект <span>Writable</span> и реализуем его метод <span>_write</span>. 
-
+<p>Для создания потока для записи мы расширяем стандартный объект Writable и реализуем его метод _write. </p>
 <p>Сначала мы создаем объект потока: 
-
-    const Stream = require('stream')
-    const writableStream = new Stream.Writable()
-
-<p>Затем реализуем <span>_write</span>: 
-
-    writableStream._write = (chunk, encoding, next) => {
-        console.log(chunk.toString())
-        next()
-    }
-
+<code>const Stream = require('stream')
+const writableStream = new Stream.Writable()</code></p>
+<p>Затем реализуем _write: 
+<code>writableStream._write = (chunk, encoding, next) =&gt; {
+    console.log(chunk.toString())
+    next()
+}</code></p>
 <p>После этого мы можем его туннелировать: 
-
-    process.stdin.pipe(writableStream)
-
+<code>process.stdin.pipe(writableStream)</code></p>
 <h5>Как получить данные из потока для чтения?</h5>
+<p>Данные из потока для чтения можно получить с помощью потока для записи: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">Stream</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;stream&#39;</span><span class="p">)</span>
 
-<p>Данные из потока для чтения можно получить с помощью потока для записи: 
+<span class="n">const</span> <span class="n">readableStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stream</span><span class="p">.</span><span class="n">Readable</span><span class="p">(</span><span class="err">{</span>
+    <span class="k">read</span><span class="p">()</span> <span class="err">{}</span>
+<span class="err">}</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">writableStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stream</span><span class="p">.</span><span class="n">Writable</span><span class="p">()</span>
+
+<span class="n">writableStream</span><span class="p">.</span><span class="n">_write</span> <span class="o">=</span> <span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="k">encoding</span><span class="p">,</span> <span class="k">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span>
+    <span class="k">next</span><span class="p">()</span>
+<span class="err">}</span>
+
+<span class="n">readableStream</span><span class="p">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">writableStream</span><span class="p">)</span>
+
+<span class="n">readableStream</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;hi!&#39;</span><span class="p">)</span>
+<span class="n">readableStream</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;ho!&#39;</span><span class="p">)</span>
+</pre></div>
 
 
-    const Stream = require('stream')
-
-    const readableStream = new Stream.Readable({
-        read() {}
-    })
-    const writableStream = new Stream.Writable()
-
-    writableStream._write = (chunk, encoding, next) => {
-        console.log(chunk.toString())
-        next()
-    }
-
-    readableStream.pipe(writableStream)
-
-    readableStream.push('hi!')
-    readableStream.push('ho!')
-
-<p>Вы также можете читать поток напрямую, используя событие <span>readable</span>: 
-
-    readableStream.on('readable', () => {
-        console.log(readableStream.read())
-    })
-
+<p>Вы также можете читать поток напрямую, используя событие readable: 
+<code>readableStream.on('readable', () =&gt; {
+    console.log(readableStream.read())
+})</code></p>
 <h5>Как отправить данные в поток для записи?</h5>
-
-<p>Используйте метод <span>write()</span>:
-
-    writableStream.write('hey!\n')
-
+<p>Используйте метод write():
+<code>writableStream.write('hey!\n')</code></p>
 <h5>Как сообщить потоку для записи, что запись данных завершена?</h5>
+<p>Используйте метод end():</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">Stream</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;stream&#39;</span><span class="p">)</span>
 
-<p>Используйте метод <span>end()</span>:
+<span class="n">const</span> <span class="n">readableStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stream</span><span class="p">.</span><span class="n">Readable</span><span class="p">(</span><span class="err">{</span>
+    <span class="k">read</span><span class="p">()</span> <span class="err">{}</span>
+<span class="err">}</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">writableStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stream</span><span class="p">.</span><span class="n">Writable</span><span class="p">()</span>
 
+<span class="n">writableStream</span><span class="p">.</span><span class="n">_write</span> <span class="o">=</span> <span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="k">encoding</span><span class="p">,</span> <span class="k">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span>
+    <span class="k">next</span><span class="p">()</span>
+<span class="err">}</span>
 
-    const Stream = require('stream')
+<span class="n">readableStream</span><span class="p">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">writableStream</span><span class="p">)</span>
 
-    const readableStream = new Stream.Readable({
-        read() {}
-    })
-    const writableStream = new Stream.Writable()
+<span class="n">readableStream</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;hi!&#39;</span><span class="p">)</span>
+<span class="n">readableStream</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;ho!&#39;</span><span class="p">)</span>
 
-    writableStream._write = (chunk, encoding, next) => {
-        console.log(chunk.toString())
-        next()
-    }
-
-    readableStream.pipe(writableStream)
-
-    readableStream.push('hi!')
-    readableStream.push('ho!')
-
-    writableStream.end()          </div>
+<span class="n">writableStream</span><span class="p">.</span><span class="k">end</span><span class="p">()</span>
+</pre></div>          </div>
       </div>
   </div>
 

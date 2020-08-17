@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">010.  Передача аргументов из командной строки</h2>
+              <h2 class="size-7 module l-12 fix align-center">010. Передача аргументов из командной строки</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,64 +77,36 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>10. Передача аргументов из командной строки</h3>
-
-<p>При запуске Node.js-приложения вы можете передать ему любое количество аргументов.
-
-<p>Аргументы могут быть автономными или содержать ключ и значение. 
-
+<p>При запуске Node.js-приложения вы можете передать ему любое количество аргументов. </p>
+<p>Аргументы могут быть автономными или содержать ключ и значение. </p>
 <p>Например:
-
-    node app.js joe
-
+<code>node app.js joe</code></p>
 <p>или 
-
-    node app.js name=joe
-
-<p>От этого зависит, как вы будете извлекать значения в Node.js-коде. 
-
-<p>Для извлечение значений используется встроенный объект <span>process</span>. 
-
-<p>В свойстве <span>argv</span> этого объекта содержится массив аргументов, переданных из командной строки. 
-
-<p>Первый аргумент - это полный путь команды <span>node</span>. 
-
-<p>Второй - полный путь исполняемого файла. 
-
-<p>Интересующие нас аргументы начинаются с третьей позиции (индекса массива). 
-
+<code>node app.js name=joe</code></p>
+<p>От этого зависит, как вы будете извлекать значения в Node.js-коде. </p>
+<p>Для извлечение значений используется встроенный объект process. </p>
+<p>В свойстве argv этого объекта содержится массив аргументов, переданных из командной строки. </p>
+<p>Первый аргумент - это полный путь команды node. </p>
+<p>Второй - полный путь исполняемого файла. </p>
+<p>Интересующие нас аргументы начинаются с третьей позиции (индекса массива). </p>
 <p>Вы можете перебрать аргументы (включая путь node и путь файла) в цикле:
-
-
-    process.argv.forEach((val, index) => {
-        console.log(\`&#36;{index}: &#36;{val}\`)
-    })
-
+<code>process.argv.forEach((val, index) =&gt; {
+    console.log(\\</code>${index}: ${val}\<code>)
+})</code></p>
 <p>Переданные аргументы можно получить, создав новый массив без первых двух параметров:
-
-    const args = process.argv.slice(2)
-
-
+<code>const args = process.argv.slice(2)</code></p>
 <p>Если у нас имеется один аргумент без индекса (ключа):
-
-    node app.js joe
-
+<code>node app.js joe</code></p>
 <p>мы можем получить его следующим образом:
-
-    const args = process.argv.slice(2)
-    args[0]
-
+<code>const args = process.argv.slice(2)
+args[0]</code></p>
 <p>В этом случае:
-
-    node app.js name=joe
-
-<p><span>args[0]</span> - это <span>name=joe</span>, поэтому нам нужно его разобрать. Лучшим способом это сделать является использование библиотеки <a href="https://www.npmjs.com/package/minimist">minimist</a>, предназначенной для работы с аргументами:
-
-    const args = require('minimist')(process.argv.slice(2))
-    args['name'] // joe
-
+<code>node app.js name=joe</code></p>
+<p>args[0] - это name=joe, поэтому нам нужно его разобрать. Лучшим способом это сделать является использование библиотеки <a href="https://www.npmjs.com/package/minimist">minimist</a>, предназначенной для работы с аргументами:
+<code>const args = require('minimist')(process.argv.slice(2))
+args['name'] // joe</code></p>
 <p>Здесь необходимо использовать двойное тире перед каждым аргументом:
-
-node app.js --name=joe          </div>
+<code>node app.js --name=joe</code></p>          </div>
       </div>
   </div>
 

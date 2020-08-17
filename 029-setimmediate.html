@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">029.  SetImmediate()</h2>
+              <h2 class="size-7 module l-12 fix align-center">029. SetImmediate()</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,20 +77,14 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>29. SetImmediate()</h3>
-
-<p>Когда вам необходимо выполнить код асинхронно, но максимально быстро, одним из способов это сделать является использование функции <span>setImmediate()</span>.
-
-    setImmediate(() => {
+<p>Когда вам необходимо выполнить код асинхронно, но максимально быстро, одним из способов это сделать является использование функции setImmediate(). 
+<code>setImmediate(() =&gt; {
         // код 
-    })
-
-<p>Функция, переданная <span>setImmediate()</span> в качестве аргумента - это колбек, выполняемый на следующей итерации цикла событий. 
-
-<p>Чем <span>setImmediate()</span> отличается от <span>setTimeout(() => {}, 0)</span> и <span>process.nextTick()</span>? 
-
-<p>Функция, переданная <span>process.nextTick()</span> выполняется на текущей итерации цикла событий, после выполнения всех операций. Это означает, что такая функция всегда выполняется перед <span>setTimeout()</span> и <span>setImmediate()</span>. 
-
-<p><span>setTimeout()</span> с нулевой задержкой очень похожа на <span>setImmediate()</span>. Порядок выполнения зависит от различных факторов, обе функции запускаются в начале следующей итерации цикла событий.          </div>
+    })</code></p>
+<p>Функция, переданная setImmediate() в качестве аргумента - это колбек, выполняемый на следующей итерации цикла событий. </p>
+<p>Чем setImmediate() отличается от setTimeout(() => {}, 0) и process.nextTick()? </p>
+<p>Функция, переданная process.nextTick() выполняется на текущей итерации цикла событий, после выполнения всех операций. Это означает, что такая функция всегда выполняется перед setTimeout() и setImmediate(). </p>
+<p>setTimeout() с нулевой задержкой очень похожа на setImmediate(). Порядок выполнения зависит от различных факторов, обе функции запускаются в начале следующей итерации цикла событий.</p>          </div>
       </div>
   </div>
 

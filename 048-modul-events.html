@@ -53,16 +53,8 @@
             </span>
              
           </li> -->
-              <li>
-                  <a href="./category/kozarada.html">Kozarada</a>
-                  
-              </li>
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
-              </li>
-              <li>
-                  <a href="./category/translations.html">translations</a>
                   
               </li>
       </ul>
@@ -71,10 +63,10 @@
 <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">048.  Модуль events</h2>
+              <h2 class="size-7 module l-12 fix align-center">048. Модуль events</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-16T18:09:10+02:00">
-                Published: Вс 16 Август 2020
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -85,109 +77,63 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>48. Модуль events</h3>
-
-<p>Модуль <span>events</span> предоставляет класс EventEmitter, предназначенный для обработки событий.
-
-    const EventEmitter = require('events')
-    const door = new EventEmitter()
-
-<p>Обработчик событий сам вызывает два события:
-
+<p>Модуль events предоставляет класс EventEmitter, предназначенный для обработки событий. 
+<code>const EventEmitter = require('events')
+const door = new EventEmitter()</code></p>
+<p>Обработчик событий сам вызывает два события:</p>
 <ul>
-    <li><span>newListener</span> - при добавлении обработчика</li>
-    <li><span>removeListener</span> - при удалении обработчика</li>
+<li>newListener - при добавлении обработчика</li>
+<li>removeListener - при удалении обработчика</li>
 </ul>
-
-<p>Рассмотрим наиболее полезные методы данного модуля: 
-
+<p>Рассмотрим наиболее полезные методы данного модуля: </p>
 <h5>emitter.addListener()</h5>
-
-<p>Является алиасом для <span>emitter.on()</span>. 
-
+<p>Является алиасом для emitter.on(). </p>
 <h5>emitter.emit()</h5>
-
 <p>Вызывает событие. При этом последовательно вызываются все зарегистрированные обработчики. 
-
-    door.emit('slam') // вызываем событие 'slam'
-
+<code>door.emit('slam') // вызываем событие 'slam'</code></p>
 <h5>emitter.eventNames()</h5>
-
-<p>Возвращает массив строк, представляющих собой события, зарегистрированные для текущего объекта <span>EventEmitter</span>: 
-
-
-    door.eventsName()
-
+<p>Возвращает массив строк, представляющих собой события, зарегистрированные для текущего объекта EventEmitter: 
+<code>door.eventsName()</code></p>
 <h5>emitter.getMaxListeners()</h5>
-
-<p>Возвращает количество обработчиков, которые могут быть зарегистрированы для одного объекта <span>EventEmitter</span>, обычно это число равняется 10, но оно может быть увеличено или уменьшено посредством <span>setMaxListeners()</span>: 
-
-
-    door.getMaxListeners()
-
+<p>Возвращает количество обработчиков, которые могут быть зарегистрированы для одного объекта EventEmitter, обычно это число равняется 10, но оно может быть увеличено или уменьшено посредством setMaxListeners(): 
+<code>door.getMaxListeners()</code></p>
 <h5>emitter.listenerCount()</h5>
-
 <p>Возвращает количество обработчиков события, переданного в качестве аргумента: 
-
-
-    door.listenerCount('open')
-
+<code>door.listenerCount('open')</code></p>
 <h5>emitter.off()</h5>
-
-<p>Алиас для <span>emitter.removeListener()</span>, появившийся в Node.js 10. 
-
+<p>Алиас для emitter.removeListener(), появившийся в Node.js 10. </p>
 <h5>emitter.on()</h5>
-
-<p>Добавляет колбек, который вызывается при возникновении события. 
-
+<p>Добавляет колбек, который вызывается при возникновении события. </p>
 <p>Например: 
-
-
-    door.on('open', () => {
-        console.log('Door was opened')
-    })
-
+<code>door.on('open', () =&gt; {
+    console.log('Door was opened')
+})</code></p>
 <h5>emitter.once()</h5>
+<p>Добавляет колбек, который вызывается при первом после регистрации возникновении события. Этот колбек вызывается лишь один раз. </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">EventEmitter</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">ee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventEmitter</span><span class="p">()</span>
 
-<p>Добавляет колбек, который вызывается при первом после регистрации возникновении события. Этот колбек вызывается лишь один раз. 
+<span class="n">ee</span><span class="p">.</span><span class="n">once</span><span class="p">(</span><span class="s1">&#39;my-event&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="o">//</span> <span class="err">вызвать</span> <span class="err">колбек</span> <span class="err">один</span> <span class="err">раз</span> 
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
 
-
-    const EventEmitter = require('events')
-    const ee = new EventEmitter()
-
-    ee.once('my-event', () => {
-        // вызвать колбек один раз 
-    })
 
 <h5>emitter.prependListener()</h5>
-
-<p>Когда вы добавляете обработчик с помощью <span>on</span> или <span>addListener</span>, данный обработчик добавляется в конец очереди обработчиков и вызывается последним. Посредством <span>prependListener</span> обработчик добавляется в начало очереди. 
-
+<p>Когда вы добавляете обработчик с помощью on или addListener, данный обработчик добавляется в конец очереди обработчиков и вызывается последним. Посредством prependListener обработчик добавляется в начало очереди. </p>
 <h5>emitter.prependOnceListener()</h5>
-
-<p>Аналогично <span>emitter.prependListener()</span>, за исключением того, что колбек вызывается только один раз. 
-
+<p>Аналогично emitter.prependListener(), за исключением того, что колбек вызывается только один раз. </p>
 <h5>emitter.removeAllListeners()</h5>
-
-<p>Удаляет все обработчики для объекта <span>EventEmitter</span>, обрабатывающие определенное событие: 
-
-
-    door.removeAllListeners('open')
-
+<p>Удаляет все обработчики для объекта EventEmitter, обрабатывающие определенное событие: 
+<code>door.removeAllListeners('open')</code></p>
 <h5>emitter.removeListener()</h5>
-
 <p>Удаляет определенный обработчик. Для этого нужно сохранить колбек в переменную: 
-
-
-    const doSomething = () => {}
-    door.on('open', doSomething)
-    door.removeListener('open', doSomething)
-
+<code>const doSomething = () =&gt; {}
+door.on('open', doSomething)
+door.removeListener('open', doSomething)</code></p>
 <h5>emitter.setMaxListeners()</h5>
-
-<p>Устанавливает максимальное количество обработчиков, которые можно добавить для объекта <span>EventEmitter</span>: 
-
-
-    door.setMaxListeners(50)          </div>
+<p>Устанавливает максимальное количество обработчиков, которые можно добавить для объекта EventEmitter: 
+<code>door.setMaxListeners(50)</code></p>          </div>
       </div>
   </div>
 
