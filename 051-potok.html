@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>051. Поток</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="stylesheet" href="./theme/products.css" />
+</head>
+
+<body id="page-top" class=" js">
+  <div class="grid">
+    <header id="header" class="l-12 l-fix center vline header">
+      <strong><i style="display: none;"></i><a href="./">Azeevrt</a> <i style="font-size: 0.5em">For everyone and for me</i></strong>
+
+      <!-- 
+
+      <strong><a href="#">Azeervt</a>
+          <a href="/mail/">Email</a></strong>
+        -->
+      <div class="module left l-0 m-1 s-1 fix">
+        <span class="l s-0 white service-light-hover burger icon service-light" data-toggle-nodes="body{toggle-nav},
+        .header .service-light-hover.burger.icon{service-light}" tabindex="0">Show/hide navigation</span>
+        <span class="l m-0 white service-light-hover burger icon service-light" data-toggle-nodes="body{toggle-nav},
+      .header .service-light-hover.burger.icon{service-light}" tabindex="0">Show/hide navigation</span>
+      </div>
+      <div class="container right l-1 fix">
+        <div class="module l-1 fix left align-center">
+        <!--
+        <a data-tracking-contentposition="header.icon.login" class="l s-0 white service-light-hover show-text person icon" href="#" aria-label="Login"></a>
+
+        <a data-tracking-contentposition="header.icon.login" class="l l-0 m-0  white person icon" href="#" aria-label="Login"></a>
+        -->
+        </div>
+      </div>
+    </header>
+    <nav class="fullwidth center navigation">
+        <ul class="l-12 fix">
+          <li><a href="./" data-title="Azeevrt">
+              <span class="l l-0 service home icon"></span>
+              <span class="m s-0 m-0 inactive service-hover home icon"></span></a>
+              <span class="l-0 m inactive service-hover close icon" data-unset-nodes="body{toggle-nav}, .header .burger.icon{service}"></span>
+          </li>
+          <!-- <li>
+            <span data-hide-nodes="span[data-hide-parent]{current}" data-hide-parent=".navigation > ul > li" data-toggle-nodes=".navigation span.current{open}, .navigation span:not(.current).open{open}, .navigation .current{current}">
+              Навигация
+                <span class="m-0 s-0 s inactive down icon"></span>
+                <span class="l-0 m inactive down icon"></span>
+                <span class="m-0 s-0 s service down icon"></span>
+                <span class="l-0 m service down icon"></span>
+                <span class="m-0 s-0 s white up icon"></span>
+            </span>
+             
+          </li> -->
+              <li>
+                  <a href="./category/kozarada.html">Kozarada</a>
+                  
+              </li>
+              <li class="active">
+                  <a href="./category/nodejs.html">Node.js</a>
+                  
+              </li>
+      </ul>
+    </nav>
+    
+<div class="container l-12 center ">
+      <div class="container l-12 fix">
+          <div class="container l-12 fix group-headline">
+              <h2 class="size-7 module l-12 fix align-center">051. Поток</h2>
+<footer class="post-info">
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/vrt.html">VRT</a>
+        </address>
+<p>In <a href="./category/nodejs.html">Node.js</a>.</p>
+
+</footer><!-- /.post-info -->          </div>
+          <div class="module l-12 fix vspace-s">                                
+              <h3>51. Поток</h3>
+<h5>Что такое поток?</h5>
+<p>Поток - одна из главных причин высокой производительности Node.js-приложений. </p>
+<p>Это способ чтения/записи файлов, работы с сетью или любого другого обмена информацией между конечными устройствами. </p>
+<p>Потоки не являются уникальными для Node.js. Они появились в операционных системах семейства Unix, программы могут взаимодействовать друг с другом с помощью потоков через оператор "pipe" (|). </p>
+<p>Например, когда вы указываете программе прочитать файл, файл считывается в память от начала до конца, затем вы его обрабатываете. </p>
+<p>Потоки позволяют читать и обрабатывать файл по частям без его помещения в память. 
+Node.js предоставляет <a href="https://nodejs.org/api/stream.html">модуль поток</a>. Все потоки являются экземплярами EventEmitter. </p>
+<h5>Почему потоки?</h5>
+<p>Потоки по сравнению с другими способами получения данных обладают двумя главными преимуществами:</p>
+<ul>
+<li>эффективное использование памяти: вам не нужно загружать все данные в память перед их использованием</li>
+<li>повышение производительности: данные можно использовать сразу, не дожидаясь окончания их получения</li>
+</ul>
+<h5>Пример потока</h5>
+<p>Типичным примером использования потока является чтение файла с диска. </p>
+<p>Данные можно прочитать с помощью модуля fs и отправить в ответе при установлении соединения с сервером: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">http</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+
+<span class="n">cnst</span> <span class="n">server</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">createServer</span><span class="p">((</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">fs</span><span class="p">.</span><span class="n">readFile</span><span class="p">(</span><span class="n">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/data.txt&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">res</span><span class="p">.</span><span class="k">end</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+<span class="n">server</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+</pre></div>
+
+
+<p>readFile() читает содержимое файла и вызывает колбек. </p>
+<p>res.end(data) - это колбек, возвращающий содержимое файла клиенту. </p>
+<p>Если файл является большим, данная операция займет много времени. Вот тот же пример с использованием потоков: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">http</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">server</span> <span class="o">=</span> <span class="n">http</span><span class="p">.</span><span class="n">createServer</span><span class="p">((</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">const</span> <span class="n">stream</span> <span class="o">=</span> <span class="n">fs</span><span class="p">.</span><span class="n">createReadStream</span><span class="p">(</span><span class="n">__dirname</span> <span class="o">+</span> <span class="s1">&#39;/data.txt&#39;</span><span class="p">)</span>
+    <span class="n">stream</span><span class="p">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+<span class="n">server</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Теперь, вместо того, чтобы ждать завершения чтения файла, мы начинаем отправлять его клиенту по частям сразу после получения очередной порции. </p>
+<h5>pipe()</h5>
+<p>В приведенном примере имеется строка stream.pipe(res): в потоке вызывается метод pipe(). </p>
+<p>Что делает этот код? Он получает ресурсы и создает тоннель к пункту назначения. </p>
+<p>Мы вызываем его в потоке, поэтому в данном случае происходит туннелирование в HTTP-ответ. </p>
+<p>Метод pipe() возвращает поток к пункту назначения, что позволяет создавать цепочки из вызовов pipe(): 
+<code>src.pipe(dest1).pipe(dest2)</code></p>
+<p>Данная консрукция аналогична следующей:
+<code>src.pipe(dest1)
+dest1.pipe(dest2)</code></p>
+<h5>Прикладные интерфейсы Node.js, поддерживающие потоки</h5>
+<p>Из-за преимуществ, предоставляемых потоками, многие модули ядра Node.js поддерживают работу с ними: </p>
+<ul>
+<li>process.stdin - возвращает поток к устройству ввода</li>
+<li>process.stdout - возвращает поток к устройству вывода</li>
+<li>process.stderr - возвращает поток к устройству обработки ошибок</li>
+<li>fs.createReadStream() - создает поток для чтения файла</li>
+<li>fs.createWritableStream() - создает поток для записи файла</li>
+<li>net.connect() - инициализирует основанное на потоках соединение</li>
+<li>http.request() - возвращает экземпляр класса http.ClientRequest, который является потоком для записи</li>
+<li>zlib.createGzip() - сжимает данные с помощью gzip (алгоритм сжатия) внутри потока</li>
+<li>zlib.createGunzip() - разворачивает сжатый (gzip) поток</li>
+<li>zlib.createDeflate() - сжимает данные с помощью deflate (алгоритм сжатия) внутри потока</li>
+<li>zlib.createInflate() - разворачивает сжатый (deflate) поток</li>
+</ul>
+<h5>Типы потоков</h5>
+<p>Существует 4 класса потоков: </p>
+<ul>
+<li>для чтения (readable): поток, который может служить началом тоннеля, но не его концом (т.е. мы можем получать данные из потока, но не записывать их в него). При записи данных в такой поток, они помещаются в буфер и находятся там до тех пор, пока не будут прочитаны</li>
+<li>для записи (writable): поток, который может служить концом тоннеля, но не его началом (т.е. мы можем записывать данные в такой поток, но не получать их из него)</li>
+<li>дуплексные (duplex): двунаправленный поток, обычно, является комбинацией потоков для чтения и записи</li>
+<li>трансформирующиеся (transform): такие потоки похожи на дуплексные, однако точкой их выхода является преобразованная точка входа</li>
+</ul>
+<h5>Как создать поток для чтения?</h5>
+<p>Поток для чтения предоставляется модулем поток, мы инициализируем и реализуем его с помощью метода readable._read(): 
+<code>const Stream = require('stream')
+const readableStream = new Stream.Readable()</code></p>
+<p>Затем реализуем _read: 
+<code>readableStream._read = () =&gt; {}</code></p>
+<p>Реализовать _read также можно посредством опции read: 
+<code>const readableStream = new Stream.Readable({
+    read() {}
+})</code></p>
+<p>После этого мы можем помещать данные в поток: 
+<code>readableStream.push('hi!')
+readableStream.push('ho!')</code></p>
+<h5>Как создать поток для записи?</h5>
+<p>Для создания потока для записи мы расширяем стандартный объект Writable и реализуем его метод _write. </p>
+<p>Сначала мы создаем объект потока: 
+<code>const Stream = require('stream')
+const writableStream = new Stream.Writable()</code></p>
+<p>Затем реализуем _write: 
+<code>writableStream._write = (chunk, encoding, next) =&gt; {
+    console.log(chunk.toString())
+    next()
+}</code></p>
+<p>После этого мы можем его туннелировать: 
+<code>process.stdin.pipe(writableStream)</code></p>
+<h5>Как получить данные из потока для чтения?</h5>
+<p>Данные из потока для чтения можно получить с помощью потока для записи: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">Stream</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;stream&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">readableStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stream</span><span class="p">.</span><span class="n">Readable</span><span class="p">(</span><span class="err">{</span>
+    <span class="k">read</span><span class="p">()</span> <span class="err">{}</span>
+<span class="err">}</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">writableStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stream</span><span class="p">.</span><span class="n">Writable</span><span class="p">()</span>
+
+<span class="n">writableStream</span><span class="p">.</span><span class="n">_write</span> <span class="o">=</span> <span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="k">encoding</span><span class="p">,</span> <span class="k">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span>
+    <span class="k">next</span><span class="p">()</span>
+<span class="err">}</span>
+
+<span class="n">readableStream</span><span class="p">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">writableStream</span><span class="p">)</span>
+
+<span class="n">readableStream</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;hi!&#39;</span><span class="p">)</span>
+<span class="n">readableStream</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;ho!&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Вы также можете читать поток напрямую, используя событие readable: 
+<code>readableStream.on('readable', () =&gt; {
+    console.log(readableStream.read())
+})</code></p>
+<h5>Как отправить данные в поток для записи?</h5>
+<p>Используйте метод write():
+<code>writableStream.write('hey!\n')</code></p>
+<h5>Как сообщить потоку для записи, что запись данных завершена?</h5>
+<p>Используйте метод end():</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">Stream</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;stream&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">readableStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stream</span><span class="p">.</span><span class="n">Readable</span><span class="p">(</span><span class="err">{</span>
+    <span class="k">read</span><span class="p">()</span> <span class="err">{}</span>
+<span class="err">}</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">writableStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stream</span><span class="p">.</span><span class="n">Writable</span><span class="p">()</span>
+
+<span class="n">writableStream</span><span class="p">.</span><span class="n">_write</span> <span class="o">=</span> <span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="k">encoding</span><span class="p">,</span> <span class="k">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">chunk</span><span class="p">.</span><span class="n">toString</span><span class="p">())</span>
+    <span class="k">next</span><span class="p">()</span>
+<span class="err">}</span>
+
+<span class="n">readableStream</span><span class="p">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">writableStream</span><span class="p">)</span>
+
+<span class="n">readableStream</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;hi!&#39;</span><span class="p">)</span>
+<span class="n">readableStream</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="s1">&#39;ho!&#39;</span><span class="p">)</span>
+
+<span class="n">writableStream</span><span class="p">.</span><span class="k">end</span><span class="p">()</span>
+</pre></div>          </div>
+      </div>
+  </div>
+
+    <footer id="footer">
+      <div class="container l-12 backdrop-c2-light50 inverted vspace-s">
+        <div class="container l-12 fix center">
+        	<h2>Р</h2>
+	          <ul class="inline-block text align-center list">
+	                <li><a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+	          </ul><!-- /.blogroll -->
+          	<h2>A</h2>
+	          <ul class="inline-block text align-center list">
+                    <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+	          </ul><!-- /.social -->
+        </div>
+      </div>
+    </footer>
+    <a class="scroll-to-top rounded js-scroll-trigger button" href="#">
+      <i class="fas fa-angle-up"></i>
+    </a>
+  </div>
+
+<!--    -->
+
+
+<script src="./theme/products.js"></script>
+<script src="./theme/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+      }
+    });
+
+    $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+
+    $('span.link-base:not([data-hide-nodes=""])').on('click', function () {
+        var expandable = $(this);
+        var count = expandable.closest('[data-tracking-count]').data('tracking-count');
+        var eventposition = expandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+        var contentposition = expandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+        trackExpandable('page.module.part.expand', count, eventposition, contentposition);
+    });
+
+    $('span.close:not([data-hide-nodes=""])').on('click', function () {
+        var expandable = $(this);
+        if(expandable.closest('[data-tracking-count]').data('tracking-count') !== 2) {
+            var count = expandable.closest('[data-tracking-count]').data('tracking-count');
+            var eventposition = expandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+            var contentposition = expandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+            trackExpandable('page.module.part.reduce', count, eventposition, contentposition);
+        }
+    });
+
+    $('.navigation > ul > li[data-unset-nodes="#empty"] span').on('click', function () {
+        var navExpandable = $(this);
+        var navAction;
+        (!navExpandable.hasClass('open')) ? navAction = 'expand' : navAction = 'reduce';
+        var section = 'page.navigation.' + navAction;
+        var count = navExpandable.closest('[data-tracking-count]').data('tracking-count');
+        var eventposition = navExpandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+        var contentposition = navExpandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+        trackExpandable(section, count, eventposition, contentposition);
+    });
+
+    // home-button, screenSize < 980px
+    $('.header > div > span').on('click', function () {
+        var navExpandable = $(this);
+        var navAction;
+        (!navExpandable.hasClass('service')) ? navAction = 'expand': navAction = 'reduce';
+        var section = 'page.navigation.home.' + navAction;
+
+        trackExpandable(section, 2, 2, 'header.menu');
+    });
+
+    $('.navigation > ul > li span.close.icon').on('click', function () {
+        trackExpandable('page.navigation.home.reduce', 2, 2, 'header.menu');
+    });
+
+</script>
+</body>
+</html>
