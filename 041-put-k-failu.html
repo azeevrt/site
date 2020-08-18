@@ -78,13 +78,22 @@
           <div class="module l-12 fix vspace-s">                                
               <h3>41. Путь к файлу</h3>
 <p>Любой файл имеет адрес или путь. </p>
-<p>На Linux и macOS путь может выглядеть так:
-<code>/Users/joe/file.txt</code></p>
-<p>А на Windows так:
-<code>C:\\Users\\joe\\file.txt</code></p>
+<p>На Linux и macOS путь может выглядеть так:</p>
+<div class="highlight"><pre><span></span><span class="err">/Users/joe/file.txt</span>
+</pre></div>
+
+
+<p>А на Windows так:</p>
+<div class="highlight"><pre><span></span><span class="c">C:\\Users\\joe\\file.txt</span>
+</pre></div>
+
+
 <p>Следует быть очень внимательным при работе с путями в приложении, поскольку это может иметь решающее значение. </p>
-<p>Соответствующий модуль подключается следующим образом:
-<code>const path = require('path')</code></p>
+<p>Соответствующий модуль подключается следующим образом:</p>
+<div class="highlight"><pre><span></span><span class="err">const path = require(&#39;path&#39;)</span>
+</pre></div>
+
+
 <p>После этого его можно использовать. </p>
 <h5>Получение информации из path</h5>
 <p>Для извлечения информации из пути используются следующие методы:</p>
@@ -102,20 +111,38 @@
 </pre></div>
 
 
-<p>Вы можете получить название файла без расширения:
-<code>path.basename(notes, path.extname(notes)) // notes</code></p>
+<p>Вы можете получить название файла без расширения:</p>
+<div class="highlight"><pre><span></span><span class="err">path.basename(notes, path.extname(notes)) // notes</span>
+</pre></div>
+
+
 <h5>Работа с путями</h5>
-<p>Вы можете соединить две или более части пути посредством path.join():
-<code>const name = 'joe'
-path.join('/', 'Users', name, 'notes.txt')</code></p>
-<p>Абсолютный путь файла на основе относительного можно получить с помощью path.resolve():
-<code>path.resolve('joe.txt') // '/Users/joe/joe.txt'</code></p>
-<p>В данном случае, Node.js просто добавляет /joe.txt к адресу текущей (рабочей) директории. Если вы определите первый параметр - директорию, resolve использует ее как основу для второго параметра - файла:
-<code>path.resolve('tmp', 'joe.txt') // '/Users/joe/tmp/joe.txt'</code></p>
-<p>Если первый параметр начинается со слеша - это абсолютный путь: 
-<code>path.resolve('/etc', 'joe.txt') // '/etc/joe.txt'</code></p>
-<p>Еще одной полезной функцией является path.normalize(), которая пытается вычислить актуальный путь на основе относительных спецификаторов типа ., .. или двойного слеша:
-<code>path.normalize('/Users/joe/..//test.txt') // /Users/test.txt</code></p>
+<p>Вы можете соединить две или более части пути посредством path.join():</p>
+<div class="highlight"><pre><span></span><span class="err">const name = &#39;joe&#39;</span>
+<span class="err">path.join(&#39;/&#39;, &#39;Users&#39;, name, &#39;notes.txt&#39;)</span>
+</pre></div>
+
+
+<p>Абсолютный путь файла на основе относительного можно получить с помощью path.resolve():</p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;joe.txt&#39;) // &#39;/Users/joe/joe.txt&#39;</span>
+</pre></div>
+
+
+<p>В данном случае, Node.js просто добавляет /joe.txt к адресу текущей (рабочей) директории. Если вы определите первый параметр - директорию, resolve использует ее как основу для второго параметра - файла:</p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;tmp&#39;, &#39;joe.txt&#39;) // &#39;/Users/joe/tmp/joe.txt&#39;</span>
+</pre></div>
+
+
+<p>Если первый параметр начинается со слеша - это абсолютный путь: </p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;/etc&#39;, &#39;joe.txt&#39;) // &#39;/etc/joe.txt&#39;</span>
+</pre></div>
+
+
+<p>Еще одной полезной функцией является path.normalize(), которая пытается вычислить актуальный путь на основе относительных спецификаторов типа ., .. или двойного слеша:</p>
+<div class="highlight"><pre><span></span><span class="err">path.normalize(&#39;/Users/joe/..//test.txt&#39;) // /Users/test.txt</span>
+</pre></div>
+
+
 <p>resolve и normalize не проверяют, существует ли путь на самом деле. Они лишь вычисляют путь на основе полученной информации.</p>          </div>
       </div>
   </div>

@@ -77,9 +77,12 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>48. Модуль events</h3>
-<p>Модуль events предоставляет класс EventEmitter, предназначенный для обработки событий. 
-<code>const EventEmitter = require('events')
-const door = new EventEmitter()</code></p>
+<p>Модуль events предоставляет класс EventEmitter, предназначенный для обработки событий. </p>
+<div class="highlight"><pre><span></span><span class="err">const EventEmitter = require(&#39;events&#39;)</span>
+<span class="err">const door = new EventEmitter()</span>
+</pre></div>
+
+
 <p>Обработчик событий сам вызывает два события:</p>
 <ul>
 <li>newListener - при добавлении обработчика</li>
@@ -89,25 +92,40 @@ const door = new EventEmitter()</code></p>
 <h5>emitter.addListener()</h5>
 <p>Является алиасом для emitter.on(). </p>
 <h5>emitter.emit()</h5>
-<p>Вызывает событие. При этом последовательно вызываются все зарегистрированные обработчики. 
-<code>door.emit('slam') // вызываем событие 'slam'</code></p>
+<p>Вызывает событие. При этом последовательно вызываются все зарегистрированные обработчики. </p>
+<div class="highlight"><pre><span></span><span class="err">door.emit(&#39;slam&#39;) // вызываем событие &#39;slam&#39;</span>
+</pre></div>
+
+
 <h5>emitter.eventNames()</h5>
-<p>Возвращает массив строк, представляющих собой события, зарегистрированные для текущего объекта EventEmitter: 
-<code>door.eventsName()</code></p>
+<p>Возвращает массив строк, представляющих собой события, зарегистрированные для текущего объекта EventEmitter: </p>
+<div class="highlight"><pre><span></span><span class="err">door.eventsName()</span>
+</pre></div>
+
+
 <h5>emitter.getMaxListeners()</h5>
-<p>Возвращает количество обработчиков, которые могут быть зарегистрированы для одного объекта EventEmitter, обычно это число равняется 10, но оно может быть увеличено или уменьшено посредством setMaxListeners(): 
-<code>door.getMaxListeners()</code></p>
+<p>Возвращает количество обработчиков, которые могут быть зарегистрированы для одного объекта EventEmitter, обычно это число равняется 10, но оно может быть увеличено или уменьшено посредством setMaxListeners(): </p>
+<div class="highlight"><pre><span></span><span class="err">door.getMaxListeners()</span>
+</pre></div>
+
+
 <h5>emitter.listenerCount()</h5>
-<p>Возвращает количество обработчиков события, переданного в качестве аргумента: 
-<code>door.listenerCount('open')</code></p>
+<p>Возвращает количество обработчиков события, переданного в качестве аргумента: </p>
+<div class="highlight"><pre><span></span><span class="err">door.listenerCount(&#39;open&#39;)</span>
+</pre></div>
+
+
 <h5>emitter.off()</h5>
 <p>Алиас для emitter.removeListener(), появившийся в Node.js 10. </p>
 <h5>emitter.on()</h5>
 <p>Добавляет колбек, который вызывается при возникновении события. </p>
-<p>Например: 
-<code>door.on('open', () =&gt; {
-    console.log('Door was opened')
-})</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">door.on(&#39;open&#39;, () =&gt; {</span>
+<span class="err">    console.log(&#39;Door was opened&#39;)</span>
+<span class="err">})</span>
+</pre></div>
+
+
 <h5>emitter.once()</h5>
 <p>Добавляет колбек, который вызывается при первом после регистрации возникновении события. Этот колбек вызывается лишь один раз. </p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">EventEmitter</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">)</span>
@@ -124,16 +142,23 @@ const door = new EventEmitter()</code></p>
 <h5>emitter.prependOnceListener()</h5>
 <p>Аналогично emitter.prependListener(), за исключением того, что колбек вызывается только один раз. </p>
 <h5>emitter.removeAllListeners()</h5>
-<p>Удаляет все обработчики для объекта EventEmitter, обрабатывающие определенное событие: 
-<code>door.removeAllListeners('open')</code></p>
+<p>Удаляет все обработчики для объекта EventEmitter, обрабатывающие определенное событие: </p>
+<div class="highlight"><pre><span></span><span class="err">door.removeAllListeners(&#39;open&#39;)</span>
+</pre></div>
+
+
 <h5>emitter.removeListener()</h5>
-<p>Удаляет определенный обработчик. Для этого нужно сохранить колбек в переменную: 
-<code>const doSomething = () =&gt; {}
-door.on('open', doSomething)
-door.removeListener('open', doSomething)</code></p>
+<p>Удаляет определенный обработчик. Для этого нужно сохранить колбек в переменную: </p>
+<div class="highlight"><pre><span></span><span class="err">const doSomething = () =&gt; {}</span>
+<span class="err">door.on(&#39;open&#39;, doSomething)</span>
+<span class="err">door.removeListener(&#39;open&#39;, doSomething)</span>
+</pre></div>
+
+
 <h5>emitter.setMaxListeners()</h5>
-<p>Устанавливает максимальное количество обработчиков, которые можно добавить для объекта EventEmitter: 
-<code>door.setMaxListeners(50)</code></p>          </div>
+<p>Устанавливает максимальное количество обработчиков, которые можно добавить для объекта EventEmitter: </p>
+<div class="highlight"><pre><span></span><span class="err">door.setMaxListeners(50)</span>
+</pre></div>          </div>
       </div>
   </div>
 

@@ -78,129 +78,133 @@
           <div class="module l-12 fix vspace-s">                                
               <h3>49. Модуль http</h3>
 <p>Модуль http ядра Node.js является ключевым модулем для работы с сетью. </p>
-<p>Он добавляется следующим образом: 
-<code>const http = require('http')</code></p>
+<p>Он добавляется следующим образом: </p>
+<div class="highlight"><pre><span></span><span class="err">const http = require(&#39;http&#39;)</span>
+</pre></div>
+
+
 <p>Данный модуль предоставляет некоторые свойства, методы и классы. </p>
 <h5>Свойства</h5>
 <h6>http.METHODS</h6>
-<p>Данное свойство содержит список поддерживаемых HTTP-методов:
-`</p>
-<blockquote>
-<p>require('http').METHODS
-[ 'ACL',
-    'BIND',
-    'CHECKOUT',
-    'CONNECT',
-    'COPY',
-    'DELETE',
-    'GET',
-    'HEAD',
-    'LINK',
-    'LOCK',
-    'M-SEARCH',
-    'MERGE',
-    'MKACTIVITY',
-    'MKCALENDAR',
-    'MKCOL',
-    'MOVE',
-    'NOTIFY',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PROPFIND',
-    'PROPPATCH',
-    'PURGE',
-    'PUT',
-    'REBIND',
-    'REPORT',
-    'SEARCH',
-    'SUBSCRIBE',
-    'TRACE',
-    'UNBIND',
-    'UNLINK',
-    'UNLOCK',
-    'UNSUBSCRIBE' ]
-`</p>
-</blockquote>
+<p>Данное свойство содержит список поддерживаемых HTTP-методов:</p>
+<div class="highlight"><pre><span></span><span class="err">&gt; require(&#39;http&#39;).METHODS</span>
+<span class="err">[ &#39;ACL&#39;,</span>
+<span class="err">&#39;BIND&#39;,</span>
+<span class="err">&#39;CHECKOUT&#39;,</span>
+<span class="err">&#39;CONNECT&#39;,</span>
+<span class="err">&#39;COPY&#39;,</span>
+<span class="err">&#39;DELETE&#39;,</span>
+<span class="err">&#39;GET&#39;,</span>
+<span class="err">&#39;HEAD&#39;,</span>
+<span class="err">&#39;LINK&#39;,</span>
+<span class="err">&#39;LOCK&#39;,</span>
+<span class="err">&#39;M-SEARCH&#39;,</span>
+<span class="err">&#39;MERGE&#39;,</span>
+<span class="err">&#39;MKACTIVITY&#39;,</span>
+<span class="err">&#39;MKCALENDAR&#39;,</span>
+<span class="err">&#39;MKCOL&#39;,</span>
+<span class="err">&#39;MOVE&#39;,</span>
+<span class="err">&#39;NOTIFY&#39;,</span>
+<span class="err">&#39;OPTIONS&#39;,</span>
+<span class="err">&#39;PATCH&#39;,</span>
+<span class="err">&#39;POST&#39;,</span>
+<span class="err">&#39;PROPFIND&#39;,</span>
+<span class="err">&#39;PROPPATCH&#39;,</span>
+<span class="err">&#39;PURGE&#39;,</span>
+<span class="err">&#39;PUT&#39;,</span>
+<span class="err">&#39;REBIND&#39;,</span>
+<span class="err">&#39;REPORT&#39;,</span>
+<span class="err">&#39;SEARCH&#39;,</span>
+<span class="err">&#39;SUBSCRIBE&#39;,</span>
+<span class="err">&#39;TRACE&#39;,</span>
+<span class="err">&#39;UNBIND&#39;,</span>
+<span class="err">&#39;UNLINK&#39;,</span>
+<span class="err">&#39;UNLOCK&#39;,</span>
+<span class="err">&#39;UNSUBSCRIBE&#39; ]</span>
+</pre></div>
+
+
 <h6>http.STATUS_CODE</h6>
-<p>Данное свойство содержит список статус-кодов HTTP-ответа и их описание: 
-`</p>
-<blockquote>
-<p>require('http').STATUS_CODES
-{ '100': 'Continue',
-    '101': 'Switching Protocols',
-    '102': 'Processing',
-    '200': 'OK',
-    '201': 'Created',
-    '202': 'Accepted',
-    '203': 'Non-Authoritative Information',
-    '204': 'No Content',
-    '205': 'Reset Content',
-    '206': 'Partial Content',
-    '207': 'Multi-Status',
-    '208': 'Already Reported',
-    '226': 'IM Used',
-    '300': 'Multiple Choices',
-    '301': 'Moved Permanently',
-    '302': 'Found',
-    '303': 'See Other',
-    '304': 'Not Modified',
-    '305': 'Use Proxy',
-    '307': 'Temporary Redirect',
-    '308': 'Permanent Redirect',
-    '400': 'Bad Request',
-    '401': 'Unauthorized',
-    '402': 'Payment Required',
-    '403': 'Forbidden',
-    '404': 'Not Found',
-    '405': 'Method Not Allowed',
-    '406': 'Not Acceptable',
-    '407': 'Proxy Authentication Required',
-    '408': 'Request Timeout',
-    '409': 'Conflict',
-    '410': 'Gone',
-    '411': 'Length Required',
-    '412': 'Precondition Failed',
-    '413': 'Payload Too Large',
-    '414': 'URI Too Long',
-    '415': 'Unsupported Media Type',
-    '416': 'Range Not Satisfiable',
-    '417': 'Expectation Failed',
-    '418': 'I\'m a teapot',
-    '421': 'Misdirected Request',
-    '422': 'Unprocessable Entity',
-    '423': 'Locked',
-    '424': 'Failed Dependency',
-    '425': 'Unordered Collection',
-    '426': 'Upgrade Required',
-    '428': 'Precondition Required',
-    '429': 'Too Many Requests',
-    '431': 'Request Header Fields Too Large',
-    '451': 'Unavailable For Legal Reasons',
-    '500': 'Internal Server Error',
-    '501': 'Not Implemented',
-    '502': 'Bad Gateway',
-    '503': 'Service Unavailable',
-    '504': 'Gateway Timeout',
-    '505': 'HTTP Version Not Supported',
-    '506': 'Variant Also Negotiates',
-    '507': 'Insufficient Storage',
-    '508': 'Loop Detected',
-    '509': 'Bandwidth Limit Exceeded',
-    '510': 'Not Extended',
-    '511': 'Network Authentication Required' }
-`</p>
-</blockquote>
+<p>Данное свойство содержит список статус-кодов HTTP-ответа и их описание: </p>
+<div class="highlight"><pre><span></span><span class="err">&gt; require(&#39;http&#39;).STATUS_CODES</span>
+<span class="err">{ &#39;100&#39;: &#39;Continue&#39;,</span>
+<span class="err">&#39;101&#39;: &#39;Switching Protocols&#39;,</span>
+<span class="err">&#39;102&#39;: &#39;Processing&#39;,</span>
+<span class="err">&#39;200&#39;: &#39;OK&#39;,</span>
+<span class="err">&#39;201&#39;: &#39;Created&#39;,</span>
+<span class="err">&#39;202&#39;: &#39;Accepted&#39;,</span>
+<span class="err">&#39;203&#39;: &#39;Non-Authoritative Information&#39;,</span>
+<span class="err">&#39;204&#39;: &#39;No Content&#39;,</span>
+<span class="err">&#39;205&#39;: &#39;Reset Content&#39;,</span>
+<span class="err">&#39;206&#39;: &#39;Partial Content&#39;,</span>
+<span class="err">&#39;207&#39;: &#39;Multi-Status&#39;,</span>
+<span class="err">&#39;208&#39;: &#39;Already Reported&#39;,</span>
+<span class="err">&#39;226&#39;: &#39;IM Used&#39;,</span>
+<span class="err">&#39;300&#39;: &#39;Multiple Choices&#39;,</span>
+<span class="err">&#39;301&#39;: &#39;Moved Permanently&#39;,</span>
+<span class="err">&#39;302&#39;: &#39;Found&#39;,</span>
+<span class="err">&#39;303&#39;: &#39;See Other&#39;,</span>
+<span class="err">&#39;304&#39;: &#39;Not Modified&#39;,</span>
+<span class="err">&#39;305&#39;: &#39;Use Proxy&#39;,</span>
+<span class="err">&#39;307&#39;: &#39;Temporary Redirect&#39;,</span>
+<span class="err">&#39;308&#39;: &#39;Permanent Redirect&#39;,</span>
+<span class="err">&#39;400&#39;: &#39;Bad Request&#39;,</span>
+<span class="err">&#39;401&#39;: &#39;Unauthorized&#39;,</span>
+<span class="err">&#39;402&#39;: &#39;Payment Required&#39;,</span>
+<span class="err">&#39;403&#39;: &#39;Forbidden&#39;,</span>
+<span class="err">&#39;404&#39;: &#39;Not Found&#39;,</span>
+<span class="err">&#39;405&#39;: &#39;Method Not Allowed&#39;,</span>
+<span class="err">&#39;406&#39;: &#39;Not Acceptable&#39;,</span>
+<span class="err">&#39;407&#39;: &#39;Proxy Authentication Required&#39;,</span>
+<span class="err">&#39;408&#39;: &#39;Request Timeout&#39;,</span>
+<span class="err">&#39;409&#39;: &#39;Conflict&#39;,</span>
+<span class="err">&#39;410&#39;: &#39;Gone&#39;,</span>
+<span class="err">&#39;411&#39;: &#39;Length Required&#39;,</span>
+<span class="err">&#39;412&#39;: &#39;Precondition Failed&#39;,</span>
+<span class="err">&#39;413&#39;: &#39;Payload Too Large&#39;,</span>
+<span class="err">&#39;414&#39;: &#39;URI Too Long&#39;,</span>
+<span class="err">&#39;415&#39;: &#39;Unsupported Media Type&#39;,</span>
+<span class="err">&#39;416&#39;: &#39;Range Not Satisfiable&#39;,</span>
+<span class="err">&#39;417&#39;: &#39;Expectation Failed&#39;,</span>
+<span class="err">&#39;418&#39;: &#39;I\&#39;m a teapot&#39;,</span>
+<span class="err">&#39;421&#39;: &#39;Misdirected Request&#39;,</span>
+<span class="err">&#39;422&#39;: &#39;Unprocessable Entity&#39;,</span>
+<span class="err">&#39;423&#39;: &#39;Locked&#39;,</span>
+<span class="err">&#39;424&#39;: &#39;Failed Dependency&#39;,</span>
+<span class="err">&#39;425&#39;: &#39;Unordered Collection&#39;,</span>
+<span class="err">&#39;426&#39;: &#39;Upgrade Required&#39;,</span>
+<span class="err">&#39;428&#39;: &#39;Precondition Required&#39;,</span>
+<span class="err">&#39;429&#39;: &#39;Too Many Requests&#39;,</span>
+<span class="err">&#39;431&#39;: &#39;Request Header Fields Too Large&#39;,</span>
+<span class="err">&#39;451&#39;: &#39;Unavailable For Legal Reasons&#39;,</span>
+<span class="err">&#39;500&#39;: &#39;Internal Server Error&#39;,</span>
+<span class="err">&#39;501&#39;: &#39;Not Implemented&#39;,</span>
+<span class="err">&#39;502&#39;: &#39;Bad Gateway&#39;,</span>
+<span class="err">&#39;503&#39;: &#39;Service Unavailable&#39;,</span>
+<span class="err">&#39;504&#39;: &#39;Gateway Timeout&#39;,</span>
+<span class="err">&#39;505&#39;: &#39;HTTP Version Not Supported&#39;,</span>
+<span class="err">&#39;506&#39;: &#39;Variant Also Negotiates&#39;,</span>
+<span class="err">&#39;507&#39;: &#39;Insufficient Storage&#39;,</span>
+<span class="err">&#39;508&#39;: &#39;Loop Detected&#39;,</span>
+<span class="err">&#39;509&#39;: &#39;Bandwidth Limit Exceeded&#39;,</span>
+<span class="err">&#39;510&#39;: &#39;Not Extended&#39;,</span>
+<span class="err">&#39;511&#39;: &#39;Network Authentication Required&#39; }</span>
+</pre></div>
+
+
 <h6>http.globalAgent</h6>
 <p>Содержит ссылку на глобальный экземпляр объекта Agent, который является экземпляром класса http.Agent. </p>
 <p>Этот класс используется для управления постоянством соединения и возможностью его повторного использования HTTP-клиентами, и является важным компонентом работы с сетью. </p>
 <h5>Методы</h5>
 <h6>http.createServer()</h6>
 <p>Возвращает новый экземпляр класса http.Server. </p>
-<p>Например: 
-<code>const server = http.createServer((req, res) =&gt; {
-    // обрабатываем запросы
-})</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">const server = http.createServer((req, res) =&gt; {</span>
+<span class="err">    // обрабатываем запросы</span>
+<span class="err">})</span>
+</pre></div>
+
+
 <h6>http.request()</h6>
 <p>Отправляет запрос на сервер, создавая экземпляр класса http.ClientRequest. </p>
 <h6>http.get()</h6>
@@ -235,10 +239,13 @@
 </ul>
 <h6>http.ServerResponse</h6>
 <p>Создается http.Server и передается в качестве второго аргумента событию request. </p>
-<p>В коде, обычно, именуется как res: 
-<code>const server = http.createServer((req, res) =&gt; {
-    // res - это объект http.ServerResponse 
-})</code></p>
+<p>В коде, обычно, именуется как res: </p>
+<div class="highlight"><pre><span></span><span class="err">const server = http.createServer((req, res) =&gt; {</span>
+<span class="err">    // res - это объект http.ServerResponse </span>
+<span class="err">})</span>
+</pre></div>
+
+
 <p>В каждом обработчике вызывается метод end(), уведомляющий сервер, что сообщение готово к отправке клиенту. Этот метод должен вызываться в каждом ответе. </p>
 <p>Для работы с HTTP-заголовками используются следующие методы: </p>
 <ul>
@@ -251,9 +258,12 @@
 </ul>
 <p>После работы с заголовками вы можете отправить их клиенту с помощью response.writeHead(), который принимает статус-код, опциональное сообщение о статусе и объект заголовков. </p>
 <p>Для отправки данных клиенту в теле ответа следует использовать write(). Данный метод отправит буфферизованные данные в виде потока ответа. </p>
-<p>Если заголовки не были отправлены посредством response.writeHead(), сначала будут отправлены заголовки со статус-кодом и сообщением, которые можно редактировать с помощью statusCode и statusMessage: 
-<code>response.statusCode = 500 
-response.statusMessage = 'Internal Server Error'</code></p>
+<p>Если заголовки не были отправлены посредством response.writeHead(), сначала будут отправлены заголовки со статус-кодом и сообщением, которые можно редактировать с помощью statusCode и statusMessage: </p>
+<div class="highlight"><pre><span></span><span class="err">response.statusCode = 500 </span>
+<span class="err">response.statusMessage = &#39;Internal Server Error&#39;</span>
+</pre></div>
+
+
 <h6>http.IncomingMessage</h6>
 <p>Объект http.IncomingMessage создается: </p>
 <ul>

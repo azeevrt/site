@@ -101,26 +101,30 @@
 <p>При инициализации сервера посредством http.createServer(), колбек вызывается, когда сервер получил все HTTP-заголовки, но не тело запроса. </p>
 <p>Объект request, переданный в колбек соединения, это поток. </p>
 <p>Поэтому мы должны отслеживать получение содержимого тела запроса, которое поступает по частям. </p>
-<p>Сначала мы получаем данные, обрабатывая событие потока data, и когда данные заканчиваются, возникает событие end:
-<code>const server = http.createServer((req, res) =&gt; {
+<p>Сначала мы получаем данные, обрабатывая событие потока data, и когда данные заканчиваются, возникает событие end:</p>
+<div class="highlight"><pre><span></span>const server = http.createServer((req, res) =&gt; {
     // мы можем получить заголовки 
-    req.on('data', chunk =&gt; {
-        console.log(\\</code>Data chunk available: ${chunk}\<code>)
+    req.on(&#39;data&#39;, chunk =&gt; {
+        console.log(\\`Data chunk available: <span class="cp">${</span><span class="n">chunk</span><span class="cp">}</span>\\`)
     })
-    req.on('end', () =&gt; {
+    req.on(&#39;end&#39;, () =&gt; {
         // данные получены в полном объеме
     })
-})</code></p>
-<p>Поэтому для получения данных, предположим, что мы ожидаем получить строку, мы должны помещать части в массив: 
-<code>const server = http.createServer((req, res) =&gt; {
-    let data = []
-    req.on('data', chunk =&gt; {
-        data.push(chunk)
-    })
-    req.on('end', () =&gt; {
-        JSON.parse(data).todo // 'Buy the milk'
-    })
-})</code></p>          </div>
+})
+</pre></div>
+
+
+<p>Поэтому для получения данных, предположим, что мы ожидаем получить строку, мы должны помещать части в массив: </p>
+<div class="highlight"><pre><span></span><span class="err">const server = http.createServer((req, res) =&gt; {</span>
+<span class="err">    let data = []</span>
+<span class="err">    req.on(&#39;data&#39;, chunk =&gt; {</span>
+<span class="err">        data.push(chunk)</span>
+<span class="err">    })</span>
+<span class="err">    req.on(&#39;end&#39;, () =&gt; {</span>
+<span class="err">        JSON.parse(data).todo // &#39;Buy the milk&#39;</span>
+<span class="err">    })</span>
+<span class="err">})</span>
+</pre></div>          </div>
       </div>
   </div>
 

@@ -79,34 +79,59 @@
               <h3>10. Передача аргументов из командной строки</h3>
 <p>При запуске Node.js-приложения вы можете передать ему любое количество аргументов. </p>
 <p>Аргументы могут быть автономными или содержать ключ и значение. </p>
-<p>Например:
-<code>node app.js joe</code></p>
-<p>или 
-<code>node app.js name=joe</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">node app.js joe</span>
+</pre></div>
+
+
+<p>или </p>
+<div class="highlight"><pre><span></span><span class="err">node app.js name=joe</span>
+</pre></div>
+
+
 <p>От этого зависит, как вы будете извлекать значения в Node.js-коде. </p>
 <p>Для извлечение значений используется встроенный объект process. </p>
 <p>В свойстве argv этого объекта содержится массив аргументов, переданных из командной строки. </p>
 <p>Первый аргумент - это полный путь команды node. </p>
 <p>Второй - полный путь исполняемого файла. </p>
 <p>Интересующие нас аргументы начинаются с третьей позиции (индекса массива). </p>
-<p>Вы можете перебрать аргументы (включая путь node и путь файла) в цикле:
-<code>process.argv.forEach((val, index) =&gt; {
-    console.log(\\</code>${index}: ${val}\<code>)
-})</code></p>
-<p>Переданные аргументы можно получить, создав новый массив без первых двух параметров:
-<code>const args = process.argv.slice(2)</code></p>
-<p>Если у нас имеется один аргумент без индекса (ключа):
-<code>node app.js joe</code></p>
-<p>мы можем получить его следующим образом:
-<code>const args = process.argv.slice(2)
-args[0]</code></p>
-<p>В этом случае:
-<code>node app.js name=joe</code></p>
-<p>args[0] - это name=joe, поэтому нам нужно его разобрать. Лучшим способом это сделать является использование библиотеки <a href="https://www.npmjs.com/package/minimist">minimist</a>, предназначенной для работы с аргументами:
-<code>const args = require('minimist')(process.argv.slice(2))
-args['name'] // joe</code></p>
-<p>Здесь необходимо использовать двойное тире перед каждым аргументом:
-<code>node app.js --name=joe</code></p>          </div>
+<p>Вы можете перебрать аргументы (включая путь node и путь файла) в цикле:</p>
+<div class="highlight"><pre><span></span><span class="k">proc</span><span class="nb">es</span><span class="nv">s.argv.forEach</span><span class="p">((</span><span class="nv">val</span><span class="p">,</span> <span class="nv">index</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="nf">console.log</span><span class="p">(</span><span class="err">\\</span><span class="s">`${index}: ${val}\\`</span><span class="p">)</span>
+<span class="err">})</span>
+</pre></div>
+
+
+<p>Переданные аргументы можно получить, создав новый массив без первых двух параметров:</p>
+<div class="highlight"><pre><span></span><span class="err">const args = process.argv.slice(2)</span>
+</pre></div>
+
+
+<p>Если у нас имеется один аргумент без индекса (ключа):</p>
+<div class="highlight"><pre><span></span><span class="err">node app.js joe</span>
+</pre></div>
+
+
+<p>мы можем получить его следующим образом:</p>
+<div class="highlight"><pre><span></span><span class="err">const args = process.argv.slice(2)</span>
+<span class="err">args[0]</span>
+</pre></div>
+
+
+<p>В этом случае:</p>
+<div class="highlight"><pre><span></span><span class="err">node app.js name=joe</span>
+</pre></div>
+
+
+<p><code>args[0]</code> - это name=joe, поэтому нам нужно его разобрать. Лучшим способом это сделать является использование библиотеки <a href="https://www.npmjs.com/package/minimist">minimist</a>, предназначенной для работы с аргументами:</p>
+<div class="highlight"><pre><span></span><span class="err">const args = require(&#39;minimist&#39;)(process.argv.slice(2))</span>
+<span class="err">args[&#39;name&#39;] // joe</span>
+</pre></div>
+
+
+<p>Здесь необходимо использовать двойное тире перед каждым аргументом:</p>
+<div class="highlight"><pre><span></span><span class="err">node app.js --name=joe</span>
+</pre></div>          </div>
       </div>
   </div>
 

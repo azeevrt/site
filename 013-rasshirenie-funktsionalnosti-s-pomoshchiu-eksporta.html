@@ -109,15 +109,24 @@
 
 
 <p>или так </p>
-<p><code>exports.car = {
-    brand: 'Ford',
-    model: 'Fiesta'
-}</code></p>
+<div class="highlight"><pre><span></span><span class="err">exports.car = {</span>
+<span class="err">    brand: &#39;Ford&#39;,</span>
+<span class="err">    model: &#39;Fiesta&#39;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <p>Для использования данного объекта в другом файле необходимо сделать ссылку на импорт:</p>
-<p><code>const items = require('./items')
-items.car</code></p>
+<div class="highlight"><pre><span></span><span class="err">const items = require(&#39;./items&#39;)</span>
+<span class="err">items.car</span>
+</pre></div>
+
+
 <p>или </p>
-<p><code>const car = require('./items').car</code></p>
+<div class="highlight"><pre><span></span><span class="err">const car = require(&#39;./items&#39;).car</span>
+</pre></div>
+
+
 <p>В чем разница между module.exports и exports? </p>
 <p>Первый экспортирует объект, на который ссылается, второй - свойство объекта. </p>          </div>
       </div>

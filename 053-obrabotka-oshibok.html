@@ -79,76 +79,101 @@
               <h3>53. Обработка ошибок</h3>
 <p>Ошибки в Node.js обрабатываются с помощью исключений. </p>
 <h5>Создание исключения</h5>
-<p>Исключение создается с помощью ключевого слова throw. 
-<code>throw value</code></p>
+<p>Исключение создается с помощью ключевого слова throw. </p>
+<div class="highlight"><pre><span></span><span class="err">throw value</span>
+</pre></div>
+
+
 <p>При достижении данной строки кода выполнение программы останавливается и управление передается ближайшему обработчику исключений. </p>
 <p>Как правило, в клиентском коде value может быть любым допустимым типом данных, таким как строка, число или объект. </p>
 <p>В Node.js мы выбрасываем только объекты ошибки. </p>
 <h5>Объект ошибки</h5>
-<p>Объект ошибки - это объект, который является либо экземпляром объекта Error, либо наследником класса Error, предоставляемого <a href="https://nodejs.org/api/errors.html">модулем Error</a>. 
-<code>throw new Error('Ran out of coffee')</code></p>
-<p>Или 
-<code>class NotEnoughCoffeeError extends Error {
-    // ...
-}
-throw new NotEnoughCoffeeError()</code></p>
+<p>Объект ошибки - это объект, который является либо экземпляром объекта Error, либо наследником класса Error, предоставляемого <a href="https://nodejs.org/api/errors.html">модулем Error</a>. </p>
+<div class="highlight"><pre><span></span><span class="err">throw new Error(&#39;Ran out of coffee&#39;)</span>
+</pre></div>
+
+
+<p>Или </p>
+<div class="highlight"><pre><span></span><span class="err">class NotEnoughCoffeeError extends Error {</span>
+<span class="err">    // ...</span>
+<span class="err">}</span>
+<span class="err">throw new NotEnoughCoffeeError()</span>
+</pre></div>
+
+
 <h5>Обработка исключений</h5>
 <p>Исключение обрабатывается в блоке try/catch. 
-Любое исключение, возникшее в try, обрабатывается ближайшим catch. 
-<code>try {
-    // ... 
-} catch (e) {}</code></p>
-<p>e - это значение исключения. </p>
+Любое исключение, возникшее в try, обрабатывается ближайшим catch. </p>
+<div class="highlight"><pre><span></span><span class="err">try {</span>
+<span class="err">    // ... </span>
+<span class="err">} catch (e) {}</span>
+</pre></div>
+
+
+<p>'e' - это значение исключения. </p>
 <p>Вы можете добавить несколько обработчиков для обработки разных ошибок. </p>
 <h5>Обработка непойманных (неперехваченных) исключений</h5>
 <p>Если в процессе выполнения программы возникнет неперехваченное исключение, выполнение программы остановится. </p>
-<p>Для решения данной проблемы необходимо добавить обработчик события uncaughtException объекта process: 
-<code>process.on('uncaughtException', err =&gt; {
-    console.error('There was an uncaught error', err)
-    process.exit(1) // вызов данного метода является обязательным
-})</code></p>
+<p>Для решения данной проблемы необходимо добавить обработчик события uncaughtException объекта process: </p>
+<div class="highlight"><pre><span></span><span class="k">proc</span><span class="nb">es</span><span class="nv">s.on</span><span class="p">(</span><span class="s">&#39;uncaughtException&#39;</span><span class="p">,</span> <span class="nv">err</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="nf">console.error</span><span class="p">(</span><span class="s">&#39;There was an uncaught error&#39;</span><span class="p">,</span> <span class="nv">err</span><span class="p">)</span>
+    <span class="k">proc</span><span class="nb">es</span><span class="nv">s.exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="err">вызов</span> <span class="err">данного</span> <span class="err">метода</span> <span class="err">является</span> <span class="err">обязательным</span>
+<span class="err">})</span>
+</pre></div>
+
+
 <p>Получать модуль process не требуется, поскольку он внедрен по умолчанию. </p>
 <h5>Исключения и промисы</h5>
-<p>С помощью промисов можно выполнить разные операции и обработать ошибки в самом конце: 
-<code>doSomething1()
-    .then(doSomething2)
-    .then(doSomething3)
-    .catch(err =&gt; console.error(err))</code></p>
-<p>Как узнать, где возникла ошибка? Для этого можно обрабатывать ошибки в каждой функции, которая вызывается (doSomethingX), и внутри обработчика ошибок выбрасывать новую ошибку, которая будет перехвачена внешним catch: 
-<code>const doSomething1 = () =&gt; {
-    //...
-    try {
-        //...
-    } catch (err) {
-        //... обрабатываем ошибку локального
-        throw new Error(err.message)
-    }
-    //...
-}</code></p>
-<p>Для локальной обработки ошибок без их обработки внутри вызываемой функции, можно разорвать цепочку и создать в каждом then() специальную функцию:
-<code>doSomething1()
-.then(() =&gt; {
-    return doSomething2().catch(err =&gt; {
-    // обрабатываем ошибку
-    throw err // разрываем цепочку!
-    })
-})
-.then(() =&gt; {
-    return doSomething2().catch(err =&gt; {
-    // обрабатываем ошибку
-    throw err // разрываем цепочку!
-    })
-})
-.catch(err =&gt; console.error(err))</code></p>
+<p>С помощью промисов можно выполнить разные операции и обработать ошибки в самом конце: </p>
+<div class="highlight"><pre><span></span><span class="err">doSomething1()</span>
+<span class="err">    .then(doSomething2)</span>
+<span class="err">    .then(doSomething3)</span>
+<span class="err">    .catch(err =&gt; console.error(err))</span>
+</pre></div>
+
+
+<p>Как узнать, где возникла ошибка? Для этого можно обрабатывать ошибки в каждой функции, которая вызывается (doSomethingX), и внутри обработчика ошибок выбрасывать новую ошибку, которая будет перехвачена внешним catch: </p>
+<div class="highlight"><pre><span></span><span class="err">const doSomething1 = () =&gt; {</span>
+<span class="err">    //...</span>
+<span class="err">    try {</span>
+<span class="err">        //...</span>
+<span class="err">    } catch (err) {</span>
+<span class="err">        //... обрабатываем ошибку локального</span>
+<span class="err">        throw new Error(err.message)</span>
+<span class="err">    }</span>
+<span class="err">    //...</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Для локальной обработки ошибок без их обработки внутри вызываемой функции, можно разорвать цепочку и создать в каждом <code>then()</code> специальную функцию:</p>
+<div class="highlight"><pre><span></span><span class="nf">doSomething1</span><span class="p">()</span>
+<span class="na">.then</span><span class="p">(()</span> <span class="err">=&gt;</span> <span class="err">{</span>
+    <span class="nf">return</span> <span class="no">doSomething2</span><span class="p">().</span><span class="no">catch</span><span class="p">(</span><span class="no">err</span> <span class="err">=&gt;</span> <span class="err">{</span>
+    <span class="c1">// обрабатываем ошибку</span>
+    <span class="nf">throw</span> <span class="no">err</span> <span class="c1">// разрываем цепочку!</span>
+    <span class="err">})</span>
+<span class="err">})</span>
+<span class="na">.then</span><span class="p">(()</span> <span class="err">=&gt;</span> <span class="err">{</span>
+    <span class="nf">return</span> <span class="no">doSomething2</span><span class="p">().</span><span class="no">catch</span><span class="p">(</span><span class="no">err</span> <span class="err">=&gt;</span> <span class="err">{</span>
+    <span class="c1">// обрабатываем ошибку</span>
+    <span class="nf">throw</span> <span class="no">err</span> <span class="c1">// разрываем цепочку!</span>
+    <span class="err">})</span>
+<span class="err">})</span>
+<span class="na">.catch</span><span class="p">(</span><span class="no">err</span> <span class="err">=&gt;</span> <span class="no">console.error</span><span class="p">(</span><span class="no">err</span><span class="p">))</span>
+</pre></div>
+
+
 <h5>Обработка ошибок с помощью async/await</h5>
-<p>При использовании async/await вам также нужно обрабатывать ошибки: 
-<code>async function someFunction() {
-    try {
-        await someOtherFunction()
-    } catch (err) {
-        console.error(err.message)
-    }
-}</code></p>          </div>
+<p>При использовании async/await вам также нужно обрабатывать ошибки: </p>
+<div class="highlight"><pre><span></span><span class="err">async function someFunction() {</span>
+<span class="err">    try {</span>
+<span class="err">        await someOtherFunction()</span>
+<span class="err">    } catch (err) {</span>
+<span class="err">        console.error(err.message)</span>
+<span class="err">    }</span>
+<span class="err">}</span>
+</pre></div>          </div>
       </div>
   </div>
 

@@ -105,8 +105,8 @@ Node.js предоставляет <a href="https://nodejs.org/api/stream.html">
 </pre></div>
 
 
-<p>readFile() читает содержимое файла и вызывает колбек. </p>
-<p>res.end(data) - это колбек, возвращающий содержимое файла клиенту. </p>
+<p><code>readFile()</code> читает содержимое файла и вызывает колбек. </p>
+<p><code>res.end(data)</code> - это колбек, возвращающий содержимое файла клиенту. </p>
 <p>Если файл является большим, данная операция займет много времени. Вот тот же пример с использованием потоков: </p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">http</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">)</span>
 <span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
@@ -124,11 +124,17 @@ Node.js предоставляет <a href="https://nodejs.org/api/stream.html">
 <p>В приведенном примере имеется строка stream.pipe(res): в потоке вызывается метод pipe(). </p>
 <p>Что делает этот код? Он получает ресурсы и создает тоннель к пункту назначения. </p>
 <p>Мы вызываем его в потоке, поэтому в данном случае происходит туннелирование в HTTP-ответ. </p>
-<p>Метод pipe() возвращает поток к пункту назначения, что позволяет создавать цепочки из вызовов pipe(): 
-<code>src.pipe(dest1).pipe(dest2)</code></p>
-<p>Данная консрукция аналогична следующей:
-<code>src.pipe(dest1)
-dest1.pipe(dest2)</code></p>
+<p>Метод pipe() возвращает поток к пункту назначения, что позволяет создавать цепочки из вызовов pipe(): </p>
+<div class="highlight"><pre><span></span><span class="err">src.pipe(dest1).pipe(dest2)</span>
+</pre></div>
+
+
+<p>Данная консрукция аналогична следующей:</p>
+<div class="highlight"><pre><span></span><span class="err">src.pipe(dest1)</span>
+<span class="err">dest1.pipe(dest2)</span>
+</pre></div>
+
+
 <h5>Прикладные интерфейсы Node.js, поддерживающие потоки</h5>
 <p>Из-за преимуществ, предоставляемых потоками, многие модули ядра Node.js поддерживают работу с ними: </p>
 <ul>
@@ -153,30 +159,51 @@ dest1.pipe(dest2)</code></p>
 <li>трансформирующиеся (transform): такие потоки похожи на дуплексные, однако точкой их выхода является преобразованная точка входа</li>
 </ul>
 <h5>Как создать поток для чтения?</h5>
-<p>Поток для чтения предоставляется модулем поток, мы инициализируем и реализуем его с помощью метода readable._read(): 
-<code>const Stream = require('stream')
-const readableStream = new Stream.Readable()</code></p>
-<p>Затем реализуем _read: 
-<code>readableStream._read = () =&gt; {}</code></p>
-<p>Реализовать _read также можно посредством опции read: 
-<code>const readableStream = new Stream.Readable({
-    read() {}
-})</code></p>
-<p>После этого мы можем помещать данные в поток: 
-<code>readableStream.push('hi!')
-readableStream.push('ho!')</code></p>
+<p>Поток для чтения предоставляется модулем поток, мы инициализируем и реализуем его с помощью метода readable._read(): </p>
+<div class="highlight"><pre><span></span><span class="err">const Stream = require(&#39;stream&#39;)</span>
+<span class="err">const readableStream = new Stream.Readable()</span>
+</pre></div>
+
+
+<p>Затем реализуем <code>_read</code>: </p>
+<div class="highlight"><pre><span></span><span class="err">readableStream._read = () =&gt; {}</span>
+</pre></div>
+
+
+<p>Реализовать <code>_read</code> также можно посредством опции read: </p>
+<div class="highlight"><pre><span></span><span class="err">const readableStream = new Stream.Readable({</span>
+<span class="err">    read() {}</span>
+<span class="err">})</span>
+</pre></div>
+
+
+<p>После этого мы можем помещать данные в поток: </p>
+<div class="highlight"><pre><span></span><span class="err">readableStream.push(&#39;hi!&#39;)</span>
+<span class="err">readableStream.push(&#39;ho!&#39;)</span>
+</pre></div>
+
+
 <h5>Как создать поток для записи?</h5>
-<p>Для создания потока для записи мы расширяем стандартный объект Writable и реализуем его метод _write. </p>
-<p>Сначала мы создаем объект потока: 
-<code>const Stream = require('stream')
-const writableStream = new Stream.Writable()</code></p>
-<p>Затем реализуем _write: 
-<code>writableStream._write = (chunk, encoding, next) =&gt; {
-    console.log(chunk.toString())
-    next()
-}</code></p>
-<p>После этого мы можем его туннелировать: 
-<code>process.stdin.pipe(writableStream)</code></p>
+<p>Для создания потока для записи мы расширяем стандартный объект Writable и реализуем его метод <code>_write</code>. </p>
+<p>Сначала мы создаем объект потока: </p>
+<div class="highlight"><pre><span></span><span class="err">const Stream = require(&#39;stream&#39;)</span>
+<span class="err">const writableStream = new Stream.Writable()</span>
+</pre></div>
+
+
+<p>Затем реализуем <code>_write</code>: </p>
+<div class="highlight"><pre><span></span><span class="err">writableStream._write = (chunk, encoding, next) =&gt; {</span>
+<span class="err">    console.log(chunk.toString())</span>
+<span class="err">    next()</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>После этого мы можем его туннелировать: </p>
+<div class="highlight"><pre><span></span><span class="k">proc</span><span class="nb">es</span><span class="nv">s.stdin.pipe</span><span class="p">(</span><span class="nv">writableStream</span><span class="p">)</span>
+</pre></div>
+
+
 <h5>Как получить данные из потока для чтения?</h5>
 <p>Данные из потока для чтения можно получить с помощью потока для записи: </p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">Stream</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;stream&#39;</span><span class="p">)</span>
@@ -198,13 +225,19 @@ const writableStream = new Stream.Writable()</code></p>
 </pre></div>
 
 
-<p>Вы также можете читать поток напрямую, используя событие readable: 
-<code>readableStream.on('readable', () =&gt; {
-    console.log(readableStream.read())
-})</code></p>
+<p>Вы также можете читать поток напрямую, используя событие readable: </p>
+<div class="highlight"><pre><span></span><span class="err">readableStream.on(&#39;readable&#39;, () =&gt; {</span>
+<span class="err">    console.log(readableStream.read())</span>
+<span class="err">})</span>
+</pre></div>
+
+
 <h5>Как отправить данные в поток для записи?</h5>
-<p>Используйте метод write():
-<code>writableStream.write('hey!\n')</code></p>
+<p>Используйте метод write():</p>
+<div class="highlight"><pre><span></span><span class="err">writableStream.write(&#39;hey!\n&#39;)</span>
+</pre></div>
+
+
 <h5>Как сообщить потоку для записи, что запись данных завершена?</h5>
 <p>Используйте метод end():</p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">Stream</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;stream&#39;</span><span class="p">)</span>

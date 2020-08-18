@@ -108,10 +108,13 @@
 </pre></div>
 
 
-<p>Полный путь можно получить так: 
-<code>fs.readdirSync(folderPath).map(fileName =&gt; {
-    return path.join(folderPath, fileName)
-})</code></p>
+<p>Полный путь можно получить так: </p>
+<div class="highlight"><pre><span></span><span class="err">fs.readdirSync(folderPath).map(fileName =&gt; {</span>
+<span class="err">    return path.join(folderPath, fileName)</span>
+<span class="err">})</span>
+</pre></div>
+
+
 <p>Кроме того, можно отфильтровать результаты, чтобы получить только файлы:</p>
 <div class="highlight"><pre><span></span><span class="nf">const</span> <span class="no">isFile</span> <span class="err">=</span> <span class="no">fileName</span> <span class="err">=&gt;</span> <span class="err">{</span>
     <span class="nf">return</span> <span class="no">fs.lstatSync</span><span class="p">(</span><span class="no">fileName</span><span class="p">).</span><span class="no">isFile</span><span class="p">()</span>
@@ -154,8 +157,11 @@
 <p>Удаление непустой папки может оказаться сложнее, чем кажется. </p>
 <p>В данном случае, проще установить модуль <a href="https://www.npmjs.com/package/fs-extra">fs-extra</a>, который очень популярен и хорошо поддерживается. Он является своего рода заменой модуля fs, предоставляя более продвинутые возможности. </p>
 <p>Нас интересует его метод remove(). </p>
-<p>Устанавливаем модуль: 
-<code>npm install fs-extra</code></p>
+<p>Устанавливаем модуль: </p>
+<div class="highlight"><pre><span></span><span class="err">npm install fs-extra</span>
+</pre></div>
+
+
 <p>И используем следующим образом:</p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs-extra&#39;</span><span class="p">)</span>
 
@@ -167,14 +173,17 @@
 </pre></div>
 
 
-<p>Он также может быть использован совместно с промисами:
-<code>fs.remove(folder)
-    .then(() =&gt; {
-        // готово 
-    })
-    .catch(err =&gt; {
-        console.error(err)
-    })</code></p>
+<p>Он также может быть использован совместно с промисами:</p>
+<div class="highlight"><pre><span></span><span class="err">fs.remove(folder)</span>
+<span class="err">    .then(() =&gt; {</span>
+<span class="err">        // готово </span>
+<span class="err">    })</span>
+<span class="err">    .catch(err =&gt; {</span>
+<span class="err">        console.error(err)</span>
+<span class="err">    })</span>
+</pre></div>
+
+
 <p>Или с async/await: </p>
 <div class="highlight"><pre><span></span><span class="n">async</span> <span class="k">function</span> <span class="n">removeFolder</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span> <span class="err">{</span>
     <span class="n">try</span> <span class="err">{</span>

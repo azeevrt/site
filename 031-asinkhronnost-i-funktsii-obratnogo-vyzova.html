@@ -86,66 +86,84 @@
 <p>Обычно, языки программирования являются синхронными, и некоторые из них предоставляют возможность управлять асинхронностью с помощью средств самого языка или специальных библиотек. C, Java, C#, PHP, Go, Ruby, Swift и Python являются синхронными по умолчанию. Некоторые из них симулируют асинхронность, используя потоки для запуска новых процессов. </p>
 <h5>JavaScript</h5>
 <p>JavaScript также является синхронным и однопоточным по умолчанию. Это означает, что код не может создавать новые потоки и выполняться параллельно. </p>
-<p>Строки кода выполняются последовательно, одна за другой, например:
-<code>const a = 1
-    const b = 2
-    const c = a * b 
-    console.log(c)
-    doSomething()</code></p>
+<p>Строки кода выполняются последовательно, одна за другой, например:</p>
+<div class="highlight"><pre><span></span><span class="err">const a = 1</span>
+<span class="err">const b = 2</span>
+<span class="err">const c = a * b </span>
+<span class="err">console.log(c)</span>
+<span class="err">doSomething()</span>
+</pre></div>
+
+
 <p>Однако JavaScript создавался для браузера, его основной задачей являлась мгновенная реакция на действия пользователя, такие как onClick, onMouseOver, onChange, onSubmit и т.д. Как он с этим справлялся, будучи синхронным? </p>
 <p>Все дело в среде выполнения. Браузер предоставляет такую возможность посредством набора прикладных интерфейсов, которые обеспечивают необходимый функционал. </p>
 <p>Спутся некоторое время, Node.js представил неблокирующий ввод/вывод, расширяющий эту концепция для доступа к файлам, взаимодействия с сетью и т.д. </p>
 <h5>Функции обратного вызова</h5>
-<p>Вы не можете знать, когда пользователь нажмет на кнопку. Поэтому вы устанавливаете обработчик события "Клик". Этот обработчик принимает функцию, которая вызывается при возникновении события: 
-<code>document.getElementById('button').addEventListener('click', () =&gt; {
-        // код 
-    })</code></p>
+<p>Вы не можете знать, когда пользователь нажмет на кнопку. Поэтому вы устанавливаете обработчик события "Клик". Этот обработчик принимает функцию, которая вызывается при возникновении события: </p>
+<div class="highlight"><pre><span></span><span class="err">document.getElementById(&#39;button&#39;).addEventListener(&#39;click&#39;, () =&gt; {</span>
+<span class="err">        // код </span>
+<span class="err">})</span>
+</pre></div>
+
+
 <p>Эта функция называется колбеком (функцией обратного вызова). </p>
 <p>Колбек - это простая функция, которая передается в качестве аргумента другой функцией и выполняется только при возникновении события (обработчики событий - самый распространенный вариант замыкания). Мы можем это делать благодаря функциям первого класса, которые могут присваиваться переменным в качестве значений и передаваться другим функциям в качестве аргументов (эти функции также называются функциями высшего порядка). </p>
-<p>Обычной практикой является оборачивание клиентского кода в обработчик события load объекта window, запускающего колбек после полной загрузки страницы:
-<code>window.addEventListener('load', () =&gt; {
-        // код 
-    })</code></p>
+<p>Обычной практикой является оборачивание клиентского кода в обработчик события load объекта window, запускающего колбек после полной загрузки страницы:</p>
+<div class="highlight"><pre><span></span><span class="err">window.addEventListener(&#39;load&#39;, () =&gt; {</span>
+<span class="err">        // код </span>
+<span class="err">})</span>
+</pre></div>
+
+
 <p>Колбеки используются повсеместно, не только для обработки событий DOM. </p>
-<p>Например, в счетчиках: 
-<code>setTimeout(() =&gt; {
-        // запустить через 2 секунды
-    }, 2000)</code></p>
-<p>XHR-запросы также принимают колбек в качестве аргумента. В следующем примере функция присваивается в качестве свойства объекта и вызывается при возникновении определенного события (изменении состояния запроса):
-<code>const xhr = new XMLHttpRequest()
-    xhr.onreadystatechange = () =&gt; {
-        if (xhr.readyState === 4) {
-            xhr.status === 200 ? console.log(xhr.responseText) : console.error('error')
-        }
-    }
-    xhr.open('GET', 'https://yoursite.com')
-    xhr.send()</code></p>
+<p>Например, в счетчиках: </p>
+<div class="highlight"><pre><span></span><span class="err">setTimeout(() =&gt; {</span>
+<span class="err">        // запустить через 2 секунды</span>
+<span class="err">}, 2000)</span>
+</pre></div>
+
+
+<p>XHR-запросы также принимают колбек в качестве аргумента. В следующем примере функция присваивается в качестве свойства объекта и вызывается при возникновении определенного события (изменении состояния запроса):</p>
+<div class="highlight"><pre><span></span><span class="err">const xhr = new XMLHttpRequest()</span>
+<span class="err">xhr.onreadystatechange = () =&gt; {</span>
+<span class="err">    if (xhr.readyState === 4) {</span>
+<span class="err">        xhr.status === 200 ? console.log(xhr.responseText) : console.error(&#39;error&#39;)</span>
+<span class="err">    }</span>
+<span class="err">}</span>
+<span class="err">xhr.open(&#39;GET&#39;, &#39;https://yoursite.com&#39;)</span>
+<span class="err">xhr.send()</span>
+</pre></div>
+
+
 <h5>Обработка ошибок в колбеках</h5>
 <p>Как обрабатывать ошибки в колбеках? Одним из способов является использование стратегии Node.js: первый аргумент любого колбека - это объект ошибки. </p>
 <p>Если ошибка отсутствует, объект равняется null. Если возникла ошибка, объект содержит ее описание и другую информацию. </p>
 <div class="highlight"><pre><span></span><span class="n">fs</span><span class="p">.</span><span class="n">readFile</span><span class="p">(</span><span class="s1">&#39;/file.json&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="k">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="err">{</span>
-            <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-            <span class="k">return</span>
-        <span class="err">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!==</span> <span class="k">null</span><span class="p">)</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="err">}</span>
 
-        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
-    <span class="err">}</span><span class="p">)</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="k">data</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
 </pre></div>
 
 
 <h5>Проблема колбеков</h5>
 <p>Колбеки прекрасно подходят для простых случаев. </p>
-<p>Тем не менее, каждый колбек добавляет уровень вложенности, и при наличии множества колбеков, код очень быстро становится сложным для восприятия и поддержки: 
-<code>window.addEventListener('load', () =&gt; {
-        document.getElementById('button').addEventListener('click', () =&gt; {
-            setTimeout(() =&gt; {
-                items.forEach(item =&gt; {
-                    // и т.д.
-                }, 2000)
-            })
-        })
-    })</code></p>
+<p>Тем не менее, каждый колбек добавляет уровень вложенности, и при наличии множества колбеков, код очень быстро становится сложным для восприятия и поддержки: </p>
+<div class="highlight"><pre><span></span><span class="err">window.addEventListener(&#39;load&#39;, () =&gt; {</span>
+<span class="err">    document.getElementById(&#39;button&#39;).addEventListener(&#39;click&#39;, () =&gt; {</span>
+<span class="err">        setTimeout(() =&gt; {</span>
+<span class="err">            items.forEach(item =&gt; {</span>
+<span class="err">                // и т.д.</span>
+<span class="err">            }, 2000)</span>
+<span class="err">        })</span>
+<span class="err">    })</span>
+<span class="err">})</span>
+</pre></div>
+
+
 <p>В приведенном примере всего 4 уровня вложенности, но я видел намного больше и это совсем не весело. </p>
 <p>Как нам решить эту проблему? </p>
 <h5>Альтернатива колбекам</h5>

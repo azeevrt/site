@@ -102,10 +102,10 @@
 
 <p>setTimeout() возвращает идентификатор счетчика. Обычно он не используется, но вы можете его сохранить с целью дальнейшей остановки таймера:</p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">id</span> <span class="o">=</span> <span class="n">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="err">{</span>
-        <span class="o">//</span> <span class="err">запустить</span> <span class="err">через</span> <span class="mi">2</span> <span class="err">секунды</span> 
-    <span class="err">}</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+    <span class="o">//</span> <span class="err">запустить</span> <span class="err">через</span> <span class="mi">2</span> <span class="err">секунды</span> 
+<span class="err">}</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
 
-    <span class="n">clearTimeout</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="n">clearTimeout</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
 </pre></div>
 
 
@@ -113,9 +113,9 @@
 <p>Если значением счетчика является 0, функция обратного вызова выполняется максимально быстро, но после выполнения текущей функции: </p>
 <div class="highlight"><pre><span></span><span class="n">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="err">{</span>
         <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;after&#39;</span><span class="p">)</span>
-    <span class="err">}</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="err">}</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
-    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;before&#39;</span><span class="p">)</span>
+<span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;before&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -123,27 +123,33 @@
 <p>Такой подход применяется во избежание блокировки ЦП сложными задачами, с целью выполнения других функций во время тяжелых вычислений, посредством помещения данных вычислений в очередь планировщика задач. </p>
 <p>Некоторые браузеры (IE и Edge) реализуют метод setImmediate() с похожим функционалом, но он не является стандартным и не поддерживается другими браузерами. Однако setImmediate() является стандартной функцией в Node.js. </p>
 <h5>setInterval()</h5>
-<p>setInterval() - это функция, похожая на setTimeout(), с небольшим отличием: вместо однократного запуска колбека, она запускает его снова и снова, через заданные промежутки времени (в мс): 
-<code>setInterval(() =&gt; {
-        // запускать каждые 2 секунды 
-    }, 2000)</code></p>
-<p>Приведенная функция будет выполняться каждые 2 секунды до тех пор, пока вы не выключите таймер с помощью clearInterval(), передав этому методу идентификатор счетчика: </p>
-<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">id</span> <span class="o">=</span> <span class="n">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="err">{</span>
-        <span class="o">//</span> <span class="err">запускать</span> <span class="err">каждые</span> <span class="mi">2</span> <span class="err">секунды</span> 
-    <span class="err">}</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
-
-    <span class="n">clearInterval</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<p>setInterval() - это функция, похожая на setTimeout(), с небольшим отличием: вместо однократного запуска колбека, она запускает его снова и снова, через заданные промежутки времени (в мс): </p>
+<div class="highlight"><pre><span></span><span class="err">setInterval(() =&gt; {</span>
+<span class="err">        // запускать каждые 2 секунды </span>
+<span class="err">}, 2000)</span>
 </pre></div>
 
 
-<p>Обычной практикой является вызов clearInterval() внутри setInterval(), позволяя последней самостоятельно определять, следует ли ей продолжать выполнение или же ей следует остановиться. В следующем примере код будет выполняться до тех пор, пока App.somethingIWait не получит значения arrived:
-<code>const interval = setInterval(() =&gt; {
-        if (App.somethingIWait === 'arrived') {
-            clearInterval(interval)
-            return
-        }
-        // другой код 
-    }, 100)</code></p>
+<p>Приведенная функция будет выполняться каждые 2 секунды до тех пор, пока вы не выключите таймер с помощью clearInterval(), передав этому методу идентификатор счетчика: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">id</span> <span class="o">=</span> <span class="n">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="o">//</span> <span class="err">запускать</span> <span class="err">каждые</span> <span class="mi">2</span> <span class="err">секунды</span> 
+<span class="err">}</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+
+<span class="n">clearInterval</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Обычной практикой является вызов clearInterval() внутри setInterval(), позволяя последней самостоятельно определять, следует ли ей продолжать выполнение или же ей следует остановиться. В следующем примере код будет выполняться до тех пор, пока App.somethingIWait не получит значения arrived:</p>
+<div class="highlight"><pre><span></span><span class="err">const interval = setInterval(() =&gt; {</span>
+<span class="err">    if (App.somethingIWait === &#39;arrived&#39;) {</span>
+<span class="err">        clearInterval(interval)</span>
+<span class="err">        return</span>
+<span class="err">    }</span>
+<span class="err">    // другой код </span>
+<span class="err">}, 100)</span>
+</pre></div>
+
+
 <h5>Рекурсивный setTimeout()</h5>
 <p>setInterval() запускает функцию каждые n мс, независимо от завершения выполнения этой функции. </p>
 <p>Если функция всегда выполняется за одно и тоже время, то все в порядке:
@@ -154,17 +160,17 @@
 <img alt="image2" src="./img/30-3.png"></p>
 <p>Во избежание этого вы можете создать рекурсивный setTimeout() с целью следующего вызова функции после завершения предыдущего: </p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">myFunction</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
-        <span class="o">//</span> <span class="err">код</span>
-
-        <span class="n">setTimeout</span><span class="p">(</span><span class="n">myFunction</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-    <span class="err">}</span>
+    <span class="o">//</span> <span class="err">код</span>
 
     <span class="n">setTimeout</span><span class="p">(</span><span class="n">myFunction</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="err">}</span>
+
+<span class="n">setTimeout</span><span class="p">(</span><span class="n">myFunction</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Этот сценарий выглядит так:
-<img alt="image3" src="./img/30-4.png"></p>
+<p>Этот сценарий выглядит так:</p>
+<p><img alt="image3" src="./img/30-4.png"></p>
 <p>setTimeout() и setInterval() доступны в Node.js благодаря <a href="https://nodejs.org/api/timers.html">модулю "Таймер"</a>. </p>
 <p>Node.js также предоставляет setImmediate(), являющийся эквивалентом seTimeout(() => {}, 0), используемый, преимущественно, для работы с циклом событий. </p>          </div>
       </div>

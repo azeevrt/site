@@ -77,31 +77,32 @@
 </footer><!-- /.post-info -->          </div>
           <div class="module l-12 fix vspace-s">                                
               <h3>54. Отображение объекта в консоли</h3>
-<p>Когда вы набираете console.log в JavaScript-программе, запущенной в браузере, то получаете что-то вроде этого:
-<img alt="image0" src="img/54-1.png"></p>
-<p>При нажатии на стрелочку, лог раскрывается и вы видите свойства объекта:
-<img alt="image1" src="img/54-2.png"></p>
+<p>Когда вы набираете console.log в JavaScript-программе, запущенной в браузере, то получаете что-то вроде этого:</p>
+<p><img alt="image0" src="img/54-1.png"></p>
+<p>При нажатии на стрелочку, лог раскрывается и вы видите свойства объекта:</p>
+<p><img alt="image1" src="img/54-2.png"></p>
 <p>В Node.js происходит тоже самое. </p>
 <p>Это выглядит не так красиво, как в браузере. Объект выводится в терминал или в лог-файл. Мы получаем строковое представление объекта. </p>
-<p>Все хорошо до определенного уровня вложенности. После второго уровня Node.js выводит заменитель [Object]:
-    const obj = {
-        name: 'joe',
-        age: 35,
-        person1: {
-            name: 'Tony',
-            age: 50,
-            person2: {
-                name: 'Albert',
-                age: 21,
-                person3: {
-                    name: 'Peter',
-                    age: 23
-                }
-            }
-        }
-    }
-    console.log(obj)</p>
-<div class="highlight"><pre><span></span><span class="err">{</span><span class="w"></span>
+<p>Все хорошо до определенного уровня вложенности. После второго уровня Node.js выводит заменитель <code>\[Object\]</code>:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span><span class="w"> </span><span class="n">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;joe&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nl">age</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nl">person1</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">        </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Tony&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nl">age</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nl">person2</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">            </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Albert&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nl">age</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="nl">person3</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
+<span class="w">                </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;Peter&#39;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="nl">age</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w"></span>
+<span class="w">            </span><span class="err">}</span><span class="w"></span>
+<span class="w">        </span><span class="err">}</span><span class="w"></span>
+<span class="w">    </span><span class="err">}</span><span class="w"></span>
+<span class="err">}</span><span class="w"></span>
+<span class="n">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span><span class="w"></span>
+
+<span class="err">{</span><span class="w"></span>
 <span class="w">    </span><span class="nl">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;joe&#39;</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nl">age</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w"></span>
 <span class="w">    </span><span class="nl">person1</span><span class="p">:</span><span class="w"> </span><span class="err">{</span><span class="w"></span>
@@ -118,12 +119,18 @@
 
 
 <p>Как же нам увидеть весь объект? </p>
-<p>Лучшим способом это сделать является следующий: 
-<code>console.log(JSON.stringify(obj, null, 2))</code></p>
+<p>Лучшим способом это сделать является следующий: </p>
+<div class="highlight"><pre><span></span><span class="err">console.log(JSON.stringify(obj, null, 2))</span>
+</pre></div>
+
+
 <p>Здесь 2 - это количество пробелов - отступов каждого уровня вложенности. </p>
-<p>Другой способ: 
-<code>require('util').inspect.defaultOptions.depth = null
-console.log(obj)</code></p>
+<p>Другой способ: </p>
+<div class="highlight"><pre><span></span><span class="err">require(&#39;util&#39;).inspect.defaultOptions.depth = null</span>
+<span class="err">console.log(obj)</span>
+</pre></div>
+
+
 <p>При использовании данного способа необходимо учитывать, что после второго уровня вложенности объекты разворачиваются, это может стать проблемой при работе со сложными объектами. </p>          </div>
       </div>
   </div>

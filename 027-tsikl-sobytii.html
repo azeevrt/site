@@ -92,27 +92,27 @@
 <p>Стек вызовов - это очередь, работающая по принципу LIFO (last in, first out - последним вошел, первым вышел).</p>
 <p>Цикл событий периодически проверяет стек вызовов с целью определения наличия в нем функций для выполнения.</p>
 <p>При обнаружении такой функции, цикл событий помещает ее в стек вызовов и выполняет.</p>
-<p>Вам должен быть хорошо известен стек-трейс (stack trace) ошибок в отладчике или консоли браузера. Браузер определяет название функции по стеку вызовов для предоставления информации о том, какая функция вызвала исключение:
-<img alt="image0" src="./img/27-1.png"></p>
+<p>Вам должен быть хорошо известен стек-трейс (stack trace) ошибок в отладчике или консоли браузера. Браузер определяет название функции по стеку вызовов для предоставления информации о том, какая функция вызвала исключение:</p>
+<p><img alt="image0" src="./img/27-1.png"></p>
 <h5>Простое объяснение цикла событий</h5>
 <p>Рассмотрим пример:</p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">bar</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 
-    <span class="n">const</span> <span class="n">baz</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">baz</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">)</span>
 
-    <span class="n">const</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
-        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-        <span class="n">bar</span><span class="p">()</span>
-        <span class="n">baz</span><span class="p">()</span>
-    <span class="err">}</span>
+<span class="n">const</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="n">bar</span><span class="p">()</span>
+    <span class="n">baz</span><span class="p">()</span>
+<span class="err">}</span>
 </pre></div>
 
 
 <p>При запуске кода сначала вызывается foo(). В foo() сначала вызывается bar(), затем baz().</p>
-<p>Cтек вызовов выглядит так:
-<img alt="image1" src="./img/27-2.png"></p>
-<p>Цикл событий на каждой итерации проверяет, имеются ли в стеке вызовов функции для выполнения:
-<img alt="image2" src="./img/27-3.png"></p>
+<p>Cтек вызовов выглядит так:</p>
+<p><img alt="image1" src="./img/27-2.png"></p>
+<p>Цикл событий на каждой итерации проверяет, имеются ли в стеке вызовов функции для выполнения:</p>
+<p><img alt="image2" src="./img/27-3.png"></p>
 <p>Это происходит до тех пор, пока стек не окажется пустым.</p>
 <h5>Выполнение функции, находящейся в очереди</h5>
 <p>Приведенный пример не представляет особого интереса: JavaScript определяет наличие функций в стеке вызовов и выполняет их по очереди.</p>
@@ -121,27 +121,30 @@
 <p>Рассмотрим пример:</p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">baz</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">)</span>
 
-    <span class="n">const</span> <span class="n">bar</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">bar</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
 
-    <span class="n">const</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
-        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
-        <span class="n">setTimeout</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">baz</span><span class="p">()</span>
-    <span class="err">}</span>
+<span class="n">const</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="n">setTimeout</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">baz</span><span class="p">()</span>
+<span class="err">}</span>
 
-    <span class="n">foo</span><span class="p">()</span>
+<span class="n">foo</span><span class="p">()</span>
 </pre></div>
 
 
-<p>Этот код выводит в консоль следующее:
-<code>foo 
-    baz 
-    bar</code></p>
+<p>Этот код выводит в консоль следующее:</p>
+<div class="highlight"><pre><span></span><span class="err">foo </span>
+<span class="err">baz </span>
+<span class="err">bar</span>
+</pre></div>
+
+
 <p>При запуске кода сначала выполняется foo(). В foo() мы сначала вызываем setTimeout(), передавая bar в качестве аргумента и указывая на необходимость немедленного выполнения, устанавливая значение счетчика равным 0. Затем мы вызываем baz().</p>
-<p>Стек вызовов выглядит так:
-<img alt="image3" src="./img/27-4.png">
-Вот порядок выполнения функций:
-<img alt="image3" src="./img/27-4.png"></p>
+<p>Стек вызовов выглядит так:</p>
+<p><img alt="image3" src="./img/27-4.png"></p>
+<p>Вот порядок выполнения функций:</p>
+<p><img alt="image3" src="./img/27-4.png"></p>
 <p>Почему так происходит?</p>
 <h5>Очередь сообщений</h5>
 <p>При вызове setTimeout() браузер или Node.js запускают таймер. Поскольку в нашем случае таймер истекает немедленно (мы установили значение счетчика равным 0), функция обратного вызова помещается в очередь сообщений.</p>
@@ -170,11 +173,14 @@
 </pre></div>
 
 
-<p>Этот код выведет в консоль следующее:
-<code>foo 
-    baz 
-    should be right after baz, before bar
-    baz</code></p>
+<p>Этот код выведет в консоль следующее:</p>
+<div class="highlight"><pre><span></span><span class="err">foo </span>
+<span class="err">baz </span>
+<span class="err">should be right after baz, before bar</span>
+<span class="err">baz</span>
+</pre></div>
+
+
 <p>Существует большая разница между промисами (и async/await, основанном на промисах) и старыми-добрыми асинхронными функциями типа setTimeout() и другими прикладными интерфейсами среды выполнения кода.</p>          </div>
       </div>
   </div>

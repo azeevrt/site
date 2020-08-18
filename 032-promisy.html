@@ -213,8 +213,11 @@
 <p>С учетом изложенного, вот что происходит: первый промис в цепочке - это определенная нами функция status(), которая проверяет статус ответа, и, в случае, когда такой статус выходит за пределы диапазона 200-299, промис отклоняется. </p>
 <p>При отклонении промиса операция сразу переходит к блоку catch(), в консоль выводится текст Request failed и сообщение об ошибке. </p>
 <p>При успешном запросе вызывается функция json(). Поскольку предыдущий промис вернул объект response, мы получаем его в качестве параметра во втором промисе. </p>
-<p>Далее мы разбираем (парсим) ответ, так что третий промис получает данные в нужном формате:
-<code>.then(data =&gt; console.log('Request succeeded with JSON response ', data))</code></p>
+<p>Далее мы разбираем (парсим) ответ, так что третий промис получает данные в нужном формате:</p>
+<div class="highlight"><pre><span></span><span class="na">.then</span><span class="p">(</span><span class="no">data</span> <span class="err">=&gt;</span> <span class="no">console.log</span><span class="p">(</span><span class="err">&#39;</span><span class="no">Request</span> <span class="no">succeeded</span> <span class="no">with</span> <span class="no">JSON</span> <span class="no">response</span> <span class="err">&#39;</span><span class="p">,</span> <span class="no">data</span><span class="p">))</span>
+</pre></div>
+
+
 <p>И мы просто выводим эти данные в консоль. </p>
 <h5>Обработка ошибок</h5>
 <p>В примере у нас имелся блок catch в конце цепочки промисов. </p>
@@ -266,10 +269,13 @@
 </pre></div>
 
 
-<p>С помощью деструктурирующего присваивания это можно сделать так: 
-<code>Promise.all([f1, f2]).then(([f1, f2]) =&gt; {
-    console.log('Results ', res1, re2)
-})</code></p>
+<p>С помощью деструктурирующего присваивания это можно сделать так: </p>
+<div class="highlight"><pre><span></span><span class="err">Promise.all([f1, f2]).then(([f1, f2]) =&gt; {</span>
+<span class="err">    console.log(&#39;Results &#39;, res1, re2)</span>
+<span class="err">})</span>
+</pre></div>
+
+
 <p>Разумеется, вы не ограничены fetch, в данном шаблоне проектирования могут использоваться любые промисы. </p>
 <h6>Promise.race()</h6>
 <p>Promice.race() запускается при выполнении первого промиса, т.е. колбек промиса выполняется один раз с результатом первого выполненного промиса. </p>

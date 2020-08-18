@@ -79,22 +79,28 @@
               <h3>40. Статистика файла</h3>
 <p>Каждый файл содержит перечень информации, которую мы можем изучить с помощью Node.js. </p>
 <p>В частности, посредством метода stat() модуля fs. </p>
-<p>Данный метод вызывается с двумя аргументами: путем к файлу и колбеком. Колбек, в свою очередь, содержит два параметра: сообщение об ошибке и статистику файла:
-<code>const fs = require('fs')
-fs.stat('/Users/joe/test.txt', (err, stats) =&gt; {
-    if (err) {
-        console.error(err)
-        return
-    }
-    // мы имеем доступ к статистике файла через 'stats'
-})</code></p>
-<p>Node.js также предоставляет синхронный метод, который блокирует поток до получения статистики файла: 
-<code>const fs = require('fs')
-try {
-    const stats = fs.statSync('/Users/joe/test.txt')
-} catch (err) {
-    console.error(err)
-}</code></p>
+<p>Данный метод вызывается с двумя аргументами: путем к файлу и колбеком. Колбек, в свою очередь, содержит два параметра: сообщение об ошибке и статистику файла:</p>
+<div class="highlight"><pre><span></span><span class="err">const fs = require(&#39;fs&#39;)</span>
+<span class="err">fs.stat(&#39;/Users/joe/test.txt&#39;, (err, stats) =&gt; {</span>
+<span class="err">    if (err) {</span>
+<span class="err">        console.error(err)</span>
+<span class="err">        return</span>
+<span class="err">    }</span>
+<span class="err">    // мы имеем доступ к статистике файла через &#39;stats&#39;</span>
+<span class="err">})</span>
+</pre></div>
+
+
+<p>Node.js также предоставляет синхронный метод, который блокирует поток до получения статистики файла: </p>
+<div class="highlight"><pre><span></span><span class="err">const fs = require(&#39;fs&#39;)</span>
+<span class="err">try {</span>
+<span class="err">    const stats = fs.statSync(&#39;/Users/joe/test.txt&#39;)</span>
+<span class="err">} catch (err) {</span>
+<span class="err">    console.error(err)</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <p>Информация о файле содержится в переменной stats. Какую информацию мы можем получить, используя stats? </p>
 <p>Среди прочего:</p>
 <ul>

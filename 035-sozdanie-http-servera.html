@@ -102,10 +102,14 @@ server.listen(port, () =&gt; {
 <p>request содержит детали запроса. Через него мы получаем доступ к заголовкам и данным запроса. </p>
 <p>response используется для формирования ответа клиенту. </p>
 <p>В данном случае, с помощью res.statusCode = 200 мы присваиваем свойству statusCode значение 200 в качестве индикатора успешного выполнения запроса. </p>
-<p>Также мы устанавливаем заголовок:
-<code>res.setHeader('Content-Type', 'text/html')</code></p>
-<p>И закрываем ответ, добавляя контент в качестве аргумента метода end():
-<code>res.end('Hello, World!')</code></p>          </div>
+<p>Также мы устанавливаем заголовок:</p>
+<div class="highlight"><pre><span></span><span class="err">res.setHeader(&#39;Content-Type&#39;, &#39;text/html&#39;)</span>
+</pre></div>
+
+
+<p>И закрываем ответ, добавляя контент в качестве аргумента метода end():</p>
+<div class="highlight"><pre><span></span><span class="err">res.end(&#39;Hello, World!&#39;)</span>
+</pre></div>          </div>
       </div>
   </div>
 

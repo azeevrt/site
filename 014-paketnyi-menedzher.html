@@ -105,25 +105,32 @@
 <p>Во всех этих случаях помогает версионирование, в этом плане npm следует общепринятым стандартам. </p>
 <h5>Выполнение задач</h5>
 <p>package.json поддерживает формат для определения команд, выполняемых в терминале, с помощью <code>npm run &lt;task-name\&gt;</code>. </p>
-<p>Например:
-<code>{
-    "scripts": {
-        "start-dev": "node lib/server-development",
-        "start": "node lib/server-production"
-    },
-}</code></p>
-<p>Распространенной практикой является использование этой возможности для запуска Webpack:
-<code>{
-    "scripts": {
-        "watch": "webpack --watch --progress --colors --config webpack.conf.js",
-        "dev": "webpack --progress --colors --config webpack.conf.js",
-        "prod": "NODE_ENV=production webpack -p --config webpack.conf.js"
-    },
-}</code></p>
-<p>Это позволяет вместо набора длинных команд, которые легко забыть, или при наборе которых легко ошибиться, делать так:
-<code>npm run watch 
-npm run dev 
-npm run prod</code></p>          </div>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">    &quot;scripts&quot;: {</span>
+<span class="err">        &quot;start-dev&quot;: &quot;node lib/server-development&quot;,</span>
+<span class="err">        &quot;start&quot;: &quot;node lib/server-production&quot;</span>
+<span class="err">    },</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Распространенной практикой является использование этой возможности для запуска Webpack:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">    &quot;scripts&quot;: {</span>
+<span class="err">        &quot;watch&quot;: &quot;webpack --watch --progress --colors --config webpack.conf.js&quot;,</span>
+<span class="err">        &quot;dev&quot;: &quot;webpack --progress --colors --config webpack.conf.js&quot;,</span>
+<span class="err">        &quot;prod&quot;: &quot;NODE_ENV=production webpack -p --config webpack.conf.js&quot;</span>
+<span class="err">    },</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Это позволяет вместо набора длинных команд, которые легко забыть, или при наборе которых легко ошибиться, делать так:</p>
+<div class="highlight"><pre><span></span><span class="err">npm run watch </span>
+<span class="err">npm run dev </span>
+<span class="err">npm run prod</span>
+</pre></div>          </div>
       </div>
   </div>
 

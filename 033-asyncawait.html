@@ -86,16 +86,22 @@
 <p>Они являлись хорошим примитивом, на основе которого можно было разработать лучшее решение, и через некоторое время мы получили асинхронные функции. </p>
 <p>Они делаеют код похожим на синхронный, оставаясь асинхронным и неблокирующим за сценой. </p>
 <h5>Как это работает?</h5>
-<p>Асинхронная функция возвращает промис, например:
-<code>const doSomethingAsync = () =&gt; {
-    return new Promise(resolve =&gt; {
-        setTimeout(() =&gt; resolve('I did something'), 3000)
-    })
-}</code></p>
-<p>При вызове этой функции вы предваряете его ключевым словом await, и вызов функции ожидает выполнения или отклонения промиса. Одна особенность: функция должна быть определена как асинхронная. Например:
-<code>const doSomething = async () =&gt; {
-        console.log(await doSomethingAsync())
-    }</code></p>
+<p>Асинхронная функция возвращает промис, например:</p>
+<div class="highlight"><pre><span></span><span class="err">const doSomethingAsync = () =&gt; {</span>
+<span class="err">    return new Promise(resolve =&gt; {</span>
+<span class="err">        setTimeout(() =&gt; resolve(&#39;I did something&#39;), 3000)</span>
+<span class="err">    })</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>При вызове этой функции вы предваряете его ключевым словом await, и вызов функции ожидает выполнения или отклонения промиса. Одна особенность: функция должна быть определена как асинхронная. Например:</p>
+<div class="highlight"><pre><span></span><span class="err">const doSomething = async () =&gt; {</span>
+<span class="err">        console.log(await doSomethingAsync())</span>
+<span class="err">    }</span>
+</pre></div>
+
+
 <h5>Простой пример</h5>
 <p>Вот простой пример использования async/await для асинхронного выполнения функции:</p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">doSomethingAsync</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>

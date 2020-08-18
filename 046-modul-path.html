@@ -78,34 +78,55 @@
           <div class="module l-12 fix vspace-s">                                
               <h3>46. Модуль path</h3>
 <p>Данный модуль предоставляет множество полезных методов для доступа и взаимодействия с путями файлов. </p>
-<p>Его не нужно устанавливать. Будучи частью ядра Node.js, он может использоваться по требованию:
-<code>const path = require('path')</code></p>
-<p>Данный модуль содержит свойство path.sep для обработки разделителей частей пути (\ на Windows и / на Linux/macOS) и свойство path.delimiter для обработки ограничителей пути (; на Windows и : на Linux/macOS).</p>
+<p>Его не нужно устанавливать. Будучи частью ядра Node.js, он может использоваться по требованию:</p>
+<div class="highlight"><pre><span></span><span class="err">const path = require(&#39;path&#39;)</span>
+</pre></div>
+
+
+<p>Данный модуль содержит свойство path.sep для обработки разделителей частей пути (<code>\</code> на Windows и <code>/</code> на Linux/macOS) и свойство path.delimiter для обработки ограничителей пути (; на Windows и : на Linux/macOS).</p>
 <p>Модуль path имеет следующие методы:</p>
 <h5>path.basename()</h5>
-<p>Возвращает последнюю часть пути. Второй параметр может исключать расширение: 
-<code>require('path').basename('/test/something') // something 
-require('path').basename('/test/something.txt') // something.txt 
-require('path').basename('/test/something.txt', '.txt') // something</code></p>
+<p>Возвращает последнюю часть пути. Второй параметр может исключать расширение: </p>
+<div class="highlight"><pre><span></span><span class="err">require(&#39;path&#39;).basename(&#39;/test/something&#39;) // something </span>
+<span class="err">require(&#39;path&#39;).basename(&#39;/test/something.txt&#39;) // something.txt </span>
+<span class="err">require(&#39;path&#39;).basename(&#39;/test/something.txt&#39;, &#39;.txt&#39;) // something</span>
+</pre></div>
+
+
 <h5>path.dirname()</h5>
-<p>Возвращает путь директории, в которой находится файл: 
-<code>require('path').dirname('/test/something') // /test
-require('path').dirname('/test/something/file.txt') // /test/something</code></p>
+<p>Возвращает путь директории, в которой находится файл: </p>
+<div class="highlight"><pre><span></span><span class="err">require(&#39;path&#39;).dirname(&#39;/test/something&#39;) // /test</span>
+<span class="err">require(&#39;path&#39;).dirname(&#39;/test/something/file.txt&#39;) // /test/something</span>
+</pre></div>
+
+
 <h5>path.extname()</h5>
-<p>Возвращает расширение файла: 
-<code>require('path').extname('/test/something') // ''
-require('path').extname('/test/something/file.txt') // '.txt'</code></p>
+<p>Возвращает расширение файла: </p>
+<div class="highlight"><pre><span></span><span class="err">require(&#39;path&#39;).extname(&#39;/test/something&#39;) // &#39;&#39;</span>
+<span class="err">require(&#39;path&#39;).extname(&#39;/test/something/file.txt&#39;) // &#39;.txt&#39;</span>
+</pre></div>
+
+
 <h5>path.isAbsolute()</h5>
-<p>Возвращает true, если передан абсолютный путь: 
-<code>require('path').isAbsolute('/test/something') // true 
-require('path').isAbsolute('./test/something') // false</code></p>
+<p>Возвращает true, если передан абсолютный путь: </p>
+<div class="highlight"><pre><span></span><span class="err">require(&#39;path&#39;).isAbsolute(&#39;/test/something&#39;) // true </span>
+<span class="err">require(&#39;path&#39;).isAbsolute(&#39;./test/something&#39;) // false</span>
+</pre></div>
+
+
 <h5>path.join()</h5>
-<p>Объединяет две или более части пути:
-<code>const name = 'joe'
-require('path').join('/', 'Users', name, 'notes.txt') // '/Users/joe/notes.txt'</code></p>
+<p>Объединяет две или более части пути:</p>
+<div class="highlight"><pre><span></span><span class="err">const name = &#39;joe&#39;</span>
+<span class="err">require(&#39;path&#39;).join(&#39;/&#39;, &#39;Users&#39;, name, &#39;notes.txt&#39;) // &#39;/Users/joe/notes.txt&#39;</span>
+</pre></div>
+
+
 <h5>path.normalize()</h5>
-<p>Вычисляет путь на основе относительных спецификаторов типа ., .. или двойного слеша:
-<code>require('path').normalize('/Users/joe/..//test.txt') // '/Users/test.txt'</code></p>
+<p>Вычисляет путь на основе относительных спецификаторов типа ., .. или двойного слеша:</p>
+<div class="highlight"><pre><span></span><span class="err">require(&#39;path&#39;).normalize(&#39;/Users/joe/..//test.txt&#39;) // &#39;/Users/test.txt&#39;</span>
+</pre></div>
+
+
 <h5>path.parse()</h5>
 <p>Разбирает (парсит) путь на объект, состоящий из частей пути:</p>
 <ul>
@@ -115,28 +136,44 @@ require('path').join('/', 'Users', name, 'notes.txt') // '/Users/joe/notes.txt'<
 <li>name - название файла</li>
 <li>ext - расширение файла</li>
 </ul>
-<p>Например: 
-<code>require('path').parse('/Users/test.txt')</code></p>
-<p>Получаем: 
-<code>{
-    root: '/',
-    dir: '/Users',
-    base: 'test.txt',
-    ext: '.txt',
-    name: 'test'
-}</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">require(&#39;path&#39;).parse(&#39;/Users/test.txt&#39;)</span>
+</pre></div>
+
+
+<p>Получаем: </p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">    root: &#39;/&#39;,</span>
+<span class="err">    dir: &#39;/Users&#39;,</span>
+<span class="err">    base: &#39;test.txt&#39;,</span>
+<span class="err">    ext: &#39;.txt&#39;,</span>
+<span class="err">    name: &#39;test&#39;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>path.relative()</h5>
 <p>Принимает 2 пути в качестве аргументов. Возвращает разницу между первым и вторым путями, основываясь на текущей директории. </p>
-<p>Например:
-<code>require('path').relative('/Users/joe', '/Users/joe/test.txt') // 'test.txt'
-require('path').relative('/Users/joe', '/Users/joe/something/test.txt') // 'something/test.txt'</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">require(&#39;path&#39;).relative(&#39;/Users/joe&#39;, &#39;/Users/joe/test.txt&#39;) // &#39;test.txt&#39;</span>
+<span class="err">require(&#39;path&#39;).relative(&#39;/Users/joe&#39;, &#39;/Users/joe/something/test.txt&#39;) // &#39;something/test.txt&#39;</span>
+</pre></div>
+
+
 <h5>path.resolve()</h5>
-<p>Вы можете получить абсолютный путь, вычисляемый на основе относительного, с помощью path.resolve():
-<code>path.resolve('joe.txt') // '/Users/joe/joe.txt'</code></p>
-<p>Первый параметр служит основой для второго: 
-<code>path.resolve('tmp', 'joe.txt') // '/Users/joe/tmp/joe.txt'</code></p>
-<p>Если первый параметр начинается со слеша - это абсолютный путь: 
-<code>path.resolve('/etc', 'joe.txt') // '/etc/joe.txt'</code></p>          </div>
+<p>Вы можете получить абсолютный путь, вычисляемый на основе относительного, с помощью path.resolve():</p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;joe.txt&#39;) // &#39;/Users/joe/joe.txt&#39;</span>
+</pre></div>
+
+
+<p>Первый параметр служит основой для второго: </p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;tmp&#39;, &#39;joe.txt&#39;) // &#39;/Users/joe/tmp/joe.txt&#39;</span>
+</pre></div>
+
+
+<p>Если первый параметр начинается со слеша - это абсолютный путь: </p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;/etc&#39;, &#39;joe.txt&#39;) // &#39;/etc/joe.txt&#39;</span>
+</pre></div>          </div>
       </div>
   </div>
 

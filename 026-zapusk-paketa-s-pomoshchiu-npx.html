@@ -92,23 +92,24 @@
 <li>можно запускать разные версии команды с помощью @version</li>
 </ol>
 <p>Типичной демонстрацией использования npx является выполнение команды cowsay. В терминал выводится корова, "произносящая" переданную строку. Например: </p>
-<p>cowsay "Hello" выведет следующее:
-`</p>
-<hr>
-<p>&lt; Hello &gt;</p>
-<hr>
-<div class="highlight"><pre><span></span><span class="err">    \   ^__^</span>
-<span class="err">     \  (oo)\_______</span>
-<span class="err">        (__)\       )\/\\</span>
-<span class="err">            ||----w |</span>
-<span class="err">            ||     ||</span>
+<p>cowsay "Hello" выведет следующее:</p>
+<div class="highlight"><pre><span></span><span class="err">_______</span>
+<span class="err">&lt; Hello &gt;</span>
+<span class="err"> -------</span>
+<span class="err">        \   ^__^</span>
+<span class="err">         \  (oo)\_______</span>
+<span class="err">            (__)\       )\/\\</span>
+<span class="err">                ||----w |</span>
+<span class="err">                ||     ||</span>
 </pre></div>
 
 
-<p>`</p>
 <p>Для успешного выполнения этой команды, cowsay должен быть установлен глобально или локально, в противном случае, вы получите ошибку. </p>
-<p>npx позволяет выполнить эту команду без установки пакета: 
-<code>npx cowsay "Hello"</code></p>
+<p>npx позволяет выполнить эту команду без установки пакета: </p>
+<div class="highlight"><pre><span></span><span class="err">npx cowsay &quot;Hello&quot;</span>
+</pre></div>
+
+
 <p>Это забавная, но бесполезная команда. Другие сценарии: </p>
 <ul>
 <li>выполнение CLI vue для создания нового приложения и его запуска: npx vue create my-vue-app</li>
@@ -116,14 +117,20 @@
 </ul>
 <p>После загрузки и выполнения, ненужный код автоматически удаляется. </p>
 <h5>Запуск кода с использованием разных версий Node.js</h5>
-<p>Используйте @ для определения версии и комбинируйте его с пакетным менеджером: 
-<code>npx node@10 -v #v10.18.1
-npx node@12 -v #v12.14.1</code></p>
+<p>Используйте @ для определения версии и комбинируйте его с пакетным менеджером: </p>
+<div class="highlight"><pre><span></span><span class="n">npx</span> <span class="n">node</span><span class="mi">@10</span> <span class="o">-</span><span class="n">v</span> <span class="err">#</span><span class="n">v10</span><span class="mf">.18.1</span>
+<span class="n">npx</span> <span class="n">node</span><span class="mi">@12</span> <span class="o">-</span><span class="n">v</span> <span class="err">#</span><span class="n">v12</span><span class="mf">.14.1</span>
+</pre></div>
+
+
 <p>Это позволяет обойтись без nvm и других инструментов управления версиями. </p>
 <h5>Запуск произвольного сниппета из URL</h5>
 <p>npx не ограничивает вас пакетами, опубликованными в реестре npm. </p>
-<p>Вы можете запускать код, содержащийся в GitHub gist, например:
-<code>npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32</code></p>
+<p>Вы можете запускать код, содержащийся в GitHub gist, например:</p>
+<div class="highlight"><pre><span></span><span class="err">npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32</span>
+</pre></div>
+
+
 <p>Разумеется, вам следует быть осторожным при запуске чужого кода, поскольку с большими возможностями приходит большая ответственность.</p>          </div>
       </div>
   </div>

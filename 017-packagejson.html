@@ -81,88 +81,97 @@
 <p>Что это такое? Что вы должны о не знать? И что вы можете с ним делать? </p>
 <p>package.json - это своего рода манифест проекта. Он может делать много вещей, совершенно не связанных между собой. Он, например, может служить главным файлом для настроек используемых инструментов. В нем также хранятся названия и версии всех установленных пакетов (эта информация используется npm и yarn). </p>
 <h5>Структура файла</h5>
-<p>Вот пример package.json:
-<code>{}</code></p>
+<p>Вот пример package.json:</p>
+<div class="highlight"><pre><span></span><span class="err">{}</span>
+</pre></div>
+
+
 <p>Как видите, он пустой. К содержанию package.json не предъявляется никаких требований. Единственным требованием является его формат (JSON), в противном случае, программы не смогут получить к нему доступ. </p>
 <p>Если вы создаете Node.js-пакет, который планируете распространять через npm, ситуация кардинально меняется. В этом случае вам необходимо добавить свойства, которые помогут другим людям использовать пакет. Мы рассмотрим чуть это позже. </p>
-<p>Вот еще один пример package.json:
-<code>"name": "test-project"</code></p>
+<p>Вот еще один пример package.json:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;name&quot;: &quot;test-project&quot;</span>
+</pre></div>
+
+
 <p>Здесь мы определили название пакета или приложения, находящего в той же директории, что и package.json. </p>
-<p>Вот пример более сложного package.json, позаимствованного из Vue.js-приложения:
-<code>{
-  "name": "test-project",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
-  "main": "src/main.js",
-  "private": true,
-  "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit",
-    "build": "node build/build.js"
-  },
-  "dependencies": {
-    "vue": "^2.5.2"
-  },
-  "devDependencies": {
-    "autoprefixer": "^7.1.2",
-    "babel-core": "^6.22.1",
-    "babel-eslint": "^8.2.1",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3",
-    "babel-jest": "^21.0.2",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-dynamic-import-node": "^1.2.0",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-plugin-transform-vue-jsx": "^3.5.0",
-    "babel-preset-env": "^1.3.2",
-    "babel-preset-stage-2": "^6.22.0",
-    "chalk": "^2.0.1",
-    "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.0",
-    "eslint": "^4.15.0",
-    "eslint-config-airbnb-base": "^11.3.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-import-resolver-webpack": "^0.8.3",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-vue": "^4.0.0",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^1.1.4",
-    "friendly-errors-webpack-plugin": "^1.6.1",
-    "html-webpack-plugin": "^2.30.1",
-    "jest": "^22.0.4",
-    "jest-serializer-vue": "^0.3.0",
-    "node-notifier": "^5.1.2",
-    "optimize-css-assets-webpack-plugin": "^3.2.0",
-    "ora": "^1.2.0",
-    "portfinder": "^1.0.13",
-    "postcss-import": "^11.0.0",
-    "postcss-loader": "^2.0.8",
-    "postcss-url": "^7.2.1",
-    "rimraf": "^2.6.0",
-    "semver": "^5.3.0",
-    "shelljs": "^0.7.6",
-    "uglifyjs-webpack-plugin": "^1.1.1",
-    "url-loader": "^0.5.8",
-    "vue-jest": "^1.0.2",
-    "vue-loader": "^13.3.0",
-    "vue-style-loader": "^3.0.1",
-    "vue-template-compiler": "^2.5.2",
-    "webpack": "^3.6.0",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
-  },
-  "engines": {
-    "node": "&gt;= 6.0.0",
-    "npm": "&gt;= 3.0.0"
-  },
-  "browserslist": ["&gt; 1%", "last 2 versions", "not ie &lt;= 8"]
-}</code></p>
+<p>Вот пример более сложного package.json, позаимствованного из Vue.js-приложения:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;name&quot;: &quot;test-project&quot;,</span>
+<span class="err">  &quot;version&quot;: &quot;1.0.0&quot;,</span>
+<span class="err">  &quot;description&quot;: &quot;A Vue.js project&quot;,</span>
+<span class="err">  &quot;main&quot;: &quot;src/main.js&quot;,</span>
+<span class="err">  &quot;private&quot;: true,</span>
+<span class="err">  &quot;scripts&quot;: {</span>
+<span class="err">    &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,</span>
+<span class="err">    &quot;start&quot;: &quot;npm run dev&quot;,</span>
+<span class="err">    &quot;unit&quot;: &quot;jest --config test/unit/jest.conf.js --coverage&quot;,</span>
+<span class="err">    &quot;test&quot;: &quot;npm run unit&quot;,</span>
+<span class="err">    &quot;lint&quot;: &quot;eslint --ext .js,.vue src test/unit&quot;,</span>
+<span class="err">    &quot;build&quot;: &quot;node build/build.js&quot;</span>
+<span class="err">  },</span>
+<span class="err">  &quot;dependencies&quot;: {</span>
+<span class="err">    &quot;vue&quot;: &quot;^2.5.2&quot;</span>
+<span class="err">  },</span>
+<span class="err">  &quot;devDependencies&quot;: {</span>
+<span class="err">    &quot;autoprefixer&quot;: &quot;^7.1.2&quot;,</span>
+<span class="err">    &quot;babel-core&quot;: &quot;^6.22.1&quot;,</span>
+<span class="err">    &quot;babel-eslint&quot;: &quot;^8.2.1&quot;,</span>
+<span class="err">    &quot;babel-helper-vue-jsx-merge-props&quot;: &quot;^2.0.3&quot;,</span>
+<span class="err">    &quot;babel-jest&quot;: &quot;^21.0.2&quot;,</span>
+<span class="err">    &quot;babel-loader&quot;: &quot;^7.1.1&quot;,</span>
+<span class="err">    &quot;babel-plugin-dynamic-import-node&quot;: &quot;^1.2.0&quot;,</span>
+<span class="err">    &quot;babel-plugin-syntax-jsx&quot;: &quot;^6.18.0&quot;,</span>
+<span class="err">    &quot;babel-plugin-transform-es2015-modules-commonjs&quot;: &quot;^6.26.0&quot;,</span>
+<span class="err">    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.22.0&quot;,</span>
+<span class="err">    &quot;babel-plugin-transform-vue-jsx&quot;: &quot;^3.5.0&quot;,</span>
+<span class="err">    &quot;babel-preset-env&quot;: &quot;^1.3.2&quot;,</span>
+<span class="err">    &quot;babel-preset-stage-2&quot;: &quot;^6.22.0&quot;,</span>
+<span class="err">    &quot;chalk&quot;: &quot;^2.0.1&quot;,</span>
+<span class="err">    &quot;copy-webpack-plugin&quot;: &quot;^4.0.1&quot;,</span>
+<span class="err">    &quot;css-loader&quot;: &quot;^0.28.0&quot;,</span>
+<span class="err">    &quot;eslint&quot;: &quot;^4.15.0&quot;,</span>
+<span class="err">    &quot;eslint-config-airbnb-base&quot;: &quot;^11.3.0&quot;,</span>
+<span class="err">    &quot;eslint-friendly-formatter&quot;: &quot;^3.0.0&quot;,</span>
+<span class="err">    &quot;eslint-import-resolver-webpack&quot;: &quot;^0.8.3&quot;,</span>
+<span class="err">    &quot;eslint-loader&quot;: &quot;^1.7.1&quot;,</span>
+<span class="err">    &quot;eslint-plugin-import&quot;: &quot;^2.7.0&quot;,</span>
+<span class="err">    &quot;eslint-plugin-vue&quot;: &quot;^4.0.0&quot;,</span>
+<span class="err">    &quot;extract-text-webpack-plugin&quot;: &quot;^3.0.0&quot;,</span>
+<span class="err">    &quot;file-loader&quot;: &quot;^1.1.4&quot;,</span>
+<span class="err">    &quot;friendly-errors-webpack-plugin&quot;: &quot;^1.6.1&quot;,</span>
+<span class="err">    &quot;html-webpack-plugin&quot;: &quot;^2.30.1&quot;,</span>
+<span class="err">    &quot;jest&quot;: &quot;^22.0.4&quot;,</span>
+<span class="err">    &quot;jest-serializer-vue&quot;: &quot;^0.3.0&quot;,</span>
+<span class="err">    &quot;node-notifier&quot;: &quot;^5.1.2&quot;,</span>
+<span class="err">    &quot;optimize-css-assets-webpack-plugin&quot;: &quot;^3.2.0&quot;,</span>
+<span class="err">    &quot;ora&quot;: &quot;^1.2.0&quot;,</span>
+<span class="err">    &quot;portfinder&quot;: &quot;^1.0.13&quot;,</span>
+<span class="err">    &quot;postcss-import&quot;: &quot;^11.0.0&quot;,</span>
+<span class="err">    &quot;postcss-loader&quot;: &quot;^2.0.8&quot;,</span>
+<span class="err">    &quot;postcss-url&quot;: &quot;^7.2.1&quot;,</span>
+<span class="err">    &quot;rimraf&quot;: &quot;^2.6.0&quot;,</span>
+<span class="err">    &quot;semver&quot;: &quot;^5.3.0&quot;,</span>
+<span class="err">    &quot;shelljs&quot;: &quot;^0.7.6&quot;,</span>
+<span class="err">    &quot;uglifyjs-webpack-plugin&quot;: &quot;^1.1.1&quot;,</span>
+<span class="err">    &quot;url-loader&quot;: &quot;^0.5.8&quot;,</span>
+<span class="err">    &quot;vue-jest&quot;: &quot;^1.0.2&quot;,</span>
+<span class="err">    &quot;vue-loader&quot;: &quot;^13.3.0&quot;,</span>
+<span class="err">    &quot;vue-style-loader&quot;: &quot;^3.0.1&quot;,</span>
+<span class="err">    &quot;vue-template-compiler&quot;: &quot;^2.5.2&quot;,</span>
+<span class="err">    &quot;webpack&quot;: &quot;^3.6.0&quot;,</span>
+<span class="err">    &quot;webpack-bundle-analyzer&quot;: &quot;^2.9.0&quot;,</span>
+<span class="err">    &quot;webpack-dev-server&quot;: &quot;^2.9.1&quot;,</span>
+<span class="err">    &quot;webpack-merge&quot;: &quot;^4.1.0&quot;</span>
+<span class="err">  },</span>
+<span class="err">  &quot;engines&quot;: {</span>
+<span class="err">    &quot;node&quot;: &quot;&gt;= 6.0.0&quot;,</span>
+<span class="err">    &quot;npm&quot;: &quot;&gt;= 3.0.0&quot;</span>
+<span class="err">  },</span>
+<span class="err">  &quot;browserslist&quot;: [&quot;&gt; 1%&quot;, &quot;last 2 versions&quot;, &quot;not ie &lt;= 8&quot;]</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <p>Здесь много всего:</p>
 <ul>
 <li>name - название приложения/пакета</li>
@@ -182,153 +191,226 @@
 <p>Большинство свойств нужны для публикации пакета в npm, некоторые - для взаимодействия с пакетом. </p>
 <h5>Название (имя)</h5>
 <p>Определяет название пакета. </p>
-<p>Например: 
-<code>"name": "test-project"</code></p>
-<p>Имя не должно превышать 214 символов, не должно содержать пробелов, может состоять только из строчных букв (нижний регистр), дефисов (-) и нижнего подчеркивания (_). </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;name&quot;: &quot;test-project&quot;</span>
+</pre></div>
+
+
+<p>Имя не должно превышать 214 символов, не должно содержать пробелов, может состоять только из строчных букв (нижний регистр), дефисов (-) и нижнего подчеркивания (<code>_</code>). </p>
 <p>Это обусловлено тем, что при публикации в npm пакету присваивается URL на основе имени. </p>
 <p>Если пакет размещен на GitHub, хорошей практикой считается указание ссылки на репозиторий. </p>
 <h5>Автор</h5>
 <p>Определяет автора пакета. </p>
-<p>Например: 
-<code>{
-    "author": "Joe (https://whatever.com)"
-}</code></p>
-<p>или так:
-<code>{
-  "author": {
-    "name": "Joe",
-    "email": "joe@whatever.com",
-    "url": "https://whatever.com"
-  }
-}</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">    &quot;author&quot;: &quot;Joe (https://whatever.com)&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>или так:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;author&quot;: {</span>
+<span class="err">    &quot;name&quot;: &quot;Joe&quot;,</span>
+<span class="err">    &quot;email&quot;: &quot;joe@whatever.com&quot;,</span>
+<span class="err">    &quot;url&quot;: &quot;https://whatever.com&quot;</span>
+<span class="err">  }</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>Соавторы</h5>
 <p>Определяет одного или более соавторов пакета. Данное свойство представляет собой массив из строк. </p>
-<p>Например:
-<code>{
-  "contributors": ["Joe (https://whatever.com)"]
-}</code></p>
-<p>или так: 
-<code>{
-  "contributors": [
-    {
-      "name": "Joe",
-      "email": "joe@whatever.com",
-      "url": "https://whatever.com"
-    }
-  ]
-}</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;contributors&quot;: [&quot;Joe (https://whatever.com)&quot;]</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>или так: </p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;contributors&quot;: [</span>
+<span class="err">    {</span>
+<span class="err">      &quot;name&quot;: &quot;Joe&quot;,</span>
+<span class="err">      &quot;email&quot;: &quot;joe@whatever.com&quot;,</span>
+<span class="err">      &quot;url&quot;: &quot;https://whatever.com&quot;</span>
+<span class="err">    }</span>
+<span class="err">  ]</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>Ошибки</h5>
 <p>Определяет ссылку на инструкцию по решению распространенных проблем - трекер ошибок (issue tracker) GitHub. </p>
-<p>Например:
-<code>{
-  "bugs": "https://github.com/whatever/package/issues"
-}</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;bugs&quot;: &quot;https://github.com/whatever/package/issues&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>Домашняя страница</h5>
 <p>Определяет адрес домашней страницы. </p>
-<p>Например:
-<code>{
-  "homepage": "https://whatever.com/package"
-}</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;homepage&quot;: &quot;https://whatever.com/package&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>Версия</h5>
 <p>Определяет текущую версию пакета. </p>
-<p>Например: 
-<code>"version": "1.0.0"</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;version&quot;: &quot;1.0.0&quot;</span>
+</pre></div>
+
+
 <p>Данное свойство следует стандарту семантического версионирования. Это означает, что оно всегда должно состоять из трех чисел, разделенных точками: x.x.x. </p>
 <p>Первая цифра - мажорная (основная, главная) версия, вторая - минорная, третья - патч. </p>
 <p>Каждая цифра имеет определенный смысл: обновление с целью устранения ошибок - это патч, релиз обратно совместимых изменений - это минорный релиз, мажорный релиз может означать несовместимые с предыдущей версией изменения. </p>
 <h5>Лицензия</h5>
 <p>Определяет лицензию пакета. </p>
-<p>Например: 
-<code>"license": "MIT"</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;license&quot;: &quot;MIT&quot;</span>
+</pre></div>
+
+
 <h5>Ключевые слова</h5>
 <p>Данное свойство представляет собой массив ключевых слов, ассоциируемых с пакетом. </p>
-<p>Например:
-<code>"keywords": [
-  "email",
-  "machine learning",
-  "ai"
-]</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;keywords&quot;: [</span>
+<span class="err">  &quot;email&quot;,</span>
+<span class="err">  &quot;machine learning&quot;,</span>
+<span class="err">  &quot;ai&quot;</span>
+<span class="err">]</span>
+</pre></div>
+
+
 <p>Они помогают людям в поиске конкретного пакета. </p>
 <h5>Описание</h5>
 <p>Определяет краткое описание пакета. </p>
-<p>Например: 
-<code>"description": "A package to work with strings"</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;description&quot;: &quot;A package to work with strings&quot;</span>
+</pre></div>
+
+
 <p>При публикации пакета в npm данное свойство помогает людям понять, для чего нужен пакет. </p>
 <h5>Репозиторий</h5>
 <p>Определяет, где находится исходный код пакета. </p>
-<p>Например:
-<code>"repository": "github:whatever/testing",</code></p>
-<p>Обратите внимание на префикс github. Существует и другие подобные сервисы:
-<code>"repository": "gitlab:whatever/testing",</code>
-<code>"repository": "bitbucket:whatever/testing",</code></p>
-<p>Вы также можете определить систему контроля версий:
-<code>"repository": {
-  "type": "git",
-  "url": "https://github.com/whatever/testing.git"
-}</code></p>
-<p>Вы можете указать несколько систем контроля версий:
-<code>"repository": {
-  "type": "svn",
-  "url": "..."
-}</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;repository&quot;: &quot;github:whatever/testing&quot;,</span>
+</pre></div>
+
+
+<p>Обратите внимание на префикс github. Существует и другие подобные сервисы:</p>
+<div class="highlight"><pre><span></span><span class="ss">&quot;repository&quot;</span><span class="p">:</span> <span class="ss">&quot;gitlab:whatever/testing&quot;</span><span class="p">,</span>
+
+<span class="ss">&quot;repository&quot;</span><span class="p">:</span> <span class="ss">&quot;bitbucket:whatever/testing&quot;</span><span class="p">,</span>
+</pre></div>
+
+
+<p>Вы также можете определить систему контроля версий:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;repository&quot;: {</span>
+<span class="err">  &quot;type&quot;: &quot;git&quot;,</span>
+<span class="err">  &quot;url&quot;: &quot;https://github.com/whatever/testing.git&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Вы можете указать несколько систем контроля версий:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;repository&quot;: {</span>
+<span class="err">  &quot;type&quot;: &quot;svn&quot;,</span>
+<span class="err">  &quot;url&quot;: &quot;...&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>main</h5>
 <p>Определет главный файл (точку входа) пакета. </p>
 <p>При импорте пакета в приложение, именно в этом файле приложение будет искать экспортируемые модули. </p>
-<p>Например: 
-<code>"main": "src/main.js"</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;main&quot;: &quot;src/main.js&quot;</span>
+</pre></div>
+
+
 <h5>private</h5>
 <p>Установка данному свойству значения true предотвращает случайную публикацию пакета в npm. </p>
-<p>Например: 
-<code>"private": true</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;private&quot;: true</span>
+</pre></div>
+
+
 <h5>scripts</h5>
 <p>Определяет список команд (скриптов), которые можно выполнять (запускать). </p>
-<p>Например: 
-<code>"scripts": {
-  "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-  "start": "npm run dev",
-  "unit": "jest --config test/unit/jest.conf.js --coverage",
-  "test": "npm run unit",
-  "lint": "eslint --ext .js,.vue src test/unit",
-  "build": "node build/build.js"
-}</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;scripts&quot;: {</span>
+<span class="err">  &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,</span>
+<span class="err">  &quot;start&quot;: &quot;npm run dev&quot;,</span>
+<span class="err">  &quot;unit&quot;: &quot;jest --config test/unit/jest.conf.js --coverage&quot;,</span>
+<span class="err">  &quot;test&quot;: &quot;npm run unit&quot;,</span>
+<span class="err">  &quot;lint&quot;: &quot;eslint --ext .js,.vue src test/unit&quot;,</span>
+<span class="err">  &quot;build&quot;: &quot;node build/build.js&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <p>Эти скрипты являются приложениями командной строки. Вы можете запускать их с помощью npm run XXXX или yarn run XXXX, где XXXX - это название команды. Например: npm run dev. </p>
 <p>В качестве названия команды можно использовать любое имя, скрипт выполнит все, что вы в нем укажете. </p>
 <h5>Зависимости (dependencies)</h5>
 <p>Определяет список зависимостей пакета. </p>
-<p>При установке пакета с помощью npm или yarn: 
-<code>npm install yarn add</code></p>
+<p>При установке пакета с помощью npm или yarn: </p>
+<div class="highlight"><pre><span></span><span class="err">npm install yarn add</span>
+</pre></div>
+
+
 <p>запись об этом пакете будет автоматически добавлена в рассматриваемое свойство. </p>
-<p>Например: 
-<code>"dependencies": {
-  "vue": "^2.5.2"
-}</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;dependencies&quot;: {</span>
+<span class="err">  &quot;vue&quot;: &quot;^2.5.2&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>devDependencies</h5>
 <p>Определяет список зависимостей пакета, используемых при разработке. </p>
 <p>Они отличаются от dependencies, поскольку устанавливаются только на компьютере разработчика, и не попадают в продакшн. </p>
-<p>При установке пакета с помощью npm или yarn:
-<code>npm install --save-dev yarn add --save-dev</code></p>
+<p>При установке пакета с помощью npm или yarn:</p>
+<div class="highlight"><pre><span></span><span class="err">npm install --save-dev yarn add --save-dev</span>
+</pre></div>
+
+
 <p>запись о нем автоматически добавляется в рассматриваемое свойство. </p>
-<p>Например:
-<code>"devDependencies": {
-  "autoprefixer": "^7.1.2",
-  "babel-core": "^6.22.1"
-}</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;devDependencies&quot;: {</span>
+<span class="err">  &quot;autoprefixer&quot;: &quot;^7.1.2&quot;,</span>
+<span class="err">  &quot;babel-core&quot;: &quot;^6.22.1&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>engines</h5>
 <p>Определяет, на каких версиях Node.js или других инструментов работает пакет/приложение. </p>
-<p>Например:
-<code>"engines": {
-  "node": "&gt;= 6.0.0",
-  "npm": "&gt;= 3.0.0",
-  "yarn": "^0.13.0"
-}</code></p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;engines&quot;: {</span>
+<span class="err">  &quot;node&quot;: &quot;&gt;= 6.0.0&quot;,</span>
+<span class="err">  &quot;npm&quot;: &quot;&gt;= 3.0.0&quot;,</span>
+<span class="err">  &quot;yarn&quot;: &quot;^0.13.0&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
 <h5>browserlist</h5>
 <p>Определяет список поддерживаемых браузеров (и их версий). Эта информация используется Babel, Autoprefixer и другими инструментами для создания полифилов и обеспечения совместимости с указанными браузерами. </p>
-<p>Например: 
-<code>"browserslist": [
-  "&gt; 1%",
-  "last 2 versions",
-  "not ie &lt;= 8"
-]</code></p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;browserslist&quot;: [</span>
+<span class="err">  &quot;&gt; 1%&quot;,</span>
+<span class="err">  &quot;last 2 versions&quot;,</span>
+<span class="err">  &quot;not ie &lt;= 8&quot;</span>
+<span class="err">]</span>
+</pre></div>
+
+
 <p>Данная настройка означает, что вы хотите поддерживать две последние версии всех браузеров, которыми пользуется более 1% людей по статистике <a href="https://caniuse.com/">CanIUse</a>, за исключением IE8 и более старых версий. </p>
 <h5>Специальные свойства</h5>
 <p>package.json может содержать специальные свойства для таких инструментов, как Babel, ESLint и т.п. </p>

@@ -80,20 +80,29 @@
 <p>Если вы работали с JavaScript в браузере, то знаете, что большая часть взаимодействия с пользователем осуществляется через обработку событий: клики мышкой, нажатие клавиш клавиатуры, движение мышки и т.д. </p>
 <p>На стороне сервера Node.js предоставляет нам возможность создания похожей системы с помощью <a href="https://nodejs.org/api/events.html">модуля events</a>. </p>
 <p>Этот модуль, в частности, предоставляет класс EventEmitter, который используется для обработки событий. </p>
-<p>Он инициализируется следующим образом: 
-<code>const EventEmitter = require('events')
-    const eventEmitter = new EventEmitter()</code></p>
+<p>Он инициализируется следующим образом: </p>
+<div class="highlight"><pre><span></span><span class="err">const EventEmitter = require(&#39;events&#39;)</span>
+<span class="err">const eventEmitter = new EventEmitter()</span>
+</pre></div>
+
+
 <p>Этот объект, среди прочего, содержит методы on и emit. </p>
 <ul>
 <li>emit используется для регистрации события</li>
 <li>on используется для добавления колбека, вызываемого при возникновении события</li>
 </ul>
-<p>Давайте, например, создадим событие start, при возникновении которого будет выводиться сообщение в консоль: 
-<code>eventEmitter.on('start', () =&gt; {
-    console.log('started')
-})</code></p>
-<p>При запуске
-<code>eventEmitter.emit('start')</code></p>
+<p>Давайте, например, создадим событие start, при возникновении которого будет выводиться сообщение в консоль: </p>
+<div class="highlight"><pre><span></span><span class="err">eventEmitter.on(&#39;start&#39;, () =&gt; {</span>
+<span class="err">    console.log(&#39;started&#39;)</span>
+<span class="err">})</span>
+</pre></div>
+
+
+<p>При запуске</p>
+<div class="highlight"><pre><span></span><span class="err">eventEmitter.emit(&#39;start&#39;)</span>
+</pre></div>
+
+
 <p>запускается обработчик события и сообщение выводится в консоль. </p>
 <p>Вы можете передавать обработчику событий аргументы во втором параметре emit(): </p>
 <div class="highlight"><pre><span></span>eventEmitter.on(&#39;start&#39;, number =&gt; {

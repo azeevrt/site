@@ -82,16 +82,23 @@
 <li>локальную</li>
 <li>глобальную</li>
 </ul>
-<p>По умолчанию, когда вы вводите npm install, например:
-<code>npm install lodash</code></p>
-<p>пакет устанавливается в папку <code>node\_modules</code> в текущей директории. </p>
+<p>По умолчанию, когда вы вводите npm install, например:</p>
+<div class="highlight"><pre><span></span><span class="err">npm install lodash</span>
+</pre></div>
+
+
+<p>пакет устанавливается в папку <code>node_modules</code> в текущей директории. </p>
 <p>После установки, npm добавляет запись о lodash в раздел dependencies файла package.json в текущей директории. </p>
-<p>Для глобальной установки следует использовать флаг -g: 
-<code>npm install -g lodash</code></p>
+<p>Для глобальной установки следует использовать флаг -g: </p>
+<div class="highlight"><pre><span></span><span class="err">npm install -g lodash</span>
+</pre></div>
+
+
 <p>При глобальной установке пакет устанавливается не в текущую директорию, а в глобальную. </p>
 <p>Но куда именно? </p>
 <p>Для определения этого необходимо выполнить команду npm root -g. </p>
-<p>На macOS или Linux такой директорией может быть <code>/usr/local/lib/``node\_modules</code>. На Windows - <code>C:\\Users\\YOU\\AppData\\Roaming\\npm\\node\_modules</code>. </p>
+<p>На macOS или Linux такой директорией может быть <code>/usr/local/lib/``node_modules</code>. 
+На Windows - <code>C:\\Users\\YOU\\AppData\\Roaming\\npm\\node\_modules</code>. </p>
 <p>При использовании nvm для управления версиями Node.js эта директория будет другой.</p>          </div>
       </div>
   </div>
