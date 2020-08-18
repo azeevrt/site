@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <title>011. Вывод результатов в командную строку</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="stylesheet" href="./theme/products.css" />
+</head>
+
+<body id="page-top" class=" js">
+  <div class="grid">
+    <header id="header" class="l-12 l-fix center vline header">
+      <strong><i style="display: none;"></i><a href="./">Azeevrt</a> <i style="font-size: 0.5em">For everyone and for me</i></strong>
+
+      <!-- 
+
+      <strong><a href="#">Azeervt</a>
+          <a href="/mail/">Email</a></strong>
+        -->
+      <div class="module left l-0 m-1 s-1 fix">
+        <span class="l s-0 white service-light-hover burger icon service-light" data-toggle-nodes="body{toggle-nav},
+        .header .service-light-hover.burger.icon{service-light}" tabindex="0">Show/hide navigation</span>
+        <span class="l m-0 white service-light-hover burger icon service-light" data-toggle-nodes="body{toggle-nav},
+      .header .service-light-hover.burger.icon{service-light}" tabindex="0">Show/hide navigation</span>
+      </div>
+      <div class="container right l-1 fix">
+        <div class="module l-1 fix left align-center">
+        <!--
+        <a data-tracking-contentposition="header.icon.login" class="l s-0 white service-light-hover show-text person icon" href="#" aria-label="Login"></a>
+
+        <a data-tracking-contentposition="header.icon.login" class="l l-0 m-0  white person icon" href="#" aria-label="Login"></a>
+        -->
+        </div>
+      </div>
+    </header>
+    <nav class="fullwidth center navigation">
+        <ul class="l-12 fix">
+          <li><a href="./" data-title="Azeevrt">
+              <span class="l l-0 service home icon"></span>
+              <span class="m s-0 m-0 inactive service-hover home icon"></span></a>
+              <span class="l-0 m inactive service-hover close icon" data-unset-nodes="body{toggle-nav}, .header .burger.icon{service}"></span>
+          </li>
+          <!-- <li>
+            <span data-hide-nodes="span[data-hide-parent]{current}" data-hide-parent=".navigation > ul > li" data-toggle-nodes=".navigation span.current{open}, .navigation span:not(.current).open{open}, .navigation .current{current}">
+              Навигация
+                <span class="m-0 s-0 s inactive down icon"></span>
+                <span class="l-0 m inactive down icon"></span>
+                <span class="m-0 s-0 s service down icon"></span>
+                <span class="l-0 m service down icon"></span>
+                <span class="m-0 s-0 s white up icon"></span>
+            </span>
+             
+          </li> -->
+              <li class="active">
+                  <a href="./category/nodejs.html">Node.js</a>
+                  
+              </li>
+      </ul>
+    </nav>
+    
+<div class="container l-12 center ">
+      <div class="container l-12 fix">
+          <div class="container l-12 fix group-headline">
+              <h2 class="size-7 module l-12 fix align-center">011. Вывод результатов в командную строку</h2>
+<footer class="post-info">
+        <abbr class="published" title="2020-08-10T18:00:09+02:00">
+                Published: Пн 10 Август 2020
+        </abbr>
+
+        <address class="vcard author">
+                By                         <a class="url fn" href="./author/vrt.html">VRT</a>
+        </address>
+<p>In <a href="./category/nodejs.html">Node.js</a>.</p>
+
+</footer><!-- /.post-info -->          </div>
+          <div class="module l-12 fix vspace-s">                                
+              <h3>11. Вывод результатов в командную строку</h3>
+<h5>Стандартный вывод посредством модуля console</h5>
+<p>Node.js предоставляет <a href="https://nodejs.org/api/console.html">модуль console</a>, содержащий множество очень полезных способов взаимодействия с командной строкой. </p>
+<p>Он похож на объект console браузера. </p>
+<p>Одним из основных методов данного модуля является console.log(), который выводит в консоль переданную строку. </p>
+<p>Если вы передадите объект, он будет преобразован в строку. </p>
+<p>Мы можем передавать console.log несколько переменных:
+<code>const x = 'x'
+const y = 'y'
+console.log(x, y)</code></p>
+<p>и Node.js выведет в консоль обе. </p>
+<p>Мы также можем форматировать строку с помощью спецификаторов:</p>
+<p>Например:
+<code>console.log('My %s has %d years', 'cat', 2)</code></p>
+<ul>
+<li>%s - форматирует переменную как строку</li>
+<li>%d - форматирует переменную как число</li>
+<li>%i - приводит переменную к целому числу</li>
+<li>%o - форматирует переменную как объект</li>
+</ul>
+<p>Например:
+<code>console.log('%o', Number)</code></p>
+<h5>Очистка консоли</h5>
+<p>console.clear() очищает консоль (поведение зависит от используемой консоли).</p>
+<h5>Подсчет элементов</h5>
+<p>console.count() - полезный метод. </p>
+<p>Изучите этот код:
+<code>const x = 1 
+const y = 2 
+const z = 3
+console.count(
+    'The value of x is ' + x +
+    ' and has been checked .. how many times?'
+)
+console.count(
+    'The value of x is ' + x +
+    ' and has been checked .. how many times?'
+)
+console.count(
+    'The value of y is ' + y +
+    ' and has been checked .. how many times?'
+)</code></p>
+<p>Счетчик считает и показывает количество отображений строки. 
+<code>The value of x is 1 and has been checked .. how many times?: 1
+The value of x is 1 and has been checked .. how many times?: 2
+The value of y is 2 and has been checked .. how many times?: 1</code></p>
+<p>Так вы можете посчитать количество яблок и апельсинов:
+<code>const oranges = ['orange', 'orange']
+const apples = ['just one apple']
+oranges.forEach(fruit =&gt; console.count(fruit))
+apples.forEach(fruit =&gt; console.count(fruit))</code></p>
+<h5>Отображение трассировки стека</h5>
+<p>Возникают ситуации, когда необходимо отобразить трассировку стека функции, например, для того, чтобы ответить на вопрос "Как мы достигли этой части кода?"</p>
+<p>Вы можете сделать это с помощью console.trace():
+<code>const function2 = () =&gt; console.trace()
+const function1 = () =&gt; function2()
+function1()</code></p>
+<p>Это выведет в консоль трассировку стека. Вот что мы увидим в командной строке, если выполним приведенный код в REPL:
+<code>Trace
+    at function2 (repl:1:33)
+    at function1 (repl:1:25)
+    at repl:1:1
+    at ContextifyScript.Script.runInThisContext (vm.js:44:33)
+    at REPLServer.defaultEval (repl.js:239:29)
+    at bound (domain.js:301:14)
+    at REPLServer.runBound [as eval] (domain.js:314:12)
+    at REPLServer.onLine (repl.js:440:10)
+    at emitOne (events.js:120:20)
+    at REPLServer.emit (events.js:210:7)</code></p>
+<h5>Подсчет времени выполнения кода</h5>
+<p>Вы легко можете посчитать, сколько времени выполнялась функция при помощи time() и timeEnd():
+<code>const doSomething = () =&gt; console.log('test')
+const measureDoingSomething = () =&gt; {
+    console.time('doSomething()')
+    // выполняем какие-либо операции и засекаем время их выполнения
+    doSomething()
+    console.timeEnd('doSomething()')
+}
+measureDoingSomething()</code></p>
+<h5>stdout и stderr</h5>
+<p>Как мы знаем, console.log() отлично подходит для вывода сообщений в консоль. Это называется стандартным выводом или stdout. </p>
+<p>console.error() отображает поток stderr. </p>
+<p>Данный поток не выводится в консоль, а записывается в журнал ошибок (error log). </p>
+<h5>Стилизуем вывод</h5>
+<p>Вы можете раскрасить текст, выводимый в консоль, с помощью <a href="https://gist.github.com/iamnewton/8754917">обратных последовательностей (escape sequences)</a>. Эти последовательности представлют собой набор символов, идентифицирующих цвет. </p>
+<p>Например:
+<code>console.log('\x1b[33m%s\x1b[0m', 'hi!')</code></p>
+<p>Если набрать приведенный код в REPL, то hi! будет желтого цвета. </p>
+<p>Рассмотренный способ довольно трудоемкий. Простейшим способом раскрасить консольный вывод - использовать библиотеку. Одной из таких библиотек является <a href="https://github.com/chalk/chalk">Chalk</a>, которая кроме определения цвета, позволяет сделать текст полужирным, наклонным или подчеркнутым. </p>
+<p>Устанавливаем библиотеку посредством npm install chalk и используем ее следующим образом:
+<code>const chalk = require('chalk')
+console.log(chalk.yellow('hi!'))</code></p>
+<p>Использование chalk.yellow гораздо проще, чем запоминание сложных последовательностей. Это также делает код более читаемым. </p>
+<h5>Создание индикатора прогресса</h5>
+<p><a href="https://www.npmjs.com/package/progress">Progress</a> - отличная библиотека для создания индикаторов прогресса в терминале. Устанавливаем ее с помощью npm install progress. </p>
+<p>Данный сниппет создает индикатор прогресса, состоящий из 10 шагов. Каждые 100 мс выполняется один шаг. При заполнении индикатора мы отключаем счетчик: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">ProgressBar</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;progress&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">bar</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="s1">&#39;:bar&#39;</span><span class="p">,</span> <span class="err">{</span> <span class="n">total</span><span class="p">:</span> <span class="mi">10</span> <span class="err">}</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">timer</span> <span class="o">=</span> <span class="n">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">bar</span><span class="p">.</span><span class="n">tick</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bar</span><span class="p">.</span><span class="n">complete</span><span class="p">)</span> <span class="n">clearInterval</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+<span class="err">}</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>          </div>
+      </div>
+  </div>
+
+    <footer id="footer">
+      <div class="container l-12 backdrop-c2-light50 inverted vspace-s">
+        <div class="container l-12 fix center">
+        	<h2>links</h2>
+	          <ul class="inline-block text align-center list">
+	                <li><a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+	          </ul><!-- /.blogroll -->
+          	<h2>social</h2>
+	          <ul class="inline-block text align-center list">
+                    <li><a href="https://azeevrt.github.io/site">site</a></li>
+	          </ul><!-- /.social -->
+        </div>
+      </div>
+    </footer>
+    <a class="scroll-to-top rounded js-scroll-trigger button" href="#">
+      <i class="fas fa-angle-up"></i>
+    </a>
+  </div>
+
+<!--    -->
+
+
+<script src="./theme/products.js"></script>
+<script src="./theme/jquery-2.2.4.min.js"></script>
+
+<script type="text/javascript">
+
+
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+      }
+    });
+
+    $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+
+    $('span.link-base:not([data-hide-nodes=""])').on('click', function () {
+        var expandable = $(this);
+        var count = expandable.closest('[data-tracking-count]').data('tracking-count');
+        var eventposition = expandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+        var contentposition = expandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+        trackExpandable('page.module.part.expand', count, eventposition, contentposition);
+    });
+
+    $('span.close:not([data-hide-nodes=""])').on('click', function () {
+        var expandable = $(this);
+        if(expandable.closest('[data-tracking-count]').data('tracking-count') !== 2) {
+            var count = expandable.closest('[data-tracking-count]').data('tracking-count');
+            var eventposition = expandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+            var contentposition = expandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+            trackExpandable('page.module.part.reduce', count, eventposition, contentposition);
+        }
+    });
+
+    $('.navigation > ul > li[data-unset-nodes="#empty"] span').on('click', function () {
+        var navExpandable = $(this);
+        var navAction;
+        (!navExpandable.hasClass('open')) ? navAction = 'expand' : navAction = 'reduce';
+        var section = 'page.navigation.' + navAction;
+        var count = navExpandable.closest('[data-tracking-count]').data('tracking-count');
+        var eventposition = navExpandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
+        var contentposition = navExpandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
+
+        trackExpandable(section, count, eventposition, contentposition);
+    });
+
+    // home-button, screenSize < 980px
+    $('.header > div > span').on('click', function () {
+        var navExpandable = $(this);
+        var navAction;
+        (!navExpandable.hasClass('service')) ? navAction = 'expand': navAction = 'reduce';
+        var section = 'page.navigation.home.' + navAction;
+
+        trackExpandable(section, 2, 2, 'header.menu');
+    });
+
+    $('.navigation > ul > li span.close.icon').on('click', function () {
+        trackExpandable('page.navigation.home.reduce', 2, 2, 'header.menu');
+    });
+
+</script>
+</body>
+</html>
