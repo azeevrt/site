@@ -55,18 +55,19 @@
           </li> -->
               <li class="active">
                   <a href="./category/nodejs.html">Node.js</a>
-                  
+
+                 
               </li>
       </ul>
     </nav>
     
-<div class="container l-12 center ">
+    <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
               <h2 class="size-7 module l-12 fix align-center">001. Введение</h2>
 <footer class="post-info">
-        <abbr class="published" title="2020-08-10T18:00:09+02:00">
-                Published: Пн 10 Август 2020
+        <abbr class="published" title="2020-08-18T22:56:51.397461+02:00">
+                Published: Вт 18 Август 2020
         </abbr>
 
         <address class="vcard author">
@@ -91,7 +92,7 @@
 <div class="highlight"><pre><span></span>const http = require(&#39;http&#39;)
 
 const hostname = &#39;127.0.0.1&#39;
-const port = process.env.PORT
+const port = process.env.PORT // or &#39;3000&#39;
 
 const server = http.createServer((req, res) =&gt; {
     res.statusCode = 200
@@ -100,7 +101,7 @@ const server = http.createServer((req, res) =&gt; {
 })
 
 server.listen(port, hostname, () =&gt; {
-    console.log(\\`Server running at http://<span class="cp">${</span><span class="n">hostname</span><span class="cp">}</span>:<span class="cp">${</span><span class="n">port</span><span class="cp">}</span>/\\`)
+    console.log(`Server running at http://<span class="cp">${</span><span class="n">hostname</span><span class="cp">}</span>:<span class="cp">${</span><span class="n">port</span><span class="cp">}</span>/`)
 })
 </pre></div>
 
@@ -131,7 +132,10 @@ server.listen(port, hostname, () =&gt; {
 <li><a href="https://nextjs.org/">Next.js</a>: фреймворк для рендеринга React-приложений на стороне сервера.</li>
 <li><a href="https://nx.dev/">Nx</a>: инструмент для фуллстек монолитной разработки посредством NestJS, Express, React, Angular и т.д. Nx помогает масштабировать разработку от одной до нескольких команд, работающих одновременно над множеством приложений.</li>
 <li><a href="https://socket.io/">Socket.io</a>: движок для коммуникации в режиме реального времени для создания сетевых приложений.</li>
-</ul>          </div>
+</ul>
+          </div>
+          <div class="module l-12 fix vspace-s">
+          </div>
       </div>
   </div>
 
