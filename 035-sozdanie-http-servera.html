@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">035. Создание HTTP-сервера</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>35. Создание HTTP-сервера</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>35. Создание HTTP-сервера</h3>
 <p>Вот пример простого HTTP-сервера:</p>
 <div class="highlight"><pre><span></span>const http = require(&#39;http&#39;)
 
@@ -99,11 +97,12 @@ server.listen(port, () =&gt; {
 <p>И закрываем ответ, добавляя контент в качестве аргумента метода end():</p>
 <div class="highlight"><pre><span></span><span class="err">res.end(&#39;Hello, World!&#39;)</span>
 </pre></div>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">

@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">043. Запись файла</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>43. Запись файла</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>43. Запись файла</h3>
 <p>Простейшим способом записи данных в файл является использование метода fs.writeFile(). </p>
 <p>Например:</p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
@@ -127,11 +125,12 @@
 <h5>Использование потоков</h5>
 <p>Все эти методы записывают весь файл перед тем, как вернуть управление программе (в асинхронных версиях это означает выполнение колбека). </p>
 <p>Поэтому для записи больших файлов используются потоки. </p>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">

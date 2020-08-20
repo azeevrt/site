@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">023. Удаление пакета</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>23. Удаление пакета</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>23. Удаление пакета</h3>
 <p>Для удаления пакета, установленного локально (с помощью <code>npm i &lt;package-name\&gt;</code> в папку node_modules), запустите <code>npm unistall &lt;package-name\&gt;</code> из корневой директории проекта (директории, в которой находится папка node_modules). </p>
 <p>Если добавить флаг -S или --save, то из package.json будет удалена запись об удаленном пакете. </p>
 <p>Для удаление записи о пакете для разработки, запись о котором содержится в разделе devDependencies файла package.json, следует использовать флаг -D / --save-dev:</p>
@@ -77,11 +75,12 @@
 <p>Например: </p>
 <div class="highlight"><pre><span></span><span class="err">npm uninstall -g webpack</span>
 </pre></div>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">

@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">037. Отправка POST-запроса</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>37. Отправка POST-запроса</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>37. Отправка POST-запроса</h3>
 <p>Существует множество способов отправки POST-запроса в зависимости от уровня абстракции. </p>
 <p>Одним из простейших способов это сделать является использование <a href="https://github.com/axios/axios">библиотеки Axios</a>. </p>
 <div class="highlight"><pre><span></span>const axios = require(&#39;axios&#39;)
@@ -115,11 +113,12 @@ req.on(&#39;error&#39;, error =&gt; {
 req.write(data)
 req.end()
 </pre></div>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">

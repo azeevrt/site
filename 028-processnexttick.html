@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">028. Process.nextTick()</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>28. Process.nextTick()</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>28. Process.nextTick()</h3>
 <p>Одной из важных частей цикла событий Node.js является process.nextTick(). </p>
 <p>Каждый раз, когда цикл событий делает полный круг, ставится особая отметка. </p>
 <p>При передаче process.nextTick() определенной функции мы указываем движку вызвать эту функцию перед началом следующего цикла. </p>
@@ -80,11 +78,12 @@
 <p>Таким способом мы можем указать двику выполнить функцию асинхронно (после текущей функции), максимально быстро, без помещения в очередь. </p>
 <p>Вызов <code>setTimeout(() =\&gt; {}, 0)</code> выполнит функцию в начале следующей итерации, после функции, переданной <code>nextTick()</code>. </p>
 <p>Используйте <code>nextTick()</code>, когда хотите быть уверенным, что на следующей итерации цикла событий код будет выполнен.</p>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">

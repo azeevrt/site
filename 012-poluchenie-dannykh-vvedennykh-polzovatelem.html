@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">012. Получение данных, введенных пользователем</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>12. Получение данных, введенных пользователем</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>12. Получение данных, введенных пользователем</h3>
 <p>Как сделать Node.js-программу интерактивной?</p>
 <p>Для этого в 7 версии Node.js представлен модуль <a href="https://nodejs.org/api/readline.html">readline</a>: он служит для получения данных из потока для чтения, такого как process.stdin - командная строка во время выполнения Node.js-программы. </p>
 <div class="highlight"><pre><span></span>const readline = require(&#39;readline&#39;).createInterface({
@@ -106,11 +104,12 @@ inquirer.prompt(questions).then(answers =&gt; {
 
 <p>Inquirer.js позволяет делать много интересных вещей, например, предлагать множественный выбор, предоставлять радио-кнопки, запрашивать подтверждение действия и т.д. </p>
 <p>Он больше известен как альтернатива встроенным решениям, но если вы планируете поднять взаимодействие с пользователем на новый уровень, Inquirer.js - оптимальное решение. </p>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">

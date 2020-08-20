@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">034. Event Emitter (обработчик событий)</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>34. Event Emitter (обработчик событий)</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>34. Event Emitter (обработчик событий)</h3>
 <p>Если вы работали с JavaScript в браузере, то знаете, что большая часть взаимодействия с пользователем осуществляется через обработку событий: клики мышкой, нажатие клавиш клавиатуры, движение мышки и т.д. </p>
 <p>На стороне сервера Node.js предоставляет нам возможность создания похожей системы с помощью <a href="https://nodejs.org/api/events.html">модуля events</a>. </p>
 <p>Этот модуль, в частности, предоставляет класс EventEmitter, который используется для обработки событий. </p>
@@ -117,11 +115,12 @@ eventEmitter.emit(&#39;start&#39;, 1, 100)
 <li>removeListener() / off(): удаляет определенный обработчик</li>
 <li>removeAllListeners(): удаляет все обработчики</li>
 </ul>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">

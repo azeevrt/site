@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">048. Модуль events</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>48. Модуль events</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>48. Модуль events</h3>
 <p>Модуль events предоставляет класс EventEmitter, предназначенный для обработки событий. </p>
 <div class="highlight"><pre><span></span><span class="err">const EventEmitter = require(&#39;events&#39;)</span>
 <span class="err">const door = new EventEmitter()</span>
@@ -148,11 +146,12 @@
 <p>Устанавливает максимальное количество обработчиков, которые можно добавить для объекта EventEmitter: </p>
 <div class="highlight"><pre><span></span><span class="err">door.setMaxListeners(50)</span>
 </pre></div>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">

@@ -59,13 +59,11 @@
     </ul>
     </nav>
   </header>
-    <div class="container l-12 center ">
-      <div class="container l-12 fix">
-          <div class="container l-12 fix group-headline">
-              <h2 class="size-7 module l-12 fix align-center">042. Чтение файла</h2>
-          </div>
-          <div class="module l-12 fix vspace-s">                                
-              <h3>42. Чтение файла</h3>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>42. Чтение файла</h3>
 <p>Простейшим способом прочитать содержимое файла является использование метода fs.readFile(), которому передается путь, кодировка и колбек, вызываемый с содержимым файла (и ошибкой):</p>
 <div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">fs</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;fs&#39;</span><span class="p">)</span>
 
@@ -94,11 +92,12 @@
 <p>Оба метода считывают содержимое файла в память перед тем, как вернуть данные. </p>
 <p>Это означает, что большие файлы будут существенно влиять на расход памяти и скорость выполнения программы. </p>
 <p>В этом случае файлы лучше читать с помощью потоков.</p>
-          </div>
-          <div class="module l-12 fix vspace-s">
-          </div>
+
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
       </div>
-  </div>
+    </section>
 <footer>
   <div class="grid">
     <div class="unit one-third center-on-mobiles">
