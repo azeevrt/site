@@ -2,70 +2,63 @@
 <html lang="ru">
 <head>
         <meta charset="utf-8" />
-        <title>034. Event Emitter (обработчик событий)</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <meta http-equiv="imagetoolbar" content="false">
-        <link rel="stylesheet" href="./theme/products.css" />
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/css/screen.css" as="style">
+        <link rel="preload" href="./theme/css/user.css" as="style">
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>034. Event Emitter (обработчик событий)</title>
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/user.css" />
+        <!--[if lt IE 9]>
+  <script src="./theme/js/html5shiv.min.js"></script>
+  <script src="./theme/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 
-<body id="page-top" class=" js">
-  <div class="grid">
-    <header id="header" class="l-12 l-fix center vline header">
-      <strong><i style="display: none;"></i><a href="./">Azeevrt</a> <i style="font-size: 0.5em">For everyone and for me</i></strong>
-
-      <!-- 
-
-      <strong><a href="#">Azeervt</a>
-          <a href="/mail/">Email</a></strong>
-        -->
-      <div class="module left l-0 m-1 s-1 fix">
-        <span class="l s-0 white service-light-hover burger icon service-light" data-toggle-nodes="body{toggle-nav},
-        .header .service-light-hover.burger.icon{service-light}" tabindex="0">Show/hide navigation</span>
-        <span class="l m-0 white service-light-hover burger icon service-light" data-toggle-nodes="body{toggle-nav},
-      .header .service-light-hover.burger.icon{service-light}" tabindex="0">Show/hide navigation</span>
+<body class="wrap js" id="page-top">
+  <header>
+    <div class="flexbox">
+      <div class="center-on-mobiles">
+        <h1>
+          <a href="/" class="logo">
+            <span class="sr-only">Azeevrt</span>
+            <img src="./theme/img/logo-2x.png" width="140" height="65" alt="Azeevrt Logo">
+          </a>
+        </h1>
       </div>
-      <div class="container right l-1 fix">
-        <div class="module l-1 fix left align-center">
-        <!--
-        <a data-tracking-contentposition="header.icon.login" class="l s-0 white service-light-hover show-text person icon" href="#" aria-label="Login"></a>
-
-        <a data-tracking-contentposition="header.icon.login" class="l l-0 m-0  white person icon" href="#" aria-label="Login"></a>
-        -->
-        </div>
-      </div>
-    </header>
-    <nav class="fullwidth center navigation">
-        <ul class="l-12 fix">
-          <li><a href="./" data-title="Azeevrt">
-              <span class="l l-0 service home icon"></span>
-              <span class="m s-0 m-0 inactive service-hover home icon"></span></a>
-              <span class="l-0 m inactive service-hover close icon" data-unset-nodes="body{toggle-nav}, .header .burger.icon{service}"></span>
+      <nav class="main-nav hide-on-mobiles">
+        <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
           </li>
-          <!-- <li>
-            <span data-hide-nodes="span[data-hide-parent]{current}" data-hide-parent=".navigation > ul > li" data-toggle-nodes=".navigation span.current{open}, .navigation span:not(.current).open{open}, .navigation .current{current}">
-              Навигация
-                <span class="m-0 s-0 s inactive down icon"></span>
-                <span class="l-0 m inactive down icon"></span>
-                <span class="m-0 s-0 s service down icon"></span>
-                <span class="l-0 m service down icon"></span>
-                <span class="m-0 s-0 s white up icon"></span>
-            </span>
-             
-          </li> -->
-              <li>
-                  <a href="./category/azeevrt.html">Azeevrt</a>
-
-                 
-              </li>
-              <li class="active">
-                  <a href="./category/nodejs.html">Node.js</a>
-
-                 
-              </li>
-      </ul>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meta hide-on-mobiles">
+        <ul>
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="mobile-nav show-on-mobiles">
+      <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+    </ul>
     </nav>
-    
+  </header>
     <div class="container l-12 center ">
       <div class="container l-12 fix">
           <div class="container l-12 fix group-headline">
@@ -129,35 +122,33 @@ eventEmitter.emit(&#39;start&#39;, 1, 100)
           </div>
       </div>
   </div>
-
-    <footer id="footer">
-      <div class="container l-12 backdrop-c2-light50 inverted vspace-s">
-        <div class="container l-12 fix center">
-        	<h2>Р</h2>
-	          <ul class="inline-block text align-center list">
-	                <li><a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
-	          </ul><!-- /.blogroll -->
-          	<h2>A</h2>
-	          <ul class="inline-block text align-center list">
-                    <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
-	          </ul><!-- /.social -->
-        </div>
-      </div>
-    </footer>
-    <a class="scroll-to-top rounded js-scroll-trigger button" href="#">
-      <i class="fas fa-angle-up"></i>
-    </a>
+<footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+  <h2>Р</h2>
+    <ul class="inline-block text align-center list">
+          <li><a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+    </ul><!-- /.blogroll -->
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Гордо принимает 
+        <a href="https://github.com">
+          <img src="./theme/img/footer-logo.png" width="100" height="30" alt="GitHub • Социальное программирование">
+        </a>
+      </p>
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <h2>A</h2>
+      <ul class="inline-block text align-center list">
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+      </ul><!-- /.social -->
+    </div>
   </div>
-
-<!--    -->
-
-
-<script src="./theme/products.js"></script>
-<script src="./theme/jquery-2.2.4.min.js"></script>
-
+</footer>
+<a class="scroll-to-top rounded js-scroll-trigger button" href="#"><i class="fas fa-angle-up"></i></a>
+<script src="./theme/js/jquery-2.2.4.min.js"></script>
 <script type="text/javascript">
-
-
     // Smooth scrolling using jQuery easing
     $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
       if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -172,70 +163,14 @@ eventEmitter.emit(&#39;start&#39;, 1, 100)
       }
     });
 
-    // Scroll to top button appear
-    $(document).scroll(function() {
-      var scrollDistance = $(this).scrollTop();
-      if (scrollDistance > 100) {
-        $('.scroll-to-top').fadeIn();
-      } else {
-        $('.scroll-to-top').fadeOut();
-      }
-    });
 
-    $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+     $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
         var akk = $(this).parent().parent();
         var action;
         (!akk.attr('open')) ? action = 'expand': action = 'reduce';
         var section = 'page.module.part.' + action;
 
     });
-
-    $('span.link-base:not([data-hide-nodes=""])').on('click', function () {
-        var expandable = $(this);
-        var count = expandable.closest('[data-tracking-count]').data('tracking-count');
-        var eventposition = expandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
-        var contentposition = expandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
-
-        trackExpandable('page.module.part.expand', count, eventposition, contentposition);
-    });
-
-    $('span.close:not([data-hide-nodes=""])').on('click', function () {
-        var expandable = $(this);
-        if(expandable.closest('[data-tracking-count]').data('tracking-count') !== 2) {
-            var count = expandable.closest('[data-tracking-count]').data('tracking-count');
-            var eventposition = expandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
-            var contentposition = expandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
-
-            trackExpandable('page.module.part.reduce', count, eventposition, contentposition);
-        }
-    });
-
-    $('.navigation > ul > li[data-unset-nodes="#empty"] span').on('click', function () {
-        var navExpandable = $(this);
-        var navAction;
-        (!navExpandable.hasClass('open')) ? navAction = 'expand' : navAction = 'reduce';
-        var section = 'page.navigation.' + navAction;
-        var count = navExpandable.closest('[data-tracking-count]').data('tracking-count');
-        var eventposition = navExpandable.closest('[data-tracking-eventposition]').data('tracking-eventposition');
-        var contentposition = navExpandable.closest('[data-tracking-contentposition]').data('tracking-contentposition');
-
-        trackExpandable(section, count, eventposition, contentposition);
-    });
-
-    // home-button, screenSize < 980px
-    $('.header > div > span').on('click', function () {
-        var navExpandable = $(this);
-        var navAction;
-        (!navExpandable.hasClass('service')) ? navAction = 'expand': navAction = 'reduce';
-        var section = 'page.navigation.home.' + navAction;
-
-        trackExpandable(section, 2, 2, 'header.menu');
-    });
-
-    $('.navigation > ul > li span.close.icon').on('click', function () {
-        trackExpandable('page.navigation.home.reduce', 2, 2, 'header.menu');
-    });
-
 </script>
 </body>
 </html>
