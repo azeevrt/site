@@ -1,8 +1,8 @@
 footer ul {
-    display: block;
     list-style-type: none;
+    padding: 0;
 }
-
+footer ul, footer h2, footer li{display: inline;}
 .scroll-to-top {
   position: fixed;
   right: 15px;
