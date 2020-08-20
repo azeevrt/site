@@ -65,6 +65,29 @@
           <article>
             <style type="text/css">@import url("css/showcase.css");</style>
 
+<script src="js/blazy.min.js"></script>
+
+<script src="js/md5.min.js"></script>
+
+<script>
+  var apiUrl = 'https://d2ov3dk2yjyb0w.cloudfront.net/',
+    a = 'c7aa76e1-684d-4c45-b396-78b893839b5f',
+    b = 'c7bfb661-71a8-40bb-baac-7ddad709639c',
+    sites = document.getElementById('showcase').getElementsByTagName('a');
+
+  for (var i = 0; i < sites.length; i++) {
+    var href = sites[i].getAttribute('href'),
+      inputUrl = encodeURIComponent(href),
+      q = 'url=' + inputUrl + '&delay=2&resizeWidth=800&resizeHeight=600',
+      hash = md5(b + q),
+      resultImgUrl = apiUrl + a + '/' + hash + '/image?' + q;
+
+    sites[i].getElementsByTagName('img')[0].setAttribute('data-src', resultImgUrl);
+  }
+
+  var bLazy = new Blazy();
+</script>
+
 <h1><a href="https://www.youtube.com/results?search_query=Козарада">Козарада</a></h1>
 
 <p>Искать  <a href="https://www.youtube.com/results?search_query=Kozarada">Kozarada</a> в Youtube</p>
@@ -330,29 +353,6 @@
   </li>
   <li class="spacer"></li>
 </ul>
-
-<script src="js/blazy.min.js"></script>
-
-<script src="js/md5.min.js"></script>
-
-<script>
-  var apiUrl = 'https://d2ov3dk2yjyb0w.cloudfront.net/',
-    a = 'c7aa76e1-684d-4c45-b396-78b893839b5f',
-    b = 'c7bfb661-71a8-40bb-baac-7ddad709639c',
-    sites = document.getElementById('showcase').getElementsByTagName('a');
-
-  for (var i = 0; i < sites.length; i++) {
-    var href = sites[i].getAttribute('href'),
-      inputUrl = encodeURIComponent(href),
-      q = 'url=' + inputUrl + '&delay=2&resizeWidth=800&resizeHeight=600',
-      hash = md5(b + q),
-      resultImgUrl = apiUrl + a + '/' + hash + '/image?' + q;
-
-    sites[i].getElementsByTagName('img')[0].setAttribute('data-src', resultImgUrl);
-  }
-
-  var bLazy = new Blazy();
-</script>
           </article><!-- /#posts-list -->
         </div>
         <div class="clear"></div>
