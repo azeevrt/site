@@ -1,7 +1,7 @@
 .azlink{text-decoration:underline;}.azlink:hover{text-decoration:none;}
 .azback{
     position: fixed;
-    top: 1px;
+    bottom: 76px;
     display: block;
     left: 39px;
 }
