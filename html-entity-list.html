@@ -58,8 +58,33 @@
         <div class="unit whole">
           <article>
             <h1>HTML Entity List / Список объектов HTML</h1>
-            <p>Complete list of HTML entities with their numbers and names. Also included is a full list of ASCII characters that can be represented in HTML (i.e. printable characters).</p>
-<p>Полный список объектов HTML с их номерами и названиями. Также включен полный список символов ASCII, которые могут быть представлены в HTML (т.е. печатные символы).</p>
+            <p>Some characters are reserved in HTML.
+ // Некоторые символы зарезервированы в HTML.</p>
+<p>If you use the less than (&lt;) or greater than (>) signs in your text, the browser might mix them with tags.
+ // Если вы используете в тексте знаки «меньше» (&lt;) или «больше» (>), браузер может смешивать их с тегами.</p>
+<p>Character entities are used to display reserved characters in HTML.
+ // Сущности символов используются для отображения зарезервированных символов в HTML.</p>
+<p>A character entity looks like this:
+ // Сущность символа выглядит так:</p>
+<div class="highlight"><pre><span></span><span class="err">&amp;entity_name;</span>
+<span class="err">OR // или</span>
+<span class="err">&amp;#entity_number;</span>
+</pre></div>
+
+
+<p>To display a less than sign (&lt;) we must write: <code>&amp;lt;</code> or <code>&amp;#60;</code>
+ // Чтобы отобразить знак «меньше» (&lt;), мы должны написать: <code>&amp;lt;</code> или <code>&amp;#60;</code></p>
+<p><strong>Advantage of using an entity name: Преимущество использования имени объекта:</strong> </p>
+<blockquote>
+<p>An entity name is easy to remember. Ммя объекта легко запомнить. </p>
+</blockquote>
+<p><strong>Disadvantage of using an entity name:Недостаток использования имени сущности:</strong></p>
+<blockquote>
+<p>Browsers may not support all entity names, but the support for entity numbers is good. Браузеры могут поддерживать не все имена сущностей, но поддержка номеров сущностей хорошая.</p>
+</blockquote>
+<hr>
+<p>Complete list of HTML entities with their numbers and names. Also included is a full list of ASCII characters that can be represented in HTML (i.e. printable characters).
+ // Полный список объектов HTML с их номерами и названиями. Также включен полный список символов ASCII, которые могут быть представлены в HTML (т.е. печатные символы).</p>
 <ul>
 <li><a href="#ascii-characters">ASCII Characters</a></li>
 <li><a href="#iso88591-characters">ISO 8859-1 Characters</a></li>
@@ -69,8 +94,8 @@
 <li><a href="#misc-html-entities">Miscellaneous HTML entities</a></li>
 </ul>
 <h2><span id="ascii-characters">ASCII Characters (Printable) / Символы ASCII (для печати)(для печати)</span></h2>
-<p>Only printable characters are displayed as control characters (0-31) shouldn't be present in HTML pages since they have no visual representations.</p>
-<p>Отображаются только печатаемые символы, поскольку управляющие символы (0–31) не должны присутствовать на страницах HTML, поскольку они не имеют визуального представления.</p>
+<p>Only printable characters are displayed as control characters (0-31) shouldn't be present in HTML pages since they have no visual representations.
+ // Отображаются только печатаемые символы, поскольку управляющие символы (0–31) не должны присутствовать на страницах HTML, поскольку они не имеют визуального представления.</p>
 <table class="bordered-table zebra-striped" style="font-size:11px;">
                         <thead>
                             <tr>
@@ -179,10 +204,10 @@
                         </tbody>
                     </table>
 
-<h2><span id="iso88591-characters">ISO-8859-1 Characters / Символы ISO-8859-1</span></h2>
+<h2><span id="iso88591-characters">ISO-8859-1 Characters // Символы ISO-8859-1</span></h2>
 <p>Full list of supported ISO-8859-1 characters. Notice that the names are case sensitive, hence if you want an uppercase letter, the name should
-also start with an uppercase letter.</p>
-<p>Полный список поддерживаемых символов ISO-8859-1. Обратите внимание, что имена чувствительны к регистру, поэтому, если вам нужна заглавная буква, имя также должно начинаться с заглавной буквы.</p>
+also start with an uppercase letter.
+ // Полный список поддерживаемых символов ISO-8859-1. Обратите внимание, что имена чувствительны к регистру, поэтому, если вам нужна заглавная буква, имя также должно начинаться с заглавной буквы.</p>
 <table class="bordered-table zebra-striped" style="font-size:11px;">
                         <thead>
                             <tr>
@@ -258,9 +283,9 @@ also start with an uppercase letter.</p>
                         </tbody>
                     </table>
 
-<h2><span id="iso88591-symbols">ISO-8859-1 Symbols / Символы ISO-8859-1</span></h2>
-<p>Full list of supported ISO-8859-1 symbols in HTML.</p>
-<p>Полный список поддерживаемых символов ISO-8859-1 в HTML.</p>
+<h2><span id="iso88591-symbols">ISO-8859-1 Symbols // Символы ISO-8859-1</span></h2>
+<p>Full list of supported ISO-8859-1 symbols in HTML.
+ // Полный список поддерживаемых символов ISO-8859-1 в HTML.</p>
 <table class="bordered-table zebra-striped" style="font-size:11px;">
                         <thead>
                             <tr>
@@ -360,9 +385,9 @@ also start with an uppercase letter.</p>
                         </tbody>
                     </table>
 
-<h2><span id="greek-letters">Greek Letters / Греческие буквы</span></h2>
-<p>Full list of all supported greek letters in HTML.</p>
-<p>Полный список всех поддерживаемых греческих букв в HTML.</p>
+<h2><span id="greek-letters">Greek Letters // Греческие буквы</span></h2>
+<p>Full list of all supported greek letters in HTML.
+ // Полный список всех поддерживаемых греческих букв в HTML.</p>
 <table class="bordered-table zebra-striped" style="font-size:11px;">
                         <thead>
                             <tr>
@@ -428,9 +453,9 @@ also start with an uppercase letter.</p>
                         </tbody>
                     </table>
 
-<h2><span id="misc-html-entities">Miscellaneous HTML entities / Разные объекты HTML</span></h2>
-<p>List of miscellaneous HTML entities.</p>
-<p>Список разных HTML-сущностей.</p>
+<h2><span id="misc-html-entities">Miscellaneous HTML entities // Разные объекты HTML</span></h2>
+<p>List of miscellaneous HTML entities.
+ // Список разных HTML-сущностей.</p>
 <table class="bordered-table zebra-striped" style="font-size:11px;">
                         <thead>
                             <tr>
@@ -493,6 +518,8 @@ also start with an uppercase letter.</p>
                             <tr><td>♦</td><td>&amp;diams;</td><td>&amp;#9830;</td><td>Diamond</td></tr>
                         </tbody>
                     </table>
+
+<p><a href="https://www.freeformatter.com/html-entities.html">Complete list of <strong>HTML</strong> <strong>entities</strong> with their numbers and names. Also included is a full list of ASCII characters that can be represented in <strong>HTML</strong> (i.e. printable characters). ... Entity Number Description   ... <strong>Plus</strong> or minus:</a></p>
             <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
           </article><!-- /#posts-list -->
         </div>
