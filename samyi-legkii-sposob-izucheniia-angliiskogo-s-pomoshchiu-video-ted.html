@@ -86,7 +86,11 @@
 </a><a href="https://m.habr.com/ru/hub/lifehacks/">Лайфхаки для гиков
 </a><a href="https://m.habr.com/ru/hub/learning_languages/">Изучение языков
 </a></p>
+            <i class="azback"><a href="#" onclick="history.back();">Вернуться назад</a></i>
           </article><!-- /#posts-list -->
+            <li class="active">
+                <a href="./category/azeevrt.html">Azeevrt</a>
+            </li>
         </div>
         <div class="clear"></div>
       </div>
@@ -132,6 +136,19 @@
         }
       }
     });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
 
 
      $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {

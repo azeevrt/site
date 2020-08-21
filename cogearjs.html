@@ -1029,7 +1029,11 @@ rsync
 <li><strong>Яндекс.Деньги</strong> 41001122128423</li>
 <li><strong>VISA / Mastercard</strong> 5106 2180 3042 8486</li>
 </ul>
+            <i class="azback"><a href="#" onclick="history.back();">Вернуться назад</a></i>
           </article><!-- /#posts-list -->
+            <li class="active">
+                <a href="./category/azeevrt.html">Azeevrt</a>
+            </li>
         </div>
         <div class="clear"></div>
       </div>
@@ -1075,6 +1079,19 @@ rsync
         }
       }
     });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
 
 
      $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {

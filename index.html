@@ -61,17 +61,30 @@
               <div class="akkordeon ">
                 <div class="akkordeon-content vspace-xs">
                   <p><h1>С чего начать продвижение интернет-магазина</h1>
-<p><a href="https://m.habr.com/ru/hub/internetmarketing/">Интернет-маркетинг</a> - <a href="https://m.habr.com/ru/hub/seo/">Поисковая оптимизация</a></p>
-<p>В текущих мировых реалиях и экономических условиях предлагаем освежить в памяти алгоритм оптимизации сайта --- первые шаги в продвижении. Подробно остановимся на каждом этапе, кроме интуитивно понятных: регистрации в сервисах и установки счетчиков …</p> <a href="./s-chego-nachat-prodvizhenie-internet-magazina.html" rel="bookmark" title="Permalink to С чего начать продвижение интернет-магазина" class="azlink">читать полностью</a></p>
-                  <p>&nbsp;</p>
-                </div>
-              </div>
-              
-              <div class="akkordeon ">
-                <div class="akkordeon-content vspace-xs">
-                  <p><h1>Самый легкий способ изучения английского с помощью видео TED</h1>
-<p><a href="https://m.habr.com/ru/hub/study/">Учебный процесс в IT</a><a href="https://m.habr.com/ru/hub/popular_science/">Научно-популярное</a><a href="https://m.habr.com/ru/hub/lifehacks/">Лайфхаки для гиков</a><a href="https://m.habr.com/ru/hub/learning_languages/">Изучение языков</a></p>
-<p><em>Это немного адаптированный кросс-пост<a href="https://habr.com/ru/company/habr/blog/437072/">*</a> статьи <a href="https://www.sergeykin.com/2020/04/ted-en-ru.html">Самый легкий способ изучения английского с помощью видео TED</a> с моего персонального сайта (сокращена небольшая часть …</em></p> <a href="./samyi-legkii-sposob-izucheniia-angliiskogo-s-pomoshchiu-video-ted.html" rel="bookmark" title="Permalink to Самый легкий способ изучения английского с помощью видео TED" class="azlink">читать полностью</a></p>
+<ul>
+<li><a href="#Сбор семантики">Сбор семантики</a><ul>
+<li><a href="#Источники поисковых систем">Источники поисковых систем</a></li>
+<li><a href="#Данные собственного сайта">Данные собственного сайта</a></li>
+<li><a href="#Внешние сервисы">Внешние сервисы</a></li>
+<li><a href="#Парсинг">Парсинг</a> </li>
+<li><a href="#Кластеризация и структура">Кластеризация и структура</a></li>
+</ul>
+</li>
+<li><a href="#Анализ конкурентов">Анализ конкурентов</a></li>
+<li><a href="#On-page оптимизация продвигаемых страниц">On-page оптимизация продвигаемых страниц</a></li>
+<li><a href="#Настройка индексации">Настройка индексации</a><ul>
+<li><a href="#https протокол">https протокол </a></li>
+<li><a href="#robots.txt">robots.txt</a></li>
+<li><a href="#Мониторинг индексации">Мониторинг индексации</a></li>
+</ul>
+</li>
+<li><a href="#Геопривязка">Геопривязка</a><ul>
+<li><a href="#Яндекс">Яндекс</a></li>
+<li><a href="#Google">Google</a></li>
+</ul>
+</li>
+<li><a href="#Установка систем аналитики">Установка систем аналитики</a></li>
+<li><a href="#Техническая оптимизация">Техническая …</a></li></ul> <a href="./s-chego-nachat-prodvizhenie-internet-magazina.html" rel="bookmark" title="Permalink to С чего начать продвижение интернет-магазина" class="azlink">читать полностью</a></p>
                   <p>&nbsp;</p>
                 </div>
               </div>
@@ -81,6 +94,15 @@
                   <p><h1><a href="https://www.youtube.com/results?search_query=Козарада">Козарада</a></h1>
 
 <p>Искать  <a href="https://www.youtube.com/results?search_query=Kozarada">Kozarada</a> в Youtube</p> <a href="./kozarada.html" rel="bookmark" title="Permalink to Kozarada" class="azlink">читать полностью</a></p>
+                  <p>&nbsp;</p>
+                </div>
+              </div>
+              
+              <div class="akkordeon ">
+                <div class="akkordeon-content vspace-xs">
+                  <p><h1>Самый легкий способ изучения английского с помощью видео TED</h1>
+<p><a href="https://m.habr.com/ru/hub/study/">Учебный процесс в IT</a><a href="https://m.habr.com/ru/hub/popular_science/">Научно-популярное</a><a href="https://m.habr.com/ru/hub/lifehacks/">Лайфхаки для гиков</a><a href="https://m.habr.com/ru/hub/learning_languages/">Изучение языков</a></p>
+<p><em>Это немного адаптированный кросс-пост<a href="https://habr.com/ru/company/habr/blog/437072/">*</a> статьи <a href="https://www.sergeykin.com/2020/04/ted-en-ru.html">Самый легкий способ изучения английского с помощью видео TED</a> с моего персонального сайта (сокращена небольшая часть …</em></p> <a href="./samyi-legkii-sposob-izucheniia-angliiskogo-s-pomoshchiu-video-ted.html" rel="bookmark" title="Permalink to Самый легкий способ изучения английского с помощью видео TED" class="azlink">читать полностью</a></p>
                   <p>&nbsp;</p>
                 </div>
               </div>
@@ -142,6 +164,19 @@
         }
       }
     });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
 
 
      $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
