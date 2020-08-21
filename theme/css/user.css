@@ -1,8 +1,8 @@
 .azlink{text-decoration:underline;}.azlink:hover{text-decoration:none;}
-.azback{
-    position: fixed;
+.azback{/*
+    position: absolute;
     left: 39px;
-    bottom: 164px;
+    bottom: 164px;*/
     display: none;
 }
 .azback {background: none}
