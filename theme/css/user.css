@@ -1,9 +1,9 @@
 .azlink{text-decoration:underline;}.azlink:hover{text-decoration:none;}
 .azback{
     position: fixed;
-    bottom: 76px;
-    display: block;
     left: 39px;
+    bottom: 76px;
+    display: none;
 }
 .azback {background: none}
 footer ul {
