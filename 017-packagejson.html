@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/css/screen.css" as="style">
+        <link rel="preload" href="./theme/css/user.css" as="style">
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>017. Package.json</title>
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/user.css" />
+        <!--[if lt IE 9]>
+  <script src="./theme/js/html5shiv.min.js"></script>
+  <script src="./theme/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="wrap js" id="page-top">
+  <header>
+    <div class="flexbox">
+      <div class="center-on-mobiles">
+        <h1>
+          <a href="./" class="logo">
+            <span class="sr-only">Azeevrt</span>
+            <img src="./theme/img/logo-2x.png" width="140" height="65" alt="Azeevrt Logo">
+          </a>
+        </h1>
+      </div>
+      <nav class="main-nav hide-on-mobiles">
+        <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meta hide-on-mobiles">
+        <ul>
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="mobile-nav show-on-mobiles">
+      <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+    </ul>
+    </nav>
+  </header>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>17. Package.json</h3>
+<p>При работе с JavaScript и Node.js вы наверняка встретите файл package.json. </p>
+<p>Что это такое? Что вы должны о не знать? И что вы можете с ним делать? </p>
+<p>package.json - это своего рода манифест проекта. Он …</p>
+            <h3>17. Package.json</h3>
+<p>При работе с JavaScript и Node.js вы наверняка встретите файл package.json. </p>
+<p>Что это такое? Что вы должны о не знать? И что вы можете с ним делать? </p>
+<p>package.json - это своего рода манифест проекта. Он может делать много вещей, совершенно не связанных между собой. Он, например, может служить главным файлом для настроек используемых инструментов. В нем также хранятся названия и версии всех установленных пакетов (эта информация используется npm и yarn). </p>
+<h5>Структура файла</h5>
+<p>Вот пример package.json:</p>
+<div class="highlight"><pre><span></span><span class="err">{}</span>
+</pre></div>
+
+
+<p>Как видите, он пустой. К содержанию package.json не предъявляется никаких требований. Единственным требованием является его формат (JSON), в противном случае, программы не смогут получить к нему доступ. </p>
+<p>Если вы создаете Node.js-пакет, который планируете распространять через npm, ситуация кардинально меняется. В этом случае вам необходимо добавить свойства, которые помогут другим людям использовать пакет. Мы рассмотрим чуть это позже. </p>
+<p>Вот еще один пример package.json:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;name&quot;: &quot;test-project&quot;</span>
+</pre></div>
+
+
+<p>Здесь мы определили название пакета или приложения, находящего в той же директории, что и package.json. </p>
+<p>Вот пример более сложного package.json, позаимствованного из Vue.js-приложения:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;name&quot;: &quot;test-project&quot;,</span>
+<span class="err">  &quot;version&quot;: &quot;1.0.0&quot;,</span>
+<span class="err">  &quot;description&quot;: &quot;A Vue.js project&quot;,</span>
+<span class="err">  &quot;main&quot;: &quot;src/main.js&quot;,</span>
+<span class="err">  &quot;private&quot;: true,</span>
+<span class="err">  &quot;scripts&quot;: {</span>
+<span class="err">    &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,</span>
+<span class="err">    &quot;start&quot;: &quot;npm run dev&quot;,</span>
+<span class="err">    &quot;unit&quot;: &quot;jest --config test/unit/jest.conf.js --coverage&quot;,</span>
+<span class="err">    &quot;test&quot;: &quot;npm run unit&quot;,</span>
+<span class="err">    &quot;lint&quot;: &quot;eslint --ext .js,.vue src test/unit&quot;,</span>
+<span class="err">    &quot;build&quot;: &quot;node build/build.js&quot;</span>
+<span class="err">  },</span>
+<span class="err">  &quot;dependencies&quot;: {</span>
+<span class="err">    &quot;vue&quot;: &quot;^2.5.2&quot;</span>
+<span class="err">  },</span>
+<span class="err">  &quot;devDependencies&quot;: {</span>
+<span class="err">    &quot;autoprefixer&quot;: &quot;^7.1.2&quot;,</span>
+<span class="err">    &quot;babel-core&quot;: &quot;^6.22.1&quot;,</span>
+<span class="err">    &quot;babel-eslint&quot;: &quot;^8.2.1&quot;,</span>
+<span class="err">    &quot;babel-helper-vue-jsx-merge-props&quot;: &quot;^2.0.3&quot;,</span>
+<span class="err">    &quot;babel-jest&quot;: &quot;^21.0.2&quot;,</span>
+<span class="err">    &quot;babel-loader&quot;: &quot;^7.1.1&quot;,</span>
+<span class="err">    &quot;babel-plugin-dynamic-import-node&quot;: &quot;^1.2.0&quot;,</span>
+<span class="err">    &quot;babel-plugin-syntax-jsx&quot;: &quot;^6.18.0&quot;,</span>
+<span class="err">    &quot;babel-plugin-transform-es2015-modules-commonjs&quot;: &quot;^6.26.0&quot;,</span>
+<span class="err">    &quot;babel-plugin-transform-runtime&quot;: &quot;^6.22.0&quot;,</span>
+<span class="err">    &quot;babel-plugin-transform-vue-jsx&quot;: &quot;^3.5.0&quot;,</span>
+<span class="err">    &quot;babel-preset-env&quot;: &quot;^1.3.2&quot;,</span>
+<span class="err">    &quot;babel-preset-stage-2&quot;: &quot;^6.22.0&quot;,</span>
+<span class="err">    &quot;chalk&quot;: &quot;^2.0.1&quot;,</span>
+<span class="err">    &quot;copy-webpack-plugin&quot;: &quot;^4.0.1&quot;,</span>
+<span class="err">    &quot;css-loader&quot;: &quot;^0.28.0&quot;,</span>
+<span class="err">    &quot;eslint&quot;: &quot;^4.15.0&quot;,</span>
+<span class="err">    &quot;eslint-config-airbnb-base&quot;: &quot;^11.3.0&quot;,</span>
+<span class="err">    &quot;eslint-friendly-formatter&quot;: &quot;^3.0.0&quot;,</span>
+<span class="err">    &quot;eslint-import-resolver-webpack&quot;: &quot;^0.8.3&quot;,</span>
+<span class="err">    &quot;eslint-loader&quot;: &quot;^1.7.1&quot;,</span>
+<span class="err">    &quot;eslint-plugin-import&quot;: &quot;^2.7.0&quot;,</span>
+<span class="err">    &quot;eslint-plugin-vue&quot;: &quot;^4.0.0&quot;,</span>
+<span class="err">    &quot;extract-text-webpack-plugin&quot;: &quot;^3.0.0&quot;,</span>
+<span class="err">    &quot;file-loader&quot;: &quot;^1.1.4&quot;,</span>
+<span class="err">    &quot;friendly-errors-webpack-plugin&quot;: &quot;^1.6.1&quot;,</span>
+<span class="err">    &quot;html-webpack-plugin&quot;: &quot;^2.30.1&quot;,</span>
+<span class="err">    &quot;jest&quot;: &quot;^22.0.4&quot;,</span>
+<span class="err">    &quot;jest-serializer-vue&quot;: &quot;^0.3.0&quot;,</span>
+<span class="err">    &quot;node-notifier&quot;: &quot;^5.1.2&quot;,</span>
+<span class="err">    &quot;optimize-css-assets-webpack-plugin&quot;: &quot;^3.2.0&quot;,</span>
+<span class="err">    &quot;ora&quot;: &quot;^1.2.0&quot;,</span>
+<span class="err">    &quot;portfinder&quot;: &quot;^1.0.13&quot;,</span>
+<span class="err">    &quot;postcss-import&quot;: &quot;^11.0.0&quot;,</span>
+<span class="err">    &quot;postcss-loader&quot;: &quot;^2.0.8&quot;,</span>
+<span class="err">    &quot;postcss-url&quot;: &quot;^7.2.1&quot;,</span>
+<span class="err">    &quot;rimraf&quot;: &quot;^2.6.0&quot;,</span>
+<span class="err">    &quot;semver&quot;: &quot;^5.3.0&quot;,</span>
+<span class="err">    &quot;shelljs&quot;: &quot;^0.7.6&quot;,</span>
+<span class="err">    &quot;uglifyjs-webpack-plugin&quot;: &quot;^1.1.1&quot;,</span>
+<span class="err">    &quot;url-loader&quot;: &quot;^0.5.8&quot;,</span>
+<span class="err">    &quot;vue-jest&quot;: &quot;^1.0.2&quot;,</span>
+<span class="err">    &quot;vue-loader&quot;: &quot;^13.3.0&quot;,</span>
+<span class="err">    &quot;vue-style-loader&quot;: &quot;^3.0.1&quot;,</span>
+<span class="err">    &quot;vue-template-compiler&quot;: &quot;^2.5.2&quot;,</span>
+<span class="err">    &quot;webpack&quot;: &quot;^3.6.0&quot;,</span>
+<span class="err">    &quot;webpack-bundle-analyzer&quot;: &quot;^2.9.0&quot;,</span>
+<span class="err">    &quot;webpack-dev-server&quot;: &quot;^2.9.1&quot;,</span>
+<span class="err">    &quot;webpack-merge&quot;: &quot;^4.1.0&quot;</span>
+<span class="err">  },</span>
+<span class="err">  &quot;engines&quot;: {</span>
+<span class="err">    &quot;node&quot;: &quot;&gt;= 6.0.0&quot;,</span>
+<span class="err">    &quot;npm&quot;: &quot;&gt;= 3.0.0&quot;</span>
+<span class="err">  },</span>
+<span class="err">  &quot;browserslist&quot;: [&quot;&gt; 1%&quot;, &quot;last 2 versions&quot;, &quot;not ie &lt;= 8&quot;]</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Здесь много всего:</p>
+<ul>
+<li>name - название приложения/пакета</li>
+<li>version - версия приложения/пакета</li>
+<li>description - краткое описание приложения/пакета</li>
+<li>main - главный файл (точка входа) приложения</li>
+<li>private - значение true предотвращает случайную публикацию приложения в npm</li>
+<li>scripts - набор скриптов (команд), которые можно запускать (выполнять)</li>
+<li>dependencies - зависимости проекта</li>
+<li>devDependencies - зависимости проекта, используемые в целях разработки</li>
+<li>engines - версии, на которых работает приложение/пакет</li>
+<li>browserlist - поддерживаемые браузеры (и их версии)</li>
+</ul>
+<p>Все эти свойства используются npm. </p>
+<h5>Свойства</h5>
+<p>В этом разделе мы поговорим о некоторых свойствах, которые вы можете использовать. Мы будем использовать термин "пакет", однако большая часть из сказанного также справедлива по отношению к приложениям. </p>
+<p>Большинство свойств нужны для публикации пакета в npm, некоторые - для взаимодействия с пакетом. </p>
+<h5>Название (имя)</h5>
+<p>Определяет название пакета. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;name&quot;: &quot;test-project&quot;</span>
+</pre></div>
+
+
+<p>Имя не должно превышать 214 символов, не должно содержать пробелов, может состоять только из строчных букв (нижний регистр), дефисов (-) и нижнего подчеркивания (<code>_</code>). </p>
+<p>Это обусловлено тем, что при публикации в npm пакету присваивается URL на основе имени. </p>
+<p>Если пакет размещен на GitHub, хорошей практикой считается указание ссылки на репозиторий. </p>
+<h5>Автор</h5>
+<p>Определяет автора пакета. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">    &quot;author&quot;: &quot;Joe (https://whatever.com)&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>или так:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;author&quot;: {</span>
+<span class="err">    &quot;name&quot;: &quot;Joe&quot;,</span>
+<span class="err">    &quot;email&quot;: &quot;joe@whatever.com&quot;,</span>
+<span class="err">    &quot;url&quot;: &quot;https://whatever.com&quot;</span>
+<span class="err">  }</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h5>Соавторы</h5>
+<p>Определяет одного или более соавторов пакета. Данное свойство представляет собой массив из строк. </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;contributors&quot;: [&quot;Joe (https://whatever.com)&quot;]</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>или так: </p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;contributors&quot;: [</span>
+<span class="err">    {</span>
+<span class="err">      &quot;name&quot;: &quot;Joe&quot;,</span>
+<span class="err">      &quot;email&quot;: &quot;joe@whatever.com&quot;,</span>
+<span class="err">      &quot;url&quot;: &quot;https://whatever.com&quot;</span>
+<span class="err">    }</span>
+<span class="err">  ]</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h5>Ошибки</h5>
+<p>Определяет ссылку на инструкцию по решению распространенных проблем - трекер ошибок (issue tracker) GitHub. </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;bugs&quot;: &quot;https://github.com/whatever/package/issues&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h5>Домашняя страница</h5>
+<p>Определяет адрес домашней страницы. </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">{</span>
+<span class="err">  &quot;homepage&quot;: &quot;https://whatever.com/package&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h5>Версия</h5>
+<p>Определяет текущую версию пакета. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;version&quot;: &quot;1.0.0&quot;</span>
+</pre></div>
+
+
+<p>Данное свойство следует стандарту семантического версионирования. Это означает, что оно всегда должно состоять из трех чисел, разделенных точками: x.x.x. </p>
+<p>Первая цифра - мажорная (основная, главная) версия, вторая - минорная, третья - патч. </p>
+<p>Каждая цифра имеет определенный смысл: обновление с целью устранения ошибок - это патч, релиз обратно совместимых изменений - это минорный релиз, мажорный релиз может означать несовместимые с предыдущей версией изменения. </p>
+<h5>Лицензия</h5>
+<p>Определяет лицензию пакета. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;license&quot;: &quot;MIT&quot;</span>
+</pre></div>
+
+
+<h5>Ключевые слова</h5>
+<p>Данное свойство представляет собой массив ключевых слов, ассоциируемых с пакетом. </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;keywords&quot;: [</span>
+<span class="err">  &quot;email&quot;,</span>
+<span class="err">  &quot;machine learning&quot;,</span>
+<span class="err">  &quot;ai&quot;</span>
+<span class="err">]</span>
+</pre></div>
+
+
+<p>Они помогают людям в поиске конкретного пакета. </p>
+<h5>Описание</h5>
+<p>Определяет краткое описание пакета. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;description&quot;: &quot;A package to work with strings&quot;</span>
+</pre></div>
+
+
+<p>При публикации пакета в npm данное свойство помогает людям понять, для чего нужен пакет. </p>
+<h5>Репозиторий</h5>
+<p>Определяет, где находится исходный код пакета. </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;repository&quot;: &quot;github:whatever/testing&quot;,</span>
+</pre></div>
+
+
+<p>Обратите внимание на префикс github. Существует и другие подобные сервисы:</p>
+<div class="highlight"><pre><span></span><span class="ss">&quot;repository&quot;</span><span class="p">:</span> <span class="ss">&quot;gitlab:whatever/testing&quot;</span><span class="p">,</span>
+
+<span class="ss">&quot;repository&quot;</span><span class="p">:</span> <span class="ss">&quot;bitbucket:whatever/testing&quot;</span><span class="p">,</span>
+</pre></div>
+
+
+<p>Вы также можете определить систему контроля версий:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;repository&quot;: {</span>
+<span class="err">  &quot;type&quot;: &quot;git&quot;,</span>
+<span class="err">  &quot;url&quot;: &quot;https://github.com/whatever/testing.git&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Вы можете указать несколько систем контроля версий:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;repository&quot;: {</span>
+<span class="err">  &quot;type&quot;: &quot;svn&quot;,</span>
+<span class="err">  &quot;url&quot;: &quot;...&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h5>main</h5>
+<p>Определет главный файл (точку входа) пакета. </p>
+<p>При импорте пакета в приложение, именно в этом файле приложение будет искать экспортируемые модули. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;main&quot;: &quot;src/main.js&quot;</span>
+</pre></div>
+
+
+<h5>private</h5>
+<p>Установка данному свойству значения true предотвращает случайную публикацию пакета в npm. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;private&quot;: true</span>
+</pre></div>
+
+
+<h5>scripts</h5>
+<p>Определяет список команд (скриптов), которые можно выполнять (запускать). </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;scripts&quot;: {</span>
+<span class="err">  &quot;dev&quot;: &quot;webpack-dev-server --inline --progress --config build/webpack.dev.conf.js&quot;,</span>
+<span class="err">  &quot;start&quot;: &quot;npm run dev&quot;,</span>
+<span class="err">  &quot;unit&quot;: &quot;jest --config test/unit/jest.conf.js --coverage&quot;,</span>
+<span class="err">  &quot;test&quot;: &quot;npm run unit&quot;,</span>
+<span class="err">  &quot;lint&quot;: &quot;eslint --ext .js,.vue src test/unit&quot;,</span>
+<span class="err">  &quot;build&quot;: &quot;node build/build.js&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>Эти скрипты являются приложениями командной строки. Вы можете запускать их с помощью npm run XXXX или yarn run XXXX, где XXXX - это название команды. Например: npm run dev. </p>
+<p>В качестве названия команды можно использовать любое имя, скрипт выполнит все, что вы в нем укажете. </p>
+<h5>Зависимости (dependencies)</h5>
+<p>Определяет список зависимостей пакета. </p>
+<p>При установке пакета с помощью npm или yarn: </p>
+<div class="highlight"><pre><span></span><span class="err">npm install yarn add</span>
+</pre></div>
+
+
+<p>запись об этом пакете будет автоматически добавлена в рассматриваемое свойство. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;dependencies&quot;: {</span>
+<span class="err">  &quot;vue&quot;: &quot;^2.5.2&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h5>devDependencies</h5>
+<p>Определяет список зависимостей пакета, используемых при разработке. </p>
+<p>Они отличаются от dependencies, поскольку устанавливаются только на компьютере разработчика, и не попадают в продакшн. </p>
+<p>При установке пакета с помощью npm или yarn:</p>
+<div class="highlight"><pre><span></span><span class="err">npm install --save-dev yarn add --save-dev</span>
+</pre></div>
+
+
+<p>запись о нем автоматически добавляется в рассматриваемое свойство. </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;devDependencies&quot;: {</span>
+<span class="err">  &quot;autoprefixer&quot;: &quot;^7.1.2&quot;,</span>
+<span class="err">  &quot;babel-core&quot;: &quot;^6.22.1&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h5>engines</h5>
+<p>Определяет, на каких версиях Node.js или других инструментов работает пакет/приложение. </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">&quot;engines&quot;: {</span>
+<span class="err">  &quot;node&quot;: &quot;&gt;= 6.0.0&quot;,</span>
+<span class="err">  &quot;npm&quot;: &quot;&gt;= 3.0.0&quot;,</span>
+<span class="err">  &quot;yarn&quot;: &quot;^0.13.0&quot;</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<h5>browserlist</h5>
+<p>Определяет список поддерживаемых браузеров (и их версий). Эта информация используется Babel, Autoprefixer и другими инструментами для создания полифилов и обеспечения совместимости с указанными браузерами. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">&quot;browserslist&quot;: [</span>
+<span class="err">  &quot;&gt; 1%&quot;,</span>
+<span class="err">  &quot;last 2 versions&quot;,</span>
+<span class="err">  &quot;not ie &lt;= 8&quot;</span>
+<span class="err">]</span>
+</pre></div>
+
+
+<p>Данная настройка означает, что вы хотите поддерживать две последние версии всех браузеров, которыми пользуется более 1% людей по статистике <a href="https://caniuse.com/">CanIUse</a>, за исключением IE8 и более старых версий. </p>
+<h5>Специальные свойства</h5>
+<p>package.json может содержать специальные свойства для таких инструментов, как Babel, ESLint и т.п. </p>
+<p>Каждый из этих инструментов имеет собственные свойства, например, eslintConfig, babel и проч. Подробности о специальных свойствах смотрите в соответствующей документации. </p>
+<h5>Версии пакета</h5>
+<p>В приведенных выше примерах вы наверняка заметили записи вроде этих: <code>~3.0.0</code>, <code>^0.13.0</code>. Что они означают? И какие еще спецификаторы версий можно использовать? </p>
+<p>Данные спецификаторы используются для определения условий обновления. </p>
+<p>Правила следующие: </p>
+<ul>
+<li><code>~</code> - запись <code>~0.13.0</code> означает, что допустимы лишь патчевые обновления, т.е. релиз 0.13.1 допустим, а релиз 0.14.0 нет</li>
+<li><code>^</code> - запись <code>^0.13.0</code> означает, что допустимы патчевые и минорные обновления</li>
+<li><code>\*</code> - запись <code>\*</code> означает, что допустимы любые обновления</li>
+<li><code>\&gt;</code> - допустимы любые новые версии</li>
+<li><code>\&gt;=</code> - допустимы аналогичная или более новые версии</li>
+<li><code>&lt;=</code> - допустимы аналогичная или более старые версии</li>
+<li><code>&lt;</code> - допустимы любые более старые версии</li>
+</ul>
+<p>Вот еще парочка правил:</p>
+<ul>
+<li>без символа в начале - допустима только указанная версия</li>
+<li>latest - допустима только последняя версия</li>
+</ul>
+<p>Указанные символы можно комбинировать различными способами, например: <code>1.0.0 || \&gt;=1.1.0 &lt;1.2.0</code>. </p>
+            <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
+      </div>
+    </section>
+<footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+  <h2>Р</h2>
+    <ul class="inline-block text align-center list">
+          <li> — <a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+    </ul><!-- /.blogroll -->
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Гордо принимает 
+        <a href="https://github.com">
+          <img src="./theme/img/footer-logo.png" width="100" height="30" alt="GitHub • Социальное программирование">
+        </a>
+      </p>
+      <div>
+      <h2>A</h2>
+        <ul class="inline-block text align-center list">
+                <li> — <a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul><!-- /.social -->
+  
+      </div>
+    </div>
+  </div>
+</footer>
+<a class="scroll-to-top rounded js-scroll-trigger button" href="#"><i class="fas fa-angle-up"></i></a>
+<script src="./theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
+
+
+     $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+</script>
+</body>
+</html>

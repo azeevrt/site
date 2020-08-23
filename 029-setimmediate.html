@@ -11,7 +11,7 @@
         <link rel="preload" href="./theme/css/user.css" as="style">
 
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
-        <title>Блины домашние на кефире</title>
+        <title>029. SetImmediate()</title>
 
         <link rel="stylesheet" href="./theme/css/screen.css" />
         <link rel="stylesheet" href="./theme/css/user.css" />
@@ -34,10 +34,10 @@
       </div>
       <nav class="main-nav hide-on-mobiles">
         <ul>
-          <li class="active">
+          <li>
               <a href="./category/azeevrt.html">Azeevrt</a>
           </li>
-          <li>
+          <li class="active">
               <a href="./category/nodejs.html">Node.js</a>
           </li>
         </ul>
@@ -50,10 +50,10 @@
     </div>
     <nav class="mobile-nav show-on-mobiles">
       <ul>
-          <li class="active">
+          <li>
               <a href="./category/azeevrt.html">Azeevrt</a>
           </li>
-          <li>
+          <li class="active">
               <a href="./category/nodejs.html">Node.js</a>
           </li>
     </ul>
@@ -63,105 +63,28 @@
       <div class="grid">
         <div class="unit whole">
           <article>
-            <h1>Блины домашние на кефире <br> <img alt="Блины домашние на кефире" src="https://eda.ru/img/eda/c620x415i/s2.eda.ru/StaticContent/Photos/120822042534/130223000207/p_O.jpg"></h1>
-            <h2>О рецепте</h2>
-<p><strong>порции</strong></p>
-<blockquote>
-<p>6</p>
-</blockquote>
-<p><strong>готовить</strong></p>
-<blockquote>
-<p>1 час</p>
-</blockquote>
-<p><strong>время подготовки</strong></p>
-<blockquote>
-<p>&plus; 5 минут</p>
-</blockquote>
-<h2>ЭНЕРГЕТИЧЕСКАЯ ЦЕННОСТЬ НА ПОРЦИЮ</h2>
-<ul>
-<li>Калорийность</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Калорийность</th>
-<th>Белки</th>
-<th>Жиры</th>
-<th>Углеводы</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>388 ккал</td>
-<td>10,2 грамм</td>
-<td>12,5 грамм</td>
-<td>59,2 грамм</td>
-</tr>
-</tbody>
-</table>
-<p><em>* Калорийность рассчитана для сырых продуктов</em></p>
-<h2>Ингредиенты порции</h2>
-<table>
-<thead>
-<tr>
-<th>Ингредиент</th>
-<th>количество</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Куриное яйцо</td>
-<td>1 штука</td>
-</tr>
-<tr>
-<td>Сахар</td>
-<td>4 чайные ложки</td>
-</tr>
-<tr>
-<td>Соль</td>
-<td>½ чайной ложки</td>
-</tr>
-<tr>
-<td>Кефир</td>
-<td>½ л</td>
-</tr>
-<tr>
-<td>Сода</td>
-<td>на кончике ножа</td>
-</tr>
-<tr>
-<td>Пшеничная мука</td>
-<td>2 стакана</td>
-</tr>
-<tr>
-<td>Подсолнечное масло</td>
-<td>3 столовые ложки</td>
-</tr>
-</tbody>
-</table>
-<h2>Инструкция приготовления</h2>
-<p>Время приготовления 1 час + 5 минут подготовки</p>
-<ol>
-<li>Яйцо растереть с сахаром, солью, содой, подсолнечным маслом. Вмешать 0,5 стакана муки. </li>
-</ol>
-<p><img alt="Яйцо растереть с сахаром" src="https://static.eaglecdn.com/eda/logos/d/9/d9d0859d860fc094783af7d4d1afb9ca72739c4a.jpg?1484830216"></p>
-<ol>
-<li>
-<p>Подлить 0,5 стакана кефира, размешать, потом добавить 0,5 стакана муки и опять размешать. И так постепенно добавляем муку и кефир и каждый раз размешиваем. Должно получиться тесто консистенции сметаны средней жирности.</p>
-</li>
-<li>
-<p>Смазать сковородку растительным маслом только перед первым блином. Каждый блин смазываем сливочным маслом.</p>
-</li>
-</ol>
-<p><img alt="Смазать сковородку растительным маслом" src="https://static.eaglecdn.com/eda/logos/d/a/dada2714a2332b80ad17a8df81e0570159cea4c7.jpg?1484829141"></p>
-<h2>Совет к рецепту</h2>
-<p>Также можно сделать и на простокваше, и на сыворотке. При этом меняется количество муки (чем жиже кисломолочный продукт, тем больше муки).</p>
-<h2>Автор рецепта</h2>
-<p><img alt="Марина Журавлева" src="https://newid.afisha.ru/StaticContent/UserPhoto/3d/d4/bdc0a044728c41e5a0a7b639e18c3dd4.JPG">
-<strong><a href="https://eda.ru/avtory/1637598">Марина Журавлева</a></strong></p>
-<blockquote>
-<p><a href="https://eda.ru/recepty/vypechka-deserty/blini-domashnie-na-kefire-35994">Оригинал статьи</a></p>
-</blockquote>
+            <h3>29. SetImmediate()</h3>
+<p>Когда вам необходимо выполнить код асинхронно, но максимально быстро, одним из способов это сделать является использование функции setImmediate(). </p>
+<div class="highlight"><pre><span></span><span class="err">setImmediate(() =&gt; {</span>
+<span class="err">    // код </span>
+<span class="err">})</span>
+</pre></div>
+
+
+<p>Функция, переданная setImmediate() в качестве аргумента - это колбек, выполняемый на следующей итерации цикла событий. </p>
+<p>Чем <code>setImmediate()</code> отличается от …</p>
+            <h3>29. SetImmediate()</h3>
+<p>Когда вам необходимо выполнить код асинхронно, но максимально быстро, одним из способов это сделать является использование функции setImmediate(). </p>
+<div class="highlight"><pre><span></span><span class="err">setImmediate(() =&gt; {</span>
+<span class="err">    // код </span>
+<span class="err">})</span>
+</pre></div>
+
+
+<p>Функция, переданная setImmediate() в качестве аргумента - это колбек, выполняемый на следующей итерации цикла событий. </p>
+<p>Чем <code>setImmediate()</code> отличается от <code>setTimeout(() =\&gt; {}, 0)</code> и <code>process.nextTick()</code>? </p>
+<p>Функция, переданная <code>process.nextTick()</code> выполняется на текущей итерации цикла событий, после выполнения всех операций. Это означает, что такая функция всегда выполняется перед <code>setTimeout()</code> и <code>setImmediate()</code>. </p>
+<p><code>setTimeout()</code> с нулевой задержкой очень похожа на <code>setImmediate()</code>. Порядок выполнения зависит от различных факторов, обе функции запускаются в начале следующей итерации цикла событий.</p>
             <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
           </article><!-- /#posts-list -->
         </div>

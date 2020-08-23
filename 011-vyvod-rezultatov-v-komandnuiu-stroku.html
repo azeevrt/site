@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/css/screen.css" as="style">
+        <link rel="preload" href="./theme/css/user.css" as="style">
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>011. Вывод результатов в командную строку</title>
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/user.css" />
+        <!--[if lt IE 9]>
+  <script src="./theme/js/html5shiv.min.js"></script>
+  <script src="./theme/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="wrap js" id="page-top">
+  <header>
+    <div class="flexbox">
+      <div class="center-on-mobiles">
+        <h1>
+          <a href="./" class="logo">
+            <span class="sr-only">Azeevrt</span>
+            <img src="./theme/img/logo-2x.png" width="140" height="65" alt="Azeevrt Logo">
+          </a>
+        </h1>
+      </div>
+      <nav class="main-nav hide-on-mobiles">
+        <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meta hide-on-mobiles">
+        <ul>
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="mobile-nav show-on-mobiles">
+      <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+    </ul>
+    </nav>
+  </header>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>11. Вывод результатов в командную строку</h3>
+<h5>Стандартный вывод посредством модуля console</h5>
+<p>Node.js предоставляет <a href="https://nodejs.org/api/console.html">модуль console</a>, содержащий множество очень полезных способов взаимодействия с командной строкой. </p>
+<p>Он похож на объект console браузера. </p>
+<p>Одним из основных методов данного модуля является console.log …</p>
+            <h3>11. Вывод результатов в командную строку</h3>
+<h5>Стандартный вывод посредством модуля console</h5>
+<p>Node.js предоставляет <a href="https://nodejs.org/api/console.html">модуль console</a>, содержащий множество очень полезных способов взаимодействия с командной строкой. </p>
+<p>Он похож на объект console браузера. </p>
+<p>Одним из основных методов данного модуля является console.log(), который выводит в консоль переданную строку. </p>
+<p>Если вы передадите объект, он будет преобразован в строку. </p>
+<p>Мы можем передавать console.log несколько переменных:</p>
+<div class="highlight"><pre><span></span><span class="err">const x = &#39;x&#39;</span>
+<span class="err">const y = &#39;y&#39;</span>
+<span class="err">console.log(x, y)</span>
+</pre></div>
+
+
+<p>и Node.js выведет в консоль обе. </p>
+<p>Мы также можем форматировать строку с помощью спецификаторов:</p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="n">console</span>.<span class="nb">log</span>(<span class="s">&#39;My %s has %d years&#39;</span>, <span class="s">&#39;cat&#39;</span>, <span class="mi">2</span>)
+</pre></div>
+
+
+<ul>
+<li>%s - форматирует переменную как строку</li>
+<li>%d - форматирует переменную как число</li>
+<li>%i - приводит переменную к целому числу</li>
+<li>%o - форматирует переменную как объект</li>
+</ul>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">console.log(&#39;%o&#39;, Number)</span>
+</pre></div>
+
+
+<h5>Очистка консоли</h5>
+<p><code>console.clear()</code> очищает консоль (поведение зависит от используемой консоли).</p>
+<h5>Подсчет элементов</h5>
+<p><code>console.count()</code> - полезный метод. </p>
+<p>Изучите этот код:</p>
+<div class="highlight"><pre><span></span><span class="err">const x = 1 </span>
+<span class="err">const y = 2 </span>
+<span class="err">const z = 3</span>
+<span class="err">console.count(</span>
+<span class="err">    &#39;The value of x is &#39; + x +</span>
+<span class="err">    &#39; and has been checked .. how many times?&#39;</span>
+<span class="err">)</span>
+<span class="err">console.count(</span>
+<span class="err">    &#39;The value of x is &#39; + x +</span>
+<span class="err">    &#39; and has been checked .. how many times?&#39;</span>
+<span class="err">)</span>
+<span class="err">console.count(</span>
+<span class="err">    &#39;The value of y is &#39; + y +</span>
+<span class="err">    &#39; and has been checked .. how many times?&#39;</span>
+<span class="err">)</span>
+</pre></div>
+
+
+<p>Счетчик считает и показывает количество отображений строки. </p>
+<div class="highlight"><pre><span></span><span class="err">The value of x is 1 and has been checked .. how many times?: 1</span>
+<span class="err">The value of x is 1 and has been checked .. how many times?: 2</span>
+<span class="err">The value of y is 2 and has been checked .. how many times?: 1</span>
+</pre></div>
+
+
+<p>Так вы можете посчитать количество яблок и апельсинов:</p>
+<div class="highlight"><pre><span></span><span class="err">const oranges = [&#39;orange&#39;, &#39;orange&#39;]</span>
+<span class="err">const apples = [&#39;just one apple&#39;]</span>
+<span class="err">oranges.forEach(fruit =&gt; console.count(fruit))</span>
+<span class="err">apples.forEach(fruit =&gt; console.count(fruit))</span>
+</pre></div>
+
+
+<h5>Отображение трассировки стека</h5>
+<p>Возникают ситуации, когда необходимо отобразить трассировку стека функции, например, для того, чтобы ответить на вопрос "Как мы достигли этой части кода?"</p>
+<p>Вы можете сделать это с помощью console.trace():</p>
+<div class="highlight"><pre><span></span><span class="err">const function2 = () =&gt; console.trace()</span>
+<span class="err">const function1 = () =&gt; function2()</span>
+<span class="err">function1()</span>
+</pre></div>
+
+
+<p>Это выведет в консоль трассировку стека. Вот что мы увидим в командной строке, если выполним приведенный код в REPL:</p>
+<div class="highlight"><pre><span></span><span class="n">Trace</span>
+    <span class="n">at</span> <span class="n">function2</span> <span class="p">(</span><span class="nl">repl</span><span class="p">:</span><span class="mi">1</span><span class="o">:</span><span class="mi">33</span><span class="p">)</span>
+    <span class="n">at</span> <span class="n">function1</span> <span class="p">(</span><span class="nl">repl</span><span class="p">:</span><span class="mi">1</span><span class="o">:</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">at</span> <span class="nl">repl</span><span class="p">:</span><span class="mi">1</span><span class="o">:</span><span class="mi">1</span>
+    <span class="n">at</span> <span class="n">ContextifyScript</span><span class="p">.</span><span class="n">Script</span><span class="p">.</span><span class="n">runInThisContext</span> <span class="p">(</span><span class="n">vm</span><span class="p">.</span><span class="nl">js</span><span class="p">:</span><span class="mi">44</span><span class="o">:</span><span class="mi">33</span><span class="p">)</span>
+    <span class="n">at</span> <span class="n">REPLServer</span><span class="p">.</span><span class="n">defaultEval</span> <span class="p">(</span><span class="n">repl</span><span class="p">.</span><span class="nl">js</span><span class="p">:</span><span class="mi">239</span><span class="o">:</span><span class="mi">29</span><span class="p">)</span>
+    <span class="n">at</span> <span class="n">bound</span> <span class="p">(</span><span class="n">domain</span><span class="p">.</span><span class="nl">js</span><span class="p">:</span><span class="mi">301</span><span class="o">:</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">at</span> <span class="n">REPLServer</span><span class="p">.</span><span class="n">runBound</span> <span class="p">[</span><span class="n">as</span> <span class="n">eval</span><span class="p">]</span> <span class="p">(</span><span class="n">domain</span><span class="p">.</span><span class="nl">js</span><span class="p">:</span><span class="mi">314</span><span class="o">:</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">at</span> <span class="n">REPLServer</span><span class="p">.</span><span class="n">onLine</span> <span class="p">(</span><span class="n">repl</span><span class="p">.</span><span class="nl">js</span><span class="p">:</span><span class="mi">440</span><span class="o">:</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">at</span> <span class="n">emitOne</span> <span class="p">(</span><span class="n">events</span><span class="p">.</span><span class="nl">js</span><span class="p">:</span><span class="mi">120</span><span class="o">:</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">at</span> <span class="n">REPLServer</span><span class="p">.</span><span class="n">emit</span> <span class="p">(</span><span class="n">events</span><span class="p">.</span><span class="nl">js</span><span class="p">:</span><span class="mi">210</span><span class="o">:</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+
+
+<h5>Подсчет времени выполнения кода</h5>
+<p>Вы легко можете посчитать, сколько времени выполнялась функция при помощи time() и timeEnd():</p>
+<div class="highlight"><pre><span></span><span class="err">const doSomething = () =&gt; console.log(&#39;test&#39;)</span>
+<span class="err">const measureDoingSomething = () =&gt; {</span>
+<span class="err">    console.time(&#39;doSomething()&#39;)</span>
+<span class="err">    // выполняем какие-либо операции и засекаем время их выполнения</span>
+<span class="err">    doSomething()</span>
+<span class="err">    console.timeEnd(&#39;doSomething()&#39;)</span>
+<span class="err">}</span>
+<span class="err">measureDoingSomething()</span>
+</pre></div>
+
+
+<h5>stdout и stderr</h5>
+<p>Как мы знаем, console.log() отлично подходит для вывода сообщений в консоль. Это называется стандартным выводом или stdout. </p>
+<p><code>console.error()</code> отображает поток stderr. </p>
+<p>Данный поток не выводится в консоль, а записывается в журнал ошибок (error log). </p>
+<h5>Стилизуем вывод</h5>
+<p>Вы можете раскрасить текст, выводимый в консоль, с помощью <a href="https://gist.github.com/iamnewton/8754917">обратных последовательностей (escape sequences)</a>. Эти последовательности представлют собой набор символов, идентифицирующих цвет. </p>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="err">console.log(&#39;\x1b[33m%s\x1b[0m&#39;, &#39;hi!&#39;)</span>
+</pre></div>
+
+
+<p>Если набрать приведенный код в REPL, то hi! будет желтого цвета. </p>
+<p>Рассмотренный способ довольно трудоемкий. Простейшим способом раскрасить консольный вывод - использовать библиотеку. Одной из таких библиотек является <a href="https://github.com/chalk/chalk">Chalk</a>, которая кроме определения цвета, позволяет сделать текст полужирным, наклонным или подчеркнутым. </p>
+<p>Устанавливаем библиотеку посредством npm install chalk и используем ее следующим образом:</p>
+<div class="highlight"><pre><span></span><span class="err">const chalk = require(&#39;chalk&#39;)</span>
+<span class="err">console.log(chalk.yellow(&#39;hi!&#39;))</span>
+</pre></div>
+
+
+<p>Использование chalk.yellow гораздо проще, чем запоминание сложных последовательностей. Это также делает код более читаемым. </p>
+<h5>Создание индикатора прогресса</h5>
+<p><a href="https://www.npmjs.com/package/progress">Progress</a> - отличная библиотека для создания индикаторов прогресса в терминале. Устанавливаем ее с помощью npm install progress. </p>
+<p>Данный сниппет создает индикатор прогресса, состоящий из 10 шагов. Каждые 100 мс выполняется один шаг. При заполнении индикатора мы отключаем счетчик: </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">ProgressBar</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;progress&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">bar</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ProgressBar</span><span class="p">(</span><span class="s1">&#39;:bar&#39;</span><span class="p">,</span> <span class="err">{</span> <span class="n">total</span><span class="p">:</span> <span class="mi">10</span> <span class="err">}</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">timer</span> <span class="o">=</span> <span class="n">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">bar</span><span class="p">.</span><span class="n">tick</span><span class="p">()</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">bar</span><span class="p">.</span><span class="n">complete</span><span class="p">)</span> <span class="n">clearInterval</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+<span class="err">}</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+            <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
+      </div>
+    </section>
+<footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+  <h2>Р</h2>
+    <ul class="inline-block text align-center list">
+          <li> — <a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+    </ul><!-- /.blogroll -->
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Гордо принимает 
+        <a href="https://github.com">
+          <img src="./theme/img/footer-logo.png" width="100" height="30" alt="GitHub • Социальное программирование">
+        </a>
+      </p>
+      <div>
+      <h2>A</h2>
+        <ul class="inline-block text align-center list">
+                <li> — <a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul><!-- /.social -->
+  
+      </div>
+    </div>
+  </div>
+</footer>
+<a class="scroll-to-top rounded js-scroll-trigger button" href="#"><i class="fas fa-angle-up"></i></a>
+<script src="./theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
+
+
+     $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+</script>
+</body>
+</html>

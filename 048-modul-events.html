@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/css/screen.css" as="style">
+        <link rel="preload" href="./theme/css/user.css" as="style">
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>048. Модуль events</title>
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/user.css" />
+        <!--[if lt IE 9]>
+  <script src="./theme/js/html5shiv.min.js"></script>
+  <script src="./theme/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="wrap js" id="page-top">
+  <header>
+    <div class="flexbox">
+      <div class="center-on-mobiles">
+        <h1>
+          <a href="./" class="logo">
+            <span class="sr-only">Azeevrt</span>
+            <img src="./theme/img/logo-2x.png" width="140" height="65" alt="Azeevrt Logo">
+          </a>
+        </h1>
+      </div>
+      <nav class="main-nav hide-on-mobiles">
+        <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meta hide-on-mobiles">
+        <ul>
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="mobile-nav show-on-mobiles">
+      <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+    </ul>
+    </nav>
+  </header>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>48. Модуль events</h3>
+<p>Модуль events предоставляет класс EventEmitter, предназначенный для обработки событий. </p>
+<div class="highlight"><pre><span></span><span class="err">const EventEmitter = require(&#39;events&#39;)</span>
+<span class="err">const door = new EventEmitter()</span>
+</pre></div>
+
+
+<p>Обработчик событий сам вызывает два события:</p>
+<ul>
+<li>newListener - при добавлении обработчика</li>
+<li>removeListener - при удалении обработчика</li>
+</ul>
+<p>Рассмотрим наиболее полезные методы данного модуля …</p>
+            <h3>48. Модуль events</h3>
+<p>Модуль events предоставляет класс EventEmitter, предназначенный для обработки событий. </p>
+<div class="highlight"><pre><span></span><span class="err">const EventEmitter = require(&#39;events&#39;)</span>
+<span class="err">const door = new EventEmitter()</span>
+</pre></div>
+
+
+<p>Обработчик событий сам вызывает два события:</p>
+<ul>
+<li>newListener - при добавлении обработчика</li>
+<li>removeListener - при удалении обработчика</li>
+</ul>
+<p>Рассмотрим наиболее полезные методы данного модуля: </p>
+<h5>emitter.addListener()</h5>
+<p>Является алиасом для emitter.on(). </p>
+<h5>emitter.emit()</h5>
+<p>Вызывает событие. При этом последовательно вызываются все зарегистрированные обработчики. </p>
+<div class="highlight"><pre><span></span><span class="err">door.emit(&#39;slam&#39;) // вызываем событие &#39;slam&#39;</span>
+</pre></div>
+
+
+<h5>emitter.eventNames()</h5>
+<p>Возвращает массив строк, представляющих собой события, зарегистрированные для текущего объекта EventEmitter: </p>
+<div class="highlight"><pre><span></span><span class="err">door.eventsName()</span>
+</pre></div>
+
+
+<h5>emitter.getMaxListeners()</h5>
+<p>Возвращает количество обработчиков, которые могут быть зарегистрированы для одного объекта EventEmitter, обычно это число равняется 10, но оно может быть увеличено или уменьшено посредством setMaxListeners(): </p>
+<div class="highlight"><pre><span></span><span class="err">door.getMaxListeners()</span>
+</pre></div>
+
+
+<h5>emitter.listenerCount()</h5>
+<p>Возвращает количество обработчиков события, переданного в качестве аргумента: </p>
+<div class="highlight"><pre><span></span><span class="err">door.listenerCount(&#39;open&#39;)</span>
+</pre></div>
+
+
+<h5>emitter.off()</h5>
+<p>Алиас для emitter.removeListener(), появившийся в Node.js 10. </p>
+<h5>emitter.on()</h5>
+<p>Добавляет колбек, который вызывается при возникновении события. </p>
+<p>Например: </p>
+<div class="highlight"><pre><span></span><span class="err">door.on(&#39;open&#39;, () =&gt; {</span>
+<span class="err">    console.log(&#39;Door was opened&#39;)</span>
+<span class="err">})</span>
+</pre></div>
+
+
+<h5>emitter.once()</h5>
+<p>Добавляет колбек, который вызывается при первом после регистрации возникновении события. Этот колбек вызывается лишь один раз. </p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">EventEmitter</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;events&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">ee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventEmitter</span><span class="p">()</span>
+
+<span class="n">ee</span><span class="p">.</span><span class="n">once</span><span class="p">(</span><span class="s1">&#39;my-event&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="o">//</span> <span class="err">вызвать</span> <span class="err">колбек</span> <span class="err">один</span> <span class="err">раз</span> 
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
+
+
+<h5>emitter.prependListener()</h5>
+<p>Когда вы добавляете обработчик с помощью on или addListener, данный обработчик добавляется в конец очереди обработчиков и вызывается последним. Посредством prependListener обработчик добавляется в начало очереди. </p>
+<h5>emitter.prependOnceListener()</h5>
+<p>Аналогично emitter.prependListener(), за исключением того, что колбек вызывается только один раз. </p>
+<h5>emitter.removeAllListeners()</h5>
+<p>Удаляет все обработчики для объекта EventEmitter, обрабатывающие определенное событие: </p>
+<div class="highlight"><pre><span></span><span class="err">door.removeAllListeners(&#39;open&#39;)</span>
+</pre></div>
+
+
+<h5>emitter.removeListener()</h5>
+<p>Удаляет определенный обработчик. Для этого нужно сохранить колбек в переменную: </p>
+<div class="highlight"><pre><span></span><span class="err">const doSomething = () =&gt; {}</span>
+<span class="err">door.on(&#39;open&#39;, doSomething)</span>
+<span class="err">door.removeListener(&#39;open&#39;, doSomething)</span>
+</pre></div>
+
+
+<h5>emitter.setMaxListeners()</h5>
+<p>Устанавливает максимальное количество обработчиков, которые можно добавить для объекта EventEmitter: </p>
+<div class="highlight"><pre><span></span><span class="err">door.setMaxListeners(50)</span>
+</pre></div>
+            <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
+      </div>
+    </section>
+<footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+  <h2>Р</h2>
+    <ul class="inline-block text align-center list">
+          <li> — <a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+    </ul><!-- /.blogroll -->
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Гордо принимает 
+        <a href="https://github.com">
+          <img src="./theme/img/footer-logo.png" width="100" height="30" alt="GitHub • Социальное программирование">
+        </a>
+      </p>
+      <div>
+      <h2>A</h2>
+        <ul class="inline-block text align-center list">
+                <li> — <a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul><!-- /.social -->
+  
+      </div>
+    </div>
+  </div>
+</footer>
+<a class="scroll-to-top rounded js-scroll-trigger button" href="#"><i class="fas fa-angle-up"></i></a>
+<script src="./theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
+
+
+     $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+</script>
+</body>
+</html>

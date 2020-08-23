@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/css/screen.css" as="style">
+        <link rel="preload" href="./theme/css/user.css" as="style">
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>001. Введение</title>
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/user.css" />
+        <!--[if lt IE 9]>
+  <script src="./theme/js/html5shiv.min.js"></script>
+  <script src="./theme/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="wrap js" id="page-top">
+  <header>
+    <div class="flexbox">
+      <div class="center-on-mobiles">
+        <h1>
+          <a href="./" class="logo">
+            <span class="sr-only">Azeevrt</span>
+            <img src="./theme/img/logo-2x.png" width="140" height="65" alt="Azeevrt Logo">
+          </a>
+        </h1>
+      </div>
+      <nav class="main-nav hide-on-mobiles">
+        <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meta hide-on-mobiles">
+        <ul>
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="mobile-nav show-on-mobiles">
+      <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+    </ul>
+    </nav>
+  </header>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>1. Введение</h3>
+<p>Node.js - это открытая кроссплатформенная среда выполнения серверного JavaScript, которая отлично подходит для решения почти любой задачи.</p>
+<p>Node.js запускает движок JavaScript V8, ядро Google Chrome, вне браузера. Это обуславливает высокую производительность Node.js. </p>
+<p>Node.js-приложения выполняются в …</p>
+            <h3>1. Введение</h3>
+<p>Node.js - это открытая кроссплатформенная среда выполнения серверного JavaScript, которая отлично подходит для решения почти любой задачи.</p>
+<p>Node.js запускает движок JavaScript V8, ядро Google Chrome, вне браузера. Это обуславливает высокую производительность Node.js. </p>
+<p>Node.js-приложения выполняются в виде единого процесса, без создания нового потока для каждого запроса. Node.js предоставляет набор асинхронных примитивов ввода/вывода в стандартной библиотеке, что предотвращает блокировку JavaScript-кода. Как правило, библиотеки в Node.js написаны с помощью асинхронных инструментов, что делает блокирующее поведение скорее исключением, чем правилом. </p>
+<p>Когда Node.js выполняет операцию ввода/вывода, например, чтение данных из сети, доступ к базе данных или файловой системе, вместо того, чтобы блокировать поток и ожидать завершения очередного цикла центрального процессора, Node.js продолжает выполнять операцию после получения ответа. </p>
+<p>Это позволяет Node.js обрабатывать одновременно тысячи запросов с помощью одного сервера без необходимости создания системы обеспечения согласованности потоков, которая может стать источником серьезных ошибок. </p>
+<p>Существенное преимущество Node.js состоит в том, что миллионы разработчиков, пишущих код на JavaScript для браузера, теперь имеют возможность писать серверный код без необходимости изучения другого языка программирования. </p>
+<p>В Node.js новые ECMAScript-стандарты могут использоваться без проблем, вам не нужно ждать, пока все пользователи обновят свои браузеры - вы сами решаете, какую версию ECMAScript использовать через изменение версии Node.js. Вы также можете добавить экспериментальные возможности, запустив Node.js с соответствующими флагами. </p>
+<h5>Огромное количество библиотек</h5>
+<p>Npm с его простой структурой способствует быстрому росту экосистемы Node.js, на сегодняшний день в npm зарегистрировано свыше 1 000 000 открытых пакетов, которые вы можете использовать совершенно бесплатно. </p>
+<h5>Пример Node.js-приложения</h5>
+<p>Наиболее распространенным примером использования Node.js является создание веб-сервера:</p>
+<div class="highlight"><pre><span></span>const http = require(&#39;http&#39;)
+
+const hostname = &#39;127.0.0.1&#39;
+const port = process.env.PORT // or &#39;3000&#39;
+
+const server = http.createServer((req, res) =&gt; {
+    res.statusCode = 200
+    res.setHeader(&#39;Content-Type&#39;, &#39;text/plain&#39;)
+    res.end(&#39;Hello World!\n&#39;)
+})
+
+server.listen(port, hostname, () =&gt; {
+    console.log(`Server running at http://<span class="cp">${</span><span class="n">hostname</span><span class="cp">}</span>:<span class="cp">${</span><span class="n">port</span><span class="cp">}</span>/`)
+})
+</pre></div>
+
+
+<p>Первым делом, мы подключаем модуль <a href="https://nodejs.org/api/http.html">http</a>. </p>
+<p>Node.js имеет превосходную стандартную библиотеку, обеспечивающую первоклассную поддержку работы с сетью. </p>
+<p>Метод createServer() создает новый HTTP-сервер и возвращает его. </p>
+<p>Сервер устанавливается на прослушивание определенного порта и хоста. Когда сервер готов, запускается функция обратного вызова, в данном случае, сообщающая о том, что сервер запущен. </p>
+<p>При получениее нового запроса вызывается событие <a href="https://nodejs.org/api/http.html#http_event_request">request</a>, содержащее два объекта: запрос (объект <a href="https://nodejs.org/api/http.html#http_class_http_incomingmessage">http.IncomingMessage</a> (входящее сообщение)) и ответ (объект <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">http.ServerResponse</a> (ответ сервера)). </p>
+<p>Эти объекты необходимы для обработки HTTP-запроса. </p>
+<p>Первый объект содержит детали запроса. В нашем примере он не используется, но, при желании, вы можете получить доступ к заголовкам запроса и его данным. </p>
+<p>Второй объект используется для предоставления данных отправителю запроса. </p>
+<p>В данном случае, посредством res.statusCode = 200 мы присваиваем свойству statusCode значение 200 в качестве индикатора успешного выполнения запроса. </p>
+<p>Мы устанавливает заголовок Content-Type (тип содержимого или контента) res.setHeader('Content-Type', 'text/plain') и закрываем ответ, добавляя контент в качестве аргумента в end(): res.end('Hello World\n')</p>
+<h5>Node.js-фреймворки и инструменты</h5>
+<p>Node.js - это обширная платформа. С целью удовлетворения потребностей разработчиков были созданы тысячи различных библиотек. </p>
+<p>Со временем многие из них стали очень популярными. Вот список некоторых из них:</p>
+<ul>
+<li><a href="https://adonisjs.com/">AdonisJs</a>: фуллстек-фреймворк с акцентом на эргономику, стабильность и надежность. Adonis - один из самых быстрых веб-фреймворков для Node.js.</li>
+<li><a href="https://expressjs.com/">Express</a>: предоставляет один из самых простых и одновременно самых мощных способов создания веб-сервера. Ключем его успеха является минималистичный подход, простой функционал, акцент на основных возможностях сервера.</li>
+<li><a href="https://www.fastify.io/">Fastify</a>: веб-фреймворк, сфокусированный на обеспечении лучшего опыта разработки с минимальными накладными расходами и мощной архитектурой плагина. Fastify является одним из самых проивзодительных веб-фреймворков.</li>
+<li><a href="https://hapi.dev/">hapi</a>: фреймворк с богатым функционалом для создания приложений и сервисов, позволяющий разработчикам сосредоточиться на написании переиспользуемой логики приложений вместо траты времени на построение инфраструктуры.</li>
+<li><a href="https://koajs.com/">koa</a>: создан командой Express в целях упрощения и уменьшения размера библиотеки с учетом многолетнего опыта. Новый проект возник из-за необходимости внесения несовместимых изменений без разрушения сообщества, сформировавшего вокруг Express.</li>
+<li><a href="https://loopback.io/">Loopback.io</a>: облегчает создание современных приложений со сложной системой зависимостей.</li>
+<li><a href="https://www.meteor.com/">Meteor</a>: невероятно мощный фуллстек-фреймворк, предоставляющий изоморфный подход для создания приложений на JavaScript, когда код разделяется между клиентом и сервером. Когда-то meteor представлял собой готовое решение, содержащее все необходимое, сейчас он прекрасно сочетается с <a href="https://reactjs.org/">React</a>, <a href="https://vuejs.org/">Vue</a> и <a href="https://angular.io/">Angular</a>. ОН также может использоваться для создания мобильных приложений.</li>
+<li><a href="https://github.com/vercel/micro">Micro</a>: предоставляет легковесный сервер для создания асинхронных HTTP-микросервисов.</li>
+<li><a href="https://nestjs.com/">NestJS</a>: основанный на TypeScript прогрессивный Node.js-фреймворк для создания корпоративных, надежных и масштабируемых серверных приложений.</li>
+<li><a href="https://nextjs.org/">Next.js</a>: фреймворк для рендеринга React-приложений на стороне сервера.</li>
+<li><a href="https://nx.dev/">Nx</a>: инструмент для фуллстек монолитной разработки посредством NestJS, Express, React, Angular и т.д. Nx помогает масштабировать разработку от одной до нескольких команд, работающих одновременно над множеством приложений.</li>
+<li><a href="https://socket.io/">Socket.io</a>: движок для коммуникации в режиме реального времени для создания сетевых приложений.</li>
+</ul>
+            <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
+      </div>
+    </section>
+<footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+  <h2>Р</h2>
+    <ul class="inline-block text align-center list">
+          <li> — <a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+    </ul><!-- /.blogroll -->
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Гордо принимает 
+        <a href="https://github.com">
+          <img src="./theme/img/footer-logo.png" width="100" height="30" alt="GitHub • Социальное программирование">
+        </a>
+      </p>
+      <div>
+      <h2>A</h2>
+        <ul class="inline-block text align-center list">
+                <li> — <a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul><!-- /.social -->
+  
+      </div>
+    </div>
+  </div>
+</footer>
+<a class="scroll-to-top rounded js-scroll-trigger button" href="#"><i class="fas fa-angle-up"></i></a>
+<script src="./theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
+
+
+     $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+</script>
+</body>
+</html>

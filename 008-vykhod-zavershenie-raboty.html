@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/css/screen.css" as="style">
+        <link rel="preload" href="./theme/css/user.css" as="style">
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>008. Выход (завершение работы)</title>
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/user.css" />
+        <!--[if lt IE 9]>
+  <script src="./theme/js/html5shiv.min.js"></script>
+  <script src="./theme/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="wrap js" id="page-top">
+  <header>
+    <div class="flexbox">
+      <div class="center-on-mobiles">
+        <h1>
+          <a href="./" class="logo">
+            <span class="sr-only">Azeevrt</span>
+            <img src="./theme/img/logo-2x.png" width="140" height="65" alt="Azeevrt Logo">
+          </a>
+        </h1>
+      </div>
+      <nav class="main-nav hide-on-mobiles">
+        <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meta hide-on-mobiles">
+        <ul>
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="mobile-nav show-on-mobiles">
+      <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+    </ul>
+    </nav>
+  </header>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>8. Выход (завершение работы)</h3>
+<p>Существуют различные способы остановки Node.js-приложения. </p>
+<p>При запуске программы посредством терминала, вы можете закрыть его с помощью ctrl-C, однако давайте обсудим программные способы. </p>
+<p>Начнем с самого радикального, и скажем, почему его не следует использовать. </p>
+<p>Основной (глобальный …</p>
+            <h3>8. Выход (завершение работы)</h3>
+<p>Существуют различные способы остановки Node.js-приложения. </p>
+<p>При запуске программы посредством терминала, вы можете закрыть его с помощью ctrl-C, однако давайте обсудим программные способы. </p>
+<p>Начнем с самого радикального, и скажем, почему его не следует использовать. </p>
+<p>Основной (глобальный, модуль ядра) модуль process содержит удобный метод, позволяющий программно выйти из Node.js-приложения: process.exit(). </p>
+<p>Когда Node.js достигает этой строки кода, процесс выполнения программы немедленно завершается. </p>
+<p>Это означает, что все выполняющиеся функции обратного вызова, отправленные (незавершенные) запросы, открытый доступ к файловой системе, процессы записи в stdout или stderr - все они будут жестко прерваны. </p>
+<p>Если это для вас является приемлемым, вы можете передать методу exit() целое число - сигнал к завершению выполнения кода:</p>
+<div class="highlight"><pre><span></span><span class="k">proc</span><span class="nb">es</span><span class="nv">s.exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+
+<p>По умолчанию код выхода - 0, указывающий на успешное завершение. Разные коды выхода имеют разное значение, вы можете использовать их для взаимодействия одних программ с другими. </p>
+<p>Подробнее о кодах выхода можно почитать <a href="https://nodejs.org/api/process.html#process_exit_codes">здесь</a>.</p>
+<p>Также вы можете присвоить соответствующее значение свойству exitCode:</p>
+<div class="highlight"><pre><span></span><span class="k">proc</span><span class="nb">es</span><span class="nv">s.exitCode</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+
+<p>и после завершения программы, Node.js вернет этот код. </p>
+<p>Выполнение программы завершится мягко, когда все процессы будут выполнены. </p>
+<p>В Node.js мы часто запускаем сервер:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">express</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+<span class="n">const</span> <span class="n">app</span> <span class="o">=</span> <span class="n">express</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+
+<span class="n">app</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Server ready&#39;</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Эта программа никогда не завершится. Если вы вызовете process.exit(), все ожидающие или выполняющиеся запросы будут прерваны. Это не круто. </p>
+<p>В данном случае необходимо отправить команду-сигнал SIGTERM и обработать ее с помощью обработчика процессорных сигналов (process подключать не нужно, он доступен по умолчанию):</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">express</span> <span class="o">=</span> <span class="n">require</span><span class="p">(</span><span class="s1">&#39;express&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">app</span> <span class="o">=</span> <span class="n">express</span><span class="p">()</span>
+
+<span class="n">app</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">res</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;Hi!&#39;</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">server</span> <span class="o">=</span> <span class="n">app</span><span class="p">.</span><span class="k">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Server ready&#39;</span><span class="p">))</span>
+
+<span class="n">process</span><span class="p">.</span><span class="k">on</span><span class="p">(</span><span class="s1">&#39;SIGTERM&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">server</span><span class="p">.</span><span class="k">close</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+        <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;Process terminated&#39;</span><span class="p">)</span>
+    <span class="err">}</span><span class="p">)</span>
+<span class="err">}</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Что такое сигналы? Сигналы - это система коммуникации POSIX: отправка процессу уведомления о произошедшем событии. </p>
+<p>SIGKILL - сигнал о немедленном завершении процесса, аналогичный process.exit(). </p>
+<p>SIGTERM - сигнал о мягком завершении процесса. Этот сигнал может быть отправлен системой управления процессами, такой как upstart, supervisord и др. </p>
+<p>Вы можете отправить данный сигнал внутри программы через другую функцию:</p>
+<div class="highlight"><pre><span></span><span class="k">proc</span><span class="nb">es</span><span class="nv">s.kill</span><span class="p">(</span><span class="nv">process.id</span><span class="p">,</span> <span class="s">&#39;SIGTERM&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Или из другой Node.js-программы или любого другого приложения, запущенного в системе, при условии, что им известен PID процесса, который вы хотите завершить. </p>
+<h3>Как читать переменные среды в Node.js?</h3>
+<p>Основной модуль Node.js process имеет свойство env, содержащее все переменные среды, установленные при запуске процесса. </p>
+<p>Вот пример получения доступа к переменной среды NODE_ENV, установленной в значение development по умолчанию:</p>
+<div class="highlight"><pre><span></span><span class="k">proc</span><span class="nb">es</span><span class="nv">s.env.NODE_ENV</span> <span class="o">//</span> <span class="nv">development</span>
+</pre></div>
+
+
+<p>Установка значения в production перед выполнением скрипта сообщит Node.js о том, что перед ним среда для продакшна. </p>
+<p>Аналогичным способом вы можете получить доступ к любой переменной среды. </p>
+            <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
+      </div>
+    </section>
+<footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+  <h2>Р</h2>
+    <ul class="inline-block text align-center list">
+          <li> — <a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+    </ul><!-- /.blogroll -->
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Гордо принимает 
+        <a href="https://github.com">
+          <img src="./theme/img/footer-logo.png" width="100" height="30" alt="GitHub • Социальное программирование">
+        </a>
+      </p>
+      <div>
+      <h2>A</h2>
+        <ul class="inline-block text align-center list">
+                <li> — <a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul><!-- /.social -->
+  
+      </div>
+    </div>
+  </div>
+</footer>
+<a class="scroll-to-top rounded js-scroll-trigger button" href="#"><i class="fas fa-angle-up"></i></a>
+<script src="./theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
+
+
+     $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+</script>
+</body>
+</html>

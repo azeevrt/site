@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/css/screen.css" as="style">
+        <link rel="preload" href="./theme/css/user.css" as="style">
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>027. Цикл событий</title>
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/user.css" />
+        <!--[if lt IE 9]>
+  <script src="./theme/js/html5shiv.min.js"></script>
+  <script src="./theme/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="wrap js" id="page-top">
+  <header>
+    <div class="flexbox">
+      <div class="center-on-mobiles">
+        <h1>
+          <a href="./" class="logo">
+            <span class="sr-only">Azeevrt</span>
+            <img src="./theme/img/logo-2x.png" width="140" height="65" alt="Azeevrt Logo">
+          </a>
+        </h1>
+      </div>
+      <nav class="main-nav hide-on-mobiles">
+        <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meta hide-on-mobiles">
+        <ul>
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="mobile-nav show-on-mobiles">
+      <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+    </ul>
+    </nav>
+  </header>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>27. Цикл событий</h3>
+<p>Цикл событий - это важнейшая часть Node.js.</p>
+<p>Почему? Потому что это обуславливает асинхронность Node.js, т.е. то, почему он имеет неблокирующий ввод/вывод.</p>
+<p>Код в Node.js выполняется в одном потоке. Одновременно выполняется только одна задача …</p>
+            <h3>27. Цикл событий</h3>
+<p>Цикл событий - это важнейшая часть Node.js.</p>
+<p>Почему? Потому что это обуславливает асинхронность Node.js, т.е. то, почему он имеет неблокирующий ввод/вывод.</p>
+<p>Код в Node.js выполняется в одном потоке. Одновременно выполняется только одна задача.</p>
+<p>Это ограничение приносит большую пользу, поскольку вам не приходится заботиться об устранении конкуренции между потоками.</p>
+<p>Вам всего лишь следует обращать внимание на то, как написан ваш код и избегать всего, что может заблокировать поток, например, синхронных сетевых соединений или бесконечных циклов.</p>
+<p>Обычно, каждая вкладка браузера имеет собственный цикл событий для изоляции процессов во избежание того, что отдельная страница с бесконечными циклами или сложными вычислениями заблокирует работу всего браузера.</p>
+<p>Среда выполнения кода управляет конкуренцией циклов событий, например, с целью обработки обращений к разным прикладным интерфейсам. Веб-воркеры имеют собственный цикл событий.</p>
+<p>В Node.js вам следует заботиться о выполнении кода в одном потоке и использовать неблокирующие средства.</p>
+<h5>Блокировка цикла событий</h5>
+<p>Любой JS-код, выполнение которого занимает много времени, заблокирует выполнение любого другого кода на странице, даже пользовательский интерфейс: пользователь не сможем нажимать на кнопки, переходить по ссылкам, прокручивать страницу и т.д.</p>
+<p>Почти все примитивы ввода/вывода в JavaScript являются неблокирующими. Сетевые запросы, работа с файловой системой и т.п. Для решения проблемы блокирующей природы JavaScript применяются функции обратного вызова, промисы и async/await.</p>
+<h5>Стек вызовов</h5>
+<p>Стек вызовов - это очередь, работающая по принципу LIFO (last in, first out - последним вошел, первым вышел).</p>
+<p>Цикл событий периодически проверяет стек вызовов с целью определения наличия в нем функций для выполнения.</p>
+<p>При обнаружении такой функции, цикл событий помещает ее в стек вызовов и выполняет.</p>
+<p>Вам должен быть хорошо известен стек-трейс (stack trace) ошибок в отладчике или консоли браузера. Браузер определяет название функции по стеку вызовов для предоставления информации о том, какая функция вызвала исключение:</p>
+<p><img alt="image0" src="./img/27-1.png"></p>
+<h5>Простое объяснение цикла событий</h5>
+<p>Рассмотрим пример:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">bar</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">baz</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="n">bar</span><span class="p">()</span>
+    <span class="n">baz</span><span class="p">()</span>
+<span class="err">}</span>
+</pre></div>
+
+
+<p>При запуске кода сначала вызывается foo(). В foo() сначала вызывается bar(), затем baz().</p>
+<p>Cтек вызовов выглядит так:</p>
+<p><img alt="image1" src="./img/27-2.png"></p>
+<p>Цикл событий на каждой итерации проверяет, имеются ли в стеке вызовов функции для выполнения:</p>
+<p><img alt="image2" src="./img/27-3.png"></p>
+<p>Это происходит до тех пор, пока стек не окажется пустым.</p>
+<h5>Выполнение функции, находящейся в очереди</h5>
+<p>Приведенный пример не представляет особого интереса: JavaScript определяет наличие функций в стеке вызовов и выполняет их по очереди.</p>
+<p>Как отложить выполнение функции до освобождения стека вызовов?</p>
+<p>Использование setTimeout(() => {}) приводит к тому, что вызванная функция выполняется после других.</p>
+<p>Рассмотрим пример:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">baz</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">bar</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="n">setTimeout</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">baz</span><span class="p">()</span>
+<span class="err">}</span>
+
+<span class="n">foo</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Этот код выводит в консоль следующее:</p>
+<div class="highlight"><pre><span></span><span class="err">foo </span>
+<span class="err">baz </span>
+<span class="err">bar</span>
+</pre></div>
+
+
+<p>При запуске кода сначала выполняется foo(). В foo() мы сначала вызываем setTimeout(), передавая bar в качестве аргумента и указывая на необходимость немедленного выполнения, устанавливая значение счетчика равным 0. Затем мы вызываем baz().</p>
+<p>Стек вызовов выглядит так:</p>
+<p><img alt="image3" src="./img/27-4.png"></p>
+<p>Вот порядок выполнения функций:</p>
+<p><img alt="image3" src="./img/27-4.png"></p>
+<p>Почему так происходит?</p>
+<h5>Очередь сообщений</h5>
+<p>При вызове setTimeout() браузер или Node.js запускают таймер. Поскольку в нашем случае таймер истекает немедленно (мы установили значение счетчика равным 0), функция обратного вызова помещается в очередь сообщений.</p>
+<p>В очередь сообщений попадают все пользовательские события, такие как события мыши или клавиатуры, а также ответы на запросы, перед тем, как код получить возможность их обработать. Также сюда попадают события DOM, например, load.</p>
+<p>Цикл событий отдает приоритет стеку вызовов и сперва выполняет находящиеся там функции, и лишь после того, как стек опустеет, цикл обращается к очереди сообщений.</p>
+<p>Мы не ждем выполнения таких функция, как setTimeout() или fetch(), поскольку они предоставляются браузером и имеют собственные потоки для выполнения. Например, если установить значение счетчика равным 2 секундам, нам не придется ждать эти 2 секунды, это произойдет в другом месте.</p>
+<h5>Очередь задач ES6</h5>
+<p>ECMAScript 2015 представил концепцию очереди задач, которая используется промисами (также представленными в этом стандарте). Очередь задач представляет собой способ максимально быстрого выполнения результата асинхронной функции без помещения ее в конец стека вызовов.</p>
+<p>Промисы, разрешенные перед завершением выполнения текущей функции, будут выполнены следом за этой функцией.</p>
+<p>Можно провести аналогию с американскими горками в парке развлечений: очередь сообщений помещает вас в конец очереди, позади других людей, и вам приходится ждать своей очереди, а очередь задач - это специальный билет, дающий вам право прокатиться на аттракционе сразу после окончания предыдущей поездки.</p>
+<p>Пример:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">bar</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">baz</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">)</span>
+
+<span class="n">const</span> <span class="n">foo</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="err">{</span>
+    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>
+    <span class="n">setTimeout</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">new</span> <span class="n">Promise</span><span class="p">((</span><span class="n">resolve</span><span class="p">,</span> <span class="n">reject</span><span class="p">)</span> <span class="o">=&gt;</span> 
+        <span class="n">resolve</span><span class="p">(</span><span class="s1">&#39;should be right after baz, before bar&#39;</span><span class="p">)</span>
+    <span class="p">).</span><span class="k">then</span><span class="p">(</span><span class="n">resolve</span> <span class="o">=&gt;</span> <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">resolve</span><span class="p">))</span>
+    <span class="n">baz</span><span class="p">()</span>
+<span class="err">}</span>
+
+<span class="n">foo</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Этот код выведет в консоль следующее:</p>
+<div class="highlight"><pre><span></span><span class="err">foo </span>
+<span class="err">baz </span>
+<span class="err">should be right after baz, before bar</span>
+<span class="err">baz</span>
+</pre></div>
+
+
+<p>Существует большая разница между промисами (и async/await, основанном на промисах) и старыми-добрыми асинхронными функциями типа setTimeout() и другими прикладными интерфейсами среды выполнения кода.</p>
+            <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
+      </div>
+    </section>
+<footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+  <h2>Р</h2>
+    <ul class="inline-block text align-center list">
+          <li> — <a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+    </ul><!-- /.blogroll -->
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Гордо принимает 
+        <a href="https://github.com">
+          <img src="./theme/img/footer-logo.png" width="100" height="30" alt="GitHub • Социальное программирование">
+        </a>
+      </p>
+      <div>
+      <h2>A</h2>
+        <ul class="inline-block text align-center list">
+                <li> — <a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul><!-- /.social -->
+  
+      </div>
+    </div>
+  </div>
+</footer>
+<a class="scroll-to-top rounded js-scroll-trigger button" href="#"><i class="fas fa-angle-up"></i></a>
+<script src="./theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
+
+
+     $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+</script>
+</body>
+</html>

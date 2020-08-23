@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="imagetoolbar" content="false">
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-300.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/fonts/lato-v14-latin-700.woff2" as="font" type="font/woff2" /><!--  crossorigin  -->
+        <link rel="preload" href="./theme/css/screen.css" as="style">
+        <link rel="preload" href="./theme/css/user.css" as="style">
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <title>041. Путь к файлу</title>
+
+        <link rel="stylesheet" href="./theme/css/screen.css" />
+        <link rel="stylesheet" href="./theme/css/user.css" />
+        <!--[if lt IE 9]>
+  <script src="./theme/js/html5shiv.min.js"></script>
+  <script src="./theme/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body class="wrap js" id="page-top">
+  <header>
+    <div class="flexbox">
+      <div class="center-on-mobiles">
+        <h1>
+          <a href="./" class="logo">
+            <span class="sr-only">Azeevrt</span>
+            <img src="./theme/img/logo-2x.png" width="140" height="65" alt="Azeevrt Logo">
+          </a>
+        </h1>
+      </div>
+      <nav class="main-nav hide-on-mobiles">
+        <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="meta hide-on-mobiles">
+        <ul>
+              <li><a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul>
+      </div>
+    </div>
+    <nav class="mobile-nav show-on-mobiles">
+      <ul>
+          <li>
+              <a href="./category/azeevrt.html">Azeevrt</a>
+          </li>
+          <li class="active">
+              <a href="./category/nodejs.html">Node.js</a>
+          </li>
+    </ul>
+    </nav>
+  </header>
+    <section class="standalone">
+      <div class="grid">
+        <div class="unit whole">
+          <article>
+            <h3>41. Путь к файлу</h3>
+<p>Любой файл имеет адрес или путь. </p>
+<p>На Linux и macOS путь может выглядеть так:</p>
+<div class="highlight"><pre><span></span><span class="err">/Users/joe/file.txt</span>
+</pre></div>
+
+
+<p>А на Windows так:</p>
+<div class="highlight"><pre><span></span><span class="c">C:\\Users\\joe\\file.txt</span>
+</pre></div>
+
+
+<p>Следует быть очень внимательным при работе с путями в …</p>
+            <h3>41. Путь к файлу</h3>
+<p>Любой файл имеет адрес или путь. </p>
+<p>На Linux и macOS путь может выглядеть так:</p>
+<div class="highlight"><pre><span></span><span class="err">/Users/joe/file.txt</span>
+</pre></div>
+
+
+<p>А на Windows так:</p>
+<div class="highlight"><pre><span></span><span class="c">C:\\Users\\joe\\file.txt</span>
+</pre></div>
+
+
+<p>Следует быть очень внимательным при работе с путями в приложении, поскольку это может иметь решающее значение. </p>
+<p>Соответствующий модуль подключается следующим образом:</p>
+<div class="highlight"><pre><span></span><span class="err">const path = require(&#39;path&#39;)</span>
+</pre></div>
+
+
+<p>После этого его можно использовать. </p>
+<h5>Получение информации из path</h5>
+<p>Для извлечения информации из пути используются следующие методы:</p>
+<ul>
+<li>dirname - директория, в которой находится файл</li>
+<li>basename - название файла</li>
+<li>extname - расширение файла</li>
+</ul>
+<p>Например:</p>
+<div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">notes</span> <span class="o">=</span> <span class="s1">&#39;/Users/joe/notes.txt&#39;</span>
+
+<span class="n">path</span><span class="p">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">//</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">joe</span> 
+<span class="n">path</span><span class="p">.</span><span class="n">basename</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">//</span> <span class="n">notes</span><span class="p">.</span><span class="n">txt</span> 
+<span class="n">path</span><span class="p">.</span><span class="n">extname</span><span class="p">(</span><span class="n">notes</span><span class="p">)</span> <span class="o">//</span> <span class="p">.</span><span class="n">txt</span>
+</pre></div>
+
+
+<p>Вы можете получить название файла без расширения:</p>
+<div class="highlight"><pre><span></span><span class="err">path.basename(notes, path.extname(notes)) // notes</span>
+</pre></div>
+
+
+<h5>Работа с путями</h5>
+<p>Вы можете соединить две или более части пути посредством path.join():</p>
+<div class="highlight"><pre><span></span><span class="err">const name = &#39;joe&#39;</span>
+<span class="err">path.join(&#39;/&#39;, &#39;Users&#39;, name, &#39;notes.txt&#39;)</span>
+</pre></div>
+
+
+<p>Абсолютный путь файла на основе относительного можно получить с помощью path.resolve():</p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;joe.txt&#39;) // &#39;/Users/joe/joe.txt&#39;</span>
+</pre></div>
+
+
+<p>В данном случае, Node.js просто добавляет /joe.txt к адресу текущей (рабочей) директории. Если вы определите первый параметр - директорию, resolve использует ее как основу для второго параметра - файла:</p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;tmp&#39;, &#39;joe.txt&#39;) // &#39;/Users/joe/tmp/joe.txt&#39;</span>
+</pre></div>
+
+
+<p>Если первый параметр начинается со слеша - это абсолютный путь: </p>
+<div class="highlight"><pre><span></span><span class="err">path.resolve(&#39;/etc&#39;, &#39;joe.txt&#39;) // &#39;/etc/joe.txt&#39;</span>
+</pre></div>
+
+
+<p>Еще одной полезной функцией является path.normalize(), которая пытается вычислить актуальный путь на основе относительных спецификаторов типа ., .. или двойного слеша:</p>
+<div class="highlight"><pre><span></span><span class="err">path.normalize(&#39;/Users/joe/..//test.txt&#39;) // /Users/test.txt</span>
+</pre></div>
+
+
+<p>resolve и normalize не проверяют, существует ли путь на самом деле. Они лишь вычисляют путь на основе полученной информации.</p>
+            <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
+          </article><!-- /#posts-list -->
+        </div>
+        <div class="clear"></div>
+      </div>
+    </section>
+<footer>
+  <div class="grid">
+    <div class="unit one-third center-on-mobiles">
+  <h2>Р</h2>
+    <ul class="inline-block text align-center list">
+          <li> — <a href="https://github.com/azeevrt/site.git" target="_top">репозиторий</a></li>
+    </ul><!-- /.blogroll -->
+    </div>
+    <div class="unit two-thirds align-right center-on-mobiles">
+      <p>
+        Гордо принимает 
+        <a href="https://github.com">
+          <img src="./theme/img/footer-logo.png" width="100" height="30" alt="GitHub • Социальное программирование">
+        </a>
+      </p>
+      <div>
+      <h2>A</h2>
+        <ul class="inline-block text align-center list">
+                <li> — <a href="https://azeevrt.github.io/site">Azeevrt /site/</a></li>
+        </ul><!-- /.social -->
+  
+      </div>
+    </div>
+  </div>
+</footer>
+<a class="scroll-to-top rounded js-scroll-trigger button" href="#"><i class="fas fa-angle-up"></i></a>
+<script src="./theme/js/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+    // Smooth scrolling using jQuery easing
+    $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        var target = $(this.hash);
+        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top
+          }, 1000, "easeInOutExpo");
+          return false;
+        }
+      }
+    });
+
+    // Scroll to top button appear
+    $(document).scroll(function() {
+      var scrollDistance = $(this).scrollTop();
+      if (scrollDistance > 100) {
+        $('.scroll-to-top').fadeIn();
+        $('.azback').fadeIn();
+      } else {
+        $('.scroll-to-top').fadeOut();
+        $('.azback').fadeOut();
+      }
+    });
+
+
+
+     $('.akkordeon').on('click', 'h2, h3, h4, strong', function () {
+        var akk = $(this).parent().parent();
+        var action;
+        (!akk.attr('open')) ? action = 'expand': action = 'reduce';
+        var section = 'page.module.part.' + action;
+
+    });
+</script>
+</body>
+</html>
