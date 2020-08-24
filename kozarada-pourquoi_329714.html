@@ -11,7 +11,7 @@
         <link rel="preload" href="./theme/css/user.css" as="style">
 
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
-        <title>035. Создание HTTP-сервера</title>
+        <title>KozaRada- Pourquoi_329714</title>
 
         <link rel="stylesheet" href="./theme/css/screen.css" />
         <link rel="stylesheet" href="./theme/css/user.css" />
@@ -38,7 +38,7 @@
               <a href="./category/azeevrt.html">Azeevrt</a>
           </li>
           <li class="active">
-              <a href="./category/nodejs.html">Node.js</a>
+              <a href="./category/kozarada.html">Kozarada</a>
           </li>
         </ul>
       </nav>
@@ -54,7 +54,7 @@
               <a href="./category/azeevrt.html">Azeevrt</a>
           </li>
           <li class="active">
-              <a href="./category/nodejs.html">Node.js</a>
+              <a href="./category/kozarada.html">Kozarada</a>
           </li>
     </ul>
     </nav>
@@ -63,54 +63,8 @@
       <div class="grid">
         <div class="unit whole">
           <article>
-            <h3>35. Создание HTTP-сервера</h3>
-<p>Вот пример простого HTTP-сервера:</p>
-<div class="highlight"><pre><span></span>const http = require(&#39;http&#39;)
-
-const port = process.env.PORT || 3000
-
-const server = http.createServer((req, res) =&gt; {
-    res.statusCode = 200
-    res.setHeader(&#39;Content-Type&#39;, &#39;text/html&#39;)
-    res.end(&#39;<span class="err">&lt;</span>&gt;Hello, World!<span class="err">&lt;</span>&gt;&#39;)
-})
-
-server.listen(port, () =&gt; {
-    console.log …</pre></div>
-            <h3>35. Создание HTTP-сервера</h3>
-<p>Вот пример простого HTTP-сервера:</p>
-<div class="highlight"><pre><span></span>const http = require(&#39;http&#39;)
-
-const port = process.env.PORT || 3000
-
-const server = http.createServer((req, res) =&gt; {
-    res.statusCode = 200
-    res.setHeader(&#39;Content-Type&#39;, &#39;text/html&#39;)
-    res.end(&#39;<span class="err">&lt;</span>&gt;Hello, World!<span class="err">&lt;</span>&gt;&#39;)
-})
-
-server.listen(port, () =&gt; {
-    console.log(\\`Server running at port <span class="cp">${</span><span class="n">port</span><span class="cp">}</span>\\`)
-})
-</pre></div>
-
-
-<p>Проанализируем этот код.</p>
-<p>Мы подключаем <a href="https://nodejs.org/api/http.html">модуль http</a>. </p>
-<p>Затем используем этот модуль для создания HTTP-сервера. </p>
-<p>Мы указываем серверу слушать порт 3000. После запуска сервера вызывается колбек. </p>
-<p>Данный колбек будет вызываться в ответ на каждый запрос. При получении запроса вызывается <a href="https://nodejs.org/api/http.html#http_event_request">событие request</a>, возвращающее два объекта: запрос (объект <a href="https://nodejs.org/api/http.html#http_class_http_incomingmessage">http.IncomingMessage</a>) и ответ (объект <a href="https://nodejs.org/api/http.html#http_class_http_serverresponse">http.ServerResponse</a>). </p>
-<p>request содержит детали запроса. Через него мы получаем доступ к заголовкам и данным запроса. </p>
-<p>response используется для формирования ответа клиенту. </p>
-<p>В данном случае, с помощью res.statusCode = 200 мы присваиваем свойству statusCode значение 200 в качестве индикатора успешного выполнения запроса. </p>
-<p>Также мы устанавливаем заголовок:</p>
-<div class="highlight"><pre><span></span><span class="err">res.setHeader(&#39;Content-Type&#39;, &#39;text/html&#39;)</span>
-</pre></div>
-
-
-<p>И закрываем ответ, добавляя контент в качестве аргумента метода end():</p>
-<div class="highlight"><pre><span></span><span class="err">res.end(&#39;Hello, World!&#39;)</span>
-</pre></div>
+            <h1>KozaRada- Pourquoi<br>![https://www.youtube.com/watch?v=pyH9SkLrM][https://i.ytimg.com/vi/pyH9SkLrM/maxresdefault.jpg]</h1>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/pyH9SkLrM?nologo=1&iv_load_policy=3&rel=0&showinfo=0&adformat=1_8&mute=1&ps=gvn&modestbranding=1&controls=1&title=1&enablejsapi=1&autoplay=1&suppress_creator_endscreen=1&widgetid=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
           </article><!-- /#posts-list -->
         </div>

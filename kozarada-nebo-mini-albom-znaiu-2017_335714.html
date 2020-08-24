@@ -11,7 +11,7 @@
         <link rel="preload" href="./theme/css/user.css" as="style">
 
         <link rel="icon" type="image/x-icon" href="/favicon.ico">
-        <title>036. Отправка HTTP-запросов</title>
+        <title>KozaRada - Небо ( мини-альбом Знаю 2017)_335714</title>
 
         <link rel="stylesheet" href="./theme/css/screen.css" />
         <link rel="stylesheet" href="./theme/css/user.css" />
@@ -38,7 +38,7 @@
               <a href="./category/azeevrt.html">Azeevrt</a>
           </li>
           <li class="active">
-              <a href="./category/nodejs.html">Node.js</a>
+              <a href="./category/kozarada.html">Kozarada</a>
           </li>
         </ul>
       </nav>
@@ -54,7 +54,7 @@
               <a href="./category/azeevrt.html">Azeevrt</a>
           </li>
           <li class="active">
-              <a href="./category/nodejs.html">Node.js</a>
+              <a href="./category/kozarada.html">Kozarada</a>
           </li>
     </ul>
     </nav>
@@ -63,84 +63,8 @@
       <div class="grid">
         <div class="unit whole">
           <article>
-            <h3>36. Отправка HTTP-запросов</h3>
-<h5>Отправка GET-запроса</h5>
-<div class="highlight"><pre><span></span>const https = require(&#39;https&#39;)
-const options = {
-    hostname: &#39;whatever.com&#39;,
-    port: 443,
-    path: &#39;/todos&#39;,
-    method: &#39;GET&#39;
-}
-
-const req = https.request(options, res =&gt; {
-    console.log(\\`statusCode: <span class="cp">${</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="cp">}</span>\\`)
-
-    res.on(&#39;data&#39;, d =&gt; {
-        process.stdout.write(d)
-    })
-})
-
-req …</pre></div>
-            <h3>36. Отправка HTTP-запросов</h3>
-<h5>Отправка GET-запроса</h5>
-<div class="highlight"><pre><span></span>const https = require(&#39;https&#39;)
-const options = {
-    hostname: &#39;whatever.com&#39;,
-    port: 443,
-    path: &#39;/todos&#39;,
-    method: &#39;GET&#39;
-}
-
-const req = https.request(options, res =&gt; {
-    console.log(\\`statusCode: <span class="cp">${</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="cp">}</span>\\`)
-
-    res.on(&#39;data&#39;, d =&gt; {
-        process.stdout.write(d)
-    })
-})
-
-req.on(&#39;error&#39;, err =&gt; console.error(err))
-
-req.end()
-</pre></div>
-
-
-<h5>Отправка POST-запроса</h5>
-<div class="highlight"><pre><span></span>const https = require(&#39;https&#39;)
-
-const data = JSON.stringify({
-    todo: &#39;Buy the milk&#39;
-})
-
-const options = {
-    hostname: &#39;whatever.com&#39;,
-    port: 443,
-    path: &#39;/todos&#39;,
-    method: &#39;POST&#39;,
-    headers: {
-        &#39;Content-Type&#39;: &#39;application/json&#39;,
-        &#39;Content-Length&#39;: data.length 
-    }
-}
-
-const req = https.request(options =&gt; {
-    console.log(\\`statusCode: <span class="cp">${</span><span class="n">res</span><span class="o">.</span><span class="n">statusCode</span><span class="cp">}</span>\\`)
-
-    res.on(&#39;data&#39;, d =&gt; {
-        process.stdout.write(d)
-    })
-})
-
-req.on(&#39;error&#39;, err =&gt; console.error(err))
-
-req.write(data)
-req.end()
-</pre></div>
-
-
-<h5>PUT и DELETE</h5>
-<p>Запросы PUT и DELETE имеют тот же формат, что и POST-запрос, за исключением значения свойства method объекта options.</p>
+            <h1>KozaRada - Небо ( мини-альбом "Знаю"2017)<br>![https://www.youtube.com/watch?v=NKmB0ONyY][https://i.ytimg.com/vi/NKmB0ONyY/maxresdefault.jpg]</h1>
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/NKmB0ONyY?nologo=1&iv_load_policy=3&rel=0&showinfo=0&adformat=1_8&mute=1&ps=gvn&modestbranding=1&controls=1&title=1&enablejsapi=1&autoplay=1&suppress_creator_endscreen=1&widgetid=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <!-- <p class="azback"><a href="#" onclick="history.back();">Назад</a></p> -->
           </article><!-- /#posts-list -->
         </div>
