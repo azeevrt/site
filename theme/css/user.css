@@ -1,3 +1,4 @@
+header nav{overflow: auto;}
 article ul{list-style-type: none;}
 .azlink{text-decoration:underline;}.azlink:hover{text-decoration:none;}
 .azback{/*
